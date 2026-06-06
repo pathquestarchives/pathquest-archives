@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PathQuest Archives</title>
+
+  <!-- Performance / CDN hints -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Leaflet CSS and JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Leaflet.Rotate — enables map bearing/rotation -->
+  <script src="https://unpkg.com/leaflet-rotate@0.2.8/dist/leaflet-rotate-src.js"></script>
+
+  <!-- Main UI styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Extra effects (markers, HUD, etc.) -->
+  <link rel="stylesheet" href="styles/trail-effects.css" />
+
+  <meta name="theme-color" content="#0b0b0b">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- iOS PWA support -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="PathQuest Archives">
+  <link rel="apple-touch-icon" href="/icons/checkpoint.png">
+
+  <!-- iOS splash screens (prevents white flash on launch) -->
+  <!-- iPhone 14 Pro / 15 Pro Max (430x932 @3x = 1290x2796) -->
+  <link rel="apple-touch-startup-image" href="/icons/splash-1290x2796.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)">
+  <!-- iPhone 14 Pro / 15 Pro (393x852 @3x = 1179x2556) -->
+  <link rel="apple-touch-startup-image" href="/icons/splash-1179x2556.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)">
+  <!-- iPhone 14 / 15 (390x844 @3x = 1170x2532) -->
+  <link rel="apple-touch-startup-image" href="/icons/splash-1170x2532.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)">
+  <!-- iPhone 12 / 13 (390x844 @3x = 1170x2532) -->
+  <link rel="apple-touch-startup-image" href="/icons/splash-1170x2532.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)">
+  <!-- iPhone SE 3rd gen / 8 (375x667 @2x = 750x1334) -->
+  <link rel="apple-touch-startup-image" href="/icons/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
+
+  <style>
+    /* Minimal safety baseline (keeps head small and predictable) */
+    html,body{height:100%;margin:0;padding:0;background:#0b0b0b}
+    #map{height:100vh;width:100%;background:#0b0b0b}
+  </style>
+
+  <!-- tiny transparent favicon to avoid 404 noise -->
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=">
+</head>
+
+
+<body>
+
+  <!-- ============================================================
+       SPLASH SCREEN
+  ============================================================ -->
+  <div id="splash-screen">
+    <div class="splash-inner">
+      <div class="splash-compass">
+        <div class="splash-compass-ring"></div>
+        <div class="splash-compass-needle"></div>
+      </div>
+      <div class="splash-title">PathQuest Archives</div>
+
+      <div class="splash-progress-track">
+        <div class="splash-progress-bar" id="splash-progress-bar"></div>
+      </div>
+      <div class="splash-status" id="splash-status">Starting up…</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       STORY INTRO SCREEN (one-time, shown before first sign-in)
+  ============================================================ -->
+  <div id="story-intro-screen" class="hidden">
+    <div class="story-intro-inner">
+      <div class="story-intro-text">
+        <p>Long ago, logs were left along these paths: notes on discoveries kept out of every official record.</p>
+        <p>Most of them vanished into the landscape.</p>
+        <p>Your task is to find what remains and rebuild the Archive.</p>
+      </div>
+      <button id="story-intro-btn" class="story-intro-btn">Begin</button>
+    </div>
+  </div>
+
+    <!-- ============================================================
+       LANDING / SIGN-IN SCREEN (shown when signed out)
+  ============================================================ -->
+  <div id="landing-screen" class="hidden" aria-modal="true" role="dialog">
+    <div class="landing-inner">
+      <div class="landing-logo">
+        <div class="landing-compass">
+          <div class="landing-compass-ring"></div>
+          <div class="landing-compass-needle"></div>
+        </div>
+        <div class="landing-title">PathQuest Archives</div>
+
+      </div>
+      <div class="landing-features">
+        <div class="landing-feature"><span class="landing-feature-icon">🧭</span><span><strong>Explore</strong> — Walk the world and activate dormant markers hidden along real paths</span></div>
+        <div class="landing-feature"><span class="landing-feature-icon">📡</span><span><strong>Discover</strong> — Draw close and ancient signals awaken, revealing their logs</span></div>
+        <div class="landing-feature"><span class="landing-feature-icon">🗂️</span><span><strong>Archive</strong> — Record what you find and piece together the forgotten network</span></div>
+      </div>
+      <div class="landing-signin-area">
+        <p class="landing-signin-note">Free · Progress saved to your account</p>
+        <button id="landing-signin-btn" class="landing-signin-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" style="flex-shrink:0">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>
+          Sign in with Google
+        </button>
+        <p class="landing-privacy">Location is processed on-device only</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       DISCLAIMER MODAL (first login only)
+  ============================================================ -->
+  <!-- Onboarding Screen (first-time users only) -->
+  <div id="onboarding-backdrop" class="hidden"></div>
+  <div id="onboarding-modal" class="hidden" role="dialog" aria-modal="true" aria-label="Welcome to PathQuest Archives">
+    <div class="onboarding-inner">
+      <div class="onboarding-step" id="onboarding-step-1">
+        <div class="onboarding-icon">🥾</div>
+        <h2 class="onboarding-title">Welcome to PathQuest Archives</h2>
+        <p class="onboarding-body">Walk real paths, awaken dormant markers, collect archived artefacts, and earn field badges — all by actually going outside.</p>
+        <button class="onboarding-btn" id="onboarding-next-1">Get Started</button>
+      </div>
+      <div class="onboarding-step hidden" id="onboarding-step-2">
+        <div class="onboarding-icon">⚠️</div>
+        <h2 class="onboarding-title">Stay Safe Out There</h2>
+        <div class="onboarding-body onboarding-list">
+          <p><strong>Stay aware.</strong> Watch your surroundings. Don't use this app while driving or in hazardous conditions.</p>
+          <p><strong>GPS is approximate.</strong> Don't rely solely on this app for navigation in remote areas.</p>
+          <p><strong>Respect the trail.</strong> Follow park rules, respect private property, and be considerate of others.</p>
+          <p><strong>Your data.</strong> Location is processed on-device. Journal entries and badges are stored securely in your account.</p>
+        </div>
+        <button class="onboarding-btn" id="onboarding-next-2">I Understand</button>
+      </div>
+      <div class="onboarding-step hidden" id="onboarding-step-3">
+        <div class="onboarding-icon">📍</div>
+        <h2 class="onboarding-title">Enable Location</h2>
+        <p class="onboarding-body">PathQuest Archives uses your GPS to detect checkpoints as you walk, show nearby routes, and track your position on the map.<br><br>Your location is never shared or stored.</p>
+        <button class="onboarding-btn onboarding-btn-gps" id="onboarding-enable-gps">Enable Location</button>
+        <button class="onboarding-btn-skip" id="onboarding-skip-gps">Maybe Later</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="disclaimer-backdrop" class="hidden"></div>
+  <div id="disclaimer-modal" class="hidden" role="dialog" aria-modal="true" aria-label="Safety disclaimer">
+    <div class="disclaimer-inner">
+      <div class="disclaimer-icon">⚠️</div>
+      <h2 class="disclaimer-title">Before You Begin</h2>
+      <div class="disclaimer-body">
+        <p><strong>Stay aware.</strong> Always watch your surroundings while using PathQuest Archives. Do not use this app while driving or in hazardous conditions.</p>
+        <p><strong>GPS accuracy.</strong> Your location is approximate. Do not rely solely on this app for navigation in remote areas.</p>
+        <p><strong>Your data.</strong> Your location is processed on-device only. Journal entries and badges are stored securely in your account.</p>
+        <p><strong>Follow local rules.</strong> Respect park rules, private property, and other people. PathQuest Archives is not responsible for access restrictions at any location.</p>
+      </div>
+      <button id="disclaimer-accept-btn" class="disclaimer-accept-btn">I Understand — Let's Go</button>
+    </div>
+  </div>
+
+  <!-- Accessibility: skip link -->
+  <a href="#map" class="sr-only" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to map</a>
+
+  <!-- Informative noscript -->
+  <noscript style="position:fixed;left:0;right:0;top:0;background:#ffcc00;color:#000;padding:8px;text-align:center;z-index:20000;">
+    JavaScript is required for PathQuest Archives to function. Please enable JavaScript in your browser.
+  </noscript>
+
+  <!-- Floating UI placeholders -->
+  <div id="compass" aria-hidden="true"></div>
+
+  <!-- Legacy Exit Route button (still wired in app.js) -->
+  <button id="exit-route-btn" class="map-btn hidden" aria-hidden="true">Exit Route</button>
+
+  <!-- Recenter -->
+  <button id="recenter-btn" aria-label="Recenter map to your location" title="Recenter">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/>
+      <line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/>
+    </svg>
+    <span>Recenter</span>
+  </button>
+
+  <!-- Re-read current clue — hunt mode only -->
+  <button id="reclue-btn" class="hidden" aria-label="Re-read current clue" title="Current Clue">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/>
+    </svg>
+    <span>Clue</span>
+  </button>
+
+  <!-- Bottom-left Menu FAB — shows avatar when signed in -->
+  <button id="menu-fab" aria-label="Open menu" aria-expanded="false">
+    <span id="menu-fab-icon" aria-hidden="true">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="20" height="2" rx="1" fill="currentColor"/>
+        <rect y="6" width="20" height="2" rx="1" fill="currentColor"/>
+        <rect y="12" width="20" height="2" rx="1" fill="currentColor"/>
+      </svg>
+    </span>
+  </button>
+
+  <!-- Menu backdrop -->
+  <div id="menu-backdrop" class="hidden" aria-hidden="true"></div>
+
+  <!-- Menu sheet (glass side panel) -->
+<nav id="menu-sheet" class="hidden" role="menu" aria-hidden="true" aria-label="Main menu">
+  <!-- Main menu content (default) -->
+  <div id="menu-main" class="menu-panel" role="group" aria-label="Main menu items">
+    <!-- Sign-in card — shown when signed out -->
+    <div id="menu-signin-card" class="menu-signin-card">
+      <div class="menu-signin-icon">🧭</div>
+      <div class="menu-signin-copy">
+        <div class="menu-signin-heading">Welcome, Adventurer</div>
+        <div class="menu-signin-sub">Sign in to track your progress</div>
+      </div>
+      <button id="menu-signin-btn" class="menu-signin-btn">
+        <svg viewBox="0 0 24 24" width="16" height="16"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Sign in with Google
+      </button>
+    </div>
+
+    <!-- Profile card — populated by app.js on sign-in -->
+    <div id="menu-profile-card" class="menu-profile-card hidden">
+      <div id="menu-profile-avatar" class="menu-profile-avatar"></div>
+      <div class="menu-profile-info">
+        <div id="menu-profile-name" class="menu-profile-name"></div>
+        <div id="menu-profile-title" class="menu-profile-title"></div>
+      </div>
+    </div>
+    <div class="menu-divider"></div>
+    <div class="menu-group-label">Explore</div>
+    <button class="menu-item" data-action="nearby" role="menuitem">📍 Nearby Routes</button>
+    <div class="menu-group-label">Collection</div>
+    <button class="menu-item" data-action="view-badges" role="menuitem">🏅 Badges</button>
+    <button class="menu-item" data-action="history" role="menuitem">📜 History</button>
+    <button class="menu-item" data-action="open-journal" role="menuitem">📘 Journal <span id="journal-unread-badge" class="journal-unread-badge hidden"></span></button>
+    <button class="menu-item" data-action="open-inventory" role="menuitem">🎒 Inventory</button>
+    <div class="menu-group-label">Account</div>
+    <button class="menu-item" data-action="open-settings" role="menuitem">⚙️ Settings</button>
+  </div>
+
+  <!-- Settings view inside the same sheet (hidden by default) -->
+  <div id="menu-settings" class="menu-panel hidden" role="group" aria-label="Settings menu">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <div style="font-weight:700;">Settings</div>
+      <button id="menu-settings-back" class="screen-back-btn" aria-label="Back to menu" style="position:static;color:#fff;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+    </div>
+
+    <!-- Settings options (only place for logout) -->
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <button id="menu-open-settings-screen" class="menu-item" data-action="open-settings" role="menuitem">Open full Settings</button>
+
+      <!-- Sign out (red) inside menu settings view -->
+      <button id="menu-logout-btn" class="menu-item" role="menuitem" style="background:linear-gradient(90deg,#ff5252,#d50000);color:#fff;font-weight:700;">
+        🔓 Sign out
+      </button>
+    </div>
+  </div>
+</nav>
+
+  <!-- Badges screen (full screen) -->
+  <div id="badges-modal" class="screen hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Badges">
+    <div class="screen-header">
+      <button id="close-badges-modal" class="screen-back-btn" aria-label="Close badges"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+      <span class="screen-header-title">Badges</span>
+      <div class="screen-header-right"></div>
+    </div>
+    <div class="screen-body">
+      <div id="badge-grid" class="badge-grid-full" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <!-- Map container -->
+  <div id="map" role="application" aria-label="PathQuest Archives map"></div>
+
+  <!-- Route Preview Banner -->
+  <div id="preview-banner" class="hidden" aria-hidden="true" role="status" aria-live="polite">
+    <div id="preview-banner-text">Previewing:</div>
+    <div id="preview-banner-btns">
+      <button id="preview-start-btn" class="preview-start-btn">▶ Start Route</button>
+    </div>
+  </div>
+
+  <!-- Route HUD (top center, wired in app.js) -->
+  <div id="route-hud" class="hidden" aria-hidden="true" role="region" aria-label="Route status">
+    <div id="hud-route-name">Route Name</div>
+    <div id="hud-next-info">Next: CP 1 — 0m</div>
+
+    <!-- Hunt mode clue row — hidden in guided mode, shown in hunt mode.
+         Tap to expand full clue text. Auto-advances when checkpoint found. -->
+    <div id="hud-clue-row" class="hidden" aria-live="polite">
+      <div id="hud-clue-label">🔍 Clue</div>
+      <div id="hud-clue-text"></div>
+    </div>
+
+    <div id="hud-progress-bar" aria-hidden="true">
+      <div id="hud-progress-fill"></div>
+    </div>
+    <div id="hud-buttons">
+      <button id="hud-pause-btn">Pause</button>
+      <button id="hud-exit-btn">Exit</button>
+      <button id="hud-findings-btn">Findings<span id="findings-pip" aria-hidden="true"></span></button>
+    </div>
+  </div>
+
+  <!-- Findings Drawer (slides down from HUD) -->
+<div id="findings-drawer">
+  <div id="findings-drawer-content">
+    <!-- Entries injected dynamically -->
+  </div>
+</div>
+
+
+  <!-- Settings, Nearby, History screens -->
+  <div id="settings-screen" class="screen hidden" aria-hidden="true">
+    <div class="screen-header">
+      <button id="close-settings" class="screen-back-btn" aria-label="Close settings"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+      <span class="screen-header-title">Settings</span>
+      <div class="screen-header-right"></div>
+    </div>
+    <div class="screen-body">
+    <div class="settings-panel" style="max-width:420px;margin:0 auto;">
+      <div class="settings-title" style="font-size:22px;font-weight:700;margin-bottom:12px;text-align:center;">Settings</div>
+
+      <div id="settings-content">
+        <div id="user-title" style="margin:12px 0;color:#ddd;"></div>
+
+        <!-- Primary logout button (only place for logout) -->
+        <button id="logout-btn" class="settings-btn" style="width:100%;padding:14px;border-radius:10px;border:none;background:linear-gradient(90deg,#ff5252,#d50000);color:#fff;font-weight:700;margin-top:12px;">
+          Sign out
+        </button>
+      </div>
+    </div>
+    </div><!-- /screen-body -->
+  </div>
+
+<!-- Journal Screen -->
+<div id="journal-screen" class="screen hidden">
+  <div class="screen-header">
+    <button id="journal-back-btn" class="screen-back-btn" aria-label="Back"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+    <span class="screen-header-title">Sources</span>
+    <div class="screen-header-right"></div>
+  </div>
+  <div id="journal-route-list" class="journal-route-list screen-body">
+    <!-- Narrator dossier cards injected here -->
+  </div>
+</div>
+
+<!-- Narrator Entry Detail -->
+<div id="journal-route-detail" class="screen hidden">
+  <div class="screen-header">
+    <button id="route-detail-back-btn" class="screen-back-btn" aria-label="Back"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+    <span class="screen-header-title" id="route-detail-title">Narrator</span>
+    <div class="screen-header-right">
+      <button id="markAllReadBtn" class="mark-all-read-btn">Mark All Read</button>
+    </div>
+  </div>
+  <div id="journal-checkpoint-list" class="journal-checkpoint-list screen-body">
+    <!-- Entries injected here -->
+  </div>
+</div>
+
+
+  <div id="nearby-screen" class="screen hidden" aria-hidden="true">
+    <div class="screen-header">
+      <button id="close-nearby" class="screen-back-btn" aria-label="Close nearby"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+      <span class="screen-header-title">Nearby Routes</span>
+      <div class="screen-header-right"></div>
+    </div>
+    <div class="screen-body">
+      <div id="nearby-list" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div id="inventory-screen" class="screen hidden" aria-hidden="true">
+    <div class="screen-header">
+      <button id="close-inventory" class="screen-back-btn" aria-label="Close inventory"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+      <span class="screen-header-title">Inventory</span>
+      <div class="screen-header-right"></div>
+    </div>
+    <div class="screen-body">
+      <div id="inventory-grid" class="inventory-grid" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div id="item-detail-backdrop" class="hidden"></div>
+  <div id="item-detail-modal" class="hidden" role="dialog" aria-modal="true">
+    <div class="item-detail-inner">
+      <div id="item-detail-icon" class="item-detail-icon"></div>
+      <div id="item-detail-rarity" class="item-detail-rarity"></div>
+      <div id="item-detail-name" class="item-detail-name"></div>
+      <div id="item-detail-flavour" class="item-detail-flavour"></div>
+      <div id="item-detail-desc" class="item-detail-desc"></div>
+      <button id="item-detail-close" class="item-detail-close-btn">Close</button>
+    </div>
+  </div>
+
+  <div id="history-screen" class="screen hidden" aria-hidden="true">
+    <div class="screen-header">
+      <button id="close-history" class="screen-back-btn" aria-label="Close history"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+      <span class="screen-header-title">Route History</span>
+      <div class="screen-header-right"></div>
+    </div>
+    <div class="screen-body">
+      <div id="history-list" aria-live="polite"></div>
+    </div>
+  </div>
+
+<div id="route-summary-backdrop" class="hidden"></div>
+
+<div id="route-summary-modal" class="hidden">
+  <div id="route-summary-title"></div>
+  <div id="route-summary-badge"></div>
+  <div id="route-summary-details"></div>
+
+  <button id="route-summary-journal-btn">View Journal</button>
+  <button id="route-summary-close-btn">Close</button>
+</div>
+
+
+  <!-- Service Worker registration -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch(console.error);
+    }
+  </script>
+
+  <!-- App logic (module) -->
+  <script type="module" src="app.js"></script>
+
+<!-- Badge reveal overlay — wax stamp design -->
+<div id="badge-reveal-overlay" aria-live="assertive">
+  <div class="badge-reveal-ring" id="badge-reveal-ring">
+    <div class="badge-reveal-shine"></div>
+    <div class="badge-reveal-svg" id="badge-reveal-svg-container"></div>
+  </div>
+  <div class="badge-reveal-label">Badge Earned</div>
+  <div class="badge-reveal-name" id="badge-reveal-name"></div>
+  <div class="badge-reveal-tap">Tap anywhere to continue</div>
+</div>
+
+<!-- Clue card — slides up from bottom during hunt routes -->
+<!-- RETIRED: clue-card and resummon-btn replaced by #hud-clue-row in the HUD.
+     Elements kept in DOM so legacy JS references don't throw errors. -->
+<div id="clue-card" class="clue-card hidden" aria-hidden="true" style="display:none!important"></div>
+<button id="clue-resummon-btn" class="clue-resummon-btn hidden" aria-hidden="true" style="display:none!important"></button>
+<span id="clue-card-number" style="display:none"></span>
+<span id="clue-card-text" style="display:none"></span>
+
+<div id="lore-toast" class="lore-toast hidden">
+  <span id="lore-toast-text">You found a torn note — Checkpoint X</span>
+</div>
+
+<!-- Item found toast (amber) — shown when player receives an item -->
+<div id="item-toast" class="item-toast hidden" aria-live="assertive">
+  <div class="item-toast-icon" id="item-toast-icon">📦</div>
+  <div class="item-toast-body">
+    <div class="item-toast-title" id="item-toast-title">Item Found</div>
+    <div class="item-toast-name" id="item-toast-name"></div>
+  </div>
+</div>
+
+<div id="lore-card-overlay" class="hidden">
+  <div id="lore-card" class="lore-card old-note">
+    <div class="lore-card-header">
+      <div id="lore-card-title">Checkpoint X</div>
+      <button id="lore-card-close">✕</button>
+    </div>
+
+    <div id="lore-card-text" class="lore-card-text">
+      <!-- Full quote injected here -->
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     JOURNAL PANEL (Slide-Up)
+============================================================ -->
+<div id="journal-backdrop" class="hidden"></div>
+
+<div id="journal-panel" class="hidden" style="display:none!important">
+  <div id="journal-header">
+    <div id="journal-title">Journal</div>
+    <button id="journal-close-btn" class="screen-back-btn" style="position:static;"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+  </div>
+
+  <div id="journal-routes-list"></div>
+
+  <div id="journal-lore-list" class="hidden"></div>
+</div>
+
+
+  <!-- GPS waiting indicator -->
+  <div id="gps-waiting" style="display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:calc(var(--z-base) + 35);background:rgba(12,12,18,0.88);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);border-radius:999px;padding:8px 16px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);gap:8px;align-items:center;white-space:nowrap;">
+    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#00eaff;animation:gpsPulse 1.2s ease-in-out infinite;"></span>
+    Waiting for GPS…
+  </div>
+
+  <!-- Offline indicator -->
+<div id="offline-banner" class="offline-banner hidden" aria-live="assertive">
+  <span id="offline-banner-text">📡 No connection — progress will sync when back online</span>
+</div>
+
+<div id="resume-banner" class="hidden">
+  <div id="resume-banner-text"></div>
+  <button id="resume-continue-btn">Continue</button>
+  <button id="resume-discard-btn">Discard</button>
+</div>
+  
+</body>
+</html>
