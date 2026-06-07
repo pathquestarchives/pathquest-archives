@@ -296,22 +296,6 @@
 }
 
 /* Direction arrow sits above the sprite's head */
-.user-direction-arrow {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  width: 18px;
-  height: 18px;
-  transform: translateX(-50%);
-  background: url("../icons/compass-arrow.png") no-repeat center;
-  background-size: contain;
-  filter: drop-shadow(0 0 6px rgba(0, 200, 255, 0.8));
-  pointer-events: none;
-  will-change: transform;
-  backface-visibility: hidden;
-  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
 /* ===== Route Start Flag ===== */
 .route-flag-wrapper {
   width: 32px;

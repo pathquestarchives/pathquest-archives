@@ -474,32 +474,22 @@ function markTrailheadComplete(routeName) {
 }
 
 function updateMarkersForZoom(zoom) {
-  // ── User sprite scaling — scale only the hiker image via CSS transform.
-  // Scaling the whole wrapper would interfere with the direction arrow's
-  // own transform. transform-origin: center bottom keeps feet at the anchor.
-  const spriteScale = Math.max(0.45, Math.min(1.6, (zoom - 13) * 0.29));
+  // ── User sprite — no zoom scaling applied; always same visual size.
 
-  if (userMarker && userMarker._icon) {
-    const img = userMarker._icon.querySelector(".user-hiker-icon");
-    if (img) {
-      img.style.transformOrigin = "center bottom";
-      img.style.transform = `scale(${spriteScale})`;
-    }
-  }
-
-  // ── Trailhead flags — scale via CSS transform so iconAnchor stays correct.
-  // Width/height changes break the anchor; transform-origin:bottom left keeps
-  // the pole base pinned to the geographic point at all zoom levels.
+  // ── Trailhead flags — scale the inner .flag-anim element.
+  // Leaflet writes translate() on _icon; we must not touch _icon.style.transform.
+  // transform-origin matches iconAnchor [4,48] within the [36,48] element.
   const thScale = Math.max(0.15, Math.min(1.5, (zoom - 10) * 0.12));
   trailheadMarkers.forEach(({ marker }) => {
     if (!marker || !marker._icon) return;
     const el = marker._icon.querySelector(".flag-anim");
     if (!el) return;
-    el.style.transformOrigin = "bottom left";
+    el.style.transformOrigin = "4px 48px";
     el.style.transform = `scale(${thScale})`;
   });
 
-  // ── Checkpoint mini flags — same approach
+  // ── Checkpoint mini flags — scale inner .cp-flag-wrap.
+  // iconAnchor [4,40] on [32,40] icon.
   const cpScale = Math.max(0.15, Math.min(1.5, (zoom - 10) * 0.08));
   const badgeSize = Math.round(Math.max(5, Math.min(28, (zoom - 10) * 3.5)) * 0.55);
   const badgeFontSize = Math.round(badgeSize * 0.55);
@@ -507,14 +497,22 @@ function updateMarkersForZoom(zoom) {
   if (checkpointMarkers) {
     checkpointMarkers.forEach((m) => {
       if (!m || !m._icon) return;
-      const wrap = m._icon.querySelector(".cp-flag-wrap");
+      const wrap = m._icon.querySelector(".cp-flag-wrap") || m._icon.querySelector(".flag-mini");
       if (!wrap) return;
-      wrap.style.transformOrigin = "bottom left";
+      wrap.style.transformOrigin = "4px 40px";
       wrap.style.transform = `scale(${cpScale})`;
-      const badge = wrap.querySelector(".cp-flag-number");
+      const badge = m._icon.querySelector(".cp-flag-number");
       if (badge) { badge.style.minWidth = badgeSize + "px"; badge.style.height = badgeSize + "px"; badge.style.fontSize = badgeFontSize + "px"; }
     });
   }
+
+  // ── POI markers — scale inner .poi-marker element.
+  // iconAnchor [20,20] on [40,40] icon.
+  const poiScale = Math.max(0.2, Math.min(1.2, (zoom - 10) * 0.1));
+  document.querySelectorAll(".leaflet-marker-icon .poi-marker").forEach(el => {
+    el.style.transformOrigin = "20px 20px";
+    el.style.transform = `scale(${poiScale})`;
+  });
 }
 
 // ======== CHECKPOINT PANE CREATION & STACKING FIX ========
@@ -533,6 +531,22 @@ if (markerPane) {
 if (!map.getPane("userPane")) map.createPane("userPane");
 map.getPane("userPane").style.zIndex = "1390";
 map.getPane("userPane").style.pointerEvents = "none";
+
+// ── Keep user marker pinned during animated zoom (incl. pinch+rotate) ──
+// leaflet-rotate patches pane transforms during gestures; hooking zoomanim
+// lets us nudge the marker to its correct pixel position every animation frame
+// so it never visually drifts from the geographic point.
+map.on("zoomanim", (e) => {
+  if (!userMarker || !userLatLng) return;
+  const pxMarker = map.project([userLatLng.lat, userLatLng.lng], e.zoom);
+  const pxCenter = map.project(e.center, e.zoom);
+  const dx = pxMarker.x - pxCenter.x;
+  const dy = pxMarker.y - pxCenter.y;
+  const iconEl = userMarker._icon;
+  if (iconEl) {
+    iconEl.style.transform = `translate(${dx}px,${dy}px)`;
+  }
+});
 
 const mapEl = document.getElementById("map");
 if (mapEl) mapEl.style.background = "#0b0b0b";
@@ -633,7 +647,7 @@ function createUserIcon() {
       </div>
     `,
     className: "",
-    iconSize: [1, 1],
+    iconSize:   [48, 72],
     iconAnchor: [24, 72]
   });
 }
@@ -1184,9 +1198,9 @@ function attachCheckpointTapHandlers() {
       if (!isVisited) {
         // Give feedback instead of silently ignoring
         if (index > activeIndex) {
-          showLoreToast("Reach the previous checkpoint first.");
+          showHintToast("Reach the previous checkpoint first.");
         } else {
-          showLoreToast("Walk closer to trigger this checkpoint.");
+          showHintToast("Walk closer to trigger this checkpoint.");
         }
         return;
       }
@@ -3584,8 +3598,6 @@ const loreCardClose = document.getElementById("lore-card-close");
 // ── Lore card close ──
 function closeLoreCard() {
   if (!loreCardOverlay || !loreCard) return;
-  parchmentSound.currentTime = 0;
-  parchmentSound.play().catch(() => {});
   loreCard.style.animation = "loreCardDismiss 0.3s cubic-bezier(0.4,0,1,1) forwards";
   setTimeout(() => {
     loreCardOverlay.classList.add("hidden");
@@ -3596,6 +3608,11 @@ function closeLoreCard() {
     const journalDetailEl = document.getElementById("journal-route-detail");
     if (journalScreenEl) journalScreenEl.style.zIndex = "";
     if (journalDetailEl) journalDetailEl.style.zIndex = "";
+
+    // Restore compass if we're back on the map (journal not open)
+    const journalVisible = journalScreenEl && !journalScreenEl.classList.contains("hidden");
+    const detailVisible  = journalDetailEl && !journalDetailEl.classList.contains("hidden");
+    if (!journalVisible && !detailVisible) showCompass();
 
     // Show deferred item toast now that the card is gone
     if (pendingItemToast) {
@@ -3693,6 +3710,26 @@ function showLoreToast(message) {
   }, 3000);
 }
 
+let _hintToastTimer = null;
+function showHintToast(message) {
+  const el   = document.getElementById("hint-toast");
+  const text = document.getElementById("hint-toast-text");
+  if (!el || !text) return;
+
+  text.textContent = message;
+  el.classList.remove("hidden");
+  // Force reflow so transition fires even on repeat calls
+  void el.offsetWidth;
+  el.classList.add("show");
+
+  if (_hintToastTimer) clearTimeout(_hintToastTimer);
+  _hintToastTimer = setTimeout(() => {
+    el.classList.remove("show");
+    setTimeout(() => el.classList.add("hidden"), 200);
+    _hintToastTimer = null;
+  }, 2500);
+}
+
 // ======================================================
 // ⭐ Open Lore Card
 // ======================================================
@@ -3704,9 +3741,9 @@ function openLoreCard(payload) {
   loreCard.setAttribute("data-style", payload.style || "stone");
   loreCard.style.animation = "";
 
-  // Page flip sound
-  pageFlipSound.currentTime = 0;
-  pageFlipSound.play().catch(() => {});
+  // Parchment open sound (page-flip reserved for journal)
+  parchmentSound.currentTime = 0;
+  parchmentSound.play().catch(() => {});
 
   // Temporarily lower journal screens below lore card while it's open
   const journalScreenEl = document.getElementById("journal-screen");
@@ -4046,6 +4083,8 @@ async function openJournalScreen() {
   closeAllScreens();
   hideCompass();
   if (!auth.currentUser) return;
+  pageFlipSound.currentTime = 0;
+  pageFlipSound.play().catch(() => {});
   journalScreen.classList.remove("hidden");
   journalRouteDetail.classList.add("hidden");
   await loadNarratorDossiers();
@@ -4260,6 +4299,7 @@ if (routeDetailBackBtn) {
   routeDetailBackBtn.addEventListener("click", () => {
     journalRouteDetail.classList.add("hidden");
     journalScreen.classList.remove("hidden");
+    // compass stays hidden while journal is open — no showCompass here
   });
 }
 
@@ -4408,7 +4448,7 @@ function renderWorldPOIs() {
       const dist   = distanceInMeters(userLatLng.lat, userLatLng.lng, lat, lng);
       const radius = parseFloat(poi.radius) || 20;
       if (dist > radius * 3) {
-        showLoreToast(`${poi.name || "Point of Interest"} — walk closer to interact`);
+        showHintToast(`${poi.name || "Point of Interest"} — walk closer to interact`);
       }
     });
 
@@ -4536,7 +4576,7 @@ async function triggerPOI(poi) {
     try {
       const invSnap = await getDoc(doc(db, "Users", user.uid, "inventory", poi.requiresItem));
       if (!invSnap.exists()) {
-        showLoreToast(`You need an item to interact with this.`);
+        showHintToast(`You need an item to interact with this.`);
         const m = poiMarkers[poi.id];
         if (m && m.getElement()) {
           const div = m.getElement().querySelector(".poi-marker");

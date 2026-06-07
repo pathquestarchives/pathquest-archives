@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
   <title>PathQuest Archives</title>
 
   <!-- Performance / CDN hints -->
@@ -31,7 +31,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="PathQuest Archives">
-  <link rel="apple-touch-icon" href="/icons/checkpoint.png">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512.png">
 
   <!-- iOS splash screens (prevents white flash on launch) -->
   <!-- iPhone 14 Pro / 15 Pro Max (430x932 @3x = 1290x2796) -->
@@ -63,6 +65,7 @@
   ============================================================ -->
   <div id="splash-screen">
     <div class="splash-inner">
+      <img src="/icons/icon-512.png" class="splash-app-icon" alt="PathQuest Archives">
       <div class="splash-compass">
         <div class="splash-compass-ring"></div>
         <div class="splash-compass-needle"></div>
@@ -467,6 +470,11 @@
 
 <div id="lore-toast" class="lore-toast hidden">
   <span id="lore-toast-text">You found a torn note — Checkpoint X</span>
+</div>
+
+<!-- Hint toast — top-center pill for proximity/navigation nudges -->
+<div id="hint-toast" class="hint-toast hidden" aria-live="polite">
+  <span id="hint-toast-text"></span>
 </div>
 
 <!-- Item found toast (amber) — shown when player receives an item -->

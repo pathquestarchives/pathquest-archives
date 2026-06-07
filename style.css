@@ -862,6 +862,39 @@ html,body{
   pointer-events:auto;
 }
 
+/* ── Hint toast — top-center pill for proximity/navigation nudges ── */
+#hint-toast {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  max-width: 280px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(14, 14, 20, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(180, 160, 110, 0.25);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.5);
+  color: rgba(220, 200, 160, 0.9);
+  font-family: "Georgia", serif;
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  z-index: 10002;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+#hint-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+#hint-toast.hidden {
+  display: none;
+}
+
 /* ── Item found toast (amber) ── */
 #item-toast {
   position: fixed;
@@ -2574,6 +2607,20 @@ html,body{
   flex-direction: column;
   align-items: center;
   gap: 0;
+}
+
+.splash-app-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: splashIconFade 0.6s ease 0.1s forwards;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.6));
+}
+@keyframes splashIconFade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* Compass animation */
