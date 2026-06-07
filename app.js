@@ -1,1 +1,4774 @@
-const _0x564281=_0x1166;(function(_0x54ec7f,_0x153ef9){const _0x805682=_0x1166,_0x306a60=_0x54ec7f();while(!![]){try{const _0x23a604=-parseInt(_0x805682(0x23b))/0x1+parseInt(_0x805682(0x106))/0x2+parseInt(_0x805682(0x2ac))/0x3*(-parseInt(_0x805682(0x13b))/0x4)+parseInt(_0x805682(0x2c7))/0x5*(-parseInt(_0x805682(0x20a))/0x6)+-parseInt(_0x805682(0x1c8))/0x7*(-parseInt(_0x805682(0x1d4))/0x8)+-parseInt(_0x805682(0x169))/0x9*(-parseInt(_0x805682(0xba))/0xa)+parseInt(_0x805682(0x26e))/0xb;if(_0x23a604===_0x153ef9)break;else _0x306a60['push'](_0x306a60['shift']());}catch(_0x4de262){_0x306a60['push'](_0x306a60['shift']());}}}(_0x1374,0xe766c));import{initializeApp}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';import{getFirestore,collection,getDocs,doc,setDoc,getDoc,addDoc,writeBatch}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';import{getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,getRedirectResult,onAuthStateChanged,signOut}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';const firebaseConfig={'apiKey':_0x564281(0x29f),'authDomain':_0x564281(0x2b6),'projectId':_0x564281(0xd0),'storageBucket':_0x564281(0xd1),'messagingSenderId':_0x564281(0x2db),'appId':_0x564281(0x284),'measurementId':_0x564281(0x174)},app=initializeApp(firebaseConfig),db=getFirestore(app),auth=getAuth(app),provider=new GoogleAuthProvider();provider[_0x564281(0x345)]({'prompt':'select_account'}),async function handleRedirectResult(){const _0x167664=_0x564281;try{const _0x55758e=document['getElementById'](_0x167664(0x247));if(_0x55758e)_0x55758e[_0x167664(0x198)][_0x167664(0x311)](_0x167664(0x267));const _0x55690b=await getRedirectResult(auth);_0x55690b&&_0x55690b[_0x167664(0x201)]&&console[_0x167664(0x1fb)](_0x167664(0x1ba),_0x55690b[_0x167664(0x201)]);}catch(_0x228dfe){console[_0x167664(0x187)](_0x167664(0x236),_0x228dfe);}finally{try{const _0x436522=new URL(window[_0x167664(0x33f)][_0x167664(0x270)]);[_0x167664(0x28a),'state',_0x167664(0x181),_0x167664(0x163),_0x167664(0x209)][_0x167664(0xa4)](_0x11f070=>_0x436522[_0x167664(0x2e2)]['delete'](_0x11f070)),history[_0x167664(0x21c)]({},document[_0x167664(0x1a6)],_0x436522['pathname']+_0x436522[_0x167664(0x104)]+_0x436522['hash']);}catch(_0x173750){}}}();const DEFAULT_BADGE_IMAGE=_0x564281(0x1dd);async function awardBadge(_0x2d9ee4){const _0x4b7f7c=_0x564281,_0x4595ac=auth[_0x4b7f7c(0x29b)];if(!_0x4595ac)return;try{await setDoc(doc(db,'Users',_0x4595ac[_0x4b7f7c(0x207)],_0x4b7f7c(0x11c),_0x2d9ee4),{'earnedAt':new Date(),'name':_0x2d9ee4[_0x4b7f7c(0x371)](/_/g,'\x20'),'image':DEFAULT_BADGE_IMAGE,'description':_0x4b7f7c(0x155)});}catch(_0x48771d){console[_0x4b7f7c(0x32f)]('awardBadge\x20error',_0x48771d);}}function showBadgeReveal(_0x291f7f,_0x5874cd){const _0x8f7c7=_0x564281,_0x11bcd6=document['getElementById'](_0x8f7c7(0xb6)),_0x9b8bca=document[_0x8f7c7(0x223)](_0x8f7c7(0x1be)),_0x1d14ed=document[_0x8f7c7(0x223)](_0x8f7c7(0x30d)),_0x4e586=document[_0x8f7c7(0x223)](_0x8f7c7(0x211));if(!_0x11bcd6||!_0x1d14ed||!_0x4e586)return;_0x9b8bca&&(_0x9b8bca[_0x8f7c7(0xf7)][_0x8f7c7(0xfd)]='none',void _0x9b8bca[_0x8f7c7(0x1bc)],_0x9b8bca['style'][_0x8f7c7(0xfd)]='');_0x1d14ed['innerHTML']=_0x5874cd||'',_0x4e586[_0x8f7c7(0x1d8)]=_0x291f7f||_0x8f7c7(0x26f),_0x11bcd6['classList'][_0x8f7c7(0x311)](_0x8f7c7(0x36d));if(navigator[_0x8f7c7(0xd6)])navigator[_0x8f7c7(0xd6)]([0x0,0x64,0x50,0x3c,0x28]);const _0x26ecec=()=>{const _0x4cbf67=_0x8f7c7;_0x11bcd6['classList'][_0x4cbf67(0x18c)]('show'),_0x11bcd6[_0x4cbf67(0x2c9)](_0x4cbf67(0x29e),_0x26ecec),[_0x4cbf67(0x30b),_0x4cbf67(0x22a),_0x4cbf67(0x232)]['forEach'](_0xa05209=>{const _0x2c7e8d=_0x4cbf67,_0x4294dd=_0x11bcd6[_0x2c7e8d(0x21a)](_0xa05209);_0x4294dd&&(_0x4294dd['style'][_0x2c7e8d(0xfd)]='none',_0x4294dd['style'][_0x2c7e8d(0x35c)]='0');});};setTimeout(()=>_0x11bcd6[_0x8f7c7(0xaa)](_0x8f7c7(0x29e),_0x26ecec),0x578);}function getTitleForCompletions(_0x119d3e){const _0x2e730d=_0x564281;if(_0x119d3e>=0x32)return _0x2e730d(0xd8);if(_0x119d3e>=0x19)return'Summit\x20Seeker';if(_0x119d3e>=0xa)return _0x2e730d(0x210);if(_0x119d3e>=0x3)return _0x2e730d(0x2a1);return _0x2e730d(0x25f);}async function updateUserTitleUI(){const _0x3a222e=_0x564281,_0x261c79=auth['currentUser'];if(!_0x261c79)return;try{const _0xb3705b=collection(db,_0x3a222e(0xc6),_0x261c79[_0x3a222e(0x207)],'routeHistory'),_0x49e0f7=await getDocs(_0xb3705b),_0x4a7dd8=_0x49e0f7[_0x3a222e(0x117)],_0x196077=getTitleForCompletions(_0x4a7dd8),_0x831ac4=document[_0x3a222e(0x223)](_0x3a222e(0x176));if(_0x831ac4)_0x831ac4[_0x3a222e(0x1d8)]=_0x3a222e(0xf9)+_0x196077+'\x20('+_0x4a7dd8+'\x20routes\x20completed)';const _0x553cc9=document[_0x3a222e(0x223)](_0x3a222e(0xcc));if(_0x553cc9)_0x553cc9['textContent']=_0x196077;}catch(_0x3e92ef){console[_0x3a222e(0x32f)](_0x3a222e(0x1a2),_0x3e92ef);}}window[_0x564281(0xaa)]('pageshow',_0x17679d=>{const _0x4efb45=_0x564281;if(!_0x17679d[_0x4efb45(0x26a)])return;resetSignInBtn();const _0x226048=document[_0x4efb45(0x223)](_0x4efb45(0x247));_0x226048&&!auth[_0x4efb45(0x29b)]&&_0x226048[_0x4efb45(0x198)][_0x4efb45(0x18c)](_0x4efb45(0x267),_0x4efb45(0x17d));const _0xf81a03=document[_0x4efb45(0x223)](_0x4efb45(0x2dc));_0xf81a03&&(_0xf81a03['classList'][_0x4efb45(0x311)](_0x4efb45(0x17d)),setTimeout(()=>_0xf81a03['classList']['add'](_0x4efb45(0x224)),0x28a));});async function handleSignIn(){const _0x1640aa=_0x564281;try{await signInWithPopup(auth,provider);}catch(_0x13c590){const _0x516898=_0x13c590?.[_0x1640aa(0x28a)]||'';if(_0x516898===_0x1640aa(0xeb)||_0x516898===_0x1640aa(0x122)||_0x516898===_0x1640aa(0x369)){console[_0x1640aa(0x1fb)]('Sign-in\x20popup\x20closed\x20by\x20user\x20—\x20no\x20action\x20needed.');return;}console[_0x1640aa(0x187)]('Popup\x20sign-in\x20failed,\x20falling\x20back\x20to\x20redirect:',_0x13c590);try{await signInWithRedirect(auth,provider);}catch(_0x53895f){console['error']('Redirect\x20sign-in\x20failed:',_0x53895f),alert(_0x1640aa(0x188));}}}const map=L[_0x564281(0xe4)](_0x564281(0xe4),{'zoomControl':![],'attributionControl':![],'rotate':!![],'touchRotate':!![],'rotateControl':![],'bearing':0x0,'markerZoomAnimation':!![],'zoomSnap':0.5,'zoomAnimationThreshold':0x4,'zoomAnimation':!![]})[_0x564281(0xa7)]([49.25,-122.89],0xd);window['_map']=map;const splashScreen=document['getElementById'](_0x564281(0x2dc)),splashProgress=document[_0x564281(0x223)]('splash-progress-bar'),splashStatus=document['getElementById'](_0x564281(0xbc));function setSplashProgress(_0x1aaab9,_0x1d2623){const _0x2f7276=_0x564281;if(splashProgress)splashProgress[_0x2f7276(0xf7)]['width']=_0x1aaab9+'%';if(splashStatus)splashStatus[_0x2f7276(0x1d8)]=_0x1d2623;}function hideSplash(){const _0x426b50=_0x564281;if(!splashScreen)return;splashScreen[_0x426b50(0x198)]['add']('fade-out'),setTimeout(()=>splashScreen[_0x426b50(0x198)][_0x426b50(0x311)](_0x426b50(0x224)),0x28a);}const landingScreen=document[_0x564281(0x223)]('landing-screen'),landingSignBtn=document[_0x564281(0x223)](_0x564281(0x2d4)),SIGNIN_BTN_HTML=_0x564281(0x151);function resetSignInBtn(){const _0x20f040=_0x564281;if(!landingSignBtn)return;landingSignBtn[_0x20f040(0x2a7)]=![],landingSignBtn['classList']['remove'](_0x20f040(0x2b3)),landingSignBtn[_0x20f040(0x120)]=SIGNIN_BTN_HTML;}function showLandingScreen(){const _0x184e27=_0x564281;if(!landingScreen)return;landingScreen[_0x184e27(0x198)][_0x184e27(0x18c)]('hidden',_0x184e27(0x17d)),resetSignInBtn(),landingSignBtn&&(landingSignBtn[_0x184e27(0x2c4)]=async()=>{const _0x9037fa=_0x184e27;landingSignBtn[_0x9037fa(0x198)][_0x9037fa(0x311)]('loading'),landingSignBtn[_0x9037fa(0x1d8)]='Signing\x20in…',landingSignBtn['disabled']=!![];try{await handleSignIn();}catch(_0x1c77f4){}finally{resetSignInBtn();}});}function hideLandingScreen(){const _0x1aaae5=_0x564281;if(!landingScreen)return;landingScreen[_0x1aaae5(0x198)][_0x1aaae5(0x311)](_0x1aaae5(0x17d)),setTimeout(()=>landingScreen[_0x1aaae5(0x198)][_0x1aaae5(0x311)](_0x1aaae5(0x267)),0x1f4);}const STORY_INTRO_KEY=_0x564281(0x329);function maybeShowStoryIntro(_0x40d2b7){const _0x5e910c=_0x564281,_0x59ad8e=document[_0x5e910c(0x223)](_0x5e910c(0x344));if(!_0x59ad8e){_0x40d2b7();return;}if(localStorage[_0x5e910c(0x1d0)](STORY_INTRO_KEY)){_0x40d2b7();return;}_0x59ad8e[_0x5e910c(0x198)][_0x5e910c(0x18c)](_0x5e910c(0x267),_0x5e910c(0x17d));function _0xfa870(){const _0x111780=_0x5e910c;localStorage[_0x111780(0x24a)](STORY_INTRO_KEY,'1'),_0x59ad8e['classList'][_0x111780(0x311)](_0x111780(0x17d)),setTimeout(()=>{const _0x5def9f=_0x111780;_0x59ad8e[_0x5def9f(0x198)][_0x5def9f(0x311)]('hidden'),_0x40d2b7();},0x2bc);}const _0x4cab70=document[_0x5e910c(0x223)](_0x5e910c(0x216));if(_0x4cab70)_0x4cab70['addEventListener'](_0x5e910c(0x29e),_0xfa870,{'once':!![]});setTimeout(()=>{const _0x2d024a=_0x5e910c;_0x59ad8e[_0x2d024a(0xaa)](_0x2d024a(0x29e),_0xfa870,{'once':!![]});},0xa28);}const DISCLAIMER_KEY=_0x564281(0x25b),ONBOARDING_KEY=_0x564281(0x22d);function showOnboarding(_0x17fad8){const _0x112ea4=_0x564281,_0x37aa86=document['getElementById'](_0x112ea4(0x36e)),_0x2fdfc7=document['getElementById'](_0x112ea4(0x2bc));if(!_0x37aa86||!_0x2fdfc7){_0x17fad8?.();return;}_0x37aa86[_0x112ea4(0x198)][_0x112ea4(0x18c)]('hidden'),_0x2fdfc7[_0x112ea4(0x198)][_0x112ea4(0x18c)](_0x112ea4(0x267));function _0x22978e(_0xc794c7,_0x488f96){const _0x47b072=_0x112ea4,_0x6b575e=document['getElementById'](_0xc794c7),_0xcd4cd4=document[_0x47b072(0x223)](_0x488f96);if(!_0x6b575e||!_0xcd4cd4)return;_0x6b575e[_0x47b072(0x198)][_0x47b072(0x311)](_0x47b072(0x36b)),setTimeout(()=>{const _0x149119=_0x47b072;_0x6b575e[_0x149119(0x198)][_0x149119(0x311)](_0x149119(0x267)),_0x6b575e[_0x149119(0x198)]['remove'](_0x149119(0x36b)),_0xcd4cd4[_0x149119(0x198)][_0x149119(0x18c)](_0x149119(0x267)),_0xcd4cd4[_0x149119(0x198)][_0x149119(0x311)](_0x149119(0x1c7)),setTimeout(()=>_0xcd4cd4[_0x149119(0x198)][_0x149119(0x18c)](_0x149119(0x1c7)),0xf0);},0xdc);}function _0x33c207(){const _0x5e3187=_0x112ea4;_0x37aa86['classList']['add'](_0x5e3187(0x267)),_0x2fdfc7['classList']['add'](_0x5e3187(0x267)),localStorage['setItem'](ONBOARDING_KEY,'1'),localStorage['setItem'](DISCLAIMER_KEY,'1'),_0x17fad8?.();}document[_0x112ea4(0x223)](_0x112ea4(0xf1))?.[_0x112ea4(0xaa)](_0x112ea4(0x29e),()=>{const _0xba7a29=_0x112ea4;_0x22978e(_0xba7a29(0x24d),_0xba7a29(0x164));},{'once':!![]}),document['getElementById']('onboarding-next-2')?.[_0x112ea4(0xaa)](_0x112ea4(0x29e),()=>{const _0x1ef3dd=_0x112ea4;_0x22978e(_0x1ef3dd(0x164),_0x1ef3dd(0x2fb));},{'once':!![]}),document[_0x112ea4(0x223)](_0x112ea4(0x31e))?.[_0x112ea4(0xaa)](_0x112ea4(0x29e),()=>{startGeolocationWatch(),_0x33c207();},{'once':!![]}),document[_0x112ea4(0x223)](_0x112ea4(0x12c))?.[_0x112ea4(0xaa)](_0x112ea4(0x29e),()=>{_0x33c207();},{'once':!![]});}function maybeShowOnboarding(){const _0x535387=_0x564281;if(!localStorage[_0x535387(0x1d0)](ONBOARDING_KEY))showOnboarding();else!localStorage['getItem'](DISCLAIMER_KEY)&&localStorage[_0x535387(0x24a)](DISCLAIMER_KEY,'1');}function showDisclaimer(){const _0x1d47bd=_0x564281,_0x14cc46=document[_0x1d47bd(0x223)](_0x1d47bd(0xa2)),_0x59977a=document['getElementById']('disclaimer-modal'),_0x125f21=document[_0x1d47bd(0x223)]('disclaimer-accept-btn');if(!_0x14cc46||!_0x59977a)return;_0x14cc46[_0x1d47bd(0x198)]['remove'](_0x1d47bd(0x267)),_0x59977a[_0x1d47bd(0x198)][_0x1d47bd(0x18c)](_0x1d47bd(0x267)),_0x125f21?.[_0x1d47bd(0xaa)](_0x1d47bd(0x29e),()=>{const _0x77ecba=_0x1d47bd;localStorage[_0x77ecba(0x24a)](DISCLAIMER_KEY,'1'),_0x14cc46[_0x77ecba(0x198)][_0x77ecba(0x311)](_0x77ecba(0x267)),_0x59977a[_0x77ecba(0x198)][_0x77ecba(0x311)](_0x77ecba(0x267));},{'once':!![]});}function maybeShowDisclaimer(){const _0x3c58d8=_0x564281;if(!localStorage[_0x3c58d8(0x1d0)](DISCLAIMER_KEY))showDisclaimer();}const tileLayer=L[_0x564281(0x1e6)](_0x564281(0xf3),{'maxZoom':0x13,'attribution':_0x564281(0x1f3)})[_0x564281(0x14b)](map),_applyMapFilter=()=>{const _0x4c4ba3=_0x564281,_0x5b6b48=tileLayer[_0x4c4ba3(0x215)]?.();if(_0x5b6b48)_0x5b6b48[_0x4c4ba3(0xf7)][_0x4c4ba3(0x20b)]=_0x4c4ba3(0x11d);};tileLayer['once'](_0x564281(0x256),_applyMapFilter),map['on'](_0x564281(0x301),_0x49eb9b=>{const _0x5982b8=_0x564281;if(_0x49eb9b[_0x5982b8(0x35e)]===tileLayer)_applyMapFilter();}),map['on'](_0x564281(0x2cc),()=>{const _0x102abc=_0x564281;if(routeLine)routeLine[_0x102abc(0x144)]();}),map['on'](_0x564281(0x1b9),()=>{const _0x18200a=map['getZoom']();flagAnimPaused=_0x18200a<0xe,updateMarkersForZoom(_0x18200a);});const FLAG_FRAMES=[_0x564281(0x15c),_0x564281(0x251),_0x564281(0x1ef),_0x564281(0x325)],FLAG_GOLD_FRAMES=[_0x564281(0x2c5),_0x564281(0x338),_0x564281(0x305),'icons/flag-gold4.svg'],FLAG_INTERVAL_MS=0x96;let flagAnimPaused=![],_flagTick=0x0;setInterval(()=>{const _0xb9f149=_0x564281;_flagTick++;if(flagAnimPaused)return;document[_0xb9f149(0x2bb)](_0xb9f149(0x226))[_0xb9f149(0xa4)](_0x5f39fe=>{const _0x473f39=_0xb9f149,_0x59170a=_0x5f39fe[_0x473f39(0x198)]['contains'](_0x473f39(0x32e))?FLAG_GOLD_FRAMES:FLAG_FRAMES,_0x2e869e=parseInt(_0x5f39fe[_0x473f39(0x213)][_0x473f39(0x271)]||'0',0xa),_0x1d46a9=(_flagTick+_0x2e869e)%_0x59170a[_0x473f39(0xf5)],_0x1a4ddf=_0x473f39(0x2f2)+_0x59170a[_0x1d46a9]+'\x22)';_0x5f39fe['dataset'][_0x473f39(0x16e)]!==_0x1a4ddf&&(_0x5f39fe[_0x473f39(0x213)][_0x473f39(0x16e)]=_0x1a4ddf,_0x5f39fe[_0x473f39(0xf7)][_0x473f39(0x214)]=_0x1a4ddf);});},FLAG_INTERVAL_MS);function markTrailheadComplete(_0xf0ae6){const _0x1d3df9=_0x564281,_0x3bd775=trailheadMarkers['find'](_0x27d1b0=>{const _0xc33e09=_0x1166,_0x5395f9=(window[_0xc33e09(0x26c)]||[])[_0xc33e09(0x21b)](_0x5b9b58=>_0x5b9b58[_0xc33e09(0xbb)]===_0xf0ae6);if(!_0x5395f9||!_0x5395f9['checkpoints']?.[0x0])return![];const _0x34b37f=parseFloat(_0x5395f9['checkpoints'][0x0][_0xc33e09(0x34f)]??_0x5395f9[_0xc33e09(0x19f)][0x0]['Lat']??_0x5395f9[_0xc33e09(0x19f)][0x0][_0xc33e09(0x19b)]),_0x46f29b=parseFloat(_0x5395f9[_0xc33e09(0x19f)][0x0][_0xc33e09(0x2d3)]??_0x5395f9[_0xc33e09(0x19f)][0x0]['Lng']??_0x5395f9[_0xc33e09(0x19f)][0x0][_0xc33e09(0xb5)]);return Math[_0xc33e09(0xd4)](_0x27d1b0[_0xc33e09(0x34f)]-_0x34b37f)<0.00001&&Math['abs'](_0x27d1b0[_0xc33e09(0x2d3)]-_0x46f29b)<0.00001;});if(!_0x3bd775||!_0x3bd775[_0x1d3df9(0x12f)]?.[_0x1d3df9(0x322)])return;const _0x518c4f=_0x3bd775[_0x1d3df9(0x12f)][_0x1d3df9(0x322)]['querySelector'](_0x1d3df9(0x226));_0x518c4f&&!_0x518c4f[_0x1d3df9(0x198)][_0x1d3df9(0x340)](_0x1d3df9(0x32e))&&_0x518c4f[_0x1d3df9(0x198)][_0x1d3df9(0x311)](_0x1d3df9(0x32e));if(!_0x3bd775['marker']['_icon']['querySelector'](_0x1d3df9(0x136))){const _0x5d37ce=document['createElement']('div');_0x5d37ce[_0x1d3df9(0xa5)]=_0x1d3df9(0x19e),_0x5d37ce[_0x1d3df9(0x1d8)]='✓',_0x3bd775[_0x1d3df9(0x12f)][_0x1d3df9(0x322)][_0x1d3df9(0x1fe)](_0x5d37ce);}_0x3bd775[_0x1d3df9(0x2e1)]=!![];}function updateMarkersForZoom(_0x438a42){const _0x1667e0=_0x564281,_0xef906b=Math[_0x1667e0(0x2c8)](0.45,Math['min'](1.6,(_0x438a42-0xd)*0.29)),_0x5603e3=Math[_0x1667e0(0x27c)](0x30*_0xef906b),_0x2be814=Math['round'](0x48*_0xef906b);if(userMarker&&userMarker[_0x1667e0(0x322)]){const _0x2d0a1d=userMarker[_0x1667e0(0x322)][_0x1667e0(0x21a)](_0x1667e0(0xe2));_0x2d0a1d&&(_0x2d0a1d['style']['width']=_0x5603e3+'px',_0x2d0a1d[_0x1667e0(0xf7)][_0x1667e0(0x10c)]=_0x2be814+'px');const _0xe22aeb=userMarker[_0x1667e0(0x322)][_0x1667e0(0x21a)](_0x1667e0(0x1af));_0xe22aeb&&(_0xe22aeb[_0x1667e0(0xf7)][_0x1667e0(0x35b)]=_0x5603e3+'px',_0xe22aeb[_0x1667e0(0xf7)]['height']=_0x2be814+'px');}const _0x4b56e2=Math[_0x1667e0(0x2c8)](0.15,Math['min'](1.5,(_0x438a42-0xa)*0.12));trailheadMarkers['forEach'](({marker:_0x2d33f9})=>{const _0x4d4293=_0x1667e0;if(!_0x2d33f9||!_0x2d33f9[_0x4d4293(0x322)])return;const _0x35cfcb=_0x2d33f9[_0x4d4293(0x322)]['querySelector'](_0x4d4293(0x226));if(!_0x35cfcb)return;_0x35cfcb['style'][_0x4d4293(0x2c2)]=_0x4d4293(0x1cc),_0x35cfcb[_0x4d4293(0xf7)]['transform']=_0x4d4293(0x171)+_0x4b56e2+')';});const _0x3015e3=Math['max'](0.15,Math[_0x1667e0(0xbe)](1.5,(_0x438a42-0xa)*0.08)),_0x123900=Math[_0x1667e0(0x27c)](Math[_0x1667e0(0x2c8)](0x5,Math[_0x1667e0(0xbe)](0x1c,(_0x438a42-0xa)*3.5))*0.55),_0x130690=Math[_0x1667e0(0x27c)](_0x123900*0.55);checkpointMarkers&&checkpointMarkers['forEach'](_0x350136=>{const _0x3f9d6b=_0x1667e0;if(!_0x350136||!_0x350136[_0x3f9d6b(0x322)])return;const _0x1a7ce5=_0x350136[_0x3f9d6b(0x322)][_0x3f9d6b(0x21a)](_0x3f9d6b(0x28d));if(!_0x1a7ce5)return;_0x1a7ce5['style'][_0x3f9d6b(0x2c2)]=_0x3f9d6b(0x1cc),_0x1a7ce5[_0x3f9d6b(0xf7)]['transform']=_0x3f9d6b(0x171)+_0x3015e3+')';const _0x2caa72=_0x1a7ce5[_0x3f9d6b(0x21a)](_0x3f9d6b(0x199));_0x2caa72&&(_0x2caa72[_0x3f9d6b(0xf7)][_0x3f9d6b(0x1da)]=_0x123900+'px',_0x2caa72[_0x3f9d6b(0xf7)][_0x3f9d6b(0x10c)]=_0x123900+'px',_0x2caa72[_0x3f9d6b(0xf7)][_0x3f9d6b(0x10e)]=_0x130690+'px');});}if(!map[_0x564281(0x1d7)](_0x564281(0x34e)))map[_0x564281(0x366)](_0x564281(0x34e));map[_0x564281(0x1d7)]('checkpointPane')[_0x564281(0xf7)][_0x564281(0x277)]=_0x564281(0x2b7),map[_0x564281(0x1d7)]('checkpointPane')[_0x564281(0xf7)][_0x564281(0xb8)]=_0x564281(0x1a8);const markerPane=map[_0x564281(0x1d7)](_0x564281(0x132));markerPane&&(markerPane[_0x564281(0xf7)][_0x564281(0x277)]='1410',markerPane[_0x564281(0xf7)][_0x564281(0xb8)]='auto');if(!map['getPane'](_0x564281(0x1aa)))map[_0x564281(0x366)](_0x564281(0x1aa));map['getPane'](_0x564281(0x1aa))[_0x564281(0xf7)][_0x564281(0x277)]=_0x564281(0x148),map['getPane'](_0x564281(0x1aa))[_0x564281(0xf7)][_0x564281(0xb8)]=_0x564281(0x304);const mapEl=document[_0x564281(0x223)]('map');if(mapEl)mapEl[_0x564281(0xf7)][_0x564281(0x229)]='#0b0b0b';let lastPreviewRouteName=null,lastPreviewRouteCheckpoints=null,routes=[],activeRoute=null,activeRouteName=null,activeRouteMode=_0x564281(0xf6),activeRouteNarrator='',activeIndex=0x0,userLatLng=null,userMarker=null,routeLayer=null,routeLine=null,visitedLore={},watchId=null,checkpointMarkers=[];function startGeolocationWatch(){const _0x5a7996=_0x564281;if(watchId||!(_0x5a7996(0x177)in navigator))return;const _0x33e5b3=document['getElementById'](_0x5a7996(0x19d));if(_0x33e5b3&&!userLatLng)_0x33e5b3['style'][_0x5a7996(0x1d1)]=_0x5a7996(0x2b4);watchId=navigator[_0x5a7996(0x177)][_0x5a7996(0x30a)](updateUserMarker,_0x332693=>{console['warn']('GPS\x20error\x20(watch):',_0x332693);},{'enableHighAccuracy':!![],'maximumAge':0x1388,'timeout':0x4e20});}function stopGeolocationWatch(){const _0x682962=_0x564281;if(!watchId)return;try{navigator[_0x682962(0x177)][_0x682962(0x19c)](watchId);}catch(_0x1246d8){}watchId=null;}const startMarkersLayer=L[_0x564281(0x33d)]()['addTo'](map);let trailheadMarkers=[];function createStartIcon(){const _0x4e0d8f=_0x564281,_0x345f30=Math[_0x4e0d8f(0x234)](Math[_0x4e0d8f(0x158)]()*0x4)+0x1;return L[_0x4e0d8f(0x127)]({'html':_0x4e0d8f(0x2a5)+_0x345f30+_0x4e0d8f(0x12e),'className':'','iconSize':[0x24,0x30],'iconAnchor':[0x4,0x30]});}function createGoldFlagIcon(){const _0x5c710e=_0x564281,_0x15a585=Math[_0x5c710e(0x234)](Math[_0x5c710e(0x158)]()*0x4)+0x1;return L[_0x5c710e(0x127)]({'html':_0x5c710e(0x32a)+_0x15a585+_0x5c710e(0x12e),'className':'','iconSize':[0x24,0x30],'iconAnchor':[0x4,0x30]});}function createCheckpointIcon(_0x5f50bf,_0x269973){const _0x441a39=_0x564281;return L[_0x441a39(0x127)]({'html':_0x441a39(0x102)+(_0x5f50bf?'checkpoint-glow':'')+_0x441a39(0x2eb)+_0x269973+_0x441a39(0x2bd),'className':'','iconSize':[0x20,0x28],'iconAnchor':[0x4,0x28]});}function createUserIcon(){const _0x3a537f=_0x564281;return L[_0x3a537f(0x127)]({'html':_0x3a537f(0x2e4),'className':'','iconSize':[0x1,0x1],'iconAnchor':[0x18,0x48]});}function computeRouteDistance(_0x123b8e){const _0x5d8a68=_0x564281;let _0x15f142=0x0;for(let _0xa0aec6=0x0;_0xa0aec6<_0x123b8e['length']-0x1;_0xa0aec6++){const _0x49adaf=_0x123b8e[_0xa0aec6],_0x27d591=_0x123b8e[_0xa0aec6+0x1],_0x15e0fc=parseFloat(_0x49adaf[_0x5d8a68(0x34f)]??_0x49adaf['Lat']??_0x49adaf[_0x5d8a68(0x19b)]),_0x4fd130=parseFloat(_0x49adaf['lng']??_0x49adaf[_0x5d8a68(0x129)]??_0x49adaf[_0x5d8a68(0xb5)]),_0x2935c8=parseFloat(_0x27d591[_0x5d8a68(0x34f)]??_0x27d591[_0x5d8a68(0x35f)]??_0x27d591[_0x5d8a68(0x19b)]),_0x29d58a=parseFloat(_0x27d591[_0x5d8a68(0x2d3)]??_0x27d591[_0x5d8a68(0x129)]??_0x27d591[_0x5d8a68(0xb5)]);if(isNaN(_0x15e0fc)||isNaN(_0x4fd130)||isNaN(_0x2935c8)||isNaN(_0x29d58a))continue;_0x15f142+=distanceInMeters(_0x15e0fc,_0x4fd130,_0x2935c8,_0x29d58a);}return _0x15f142;}function estimateTimeMinutes(_0x539a23){const _0x4554fd=_0x564281,_0x3a8b76=0x50;return Math[_0x4554fd(0x27c)](_0x539a23/_0x3a8b76);}const journalPanel=document[_0x564281(0x223)](_0x564281(0x327)),journalBackdrop=document[_0x564281(0x223)]('journal-backdrop'),journalRoutesList=document[_0x564281(0x223)]('journal-routes-list'),journalLoreList=document['getElementById'](_0x564281(0x16d)),journalCloseBtn=document[_0x564281(0x223)](_0x564281(0xdd));function openJournalRoute(_0x68a4ac,_0x3b1128){const _0x168168=_0x564281;journalLoreList['innerHTML']='',journalLoreList['classList'][_0x168168(0x18c)](_0x168168(0x267)),_0x3b1128['forEach'](_0xbdd8c9=>{const _0x2a9d16=_0x168168,_0x5be816=document[_0x2a9d16(0x112)](_0x2a9d16(0x272));_0x5be816[_0x2a9d16(0xa5)]=_0x2a9d16(0x2e7),_0x5be816['innerHTML']='\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22journal-lore-title\x22>'+_0xbdd8c9['title']+_0x2a9d16(0x351)+_0xbdd8c9['text'][_0x2a9d16(0x12a)](0x0,0x50)+_0x2a9d16(0x354),_0x5be816[_0x2a9d16(0x2c4)]=()=>openLoreCard(_0xbdd8c9),journalLoreList[_0x2a9d16(0x1fe)](_0x5be816);});}function closeJournal(){const _0x57b3b0=_0x564281;journalBackdrop[_0x57b3b0(0x198)][_0x57b3b0(0x18c)](_0x57b3b0(0x36d)),journalPanel[_0x57b3b0(0x198)][_0x57b3b0(0x18c)](_0x57b3b0(0x36d)),setTimeout(()=>{const _0x36077e=_0x57b3b0;journalBackdrop[_0x36077e(0x198)]['add'](_0x36077e(0x267)),journalPanel[_0x36077e(0x198)]['add'](_0x36077e(0x267));},0xfa);}journalCloseBtn[_0x564281(0x2c4)]=closeJournal,journalBackdrop['onclick']=closeJournal;function distanceInMeters(_0x4dd7aa,_0x57b787,_0xa54f0d,_0x35b9fb){const _0x258484=_0x564281,_0x8fc234=0x6136b8,_0x2e77c0=_0x136203=>_0x136203*Math['PI']/0xb4,_0x5d3b97=_0x2e77c0(_0xa54f0d-_0x4dd7aa),_0x5ebe72=_0x2e77c0(_0x35b9fb-_0x57b787),_0x4b9429=Math[_0x258484(0x13a)](_0x5d3b97/0x2)**0x2+Math[_0x258484(0x1ab)](_0x2e77c0(_0x4dd7aa))*Math[_0x258484(0x1ab)](_0x2e77c0(_0xa54f0d))*Math[_0x258484(0x13a)](_0x5ebe72/0x2)**0x2;return _0x8fc234*0x2*Math[_0x258484(0x2fd)](Math[_0x258484(0x2aa)](_0x4b9429),Math[_0x258484(0x2aa)](0x1-_0x4b9429));}function bearingDegrees(_0x378ec5,_0x87466e,_0x5a7257,_0x2f8c73){const _0x250ddd=_0x564281,_0x94d4bc=_0x43e9ce=>_0x43e9ce*Math['PI']/0xb4,_0x38830e=_0x7705d1=>_0x7705d1*0xb4/Math['PI'],_0x147145=_0x94d4bc(_0x2f8c73-_0x87466e),_0x5e078d=Math['sin'](_0x147145)*Math['cos'](_0x94d4bc(_0x5a7257)),_0x6945e4=Math[_0x250ddd(0x1ab)](_0x94d4bc(_0x378ec5))*Math[_0x250ddd(0x13a)](_0x94d4bc(_0x5a7257))-Math[_0x250ddd(0x13a)](_0x378ec5*(Math['PI']/0xb4))*Math[_0x250ddd(0x1ab)](_0x94d4bc(_0x5a7257))*Math[_0x250ddd(0x1ab)](_0x147145);let _0x234654=_0x38830e(Math['atan2'](_0x5e078d,_0x6945e4));return(_0x234654+0x168)%0x168;}async function checkNarratorPOIUnlock(_0x1a5d9b){const _0x7cd7fa=_0x564281,_0x244fb1=auth['currentUser'];if(!_0x244fb1)return;const _0x49cbdc=(window[_0x7cd7fa(0x26c)]||[])[_0x7cd7fa(0x21b)](_0x124d75=>_0x124d75['name']===_0x1a5d9b);if(!_0x49cbdc?.['narrator'])return;const _0x1fd4e7=NARRATORS['find'](_0xcb067c=>_0xcb067c['id']===_0x49cbdc['narrator']);if(!_0x1fd4e7?.[_0x7cd7fa(0x313)]||!_0x1fd4e7?.[_0x7cd7fa(0x15b)])return;if((window[_0x7cd7fa(0x121)]||[])[_0x7cd7fa(0x263)](_0x1fd4e7[_0x7cd7fa(0x15b)]))return;const _0x1cfae6=(window[_0x7cd7fa(0x26c)]||[])['filter'](_0x5e9aa6=>_0x5e9aa6['narrator']===_0x1fd4e7['id'])[_0x7cd7fa(0xe4)](_0x31f5cf=>_0x31f5cf[_0x7cd7fa(0xbb)]),_0x21e272=_0x1cfae6['filter'](_0x18da83=>window['__completedRoutes']?.[_0x7cd7fa(0x29c)](_0x18da83))['length'];if(_0x21e272<_0x1fd4e7['poiUnlockThreshold'])return;window[_0x7cd7fa(0x121)]=[...window[_0x7cd7fa(0x121)]||[],_0x1fd4e7[_0x7cd7fa(0x15b)]];try{const _0xb85dda=doc(db,_0x7cd7fa(0xc6),_0x244fb1[_0x7cd7fa(0x207)],_0x7cd7fa(0x25d),_0x7cd7fa(0x10d));await setDoc(_0xb85dda,{'unlockedPOIs':window['__unlockedPOIs']},{'merge':!![]}),console[_0x7cd7fa(0x1fb)](_0x7cd7fa(0x33a)+_0x1fd4e7[_0x7cd7fa(0x15b)]+_0x7cd7fa(0x30f)+_0x1fd4e7['id']);}catch(_0x22c22e){console[_0x7cd7fa(0x32f)]('[POI\x20Unlock]\x20failed\x20to\x20save:',_0x22c22e);}setTimeout(()=>revealUnlockedPOI(_0x1fd4e7[_0x7cd7fa(0x15b)],_0x1fd4e7[_0x7cd7fa(0xbb)]),0xdac);}function revealUnlockedPOI(_0x234308,_0x4d41d6){const _0x1faedb=_0x564281,_0x27a45b=worldPOIs[_0x1faedb(0x21b)](_0x596db7=>_0x596db7['id']===_0x234308);if(!_0x27a45b)return;const _0x4274eb=parseFloat(_0x27a45b[_0x1faedb(0x34f)]??_0x27a45b[_0x1faedb(0x35f)]??_0x27a45b['latitude']),_0x52981b=parseFloat(_0x27a45b[_0x1faedb(0x2d3)]??_0x27a45b[_0x1faedb(0x129)]??_0x27a45b[_0x1faedb(0xb5)]);if(isNaN(_0x4274eb)||isNaN(_0x52981b))return;const _0x52e53b=L[_0x1faedb(0x12f)]([_0x4274eb,_0x52981b],{'icon':L[_0x1faedb(0x127)]({'html':_0x1faedb(0x1a1),'className':'','iconSize':[0x28,0x28],'iconAnchor':[0x14,0x14]}),'interactive':!![],'pane':_0x1faedb(0x132)})[_0x1faedb(0x14b)](map);poiMarkers[_0x234308]=_0x52e53b,showLoreToast(_0x1faedb(0xdc)),setTimeout(()=>{const _0x4b2b44=_0x1faedb,_0x4f2954=_0x52e53b[_0x4b2b44(0xe1)]();if(_0x4f2954)_0x4f2954['querySelector'](_0x4b2b44(0xc8))?.[_0x4b2b44(0x198)]['remove'](_0x4b2b44(0x321));},0x7d0);}async function logRouteCompletion(_0x513a9e){const _0x4143e5=_0x564281,_0x493fa7=auth[_0x4143e5(0x29b)];if(!_0x493fa7)return;try{await addDoc(collection(db,_0x4143e5(0xc6),_0x493fa7[_0x4143e5(0x207)],_0x4143e5(0x193)),{'routeName':_0x513a9e,'completedAt':new Date()}),updateUserTitleUI();}catch(_0x2e4e2e){console['error'](_0x4143e5(0xca),_0x2e4e2e);}}async function completeRoute(){const _0x4dc07d=_0x564281;if(!activeRouteName)return;const _0x115c30='completed_'+activeRouteName[_0x4dc07d(0x371)](/\s+/g,'_');awardBadge(_0x115c30);const _0x382b59=Object[_0x4dc07d(0x118)](visitedLore)[_0x4dc07d(0x20b)](_0x4697cc=>_0x4697cc)[_0x4dc07d(0xf5)],_0x287605=activeRoute[_0x4dc07d(0xf5)],_0x3792b4=activeRoute,_0x4ce996=activeRouteName;await logRouteCompletion(_0x4ce996);if(!window[_0x4dc07d(0x17a)])window['__completedRoutes']=new Set();window['__completedRoutes'][_0x4dc07d(0x311)](_0x4ce996),markTrailheadComplete(_0x4ce996),await checkNarratorPOIUnlock(_0x4ce996);let _0x4e3951=0x1;try{const _0x10df64=auth[_0x4dc07d(0x29b)];if(_0x10df64){const _0x150645=await getDocs(collection(db,'Users',_0x10df64[_0x4dc07d(0x207)],_0x4dc07d(0x193)));_0x150645['forEach'](_0x39e151=>{const _0x577600=_0x4dc07d;if(_0x39e151['data']()[_0x577600(0x255)]===_0x4ce996)_0x4e3951++;}),_0x4e3951=Math[_0x4dc07d(0x2c8)](0x1,_0x4e3951-0x1);}}catch(_0x43d0c7){console['warn']('completeRoute:\x20could\x20not\x20read\x20history\x20for\x20star\x20count',_0x43d0c7);}const _0x5dfbf8=getStarCountForCompletions(_0x4e3951),_0x114271=generateBadgeSVG(_0x4ce996,_0x5dfbf8);showBadgeReveal(_0x4ce996,_0x114271),setTimeout(()=>{showRouteSummary(_0x4ce996,_0x114271,_0x382b59,_0x287605,_0x3792b4);},0x7d0),clearRoute(),localStorage[_0x4dc07d(0x141)](_0x4dc07d(0x156)),hidePreviewBanner();}function clearRoute(){const _0x350868=_0x564281;console[_0x350868(0x1fb)](_0x350868(0x204),new Error()[_0x350868(0x172)]);if(window[_0x350868(0x1c2)]){window[_0x350868(0x1c2)][_0x350868(0x15f)]();if(map[_0x350868(0x1f0)](window['__routeLineLayer']))map[_0x350868(0x126)](window[_0x350868(0x1c2)]);window[_0x350868(0x1c2)]=null;}routeLine=null;if(window[_0x350868(0x12d)]){window[_0x350868(0x12d)][_0x350868(0x15f)]();if(map[_0x350868(0x1f0)](window[_0x350868(0x12d)]))map[_0x350868(0x126)](window[_0x350868(0x12d)]);window[_0x350868(0x12d)]=null;}window[_0x350868(0xb3)]=[],checkpointMarkers=[],hideHuntFog(),Object[_0x350868(0x342)](checkpointDwellTimers)[_0x350868(0xa4)](_0x30d47e=>{clearTimeout(checkpointDwellTimers[_0x30d47e]),delete checkpointDwellTimers[_0x30d47e];}),pendingRouteComplete=![],activeRouteMode='guided',hideClueCardFully(),activeRoute=null,activeRouteName=null,activeRouteNarrator='',activeIndex=0x0,visitedLore={},Object[_0x350868(0x342)](_cpLastState)['forEach'](_0x13fc9d=>delete _cpLastState[_0x13fc9d]),Object[_0x350868(0x342)](_cpLastGlow)[_0x350868(0xa4)](_0x318ee6=>delete _cpLastGlow[_0x318ee6]),routeLayer=null,hideHUD();}window[_0x564281(0xcb)]=clearRoute;const hud=document['getElementById']('route-hud'),hudName=document[_0x564281(0x223)](_0x564281(0x23d)),hudNext=document[_0x564281(0x223)](_0x564281(0x32d)),hudFill=document[_0x564281(0x223)]('hud-progress-fill'),hudPause=document[_0x564281(0x223)]('hud-pause-btn'),hudExit=document[_0x564281(0x223)](_0x564281(0x274));let routePaused=![];function updateHUD(){const _0x576725=_0x564281;if(!hud||!activeRoute||activeRoute['length']===0x0)return;const _0x1b92ff=activeRoute[_0x576725(0xf5)],_0x20cba0=Math[_0x576725(0xbe)](activeIndex,_0x1b92ff-0x1),_0x20962b=activeRoute[_0x20cba0];if(hudName)hudName[_0x576725(0x1d8)]=activeRouteName||_0x576725(0x239);if(_0x20962b&&hudNext){const _0x52eba7=parseFloat(_0x20962b[_0x576725(0x34f)]??_0x20962b['Lat']??_0x20962b['latitude']),_0x51ecd3=parseFloat(_0x20962b['lng']??_0x20962b[_0x576725(0x129)]??_0x20962b[_0x576725(0xb5)]);let _0x3d50de=0x0;userLatLng&&!isNaN(_0x52eba7)&&!isNaN(_0x51ecd3)&&(_0x3d50de=Math[_0x576725(0x27c)](distanceInMeters(userLatLng['lat'],userLatLng[_0x576725(0x2d3)],_0x52eba7,_0x51ecd3))),hudNext['textContent']='Next:\x20CP\x20'+(_0x20cba0+0x1)+_0x576725(0x221)+_0x3d50de+'m';}const _0x1e9814=activeRoute[_0x576725(0x20b)](_0x531bf7=>!_0x531bf7['hidden'])['length'],_0x5f1124=activeRoute[_0x576725(0x116)]((_0x11d117,_0xc27de5,_0x365b44)=>!_0xc27de5['hidden']&&visitedLore[_0x365b44]?_0x11d117+0x1:_0x11d117,0x0),_0x5242f7=_0x1e9814>0x0?Math[_0x576725(0xbe)](_0x5f1124/_0x1e9814*0x64,0x64):0x0;if(hudFill)hudFill['style']['width']=_0x5242f7+'%';}function saveRouteProgress(){const _0x576fed=_0x564281;if(!activeRoute||!activeRouteName){localStorage[_0x576fed(0x141)](_0x576fed(0x156));return;}const _0x4d908b={'name':activeRouteName,'index':activeIndex,'visited':visitedLore,'route':activeRoute};localStorage[_0x576fed(0x24a)](_0x576fed(0x156),JSON['stringify'](_0x4d908b));}function restoreRouteProgress(){const _0x427bf0=_0x564281,_0x14f634=localStorage[_0x427bf0(0x1d0)]('pqa_activeRoute');if(!_0x14f634)return![];try{const _0x467763=JSON[_0x427bf0(0xc7)](_0x14f634);if(!_0x467763||!_0x467763[_0x427bf0(0x28c)]||!Array[_0x427bf0(0x194)](_0x467763[_0x427bf0(0x28c)]))return![];return showResumeBanner(_0x467763),!![];}catch(_0x3a58bc){return console[_0x427bf0(0x187)]('Failed\x20to\x20restore\x20route\x20progress:',_0x3a58bc),![];}}function showHUD(){const _0x1a2868=_0x564281;if(!hud)return;hud[_0x1a2868(0x198)]['remove'](_0x1a2868(0x267));const _0x451ffb=document[_0x1a2868(0x223)](_0x1a2868(0x26b));if(_0x451ffb)_0x451ffb[_0x1a2868(0x198)][_0x1a2868(0x18c)]('hidden');updateHUD();}function hideHUD(){const _0x527999=_0x564281;if(!hud)return;hud[_0x527999(0x198)][_0x527999(0x311)](_0x527999(0x267));const _0x5deae4=document[_0x527999(0x223)](_0x527999(0x26b));if(_0x5deae4)_0x5deae4[_0x527999(0x198)][_0x527999(0x311)](_0x527999(0x267));}function showResumeBanner(_0x5e80db){const _0x4ca4c5=_0x564281,_0x183a6f=document[_0x4ca4c5(0x223)]('resume-banner'),_0x3eef26=document['getElementById']('resume-banner-text'),_0x153466=document['getElementById'](_0x4ca4c5(0x138)),_0x392fee=document[_0x4ca4c5(0x223)](_0x4ca4c5(0x2d1));if(!_0x183a6f||!_0x3eef26)return;_0x3eef26[_0x4ca4c5(0x1d8)]=_0x4ca4c5(0x23c)+_0x5e80db[_0x4ca4c5(0xbb)],_0x183a6f[_0x4ca4c5(0x198)][_0x4ca4c5(0x18c)](_0x4ca4c5(0x267)),requestAnimationFrame(()=>_0x183a6f[_0x4ca4c5(0x198)][_0x4ca4c5(0x311)]('show')),_0x153466[_0x4ca4c5(0x2c4)]=()=>{const _0x2ea5ee=_0x4ca4c5;_0x183a6f[_0x2ea5ee(0x198)][_0x2ea5ee(0x18c)](_0x2ea5ee(0x36d)),setTimeout(()=>_0x183a6f[_0x2ea5ee(0x198)][_0x2ea5ee(0x311)](_0x2ea5ee(0x267)),0xfa),clearRoute(),showRoute(_0x5e80db[_0x2ea5ee(0x28c)],_0x5e80db['name'],!![]),activeIndex=_0x5e80db[_0x2ea5ee(0x21d)]||0x0,visitedLore=_0x5e80db['visited']||{},updateCheckpointStates(),updateHUD(),updateCompass();},_0x392fee[_0x4ca4c5(0x2c4)]=()=>{const _0x1047c4=_0x4ca4c5;_0x183a6f[_0x1047c4(0x198)]['remove'](_0x1047c4(0x36d)),setTimeout(()=>_0x183a6f[_0x1047c4(0x198)][_0x1047c4(0x311)](_0x1047c4(0x267)),0xfa),localStorage[_0x1047c4(0x141)](_0x1047c4(0x156));};}const _cpLastState={};function updateCheckpointStates(){const _0x5690a9=_0x564281;if(!activeRoute||!checkpointMarkers)return;const _0x46ef73=activeRouteMode===_0x5690a9(0xee);let _0x4c3f37=0x0;const _0x307c02=activeRoute['map'](_0x105e32=>_0x105e32[_0x5690a9(0x267)]?null:++_0x4c3f37),_0x88ad7a=['cp-locked',_0x5690a9(0x1e9),_0x5690a9(0x1b0),'cp-final','cp-hunt',_0x5690a9(0x31f),'cp-hunt-invisible',_0x5690a9(0x1c3),'cp-hunt-near',_0x5690a9(0x2a0),'cp-hunt-reveal'];checkpointMarkers[_0x5690a9(0xa4)]((_0x44d04e,_0x864705)=>{const _0x36a121=_0x5690a9;if(!_0x44d04e||!_0x44d04e[_0x36a121(0x322)])return;const _0x5c7dae=_0x864705===activeRoute['length']-0x1,_0x24c9fd=visitedLore[_0x864705]===!![],_0xe3d903=_0x864705===activeIndex,_0x7fdf44=!!activeRoute[_0x864705]?.[_0x36a121(0x267)],_0x43878b=_0x7fdf44?'✶':_0x307c02[_0x864705]??_0x864705+0x1;let _0x58566f;if(_0x46ef73){if(_0x24c9fd)_0x58566f=_0x5c7dae?'cp-final':'cp-completed';else{if(_0xe3d903)_0x58566f='cp-hunt\x20cp-hunt-hidden';else _0x58566f=_0x36a121(0x2e3);}}else{_0x58566f=_0x36a121(0x11a);if(_0x5c7dae&&_0x24c9fd)_0x58566f=_0x36a121(0x315);else{if(_0x24c9fd)_0x58566f=_0x36a121(0x1b0);else{if(_0xe3d903)_0x58566f=_0x36a121(0x1e9);}}}if(_cpLastState[_0x864705]===_0x58566f)return;_cpLastState[_0x864705]=_0x58566f;const _0x4ec984=_0x44d04e[_0x36a121(0x322)][_0x36a121(0x21a)](_0x36a121(0x28d));if(!_0x4ec984)return;_0x88ad7a['forEach'](_0x15e3e0=>_0x4ec984[_0x36a121(0x198)][_0x36a121(0x18c)](_0x15e3e0)),_0x58566f[_0x36a121(0x30c)]('\x20')['forEach'](_0x39691e=>_0x39691e&&_0x4ec984[_0x36a121(0x198)]['add'](_0x39691e));const _0x24c976=_0x4ec984[_0x36a121(0x21a)](_0x36a121(0x184)),_0x4ab08d=_0x4ec984['querySelector'](_0x36a121(0x199));_0x58566f===_0x36a121(0x2e3)?(_0x4ec984['style']['visibility']=_0x36a121(0x267),_0x4ec984['style']['pointerEvents']=_0x36a121(0x304),_0x44d04e[_0x36a121(0x322)][_0x36a121(0xf7)][_0x36a121(0xb8)]=_0x36a121(0x304)):(_0x4ec984['style'][_0x36a121(0x119)]='',_0x4ec984['style'][_0x36a121(0xb8)]='',_0x44d04e[_0x36a121(0x322)][_0x36a121(0xf7)][_0x36a121(0xb8)]='');if(_0x58566f==='cp-hunt\x20cp-hunt-hidden'){if(_0x24c976)_0x24c976[_0x36a121(0xf7)][_0x36a121(0x1d1)]=_0x36a121(0x304);_0x4ab08d&&(_0x4ab08d['style'][_0x36a121(0x1d1)]='',_0x4ab08d[_0x36a121(0x1d8)]='?');}else{if(_0x58566f!=='cp-hunt-invisible'){if(_0x24c976)_0x24c976[_0x36a121(0xf7)]['display']='';_0x4ab08d&&(_0x4ab08d[_0x36a121(0xf7)][_0x36a121(0x1d1)]='',_0x4ab08d[_0x36a121(0x1d8)]=_0x43878b,_0x4ab08d[_0x36a121(0xa5)]='cp-flag-number'+(_0x7fdf44?_0x36a121(0x1cf):''));}}});}function attachCheckpointTapHandlers(){const _0x204e6d=_0x564281;if(!checkpointMarkers)return;checkpointMarkers[_0x204e6d(0xa4)]((_0x3aa3a1,_0x5618fb)=>{if(!_0x3aa3a1)return;_0x3aa3a1['on']('click',()=>{const _0x2a0e38=_0x1166;if(!activeRoute)return;const _0x3242ac=visitedLore[_0x5618fb]===!![],_0x4277ca=activeRoute[_0x5618fb];if(!_0x3242ac){_0x5618fb>activeIndex?showLoreToast(_0x2a0e38(0x266)):showLoreToast(_0x2a0e38(0x2e6));return;}openLoreCard({'title':_0x4277ca[_0x2a0e38(0x230)]?.[_0x2a0e38(0x1a6)]||_0x2a0e38(0x108)+(_0x5618fb+0x1),'text':_0x4277ca[_0x2a0e38(0x230)]?.[_0x2a0e38(0x1d9)]||'','style':_0x4277ca['lore']?.[_0x2a0e38(0xf7)]||_0x2a0e38(0xfb)}),_0x5618fb===activeRoute[_0x2a0e38(0xf5)]-0x1&&completeRoute()[_0x2a0e38(0x1c6)](console['error']);});});}const findingsDrawer=document['getElementById'](_0x564281(0x11f)),findingsDrawerContent=document[_0x564281(0x223)](_0x564281(0x18b)),findingsBtn=document[_0x564281(0x223)](_0x564281(0x26b));function toggleFindingsDrawer(){const _0x270e48=_0x564281;if(!findingsDrawer)return;const _0x54e79b=findingsDrawer[_0x270e48(0x198)]['contains'](_0x270e48(0x2ff));_0x54e79b?findingsDrawer[_0x270e48(0x198)]['remove'](_0x270e48(0x2ff)):(populateFindingsDrawer(),findingsDrawer[_0x270e48(0x198)][_0x270e48(0x311)](_0x270e48(0x2ff)),clearFindingsPip());}function populateFindingsDrawer(){const _0x32cc7b=_0x564281;if(!activeRoute||!Array['isArray'](activeRoute))return;findingsDrawerContent[_0x32cc7b(0x120)]='';if(activeRouteMode===_0x32cc7b(0xee)&&_huntClueLog&&_huntClueLog[_0x32cc7b(0xf5)]>0x0){const _0x1e2d42=document['createElement'](_0x32cc7b(0x272));_0x1e2d42[_0x32cc7b(0xa5)]='findings-clue-section',_0x1e2d42[_0x32cc7b(0x120)]=_0x32cc7b(0x1eb),_huntClueLog[_0x32cc7b(0xa4)](_0x397bf6=>{const _0x3469c5=_0x32cc7b,_0x430b41=document['createElement'](_0x3469c5(0x272));_0x430b41[_0x3469c5(0xa5)]=_0x3469c5(0x314),_0x430b41[_0x3469c5(0x120)]='\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22findings-clue-num\x22>Clue\x20'+_0x397bf6['number']+_0x3469c5(0x240)+_0x397bf6[_0x3469c5(0x1d9)]+_0x3469c5(0x1ce),_0x1e2d42[_0x3469c5(0x1fe)](_0x430b41);}),findingsDrawerContent[_0x32cc7b(0x1fe)](_0x1e2d42);const _0x1367d6=document[_0x32cc7b(0x112)](_0x32cc7b(0x272));_0x1367d6['className']=_0x32cc7b(0x1bf),findingsDrawerContent[_0x32cc7b(0x1fe)](_0x1367d6);}let _0x18ad74=0x0;const _0x4da5bb=activeRoute[_0x32cc7b(0xe4)](_0x18d4d1=>_0x18d4d1[_0x32cc7b(0x267)]?null:++_0x18ad74);activeRoute[_0x32cc7b(0xa4)]((_0x23221a,_0x12e08b)=>{const _0x258334=_0x32cc7b,_0x121c65=visitedLore[_0x12e08b]===!![],_0x5abec8=_0x4da5bb[_0x12e08b];if(_0x23221a[_0x258334(0x267)]){if(!_0x121c65)return;const _0x3c8742=_0x23221a['lore']?.[_0x258334(0x1a6)]||_0x258334(0x20f),_0x2e0363=_0x23221a[_0x258334(0x230)]?.[_0x258334(0x1d9)]||'',_0x2ff1f3=document[_0x258334(0x112)](_0x258334(0x272));_0x2ff1f3[_0x258334(0xa5)]=_0x258334(0x2f1),_0x2ff1f3[_0x258334(0x120)]=_0x258334(0xfe)+_0x3c8742+'</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22entry-preview\x22>'+_0x2e0363[_0x258334(0x12a)](0x0,0x50)+(_0x2e0363[_0x258334(0xf5)]>0x50?'…':'')+_0x258334(0x297),_0x2ff1f3['addEventListener'](_0x258334(0x29e),()=>{const _0x217d0c=_0x258334;openLoreCard({'title':_0x3c8742,'text':_0x2e0363,'style':_0x23221a[_0x217d0c(0x230)]?.[_0x217d0c(0xf7)]||_0x217d0c(0xfb)});}),findingsDrawerContent[_0x258334(0x1fe)](_0x2ff1f3);return;}const _0x1f3402=_0x23221a[_0x258334(0x230)]?.[_0x258334(0x1a6)]||_0x258334(0x108)+_0x5abec8,_0xacbfc0=_0x23221a[_0x258334(0x230)]?.[_0x258334(0x1d9)]||'',_0x38a6c7=document[_0x258334(0x112)](_0x258334(0x272));_0x38a6c7['className']=_0x258334(0x252)+(_0x121c65?'':_0x258334(0x233)),_0x38a6c7[_0x258334(0x120)]=_0x258334(0x1ec)+_0x5abec8+_0x258334(0x293)+(_0x121c65?_0x1f3402:_0x258334(0x108)+_0x5abec8)+_0x258334(0x27a)+(_0x121c65?_0x258334(0x168)+_0xacbfc0[_0x258334(0x12a)](0x0,0x50)+(_0xacbfc0[_0x258334(0xf5)]>0x50?'…':'')+'</div>':_0x258334(0x36c))+_0x258334(0x2ea),_0x121c65&&_0x38a6c7[_0x258334(0xaa)](_0x258334(0x29e),()=>{openLoreCard({'title':_0x1f3402,'text':_0xacbfc0,'style':_0x23221a['lore']?.['style']||'stone'});}),findingsDrawerContent['appendChild'](_0x38a6c7);});}findingsBtn&&findingsBtn[_0x564281(0xaa)](_0x564281(0x29e),toggleFindingsDrawer);function hideFindingsDrawer(){const _0x24654c=_0x564281;if(findingsDrawer)findingsDrawer[_0x24654c(0x198)][_0x24654c(0x18c)](_0x24654c(0x2ff));clearFindingsPip();}function showFindingsPip(){const _0x329cbc=_0x564281,_0x23f623=document[_0x329cbc(0x223)]('hud-findings-btn');if(_0x23f623)_0x23f623[_0x329cbc(0x198)][_0x329cbc(0x311)](_0x329cbc(0x286));}function clearFindingsPip(){const _0x237b97=_0x564281,_0x2b39ae=document[_0x237b97(0x223)]('hud-findings-btn');if(_0x2b39ae)_0x2b39ae[_0x237b97(0x198)][_0x237b97(0x18c)](_0x237b97(0x286));}const _originalHideHUD=hideHUD;hideHUD=function(){_originalHideHUD(),hideFindingsDrawer();};const previewBanner=document[_0x564281(0x223)](_0x564281(0x1b2)),previewBannerText=document[_0x564281(0x223)](_0x564281(0xa9)),previewStartBtn=document[_0x564281(0x223)](_0x564281(0x13d));function showPreviewBanner(_0x5d6947,_0x1807fb=_0x564281(0xf6)){const _0x5c4e20=_0x564281;if(!previewBanner||!previewBannerText)return;const _0x29db02=(window[_0x5c4e20(0x26c)]||[])[_0x5c4e20(0x21b)](_0x1ae9f2=>_0x1ae9f2[_0x5c4e20(0xbb)]===_0x5d6947),_0x1b096c=_0x29db02?(_0x29db02[_0x5c4e20(0x19f)]||[])[_0x5c4e20(0x20b)](_0x294eac=>!_0x294eac[_0x5c4e20(0x267)])[_0x5c4e20(0xf5)]:0x0,_0x1e2959=_0x29db02?computeRouteDistance(_0x29db02['checkpoints']||[]):0x0,_0x44afe2=_0x1e2959>0x0?_0x1e2959<0x3e8?Math['round'](_0x1e2959)+'m':(_0x1e2959/0x3e8)[_0x5c4e20(0x16a)](0x1)+'km':'',_0x2f086c=_0x1e2959>0x0?estimateTimeMinutes(_0x1e2959):0x0,_0x1d95ce=_0x1807fb===_0x5c4e20(0xee)?'<span\x20class=\x22route-mode-tag\x20hunt-tag\x22>Hunt</span>':_0x5c4e20(0x28b),_0x3eebff=_0x29db02?.[_0x5c4e20(0x14d)]||'',_0x1a7cbe=_0x3eebff?NARRATORS[_0x5c4e20(0x21b)](_0x2c4e92=>_0x2c4e92['id']===_0x3eebff)?.[_0x5c4e20(0xbb)]||_0x3eebff[_0x5c4e20(0x371)](/_/g,'\x20'):'',_0xa1cfa1=_0x1a7cbe?_0x5c4e20(0x360)+_0x1a7cbe+_0x5c4e20(0x30e):'',_0x3eb15a=window[_0x5c4e20(0x17a)]?.[_0x5c4e20(0x29c)](_0x5d6947),_0x18c1ac=_0x3eb15a?_0x5c4e20(0x332):'',_0x54b1e7=_0x1807fb===_0x5c4e20(0xee)?'<div\x20class=\x22preview-banner-hunt-hint\x22>Checkpoints\x20are\x20hidden\x20—\x20explore\x20the\x20trail\x20area\x20to\x20find\x20them.</div>':'',_0x203a71=_0x1807fb==='hunt'?'':_0x1b096c?_0x5c4e20(0x161)+_0x1b096c+_0x5c4e20(0x2b8):'';previewBannerText[_0x5c4e20(0x120)]=_0x5c4e20(0xfc)+_0x5d6947+'\x20'+_0x1d95ce+'</div>\x0a\x20\x20\x20\x20'+_0xa1cfa1+_0x5c4e20(0x2ea)+_0x18c1ac+_0x5c4e20(0x2ea)+_0x54b1e7+_0x5c4e20(0x324)+_0x203a71+_0x5c4e20(0x2c1)+(_0x44afe2?_0x5c4e20(0x166)+_0x44afe2+_0x5c4e20(0x2b0):'')+_0x5c4e20(0x2c1)+(_0x2f086c?_0x5c4e20(0x31d)+_0x2f086c+_0x5c4e20(0x299):'')+_0x5c4e20(0x352);if(!document[_0x5c4e20(0x223)](_0x5c4e20(0xac))){const _0x466f50=document['createElement']('button');_0x466f50['id']='preview-exit-btn',_0x466f50[_0x5c4e20(0xa5)]=_0x5c4e20(0xac),_0x466f50[_0x5c4e20(0x1d8)]=_0x5c4e20(0x1ad),_0x466f50[_0x5c4e20(0xaa)]('click',_0x47b101=>{const _0x57919a=_0x5c4e20;_0x47b101[_0x57919a(0x27e)](),clearRoute(),lastPreviewRouteName=null,lastPreviewRouteCheckpoints=null,hidePreviewBanner();});const _0x24b748=document['getElementById']('preview-banner-btns');(_0x24b748||previewBanner)[_0x5c4e20(0x1fe)](_0x466f50);}previewBanner[_0x5c4e20(0xf7)][_0x5c4e20(0x1d1)]='flex',previewBanner['classList'][_0x5c4e20(0x18c)]('hidden'),requestAnimationFrame(()=>previewBanner['classList'][_0x5c4e20(0x311)]('show'));}function hidePreviewBanner(){const _0x355b72=_0x564281;if(!previewBanner)return;previewBanner[_0x355b72(0x198)][_0x355b72(0x18c)](_0x355b72(0x36d)),setTimeout(()=>{const _0x5efb5e=_0x355b72;previewBanner[_0x5efb5e(0x198)]['add'](_0x5efb5e(0x267)),previewBanner[_0x5efb5e(0xf7)][_0x5efb5e(0x1d1)]=_0x5efb5e(0x304);},0xfa);}previewBanner&&(previewBanner[_0x564281(0x1a6)]='Tap\x20to\x20close\x20preview',previewBanner[_0x564281(0xaa)]('click',_0x455593=>{_0x455593['stopPropagation'](),hidePreviewBanner();}));previewStartBtn&&previewStartBtn[_0x564281(0xaa)](_0x564281(0x29e),_0x2b824d=>{const _0x2210b6=_0x564281;_0x2b824d[_0x2210b6(0x27e)]();!watchId&&'geolocation'in navigator&&startGeolocationWatch();if(!lastPreviewRouteCheckpoints||!lastPreviewRouteName)return;const _0x480adf=(window['__allRoutes']||[])[_0x2210b6(0x21b)](_0x4ab381=>_0x4ab381[_0x2210b6(0xbb)]===lastPreviewRouteName),_0x3b6f29=_0x480adf?.['mode']||'guided';showRoute(lastPreviewRouteCheckpoints,lastPreviewRouteName,!![],_0x3b6f29),hidePreviewBanner();});function exitRoute(){const _0x47b992=_0x564281;console['log']('Exiting\x20route...'),stopGeolocationWatch(),startGeolocationWatch();if(routeLine&&map[_0x47b992(0x1f0)](routeLine)){try{map[_0x47b992(0x126)](routeLine);}catch(_0x2cb0d7){}routeLine=null;}checkpointMarkers&&checkpointMarkers[_0x47b992(0xf5)]&&checkpointMarkers[_0x47b992(0xa4)](_0xb1040f=>{const _0x2dac04=_0x47b992;if(!_0xb1040f)return;try{if(map[_0x2dac04(0x1f0)](_0xb1040f))map[_0x2dac04(0x126)](_0xb1040f);}catch(_0x50845f){}});checkpointMarkers=[],window[_0x47b992(0xb3)]=checkpointMarkers,activeRoute=null,activeRouteName=null,activeIndex=0x0,hideHuntFog(),hideHUD(),hidePreviewBanner();const _0x43639a=document['getElementById']('exit-route-btn');if(_0x43639a)_0x43639a[_0x47b992(0x198)]['add'](_0x47b992(0x267));if(userMarker)try{map['setView'](userMarker[_0x47b992(0x1b5)](),0x10);}catch(_0x2d6bd6){}}function _0x1166(_0x2d0c80,_0x5aef18){_0x2d0c80=_0x2d0c80-0xa2;const _0x137492=_0x1374();let _0x1166e0=_0x137492[_0x2d0c80];return _0x1166e0;}if(hudExit)hudExit[_0x564281(0xaa)](_0x564281(0x29e),exitRoute);const legacyExitBtn=document[_0x564281(0x223)](_0x564281(0x1db));if(legacyExitBtn)legacyExitBtn[_0x564281(0xaa)](_0x564281(0x29e),exitRoute);const FOG_PADDING_M=0x50,FOG_COLOR='rgba(8,\x206,\x203,\x200.86)',FOG_MIN_RADIUS_PX=0x78;function haversineM(_0x2ecf81,_0x461c11,_0x451a16,_0x3b438e){const _0x1d0b45=_0x564281,_0x32bbcf=0x6136b8,_0x4832da=(_0x451a16-_0x2ecf81)*Math['PI']/0xb4,_0x33d5f5=(_0x3b438e-_0x461c11)*Math['PI']/0xb4,_0x570981=Math['sin'](_0x4832da/0x2)**0x2+Math['cos'](_0x2ecf81*Math['PI']/0xb4)*Math[_0x1d0b45(0x1ab)](_0x451a16*Math['PI']/0xb4)*Math[_0x1d0b45(0x13a)](_0x33d5f5/0x2)**0x2;return _0x32bbcf*0x2*Math[_0x1d0b45(0x2fd)](Math[_0x1d0b45(0x2aa)](_0x570981),Math[_0x1d0b45(0x2aa)](0x1-_0x570981));}const _huntFogEl=((()=>{const _0x5776ec=_0x564281;let _0x2955af=document[_0x5776ec(0x223)](_0x5776ec(0x2fa));if(!_0x2955af){_0x2955af=document['createElement'](_0x5776ec(0x272)),_0x2955af['id']=_0x5776ec(0x2fa);const _0x1158d=document[_0x5776ec(0x223)](_0x5776ec(0xe4));if(_0x1158d)_0x1158d[_0x5776ec(0x1fe)](_0x2955af);}return _0x2955af;})());let _huntFogZone=null;function updateHuntFog(){const _0x46229a=_0x564281;if(!_huntFogZone||!_huntFogEl[_0x46229a(0x198)]['contains'](_0x46229a(0x1ae)))return;const {startLat:_0x54bfa9,startLng:_0xb73f85,radiusM:_0x13eecd}=_huntFogZone,_0x1b7501=map[_0x46229a(0x18e)]([_0x54bfa9,_0xb73f85]),_0x365a90=_0x1b7501['x'],_0x31c4d1=_0x1b7501['y'],_0x2352f3=_0x13eecd/0x1b2d8,_0x394b4d=map['latLngToContainerPoint']([_0x54bfa9+_0x2352f3,_0xb73f85]),_0x2214fe=Math[_0x46229a(0x2c8)](FOG_MIN_RADIUS_PX,Math[_0x46229a(0xd4)](_0x1b7501['y']-_0x394b4d['y']));_huntFogEl[_0x46229a(0xf7)][_0x46229a(0x1f9)](_0x46229a(0xe9),_0x365a90+'px'),_huntFogEl['style'][_0x46229a(0x1f9)](_0x46229a(0xd9),_0x31c4d1+'px'),_huntFogEl[_0x46229a(0xf7)][_0x46229a(0x1f9)](_0x46229a(0x35d),_0x2214fe+'px');const _0x5e5111=[],_0x1dd5e4=window['__allRoutes']||[],_0x38e1c7=window[_0x46229a(0x17a)]||new Set();_0x38e1c7[_0x46229a(0xa4)](_0x38b680=>{const _0x38109b=_0x46229a,_0x4d4d46=_0x1dd5e4[_0x38109b(0x21b)](_0x348639=>_0x348639[_0x38109b(0xbb)]===_0x38b680);if(!_0x4d4d46?.[_0x38109b(0x19f)]?.[_0x38109b(0xf5)])return;const _0x57886f=_0x4d4d46[_0x38109b(0x19f)][_0x38109b(0x21b)](_0x491a24=>!_0x491a24[_0x38109b(0x267)])??_0x4d4d46[_0x38109b(0x19f)][0x0],_0xdd2037=parseFloat(_0x57886f[_0x38109b(0x34f)]??_0x57886f[_0x38109b(0x35f)]??_0x57886f[_0x38109b(0x19b)]),_0x2d9b42=parseFloat(_0x57886f[_0x38109b(0x2d3)]??_0x57886f[_0x38109b(0x129)]??_0x57886f[_0x38109b(0xb5)]);if(isNaN(_0xdd2037)||isNaN(_0x2d9b42))return;const _0x502f66=_0x4d4d46[_0x38109b(0x19f)][_0x38109b(0xe4)](_0x1866b0=>({'lat':parseFloat(_0x1866b0[_0x38109b(0x34f)]??_0x1866b0[_0x38109b(0x35f)]??_0x1866b0['latitude']),'lng':parseFloat(_0x1866b0[_0x38109b(0x2d3)]??_0x1866b0[_0x38109b(0x129)]??_0x1866b0[_0x38109b(0xb5)])}))[_0x38109b(0x20b)](_0x29f8ea=>!isNaN(_0x29f8ea[_0x38109b(0x34f)])&&!isNaN(_0x29f8ea[_0x38109b(0x2d3)])),_0x3416ce=Math[_0x38109b(0x2c8)](..._0x502f66[_0x38109b(0xe4)](_0x5c7d80=>haversineM(_0xdd2037,_0x2d9b42,_0x5c7d80['lat'],_0x5c7d80[_0x38109b(0x2d3)]))),_0x45cb74=_0x3416ce+FOG_PADDING_M,_0xa9815e=map[_0x38109b(0x18e)]([_0xdd2037,_0x2d9b42]),_0x296822=map[_0x38109b(0x18e)]([_0xdd2037+_0x45cb74/0x1b2d8,_0x2d9b42]),_0x119d7f=Math[_0x38109b(0x2c8)](FOG_MIN_RADIUS_PX,Math[_0x38109b(0xd4)](_0xa9815e['y']-_0x296822['y']));_0x5e5111[_0x38109b(0x243)]({'cx':_0xa9815e['x'],'cy':_0xa9815e['y'],'r':_0x119d7f});});const _0xf0cb9c=_0x5e5111[_0x46229a(0xe4)](_0x153cb3=>'radial-gradient(circle\x20'+_0x153cb3['r']+_0x46229a(0x249)+_0x153cb3['cx']+'px\x20'+_0x153cb3['cy']+_0x46229a(0x227)),_0x5e8048=[_0x46229a(0x212),_0x46229a(0x2ad)+_0x2214fe+_0x46229a(0x249)+_0x365a90+_0x46229a(0x17b)+_0x31c4d1+_0x46229a(0x294),_0x46229a(0x2f7),_0x46229a(0x222),'rgba(8,6,3,0.35)\x20\x20\x20\x20\x20\x20\x20\x2080%,',_0x46229a(0x13f),FOG_COLOR+_0x46229a(0x1ee),')'][_0x46229a(0x318)]('\x20');_huntFogEl[_0x46229a(0xf7)][_0x46229a(0x229)]=[..._0xf0cb9c,_0x5e8048][_0x46229a(0x318)](',\x20');}function showHuntFog(_0x376bae){const _0x49ef32=_0x564281,_0x1e19c7=_0x376bae[_0x49ef32(0xe4)](_0xd3cfa4=>{const _0x2c1d87=_0x49ef32,_0x30a0c8=parseFloat(_0xd3cfa4[_0x2c1d87(0x34f)]??_0xd3cfa4[_0x2c1d87(0x35f)]??_0xd3cfa4[_0x2c1d87(0x19b)]),_0x2c434f=parseFloat(_0xd3cfa4[_0x2c1d87(0x2d3)]??_0xd3cfa4[_0x2c1d87(0x129)]??_0xd3cfa4['longitude']);return isNaN(_0x30a0c8)||isNaN(_0x2c434f)?null:{'lat':_0x30a0c8,'lng':_0x2c434f};})['filter'](Boolean);if(!_0x1e19c7[_0x49ef32(0xf5)])return;const _0x3353fb=_0x376bae[_0x49ef32(0x21b)](_0x3a69b1=>!_0x3a69b1[_0x49ef32(0x267)])??_0x376bae[0x0],_0x1468c8=parseFloat(_0x3353fb[_0x49ef32(0x34f)]??_0x3353fb[_0x49ef32(0x35f)]??_0x3353fb[_0x49ef32(0x19b)]),_0x2169e5=parseFloat(_0x3353fb[_0x49ef32(0x2d3)]??_0x3353fb['Lng']??_0x3353fb[_0x49ef32(0xb5)]),_0x526bb8=Math[_0x49ef32(0x2c8)](..._0x1e19c7[_0x49ef32(0xe4)](_0x5a8989=>haversineM(_0x1468c8,_0x2169e5,_0x5a8989[_0x49ef32(0x34f)],_0x5a8989[_0x49ef32(0x2d3)]))),_0x49369b=_0x526bb8+FOG_PADDING_M;_huntFogZone={'startLat':_0x1468c8,'startLng':_0x2169e5,'radiusM':_0x49369b},updateHuntFog(),_huntFogEl[_0x49ef32(0x198)][_0x49ef32(0x311)](_0x49ef32(0x1ae));}function hideHuntFog(){const _0x56f990=_0x564281;_huntFogEl[_0x56f990(0x198)]['remove']('hunt-fog-active'),_huntFogZone=null,_huntFogEl[_0x56f990(0xf7)][_0x56f990(0x229)]='',_huntFogEl[_0x56f990(0xf7)]['removeProperty'](_0x56f990(0xe9)),_huntFogEl[_0x56f990(0xf7)]['removeProperty'](_0x56f990(0xd9)),_huntFogEl[_0x56f990(0xf7)]['removeProperty'](_0x56f990(0x35d));}map['on'](_0x564281(0xab),updateHuntFog);function showRoute(_0x3bdfe1,_0x298494,_0x471a5d=![],_0x2cbeb8='guided'){const _0xa724a3=_0x564281;!_0x471a5d&&(activeRoute=null,activeRouteName=null,activeRouteMode=_0xa724a3(0xf6),activeIndex=0x0,visitedLore={});console['log'](_0xa724a3(0x107),{'routeName':_0x298494,'isActiveRoute':_0x471a5d,'checkpointCount':_0x3bdfe1?.[_0xa724a3(0xf5)]??0x0,'time':Date['now']()}),clearRoute();const _0x6c6e9d=L[_0xa724a3(0x33d)]()[_0xa724a3(0x14b)](map),_0x31b29e=L[_0xa724a3(0x33d)]()[_0xa724a3(0x14b)](map);window[_0xa724a3(0x1c2)]=_0x6c6e9d,window[_0xa724a3(0x12d)]=_0x31b29e,window['showRoute']=showRoute,window['clearRoute']=clearRoute,routeLayer=_0x6c6e9d,checkpointMarkers=[],window['__checkpointMarkers']=checkpointMarkers;const _0x58b664=[];let _0x34b606=0x0;const _0x11de94=_0x3bdfe1[_0xa724a3(0xe4)](_0x1fa6c1=>_0x1fa6c1[_0xa724a3(0x267)]?null:++_0x34b606);_0x3bdfe1['forEach']((_0x253402,_0xc6eb28)=>{const _0x59d159=_0xa724a3,_0x22492a=parseFloat(_0x253402[_0x59d159(0x34f)]??_0x253402['Lat']??_0x253402['latitude']),_0x371cc1=parseFloat(_0x253402[_0x59d159(0x2d3)]??_0x253402[_0x59d159(0x129)]??_0x253402[_0x59d159(0xb5)]);if(isNaN(_0x22492a)||isNaN(_0x371cc1))return;if(_0x253402[_0x59d159(0x267)]){const _0x55e61c=L[_0x59d159(0x12f)]([_0x22492a,_0x371cc1],{'icon':L[_0x59d159(0x127)]({'html':'<div\x20class=\x22cp-flag-wrap\x20cp-hidden-secret\x22\x20style=\x22opacity:0;pointer-events:none;\x22><div\x20class=\x22flag-mini\x22></div><div\x20class=\x22cp-flag-number\x20cp-secret-badge\x22>✦</div></div>','className':'','iconSize':[0x20,0x28],'iconAnchor':[0x4,0x28]}),'pane':_0x59d159(0x34e),'interactive':![]});_0x31b29e[_0x59d159(0xbf)](_0x55e61c),checkpointMarkers[_0x59d159(0x243)](_0x55e61c);return;}Array[_0x59d159(0x194)](_0x253402['waypoints'])&&_0x253402[_0x59d159(0x133)][_0x59d159(0xa4)](_0x188819=>{const _0x1570ae=_0x59d159,_0xa9f9f5=parseFloat(_0x188819[_0x1570ae(0x34f)]??_0x188819['Lat']),_0x4b51ad=parseFloat(_0x188819['lng']??_0x188819[_0x1570ae(0x129)]);if(!isNaN(_0xa9f9f5)&&!isNaN(_0x4b51ad))_0x58b664[_0x1570ae(0x243)]([_0xa9f9f5,_0x4b51ad]);});_0x58b664[_0x59d159(0x243)]([_0x22492a,_0x371cc1]);const _0xcb5bcd=_0x253402[_0x59d159(0x230)]||null,_0xdfc892=_0x11de94[_0xc6eb28],_0x1cb5fe=_0x2cbeb8==='hunt',_0x5426d=_0x1cb5fe?_0x59d159(0x1b7):_0x59d159(0x157),_0x69736a=_0x1cb5fe?_0x59d159(0x23e):'',_0x15b09c=_0x1cb5fe?'\x20style=\x22display:none\x22':'',_0x5eca0a=L[_0x59d159(0x127)]({'html':_0x59d159(0x2e5)+_0x5426d+_0x59d159(0x165)+_0x69736a+_0x59d159(0x364)+_0x15b09c+'>'+_0xdfc892+'</div></div>','className':'','iconSize':[0x20,0x28],'iconAnchor':[0x4,0x28]}),_0x15fe49=L['marker']([_0x22492a,_0x371cc1],{'icon':_0x5eca0a,'pane':'checkpointPane','interactive':!![]});_0x31b29e[_0x59d159(0xbf)](_0x15fe49),typeof _0x15fe49[_0x59d159(0x1e5)]===_0x59d159(0x245)&&_0x15fe49[_0x59d159(0x1e5)](0x7d0+_0xc6eb28),checkpointMarkers['push'](_0x15fe49);}),window[_0xa724a3(0xb3)]=checkpointMarkers;if(typeof updateCheckpointStates===_0xa724a3(0x245))updateCheckpointStates();if(typeof attachCheckpointTapHandlers===_0xa724a3(0x245))attachCheckpointTapHandlers();if(_0x58b664[_0xa724a3(0xf5)]>0x0&&_0x2cbeb8!=='hunt'){routeLine=L['polyline'](_0x58b664,{'color':'#00ff99','weight':0x4,'opacity':0.7,'className':'route-glow','interactive':![],'pane':_0xa724a3(0x21f)}),_0x6c6e9d[_0xa724a3(0xbf)](routeLine);if(typeof routeLine[_0xa724a3(0x2b5)]===_0xa724a3(0x245))try{routeLine[_0xa724a3(0x2b5)]();}catch(_0x2ac250){}}const _0x23efdd=_0x3bdfe1[_0xa724a3(0xe4)](_0x2bc775=>{const _0x509424=_0xa724a3,_0x6bb377=parseFloat(_0x2bc775[_0x509424(0x34f)]??_0x2bc775['Lat']??_0x2bc775[_0x509424(0x19b)]),_0x365256=parseFloat(_0x2bc775[_0x509424(0x2d3)]??_0x2bc775[_0x509424(0x129)]??_0x2bc775[_0x509424(0xb5)]);return isNaN(_0x6bb377)||isNaN(_0x365256)?null:[_0x6bb377,_0x365256];})[_0xa724a3(0x20b)](Boolean);if(_0x23efdd[_0xa724a3(0xf5)]>0x0)try{map[_0xa724a3(0xce)](_0x23efdd,{'padding':[0x28,0x28]}),setTimeout(()=>map['setZoom'](map[_0xa724a3(0x114)]()+0.5),0x78);}catch(_0x4a8f48){}_0x6c6e9d[_0xa724a3(0x2df)]=!![],_0x31b29e[_0xa724a3(0x1df)]=!![],window[_0xa724a3(0x1c2)]=_0x6c6e9d,window[_0xa724a3(0x12d)]=_0x31b29e,window[_0xa724a3(0xb3)]=checkpointMarkers;if(_0x471a5d){activeRoute=_0x3bdfe1,activeRouteName=_0x298494,activeRouteMode=_0x2cbeb8,activeRouteNarrator=(window[_0xa724a3(0x26c)]||[])['find'](_0x145485=>_0x145485[_0xa724a3(0xbb)]===_0x298494)?.[_0xa724a3(0x14d)]||'',activeIndex=0x0,saveRouteProgress();userLatLng&&map['flyTo']([userLatLng[_0xa724a3(0x34f)],userLatLng[_0xa724a3(0x2d3)]],0x11,{'animate':!![],'duration':1.2});hidePreviewBanner(),showHUD(),hideFindingsDrawer();if(findingsDrawerContent)findingsDrawerContent['innerHTML']='';_0x2cbeb8===_0xa724a3(0xee)&&showHuntFog(_0x3bdfe1),_0x2cbeb8==='hunt'&&initHudClueRow(),setTimeout(checkCheckpointsNow,0x1f4);}else activeRoute=null,activeRouteName=null,activeIndex=0x0,lastPreviewRouteName=_0x298494,lastPreviewRouteCheckpoints=_0x3bdfe1,hideHUD(),_0x2cbeb8===_0xa724a3(0xee)&&showHuntFog(_0x3bdfe1),showPreviewBanner(_0x298494,_0x2cbeb8);}hudPause&&hudPause['addEventListener']('click',()=>{const _0x1c2c28=_0x564281;routePaused=!routePaused,hudPause[_0x1c2c28(0x1d8)]=routePaused?_0x1c2c28(0x1a9):_0x1c2c28(0x218);if(routePaused&&watchId)navigator[_0x1c2c28(0x177)][_0x1c2c28(0x19c)](watchId),watchId=null;else!routePaused&&!watchId&&'geolocation'in navigator&&(watchId=navigator['geolocation'][_0x1c2c28(0x30a)](updateUserMarker,_0x27990c=>{const _0x3ffcd3=_0x1c2c28;console[_0x3ffcd3(0x187)](_0x3ffcd3(0x33b),_0x27990c);},{'enableHighAccuracy':!![],'maximumAge':0x1388,'timeout':0x4e20}));});window[_0x564281(0x17a)]=new Set();async function loadCompletedRoutes(){const _0x5478d0=_0x564281,_0x5afcce=auth[_0x5478d0(0x29b)];if(!_0x5afcce)return;const _0xc42734=await getDocs(collection(db,_0x5478d0(0xc6),_0x5afcce[_0x5478d0(0x207)],'routeHistory'));_0xc42734[_0x5478d0(0xa4)](_0x7c9d4=>{const _0x2ebbc1=_0x5478d0,_0xa18455=_0x7c9d4[_0x2ebbc1(0x25a)]()['routeName'];if(_0xa18455)window['__completedRoutes']['add'](_0xa18455);});}async function loadAllRoutes(){const _0xa2cf5b=_0x564281;setSplashProgress(0x3c,_0xa2cf5b(0x2ef));const _0x1dfd04=await getDocs(collection(db,_0xa2cf5b(0x289))),_0x1a2378=_0x1dfd04[_0xa2cf5b(0x309)][_0xa2cf5b(0xe4)](_0x32d66a=>{const _0x4a1a8d=_0xa2cf5b,_0x158f15=_0x32d66a['data']();return{'name':_0x158f15[_0x4a1a8d(0x2a4)],'checkpoints':_0x158f15[_0x4a1a8d(0xed)],'mode':_0x158f15[_0x4a1a8d(0x24f)]||_0x4a1a8d(0xf6),'narrator':_0x158f15[_0x4a1a8d(0x14d)]||''};});return console[_0xa2cf5b(0x1fb)]('Routes\x20loaded\x20from\x20Firestore:\x20'+_0x1a2378[_0xa2cf5b(0xf5)]+'\x20routes.'),window['__allRoutes']=_0x1a2378,setSplashProgress(0x55,_0xa2cf5b(0xaf)),renderAllRoutes(_0x1a2378),setSplashProgress(0x64,_0xa2cf5b(0x312)),setTimeout(hideSplash,0x190),_0x1a2378;}function renderAllRoutes(_0x325576){const _0x49b6db=_0x564281;if(!_0x325576||!Array['isArray'](_0x325576))return;routes=[],startMarkersLayer[_0x49b6db(0x15f)](),trailheadMarkers=[],_0x325576[_0x49b6db(0xa4)](_0x4b3006=>{const _0x3cea79=_0x49b6db;if(!_0x4b3006||!Array[_0x3cea79(0x194)](_0x4b3006['checkpoints'])||_0x4b3006[_0x3cea79(0x19f)]['length']===0x0)return;applyAutoLoreStylesToRoute(_0x4b3006[_0x3cea79(0xbb)],_0x4b3006[_0x3cea79(0x19f)]),routes[_0x3cea79(0x243)](_0x4b3006);const _0x4ee15f=_0x4b3006[_0x3cea79(0x19f)][0x0],_0xfdb700=parseFloat(_0x4ee15f[_0x3cea79(0x34f)]??_0x4ee15f[_0x3cea79(0x35f)]??_0x4ee15f[_0x3cea79(0x19b)]),_0x1b0005=parseFloat(_0x4ee15f['lng']??_0x4ee15f[_0x3cea79(0x129)]??_0x4ee15f[_0x3cea79(0xb5)]);if(isNaN(_0xfdb700)||isNaN(_0x1b0005))return;const _0x16e575=window[_0x3cea79(0x17a)]?.['has'](_0x4b3006[_0x3cea79(0xbb)]),_0xdef542=_0x16e575?createGoldFlagIcon():createStartIcon(),_0x54084f=L[_0x3cea79(0x12f)]([_0xfdb700,_0x1b0005],{'icon':_0xdef542,'interactive':!![]})[_0x3cea79(0x14b)](startMarkersLayer);trailheadMarkers[_0x3cea79(0x243)]({'marker':_0x54084f,'isCompleted':_0x16e575,'lat':_0xfdb700,'lng':_0x1b0005}),_0x16e575&&_0x54084f['once'](_0x3cea79(0x311),()=>{const _0x3c5361=_0x3cea79;if(!_0x54084f[_0x3c5361(0x322)])return;const _0x5f2237=document['createElement'](_0x3c5361(0x272));_0x5f2237[_0x3c5361(0xa5)]=_0x3c5361(0x19e),_0x5f2237[_0x3c5361(0x1d8)]='✓',_0x54084f[_0x3c5361(0x322)][_0x3c5361(0x1fe)](_0x5f2237);}),_0x54084f['on']('click',()=>{const _0x278606=_0x3cea79;if(activeRoute)return;showRoute(_0x4b3006[_0x278606(0x19f)],_0x4b3006[_0x278606(0xbb)],![],_0x4b3006['mode']||_0x278606(0xf6));});}),console[_0x49b6db(0x1fb)](_0x49b6db(0x316)+routes[_0x49b6db(0xf5)]+'\x20routes\x20rendered\x20on\x20map.');if(userLatLng)updateRouteDistanceClasses();}const ROUTE_VISIBLE_M=0x3a98,ROUTE_FOG_M=0x7530;function updateRouteDistanceClasses(){const _0x27b1fc=_0x564281;if(!userLatLng||!trailheadMarkers['length'])return;trailheadMarkers[_0x27b1fc(0xa4)](({marker:_0x1788e2,lat:_0x9aa0d0,lng:_0x5c56a3})=>{const _0x5c2df3=_0x27b1fc;if(!_0x1788e2||!_0x1788e2[_0x5c2df3(0x322)])return;if(isNaN(_0x9aa0d0)||isNaN(_0x5c56a3))return;const _0x214032=distanceInMeters(userLatLng[_0x5c2df3(0x34f)],userLatLng[_0x5c2df3(0x2d3)],_0x9aa0d0,_0x5c56a3),_0x5f16e3=_0x1788e2[_0x5c2df3(0x322)][_0x5c2df3(0x21a)]('.flag-anim');if(!_0x5f16e3)return;_0x5f16e3['classList'][_0x5c2df3(0x18c)](_0x5c2df3(0x135),_0x5c2df3(0x2fe)),_0x1788e2[_0x5c2df3(0x202)]['interactive']=!![];if(_0x214032>ROUTE_FOG_M)_0x5f16e3[_0x5c2df3(0x198)][_0x5c2df3(0x311)]('route-hidden'),_0x1788e2[_0x5c2df3(0x202)]['interactive']=![];else{if(_0x214032>ROUTE_VISIBLE_M){_0x5f16e3['classList']['add'](_0x5c2df3(0x135));const _0x49fdba=(_0x214032-ROUTE_VISIBLE_M)/(ROUTE_FOG_M-ROUTE_VISIBLE_M);_0x5f16e3[_0x5c2df3(0xf7)][_0x5c2df3(0x35c)]=Math[_0x5c2df3(0x2c8)](0.08,0x1-_0x49fdba*0.92)['toFixed'](0x2),_0x1788e2[_0x5c2df3(0x202)][_0x5c2df3(0x101)]=![];}else _0x5f16e3[_0x5c2df3(0xf7)][_0x5c2df3(0x35c)]='';}});}const AUTO_LORE_STYLES=['stone',_0x564281(0xad),_0x564281(0x1c9),'metal',_0x564281(0x264),'rune'];function pickStyleForRoute(_0x81c88b){const _0x2b450f=_0x564281;let _0xccd682=0x0;for(let _0xff72aa=0x0;_0xff72aa<_0x81c88b[_0x2b450f(0xf5)];_0xff72aa++){_0xccd682=(_0xccd682+_0x81c88b[_0x2b450f(0x248)](_0xff72aa)*(_0xff72aa+0x1))%0x270f;}return AUTO_LORE_STYLES[_0xccd682%AUTO_LORE_STYLES[_0x2b450f(0xf5)]];}function applyAutoLoreStylesToRoute(_0x13e8db,_0x1f71a7){const _0x3bdcb5=_0x564281,_0x2eb3a8=pickStyleForRoute(_0x13e8db);return _0x1f71a7[_0x3bdcb5(0xa4)]((_0x528e50,_0x138e31)=>{const _0x353ee1=_0x3bdcb5;if(!_0x528e50[_0x353ee1(0x230)])_0x528e50['lore']={};!_0x528e50[_0x353ee1(0x230)]['style']&&(_0x528e50[_0x353ee1(0x230)][_0x353ee1(0xf7)]=_0x2eb3a8),!_0x528e50[_0x353ee1(0x230)]['title']&&(_0x528e50[_0x353ee1(0x230)][_0x353ee1(0x1a6)]=_0x353ee1(0x108)+(_0x138e31+0x1)),!_0x528e50[_0x353ee1(0x230)]['text']&&(_0x528e50[_0x353ee1(0x230)][_0x353ee1(0x1d9)]='');}),_0x1f71a7;}const compassEl=document[_0x564281(0x223)](_0x564281(0xc4));compassEl&&(compassEl['style'][_0x564281(0x2a2)]=_0x564281(0xda),compassEl[_0x564281(0xaa)](_0x564281(0x29e),()=>{const _0x49383a=_0x564281;if(!map['setBearing'])return;map[_0x49383a(0x19a)]&&map[_0x49383a(0x19a)][_0x49383a(0x2b2)]()&&map[_0x49383a(0x19a)][_0x49383a(0x1b3)](),userHeading=0x0,map[_0x49383a(0x2ee)](0x0),compassEl[_0x49383a(0xf7)][_0x49383a(0xc1)]=_0x49383a(0x282);}));function updateCompass(){}const _cpLastGlow={};function updateCheckpointScaling(){const _0x3c1cb1=_0x564281;if(!userLatLng||!activeRoute)return;const _0xfd1cca=activeRouteMode==='hunt';let _0x447bf2=0x0;const _0x94f12=activeRoute[_0x3c1cb1(0xe4)](_0x547ed1=>_0x547ed1['hidden']?null:++_0x447bf2);checkpointMarkers[_0x3c1cb1(0xa4)]((_0x4533cb,_0x3902d5)=>{const _0x379f8f=_0x3c1cb1;if(!_0x4533cb||!_0x4533cb['_icon'])return;const _0x55d9bf=activeRoute[_0x3902d5];if(!_0x55d9bf)return;const _0x18a037=visitedLore[_0x3902d5]===!![],_0x32d843=_0x3902d5===activeIndex,_0x56633e=_0x94f12[_0x3902d5]??_0x3902d5+0x1;if(_0x55d9bf[_0x379f8f(0x267)]&&!_0x18a037){const _0x2853bb=_0x4533cb[_0x379f8f(0x322)]?.[_0x379f8f(0x21a)](_0x379f8f(0x31c));if(!_0x2853bb)return;const _0x376e7e=parseFloat(_0x55d9bf['lat']??_0x55d9bf['Lat']??_0x55d9bf[_0x379f8f(0x19b)]),_0x62e5a1=parseFloat(_0x55d9bf[_0x379f8f(0x2d3)]??_0x55d9bf[_0x379f8f(0x129)]??_0x55d9bf[_0x379f8f(0xb5)]),_0x11787a=distanceInMeters(userLatLng[_0x379f8f(0x34f)],userLatLng['lng'],_0x376e7e,_0x62e5a1);let _0x503cdd;if(_0x11787a<=0xf)_0x503cdd=_0x379f8f(0x1e2);else{if(_0x11787a<=0x28)_0x503cdd='near';else _0x503cdd=_0x379f8f(0x267);}if(_cpLastGlow['h'+_0x3902d5]===_0x503cdd)return;_cpLastGlow['h'+_0x3902d5]=_0x503cdd;if(_0x503cdd===_0x379f8f(0x267)){_0x2853bb['style'][_0x379f8f(0x35c)]='0',_0x2853bb[_0x379f8f(0xf7)][_0x379f8f(0x20b)]='',_0x4533cb[_0x379f8f(0x202)][_0x379f8f(0x101)]=![];if(_0x4533cb[_0x379f8f(0x322)])_0x4533cb[_0x379f8f(0x322)][_0x379f8f(0xf7)][_0x379f8f(0xb8)]=_0x379f8f(0x304);}else{if(_0x503cdd==='near'){_0x2853bb[_0x379f8f(0xf7)][_0x379f8f(0x35c)]=_0x379f8f(0x131),_0x2853bb[_0x379f8f(0xf7)]['filter']='grayscale(1)\x20brightness(0.7)',_0x2853bb[_0x379f8f(0x198)]['remove']('cp-hidden-reveal'),_0x2853bb[_0x379f8f(0x198)][_0x379f8f(0x311)](_0x379f8f(0x28e)),_0x4533cb[_0x379f8f(0x202)]['interactive']=![];if(_0x4533cb[_0x379f8f(0x322)])_0x4533cb[_0x379f8f(0x322)][_0x379f8f(0xf7)][_0x379f8f(0xb8)]=_0x379f8f(0x304);}else{_0x2853bb[_0x379f8f(0xf7)][_0x379f8f(0x35c)]='1',_0x2853bb[_0x379f8f(0xf7)][_0x379f8f(0x20b)]='',_0x2853bb[_0x379f8f(0x198)][_0x379f8f(0x18c)](_0x379f8f(0x28e)),_0x2853bb['classList'][_0x379f8f(0x311)](_0x379f8f(0x283)),_0x4533cb[_0x379f8f(0x202)]['interactive']=!![];if(_0x4533cb[_0x379f8f(0x322)])_0x4533cb['_icon']['style'][_0x379f8f(0xb8)]=_0x379f8f(0x1a8);}}return;}if(_0x18a037)return;if(!_0x32d843)return;const _0x4e19d9=parseFloat(_0x55d9bf[_0x379f8f(0x34f)]??_0x55d9bf[_0x379f8f(0x35f)]??_0x55d9bf[_0x379f8f(0x19b)]),_0x256716=parseFloat(_0x55d9bf[_0x379f8f(0x2d3)]??_0x55d9bf[_0x379f8f(0x129)]??_0x55d9bf[_0x379f8f(0xb5)]),_0x5c5c09=distanceInMeters(userLatLng[_0x379f8f(0x34f)],userLatLng[_0x379f8f(0x2d3)],_0x4e19d9,_0x256716),_0x616b2e=_0x55d9bf[_0x379f8f(0x267)]?'✶':_0x56633e,_0x461946=_0x55d9bf[_0x379f8f(0x267)]?_0x379f8f(0x1cf):'';if(_0xfd1cca){let _0x2178ba;if(_0x5c5c09<=0x8)_0x2178ba=_0x379f8f(0x2be);else{if(_0x5c5c09<=0x14)_0x2178ba=_0x379f8f(0x2a0);else{if(_0x5c5c09<=0x28)_0x2178ba='cp-hunt-near';else _0x2178ba=_0x379f8f(0x1c3);}}if(_cpLastGlow[_0x3902d5]===_0x2178ba)return;_cpLastGlow[_0x3902d5]=_0x2178ba;const _0x281daf=_0x4533cb[_0x379f8f(0x322)][_0x379f8f(0x21a)](_0x379f8f(0x28d));if(!_0x281daf)return;const _0x5eaa82=_0x281daf['querySelector'](_0x379f8f(0x184)),_0x444f80=_0x281daf[_0x379f8f(0x21a)]('.cp-flag-number');[_0x379f8f(0x2ec),_0x379f8f(0x31f),_0x379f8f(0x1c3),_0x379f8f(0x1ca),'cp-hunt-close','cp-hunt-reveal'][_0x379f8f(0xa4)](_0x19ede3=>_0x281daf[_0x379f8f(0x198)][_0x379f8f(0x18c)](_0x19ede3));if(_0x2178ba===_0x379f8f(0x1c3))_0x281daf[_0x379f8f(0xf7)][_0x379f8f(0x119)]=_0x379f8f(0x267),_0x281daf[_0x379f8f(0xf7)][_0x379f8f(0xb8)]=_0x379f8f(0x304),_0x4533cb['_icon']['style'][_0x379f8f(0xb8)]=_0x379f8f(0x304);else{if(_0x2178ba==='cp-hunt-near'){_0x281daf[_0x379f8f(0xf7)]['visibility']='',_0x281daf[_0x379f8f(0xf7)]['pointerEvents']=_0x379f8f(0x304),_0x4533cb[_0x379f8f(0x322)][_0x379f8f(0xf7)][_0x379f8f(0xb8)]=_0x379f8f(0x304),_0x281daf[_0x379f8f(0x198)][_0x379f8f(0x311)](_0x379f8f(0x2ec),_0x379f8f(0x1ca));if(_0x5eaa82)_0x5eaa82[_0x379f8f(0xf7)]['display']=_0x379f8f(0x304);if(_0x444f80)_0x444f80[_0x379f8f(0xf7)][_0x379f8f(0x1d1)]='none';}else{if(_0x2178ba===_0x379f8f(0x2a0)){_0x281daf[_0x379f8f(0xf7)][_0x379f8f(0x119)]='',_0x281daf[_0x379f8f(0xf7)][_0x379f8f(0xb8)]='none',_0x4533cb[_0x379f8f(0x322)][_0x379f8f(0xf7)][_0x379f8f(0xb8)]=_0x379f8f(0x304),_0x281daf['classList']['add'](_0x379f8f(0x2ec),'cp-hunt-close');if(_0x5eaa82)_0x5eaa82['style'][_0x379f8f(0x1d1)]=_0x379f8f(0x304);_0x444f80&&(_0x444f80[_0x379f8f(0xf7)]['display']='',_0x444f80[_0x379f8f(0x1d8)]='?');}else{_0x281daf[_0x379f8f(0xf7)][_0x379f8f(0x119)]='',_0x281daf['style'][_0x379f8f(0xb8)]='',_0x4533cb[_0x379f8f(0x322)][_0x379f8f(0xf7)]['pointerEvents']='',_0x281daf['classList'][_0x379f8f(0x311)]('cp-next',_0x379f8f(0x1dc));if(_0x5eaa82)_0x5eaa82[_0x379f8f(0xf7)]['display']='';_0x444f80&&(_0x444f80[_0x379f8f(0xf7)][_0x379f8f(0x1d1)]='',_0x444f80[_0x379f8f(0x1d8)]=_0x616b2e,_0x444f80[_0x379f8f(0xa5)]='cp-flag-number'+_0x461946);}}}return;}let _0x1dbc53=_0x5c5c09<0x14?'cp-glow-close':'';if(_cpLastGlow[_0x3902d5]===_0x1dbc53)return;_cpLastGlow[_0x3902d5]=_0x1dbc53;const _0x50ec0f=_0x4533cb['_icon'][_0x379f8f(0x21a)]('.cp-flag-wrap');if(!_0x50ec0f)return;_0x50ec0f['classList'][_0x379f8f(0x18c)](_0x379f8f(0x1dc));if(_0x1dbc53)_0x50ec0f[_0x379f8f(0x198)][_0x379f8f(0x311)](_0x1dbc53);});}let userHeading=0x0;window[_0x564281(0x2de)]&&(typeof DeviceOrientationEvent['requestPermission']===_0x564281(0x245)?DeviceOrientationEvent[_0x564281(0x100)]()['then'](_0x5f04fe=>{const _0x48e392=_0x564281;_0x5f04fe===_0x48e392(0x32b)&&window['addEventListener']('deviceorientation',handleOrientation);})[_0x564281(0x1c6)](console[_0x564281(0x32f)]):window[_0x564281(0xaa)](_0x564281(0x237),handleOrientation));function handleOrientation(_0x3576a5){const _0x4f8a64=_0x564281;if(_0x3576a5['alpha']===null)return;userHeading=_0x3576a5[_0x4f8a64(0x147)];if(map[_0x4f8a64(0x2ee)])map[_0x4f8a64(0x2ee)](userHeading);if(compassEl)compassEl[_0x4f8a64(0xf7)]['transform']=_0x4f8a64(0x357)+-userHeading+_0x4f8a64(0x28f);}map['on'](_0x564281(0x269),()=>map[_0x564281(0x215)]()[_0x564281(0x198)]['add'](_0x564281(0x1f1))),map['on'](_0x564281(0x1bb),()=>map[_0x564281(0x215)]()['classList'][_0x564281(0x18c)](_0x564281(0x1f1))),map['on'](_0x564281(0xfa),()=>{const _0x3a30ff=_0x564281,_0x4e1668=map[_0x3a30ff(0x276)]?map[_0x3a30ff(0x276)]():0x0;if(compassEl)compassEl[_0x3a30ff(0xf7)]['transform']=_0x3a30ff(0x357)+-_0x4e1668+'deg)';});function updateUserHeadingArrow(){const _0x27a12e=_0x564281;if(!userMarker||!userMarker[_0x27a12e(0x322)])return;const _0x466987=userMarker[_0x27a12e(0x322)][_0x27a12e(0x21a)](_0x27a12e(0x1fa));_0x466987&&(_0x466987[_0x27a12e(0xf7)][_0x27a12e(0xc1)]=_0x27a12e(0x16b)+userHeading+_0x27a12e(0x28f));}function _0x1374(){const _0x54a9c0=['photoURL','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22findings-clue-text\x22>','numeric','\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20','push','route-summary-journal-btn','function','color:#fff','landing-screen','charCodeAt','px\x20at\x20','setItem','clue','\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22checkpoint-preview\x22>\x22','onboarding-step-1','badge-item','mode','mode-guided','icons/flag2.svg','findings-entry','<img\x20src=\x22','You\x20need\x20an\x20item\x20to\x20interact\x20with\x20this.','routeName','load','ref','type','\x20/\x20','data','pqa_disclaimer_accepted','menu-sheet','profile','You\x20found\x20a\x20brittle\x20parchment\x20scrap…','New\x20Adventurer','queued-writes','rarity-','LoreJournal','includes','parchment','false','Reach\x20the\x20previous\x20checkpoint\x20first.','hidden','</div><div\x20class=\x22settings-stat-label\x22>Routes</div></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22settings-stat\x22><div\x20class=\x22settings-stat-val\x22>','rotatestart','persisted','hud-findings-btn','__allRoutes','</div>\x0a\x20\x20\x20\x20<div>Lore\x20Found:\x20','3114166zseofM','New\x20Badge','href','delay','div','close-badges-modal','hud-exit-btn','font-weight:700','getBearing','zIndex','</span>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22nearby-item-meta\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span>📍\x20','item-detail-modal','</span>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20','\x0a\x20\x20\x20\x20<div\x20class=\x22narrator-card-name\x22>','round','flush-queue','stopPropagation','serviceWorker','rgba(100,220,100,0.55)','position:fixed','rotate(0deg)','cp-hidden-reveal','1:86962049537:web:428c8af7896716657a6600','poi-locked','has-new','badge-grid','moveend','Hikes','code','<span\x20class=\x22route-mode-tag\x20guided-tag\x22>Guided</span>','route','.cp-flag-wrap','cp-hidden-near','deg)','email','\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22history-item-meta\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span>📅\x20','<div\x20class=\x22nearby-empty\x22>📡\x20Waiting\x20for\x20your\x20location…<br><span>Make\x20sure\x20location\x20is\x20enabled.</span></div>','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22entry-title\x22>','px,','\x20checkpoints</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span>📏\x20','hud-clue-row','</div>\x0a\x20\x20\x20\x20\x20\x20','Open\x20menu','\x20min</span>','<div\x20class=\x22inventory-empty\x22>Loading…</div>','currentUser','has','lore-card-title','click','AIzaSyCfS5a-1fg-68_gpcqpmMbSTz7bW9dEp_0','cp-hunt-close','Trail\x20Rookie','cursor','radius','Name','<div\x20class=\x22flag-anim\x22\x20data-delay=\x22','Error\x20ensuring\x20profile\x20doc:','disabled','displayName','item-detail-close','sqrt','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22settings-stats\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22settings-stat\x22><div\x20class=\x22settings-stat-val\x22>','54MNSetf','circle\x20','currentTime','loreStyle','</span>','[grantItem]\x20granted\x20','enabled','loading','flex','bringToBack','pathquest-archives.firebaseapp.com','1420','\x20checkpoints</span>','<div\x20class=\x22poi-marker','setAttribute','querySelectorAll','onboarding-modal','</div>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20','cp-hunt-reveal','aria-label','read','\x0a\x20\x20\x20\x20\x20\x20','transformOrigin','font-size:22px','onclick','icons/flag-gold1.svg','lore-card-overlay','21260ajOupK','max','removeEventListener','lore-card-text','🔍\x20Clue\x20','zoom','route-preview-backdrop','.unread-dot','item','loreCardDismiss\x200.3s\x20cubic-bezier(0.4,0,1,1)\x20forwards','resume-discard-btn','[offline-queue]\x20Queued\x20write\x20for','lng','landing-signin-btn','item-detail-backdrop','route-preview-item','borderColor','empty','\x20found\x0a\x20\x20\x20\x20\x20\x20','top:50%','86962049537','splash-screen','then','DeviceOrientationEvent','_isRouteLineLayer','reclue-btn','isCompleted','searchParams','cp-hunt-invisible','\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22user-icon-wrapper\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22icons/hiker-sprite.png\x22\x20class=\x22user-hiker-icon\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22user-direction-arrow\x22></div>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20','<div\x20class=\x22','Walk\x20closer\x20to\x20trigger\x20this\x20checkpoint.','journal-lore-entry','short','menu-backdrop','\x0a\x20\x20\x20\x20','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22checkpoint-number\x22>','cp-hunt','author','setBearing','Loading\x20routes…','Items','findings-entry\x20findings-entry-hidden','url(\x22','lore-card-close','online','You\x20found\x20a\x20weathered\x20fragment…','...\x22</div>\x0a\x20\x20\x20\x20','transparent\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%,','<div\x20class=\x22inventory-card-icon\x22>📦</div>','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','hunt-fog','onboarding-step-3','badges-modal','atan2','route-hidden','open','sort','layeradd','You\x20found\x20a\x20faded\x20message…','settings-screen','none','icons/flag-gold3.svg','unlockedPOIs','<span\x20class=\x22unread-dot\x22></span>','history-screen','docs','watchPosition','.badge-reveal-label','split','badge-reveal-svg-container','</div>','\x20unlocked\x20for\x20narrator\x20','journal-route-detail','add','Ready!','poiUnlockThreshold','findings-clue-entry','cp-final','[renderAllRoutes]\x20','journal-unread-badge','join','menu-settings','\x0a\x20\x20\x20\x20\x20\x20\x20\x20','[offline-queue]\x20Failed\x20to\x20replay\x20write:','.cp-hidden-secret','<span>⏱\x20~','onboarding-enable-gps','cp-hunt-hidden','Checkpoint','poi-reveal','_icon','entry','\x0a\x20\x20\x20\x20<div\x20class=\x22preview-banner-meta\x22>\x0a\x20\x20\x20\x20\x20\x20','icons/flag4.svg','\x0a\x20\x20\x20\x20<svg\x20width=\x2290\x22\x20height=\x22110\x22\x20viewBox=\x220\x200\x2090\x20110\x22\x20xmlns=\x22http://www.w3.org/2000/svg\x22>\x0a\x20\x20\x20\x20\x20\x20<defs>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Polished\x20steel\x20gradient\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20<linearGradient\x20id=\x22shieldMetal\x22\x20x1=\x220%\x22\x20y1=\x220%\x22\x20x2=\x220%\x22\x20y2=\x22100%\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<stop\x20offset=\x220%\x22\x20stop-color=\x22#f5f7fa\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<stop\x20offset=\x2235%\x22\x20stop-color=\x22#d0d4da\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<stop\x20offset=\x2270%\x22\x20stop-color=\x22#a4a9b1\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<stop\x20offset=\x22100%\x22\x20stop-color=\x22#7b8088\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</linearGradient>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Inner\x20dark\x20plate\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20<linearGradient\x20id=\x22shieldInner\x22\x20x1=\x220%\x22\x20y1=\x220%\x22\x20x2=\x220%\x22\x20y2=\x22100%\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<stop\x20offset=\x220%\x22\x20stop-color=\x22#3b3f46\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<stop\x20offset=\x22100%\x22\x20stop-color=\x22#1f2227\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</linearGradient>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20<!--\x20Engraved\x20text\x20effect\x20-->\x0a\x20\x20\x20\x20\x20\x20\x20\x20<filter\x20id=\x22engrave\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<feOffset\x20dx=\x220.5\x22\x20dy=\x220.5\x22\x20result=\x22shadow\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<feGaussianBlur\x20in=\x22shadow\x22\x20stdDeviation=\x220.6\x22\x20result=\x22blur\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<feComposite\x20in=\x22blur\x22\x20in2=\x22SourceAlpha\x22\x20operator=\x22arithmetic\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20k2=\x22-1\x22\x20k3=\x221\x22\x20result=\x22innerShadow\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<feMerge>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<feMergeNode\x20in=\x22innerShadow\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<feMergeNode\x20in=\x22SourceGraphic\x22/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</feMerge>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</filter>\x0a\x20\x20\x20\x20\x20\x20</defs>\x0a\x0a\x20\x20\x20\x20\x20\x20<!--\x20Outer\x20shield\x20shape\x20(rim)\x20-->\x0a\x20\x20\x20\x20\x20\x20<path\x20d=\x22M45\x205\x20L78\x2022\x20L78\x2060\x20Q45\x2090\x2045\x20105\x20Q45\x2090\x2012\x2060\x20L12\x2022\x20Z\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20fill=\x22url(#shieldMetal)\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20stroke=\x22#ffffff\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20stroke-width=\x222.5\x22\x20/>\x0a\x0a\x20\x20\x20\x20\x20\x20<!--\x20Inner\x20plate\x20-->\x0a\x20\x20\x20\x20\x20\x20<path\x20d=\x22M45\x2012\x20L72\x2026\x20L72\x2057\x20Q45\x2082\x2045\x2096\x20Q45\x2082\x2018\x2057\x20L18\x2026\x20Z\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20fill=\x22url(#shieldInner)\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20stroke=\x22#cfd3da\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20stroke-width=\x221.5\x22\x20/>\x0a\x0a\x20\x20\x20\x20\x20\x20<!--\x20Gold\x20stars\x20in\x20top\x20arc\x20-->\x0a\x20\x20\x20\x20\x20\x20','journal-panel','route-detail-back-btn','pqa_story_intro_seen','<div\x20class=\x22flag-anim\x20flag-gold\x22\x20data-delay=\x22','granted','loadBadges\x20error','hud-next-info','flag-gold','error','offline-banner','offline-banner-text','<div\x20style=\x22text-align:center;margin-top:2px;\x22><span\x20class=\x22preview-banner-completed\x22>✓\x20Completed</span></div>','lore-card','hud-clue-expanded','flavourText','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22badge-svg-container\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','route-preview-modal','icons/flag-gold2.svg','back-online','[POI\x20Unlock]\x20','GPS\x20error\x20(resume):','visitedPOIs','layerGroup','.poi-lock-badge','location','contains','background:rgba(0,0,0,0.82)','keys','action','story-intro-screen','setCustomParameters','oneTimeItem','rarity','rgba(255,170,40,0.55)','poi-far','You\x20found\x20a\x20crumpled\x20page…','\x20—\x20Checkpoint\x20','menu-logout-btn','quantity','checkpointPane','lat','item-detail-rarity','</div>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22journal-lore-preview\x22>','\x0a\x20\x20\x20\x20</div>\x0a\x20\x20','requiresItem','...</div>\x0a\x20\x20\x20\x20','open-settings','nearby-screen','rotate(','route-detail-title','menu-open-settings-screen','poi-visited','width','opacity','--fog-r','layer','Lat','<div\x20class=\x22preview-banner-narrator\x22>Logs\x20by\x20','postMessage','rgba(255,180,0,0.8)','hud-clue-label','></div><div\x20class=\x22cp-flag-number\x22','km</span>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20','createPane','Entry','controller','auth/user-cancelled','menu-profile-card','slide-out','<div\x20class=\x22entry-preview\x20entry-locked-label\x22>🔒\x20Not\x20yet\x20found</div>','show','onboarding-backdrop','You\x20discovered\x20a\x20point\x20of\x20interest.','\x20nearby-completed','replace','disclaimer-backdrop','open-journal','forEach','className','onLine','setView','Adventurer','preview-banner-text','addEventListener','move\x20zoom','preview-exit-btn','forest','border:1px\x20solid\x20rgba(255,255,255,0.12)','Placing\x20markers…','history','[WorldPOIs]\x20load\x20error:','close-history','__checkpointMarkers','All\x20lore\x20entries\x20for\x20','longitude','badge-reveal-overlay','route-summary-details','pointerEvents','mode-hunt','835950xgwHXj','name','splash-status','route-preview-list','min','addLayer','all','transform','nearby-list','icon','compass','has-avatar','Users','parse','.poi-marker','item-toast','logRouteCompletion\x20error','clearRoute','menu-profile-title','loadNarratorDossiers\x20error:','fitBounds','<div\x20class=\x22history-empty\x22>🥾\x20No\x20completed\x20routes\x20yet.<br><span>Start\x20exploring\x20to\x20build\x20your\x20history.</span></div>','pathquest-archives','pathquest-archives.firebasestorage.app','narratorId','<div\x20style=\x22color:#f66;margin-top:12px;\x22>Could\x20not\x20load\x20journal.\x20Check\x20your\x20connection.</div>','abs','setLatLng','vibrate','cssText','Master\x20Explorer','--fog-cy','pointer','%)</div>\x0a\x20\x20\x20\x20<div>Distance:\x20','Something\x20has\x20appeared\x20on\x20the\x20map.','journal-close-btn','menu-settings-back','[offline-queue]\x20Replayed\x20write\x20to','item-toast-icon','getElement','.user-icon-wrapper','narrator-card','map','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','<div\x20class=\x22inventory-empty\x22>🎒\x20Your\x20inventory\x20is\x20empty.<br><span>Find\x20hidden\x20checkpoints\x20and\x20world\x20points\x20to\x20collect\x20items.</span></div>','commit','Error\x20loading\x20route\x20history\x20for\x20badges:','--fog-cx','oneTime','auth/popup-closed-by-user','route-summary-modal','Checkpoints','hunt','menu-signin-btn','unlockedAt','onboarding-next-1','close-nearby','https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png','[triggerPOI]\x20requiresItem\x20check\x20error:','length','guided','style','You\x20found\x20a\x20scrap\x20of\x20paper…','Title:\x20','rotate','stone','\x0a\x20\x20\x20\x20<div\x20class=\x22preview-banner-name\x22>','animation','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22entry-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22entry-num-badge\x20entry-num-secret\x22>✦</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22entry-title\x22>','Route\x20Completed:\x20','requestPermission','interactive','\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22flag-mini\x20','common','search','number','2786660EGaUXd','[debug]\x20showRoute()','Checkpoint\x20','visibilitychange','m\x20away','\x20previously\x20visited\x20POIs\x20restored','height','info','fontSize','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span>🚩\x20','data-style','\x0a\x0a\x20\x20\x20\x20\x20\x20<!--\x20Engraved\x20initials\x20-->\x0a\x20\x20\x20\x20\x20\x20<text\x20x=\x2250%\x22\x20y=\x2263%\x22\x20text-anchor=\x22middle\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20fill=\x22#e0e3ea\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font-size=\x2224\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font-weight=\x22700\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font-family=\x22system-ui,\x20sans-serif\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20filter=\x22url(#engrave)\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','createElement','Route\x20Complete','getZoom','getCenter','reduce','size','values','visibility','cp-locked','Guided','badges','saturate(0.55)\x20brightness(0.82)\x20contrast(1.05)','aria-hidden','findings-drawer','innerHTML','__unlockedPOIs','auth/cancelled-popup-request','descriptor','[grantItem]\x20error:','item-detail-flavour','removeLayer','divIcon','Logout\x20error\x20(menu):','Lng','slice','toMillis','onboarding-skip-gps','__checkpointLayer','\x22></div>','marker','route-summary-backdrop','0.35','markerPane','waypoints','nearby','route-fog','.trailhead-done-chip','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22inventory-card-rarity\x20','resume-continue-btn','\x20unread</span>','sin','119464SqdefZ','Point\x20of\x20Interest','preview-start-btn','<p\x20style=\x27color:#ddd;\x27>No\x20badges\x20earned\x20yet.</p>','rgba(8,6,3,0.68)\x20\x20\x20\x20\x20\x20\x20\x2090%,','</div>\x0a\x20\x20\x20\x20<div\x20class=\x22narrator-card-descriptor\x22>','removeItem','Hunt','WorldPOIs','redraw','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22history-item-top\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22history-item-name\x22>','\x22\x20class=\x22inventory-card-icon\x22\x20alt=\x22','alpha','1390','close-settings','</div><div\x20class=\x22settings-stat-label\x22>Items</div></div>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22settings-divider\x22></div>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22settings-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span>Account</span><span\x20class=\x22settings-row-val\x22>','addTo','10150','narrator','text-transform:uppercase','inventory-screen','km\x20away','<svg\x20viewBox=\x220\x200\x2024\x2024\x22\x20width=\x2220\x22\x20height=\x2220\x22\x20style=\x22flex-shrink:0\x22>\x0a\x20\x20<path\x20fill=\x22#4285F4\x22\x20d=\x22M22.56\x2012.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26\x201.37-1.04\x202.53-2.21\x203.31v2.77h3.57c2.08-1.92\x203.28-4.74\x203.28-8.09z\x22/>\x0a\x20\x20<path\x20fill=\x22#34A853\x22\x20d=\x22M12\x2023c2.97\x200\x205.46-.98\x207.28-2.66l-3.57-2.77c-.98.66-2.23\x201.06-3.71\x201.06-2.86\x200-5.29-1.93-6.16-4.53H2.18v2.84C3.99\x2020.53\x207.7\x2023\x2012\x2023z\x22/>\x0a\x20\x20<path\x20fill=\x22#FBBC05\x22\x20d=\x22M5.84\x2014.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43\x208.55\x201\x2010.22\x201\x2012s.43\x203.45\x201.18\x204.93l3.66-2.84z\x22/>\x0a\x20\x20<path\x20fill=\x22#EA4335\x22\x20d=\x22M12\x205.38c1.62\x200\x203.06.56\x204.21\x201.64l3.15-3.15C17.45\x202.09\x2014.97\x201\x2012\x201\x207.7\x201\x203.99\x203.47\x202.18\x207.07l3.66\x202.84c.87-2.6\x203.3-4.53\x206.16-4.53z\x22/>\x0a</svg>\x20Sign\x20in\x20with\x20Google','\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22settings-profile\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22settings-avatar\x22\x20style=\x22','[WorldPOIs]\x20','\x20min</div>\x0a\x20\x20','Badge\x20earned\x20for\x20completing\x20a\x20route.','pqa_activeRoute','cp-flag-wrap\x20cp-locked','random','Narrators','<span\x20class=\x22history-streak\x22>×','unlockPOIId','icons/flag1.svg','<span\x20class=\x22narrator-unread-badge\x22>','checkpoint-item','clearLayers','Loading\x20your\x20progress…','<span>🚩\x20','poi-distant','oauth','onboarding-step-2','\x22><div\x20class=\x22flag-mini\x22','<span>📏\x20','<div\x20class=\x22nearby-empty\x22>🗺\x20No\x20routes\x20found\x20within\x2015km.<br><span>More\x20routes\x20coming\x20soon!</span></div>','<div\x20class=\x22entry-preview\x22>','36zBvoSY','toFixed','translateX(-50%)\x20rotate(','route-summary-title','journal-lore-list','flagFrame','dist','exists','scale(','stack','visibilityState','G-TR41D17WY7','toLocaleDateString','user-title','geolocation','writes','opacity:0','__completedRoutes','px\x20','border-radius:14px','fade-out','completeRoute\x20error:','\x20marked\x20as\x20read.','offline','session','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22nearby-mode-tag\x20','\x20—\x20walk\x20closer\x20to\x20interact','.flag-mini','message','movestart','warn','Sign-in\x20failed.\x20Please\x20allow\x20popups\x20or\x20try\x20again.','history-item','entries','findings-drawer-content','remove','item-toast-title','latLngToContainerPoint','span','coords','transform:translate(-50%,-50%)','\x20poi-visited','routeHistory','isArray','toggle','poi-lock-badge','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20class=\x22poi-svg\x22\x20src=\x22icons/poi-marker.svg\x22\x20alt=\x22Point\x20of\x20Interest\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','classList','.cp-flag-number','compassBearing','latitude','clearWatch','gps-waiting','trailhead-done-chip','checkpoints','target','<div\x20class=\x22poi-marker\x20poi-reveal\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20class=\x22poi-svg\x22\x20src=\x22icons/poi-marker.svg\x22\x20alt=\x22Point\x20of\x20Interest\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','updateUserTitleUI\x20error','true','markAllReadBtn','\x20from\x20Firestore','title','Unknown\x20Route','auto','Resume','userPane','cos','Sign\x20in\x20to\x20begin','Exit','hunt-fog-active','.user-hiker-icon','cp-completed','closest','preview-banner','disable','padding:18px\x2036px','getLatLng','body','cp-flag-wrap\x20cp-hunt\x20cp-hunt-hidden','clue-row-enter','zoomend','Redirect\x20login\x20success:','rotateend','offsetWidth','.menu-item,\x20.menu-item-small','badge-reveal-ring','findings-section-divider','toLowerCase','journal-screen','__routeLineLayer','cp-hunt-far','object','</div>\x0a\x20\x20\x20\x20<div\x20class=\x22narrator-card-meta\x22>\x0a\x20\x20\x20\x20\x20\x20','catch','slide-in','2404136HHpGIx','ember','cp-hunt-near','childNodes','bottom\x20left','toUpperCase','</span>\x0a\x20\x20\x20\x20\x20\x20','\x20cp-secret-badge','getItem','display','rgba(180,80,255,0.65)','settings-content','16qkfPty','</div><div\x20class=\x22settings-stat-label\x22>Badges</div></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22settings-stat\x22><div\x20class=\x22settings-stat-val\x22>','logout-btn','getPane','textContent','text','minWidth','exit-route-btn','cp-glow-close','icons/default-badge.png','hud-clue-text','_isCheckpointLayer','journal-back-btn','path','reveal','\x22\x20alt=\x22','history-list','setZIndexOffset','tileLayer','Author\x20unidentified','completedAt','cp-next','menu-signin-card','<div\x20class=\x22findings-clue-header\x22>🔍\x20Clues\x20Found</div>','\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22entry-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22entry-num-badge\x22>','item-detail-rarity\x20','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20100%','icons/flag3.svg','hasLayer','map-moving','description','&copy;\x20<a\x20href=\x22https://www.openstreetmap.org/copyright\x22>OpenStreetMap</a>\x20contributors','<p\x20style=\x27color:#ddd;padding:24px\x27>Sign\x20in\x20to\x20view\x20badges.</p>','[Narrators]\x20failed\x20to\x20load:','Signing\x20in…','recenter-btn','nearby-item','setProperty','.user-direction-arrow','log','seconds','open-inventory','appendChild','background-image:url(','No\x20routes\x20within\x20starting\x20range\x20yet.\x20Move\x20closer\x20to\x20a\x20trailhead.','user','options','menu-fab','[debug]\x20clearRoute()\x20called','inventory','narratorGated','uid','\x20—\x20oneTimeItem\x20already\x20owned','g_csrf_token','12FMdVfZ','filter','play','url(','transition:opacity\x200.35s\x20ease','Secret\x20Discovery','Pathfinder','badge-reveal-name','radial-gradient(','dataset','backgroundImage','getContainer','story-intro-btn','\x0a\x20\x20\x20\x20<div>Completed\x20on:\x20','Pause','[iOS]\x20App\x20resumed\x20—\x20restarting\x20GPS\x20watch','querySelector','find','replaceState','index','backdrop-filter:blur(10px)','overlayPane','<span\x20class=\x22entry-route-label\x22>','\x20—\x20','transparent\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2068%,','getElementById','gone','<div\x20class=\x22nearby-item-hint\x22>Walk\x20to\x20the\x20trailhead\x20to\x20start</div>','.flag-anim','px,\x20transparent\x200%,\x20transparent\x2072%,\x20rgba(8,6,3,0.15)\x2085%,\x20transparent\x20100%)','\x20POIs\x20—\x20awaiting\x20GPS\x20fix\x20to\x20render','background','.badge-reveal-name','markAllLoreAsRead\x20error:','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','pqa_onboarding_done','<div\x20class=\x22inventory-empty\x22>Failed\x20to\x20load\x20inventory.</div>','inventory-card','lore','item-detail-name','.badge-reveal-tap','\x20locked','floor','\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22nearby-item-top\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22nearby-item-name\x22>','getRedirectResult\x20error:','deviceorientation','\x22\x20y=\x22','Route','saveLoreToJournal\x20error:','1203800JmplLH','Resume\x20your\x20route:\x20','hud-route-name','\x20style=\x22display:none\x22'];_0x1374=function(){return _0x54a9c0;};return _0x1374();}function checkCheckpointsNow(){const _0x2f9d6e=_0x564281;if(!activeRoute||!Array['isArray'](activeRoute)||!userLatLng)return;activeRoute[_0x2f9d6e(0xa4)]((_0x39b762,_0x5a02b8)=>{const _0x389a7f=_0x2f9d6e;if(visitedLore[_0x5a02b8])return;const _0x2ecff2=parseFloat(_0x39b762[_0x389a7f(0x34f)]??_0x39b762[_0x389a7f(0x35f)]??_0x39b762[_0x389a7f(0x19b)]),_0x2834e8=parseFloat(_0x39b762['lng']??_0x39b762[_0x389a7f(0x129)]??_0x39b762[_0x389a7f(0xb5)]);if(isNaN(_0x2ecff2)||isNaN(_0x2834e8))return;const _0x2398d5=distanceInMeters(userLatLng[_0x389a7f(0x34f)],userLatLng['lng'],_0x2ecff2,_0x2834e8),_0x273787=parseFloat(_0x39b762[_0x389a7f(0x2a3)])||0x19;_0x2398d5<=_0x273787&&!checkpointDwellTimers[_0x5a02b8]&&(checkpointDwellTimers[_0x5a02b8]=setTimeout(()=>{const _0x4e0782=_0x389a7f,_0x4d78b2=distanceInMeters(userLatLng['lat'],userLatLng['lng'],_0x2ecff2,_0x2834e8);if(_0x4d78b2<=_0x273787&&!visitedLore[_0x5a02b8]){if(navigator[_0x4e0782(0xd6)])navigator['vibrate']([0x50,0x28,0x78]);checkpointSound[_0x4e0782(0x2ae)]=0x0,checkpointSound[_0x4e0782(0x20c)]()[_0x4e0782(0x1c6)](()=>{});if(_0x39b762[_0x4e0782(0x230)]?.[_0x4e0782(0x1d9)])triggerCheckpointLore(_0x5a02b8,{'title':_0x39b762[_0x4e0782(0x230)]['title']||_0x4e0782(0x108)+(_0x5a02b8+0x1),'text':_0x39b762['lore'][_0x4e0782(0x1d9)]||'','style':_0x39b762[_0x4e0782(0x230)][_0x4e0782(0xf7)]||_0x4e0782(0xfb),'author':activeRouteNarrator});else{visitedLore[_0x5a02b8]=!![];if(_0x39b762?.[_0x4e0782(0x2cf)])grantItem(_0x39b762['item'],![],!!_0x39b762[_0x4e0782(0x346)]);const _0x51f77b=activeRoute[_0x4e0782(0x116)]((_0x51a1b6,_0x34675d,_0x34becb)=>_0x34675d[_0x4e0782(0x267)]?_0x51a1b6:_0x34becb,-0x1),_0x5997b2=_0x5a02b8===_0x51f77b;activeIndex===_0x5a02b8&&!_0x5997b2&&(activeIndex=_0x5a02b8+0x1,saveRouteProgress());if(_0x5997b2)pendingRouteComplete=!![];const _0x28e878=LORE_DISCOVERY_MESSAGES[Math['floor'](Math[_0x4e0782(0x158)]()*LORE_DISCOVERY_MESSAGES['length'])];showLoreToast(_0x28e878+_0x4e0782(0x34b)+(_0x5a02b8+0x1));if(typeof updateCheckpointStates===_0x4e0782(0x245))updateCheckpointStates();updateHUD(),updateCompass();}}delete checkpointDwellTimers[_0x5a02b8];},CHECKPOINT_DWELL_MS));});}function updateUserMarker(_0x33dadb){const _0x4f4477=_0x564281,_0xa2edd2=_0x33dadb[_0x4f4477(0x190)]['latitude'],_0x383d67=_0x33dadb['coords'][_0x4f4477(0xb5)],_0x39d5a9=!userLatLng;userLatLng={'lat':_0xa2edd2,'lng':_0x383d67};_0x39d5a9&&!activeRoute&&map['flyTo']([_0xa2edd2,_0x383d67],0xf,{'animate':!![],'duration':0x1});_0x39d5a9&&worldPOIs['length']>0x0&&renderWorldPOIs();const _0x3a7fa9=document[_0x4f4477(0x223)](_0x4f4477(0x19d));if(_0x3a7fa9)_0x3a7fa9[_0x4f4477(0xf7)]['display']='none';!userMarker&&(userMarker=L[_0x4f4477(0x12f)]([_0xa2edd2,_0x383d67],{'icon':createUserIcon(),'interactive':![],'pane':_0x4f4477(0x1aa)})[_0x4f4477(0x14b)](map),userMarker['_icon']&&(userMarker['_icon']['style'][_0x4f4477(0xb8)]=_0x4f4477(0x304)),updateMarkersForZoom(map[_0x4f4477(0x114)]()));if(userMarker[_0x4f4477(0x322)])userMarker[_0x4f4477(0x322)][_0x4f4477(0xf7)]['pointerEvents']=_0x4f4477(0x304);userMarker[_0x4f4477(0xd5)]([_0xa2edd2,_0x383d67]);if(!userIsPanning){const _0x53a233=map[_0x4f4477(0x115)](),_0x503d7f=distanceInMeters(_0x53a233[_0x4f4477(0x34f)],_0x53a233[_0x4f4477(0x2d3)],_0xa2edd2,_0x383d67);_0x503d7f>0x28&&map['flyTo']([_0xa2edd2,_0x383d67],Math[_0x4f4477(0x2c8)](map['getZoom'](),0x10),{'animate':!![],'duration':0x1});}updateCompass(),updateUserHeadingArrow(),updateHUD(),updateCheckpointScaling(),activeRoute&&Array[_0x4f4477(0x194)](activeRoute)&&activeRoute[_0x4f4477(0xa4)]((_0x5ef3b4,_0x350098)=>{const _0x231443=_0x4f4477;if(visitedLore[_0x350098]||!_0x5ef3b4[_0x231443(0x230)])return;const _0x1ac23d=parseFloat(_0x5ef3b4[_0x231443(0x34f)]??_0x5ef3b4[_0x231443(0x35f)]??_0x5ef3b4['latitude']),_0x9b347d=parseFloat(_0x5ef3b4[_0x231443(0x2d3)]??_0x5ef3b4[_0x231443(0x129)]??_0x5ef3b4['longitude']);if(isNaN(_0x1ac23d)||isNaN(_0x9b347d))return;const _0x17e318=distanceInMeters(userLatLng[_0x231443(0x34f)],userLatLng[_0x231443(0x2d3)],_0x1ac23d,_0x9b347d),_0x1b4be3=parseFloat(_0x5ef3b4['radius'])||0x19;_0x17e318<=_0x1b4be3?!checkpointDwellTimers[_0x350098]&&(checkpointDwellTimers[_0x350098]=setTimeout(()=>{const _0x42f4bb=_0x231443,_0xbf5db0=parseFloat(_0x5ef3b4['lat']??_0x5ef3b4['Lat']??_0x5ef3b4[_0x42f4bb(0x19b)]),_0x3337e6=parseFloat(_0x5ef3b4[_0x42f4bb(0x2d3)]??_0x5ef3b4[_0x42f4bb(0x129)]??_0x5ef3b4['longitude']),_0x1ce37d=distanceInMeters(userLatLng[_0x42f4bb(0x34f)],userLatLng['lng'],_0xbf5db0,_0x3337e6);if(_0x1ce37d<=_0x1b4be3&&!visitedLore[_0x350098]){if(navigator[_0x42f4bb(0xd6)])navigator[_0x42f4bb(0xd6)]([0x50,0x28,0x78]);checkpointSound[_0x42f4bb(0x2ae)]=0x0,checkpointSound['play']()[_0x42f4bb(0x1c6)](()=>{}),triggerCheckpointLore(_0x350098,{'title':_0x5ef3b4['lore']['title']||_0x42f4bb(0x108)+(_0x350098+0x1),'text':_0x5ef3b4[_0x42f4bb(0x230)][_0x42f4bb(0x1d9)]||'','style':_0x5ef3b4[_0x42f4bb(0x230)][_0x42f4bb(0xf7)]||_0x42f4bb(0xfb),'author':activeRouteNarrator});}delete checkpointDwellTimers[_0x350098];},CHECKPOINT_DWELL_MS)):checkpointDwellTimers[_0x350098]&&(clearTimeout(checkpointDwellTimers[_0x350098]),delete checkpointDwellTimers[_0x350098]);}),checkPOIProximity(),updatePOIDistanceClasses(),updateRouteDistanceClasses();}let userIsPanning=![],recenterTimeout=null;const checkpointDwellTimers={};let pendingRouteComplete=![],pendingItemToast=null;const CHECKPOINT_DWELL_MS=0x5dc,checkpointSound=new Audio('audio/checkpoint-found.mp3'),pageFlipSound=new Audio('audio/page-flip.mp3'),parchmentSound=new Audio('audio/parchment-open.mp3'),recenterBtn=document['getElementById'](_0x564281(0x1f7));recenterBtn&&(map['on'](_0x564281(0x186),()=>{const _0x39ead9=_0x564281;userIsPanning=!![],recenterBtn[_0x39ead9(0xf7)][_0x39ead9(0x1d1)]=_0x39ead9(0x2b4);if(recenterTimeout)clearTimeout(recenterTimeout);if(!map['_animatingZoom'])map[_0x39ead9(0x215)]()[_0x39ead9(0x198)][_0x39ead9(0x311)](_0x39ead9(0x1f1));}),map['on'](_0x564281(0x288),()=>{const _0x5a30bf=_0x564281;if(recenterTimeout)clearTimeout(recenterTimeout);recenterTimeout=setTimeout(()=>{const _0x2596a2=_0x1166;userIsPanning=![],recenterBtn[_0x2596a2(0xf7)][_0x2596a2(0x1d1)]=_0x2596a2(0x304);},0xfa0),map[_0x5a30bf(0x215)]()[_0x5a30bf(0x198)][_0x5a30bf(0x18c)]('map-moving');}),map['on']('click',()=>{const _0x57154c=_0x564281;!watchId&&_0x57154c(0x177)in navigator&&startGeolocationWatch();}),recenterBtn[_0x564281(0xaa)](_0x564281(0x29e),()=>{const _0x4427b8=_0x564281;!watchId&&_0x4427b8(0x177)in navigator&&startGeolocationWatch(),userLatLng&&map['flyTo']([userLatLng['lat'],userLatLng[_0x4427b8(0x2d3)]],17.5,{'animate':!![],'duration':1.2}),userIsPanning=![],recenterBtn[_0x4427b8(0xf7)]['display']=_0x4427b8(0x304);}));const NEARBY_MAX_DIST_M=0x3a98,START_TRIGGER_RADIUS=0x3c,START_BUFFER=0x14;function getAllRoutesWithDistance(){const _0x412b56=_0x564281;if(!userLatLng||!routes||routes['length']===0x0)return[];const _0x51d575=[];return routes[_0x412b56(0xa4)](_0x331d13=>{const _0x1e2d84=_0x412b56,_0x3b0413=_0x331d13[_0x1e2d84(0x19f)]?.[0x0];if(!_0x3b0413)return;const _0x5c39b8=parseFloat(_0x3b0413[_0x1e2d84(0x34f)]??_0x3b0413[_0x1e2d84(0x35f)]??_0x3b0413[_0x1e2d84(0x19b)]),_0x1cc363=parseFloat(_0x3b0413[_0x1e2d84(0x2d3)]??_0x3b0413[_0x1e2d84(0x129)]??_0x3b0413['longitude']);if(isNaN(_0x5c39b8)||isNaN(_0x1cc363))return;const _0x52aaa1=distanceInMeters(userLatLng['lat'],userLatLng['lng'],_0x5c39b8,_0x1cc363);if(_0x52aaa1<=NEARBY_MAX_DIST_M)_0x51d575[_0x1e2d84(0x243)]({'route':_0x331d13,'dist':_0x52aaa1});}),_0x51d575[_0x412b56(0x300)]((_0x92432a,_0x484bc2)=>_0x92432a['dist']-_0x484bc2[_0x412b56(0x16f)]),_0x51d575;}function getStartableRoutesWithinRadius(){const _0x424de6=_0x564281;if(!userLatLng||!routes||routes[_0x424de6(0xf5)]===0x0)return[];const _0x25c0f2=START_TRIGGER_RADIUS+START_BUFFER;return routes[_0x424de6(0x20b)](_0x22e879=>{const _0x978171=_0x424de6,_0x39904e=_0x22e879[_0x978171(0x19f)]?.[0x0];if(!_0x39904e)return![];const _0x3ce7a7=parseFloat(_0x39904e['lat']??_0x39904e[_0x978171(0x35f)]??_0x39904e[_0x978171(0x19b)]),_0x5e4ab1=parseFloat(_0x39904e['lng']??_0x39904e[_0x978171(0x129)]??_0x39904e['longitude']);if(isNaN(_0x3ce7a7)||isNaN(_0x5e4ab1))return![];return distanceInMeters(userLatLng['lat'],userLatLng['lng'],_0x3ce7a7,_0x5e4ab1)<=_0x25c0f2;})['map'](_0x217891=>{const _0x589c8b=_0x424de6,_0x1c9f17=_0x217891[_0x589c8b(0x19f)][0x0],_0x1e10ef=parseFloat(_0x1c9f17[_0x589c8b(0x34f)]??_0x1c9f17[_0x589c8b(0x35f)]??_0x1c9f17[_0x589c8b(0x19b)]),_0x1c46cb=parseFloat(_0x1c9f17[_0x589c8b(0x2d3)]??_0x1c9f17['Lng']??_0x1c9f17['longitude']);return{'route':_0x217891,'dist':distanceInMeters(userLatLng[_0x589c8b(0x34f)],userLatLng['lng'],_0x1e10ef,_0x1c46cb)};})[_0x424de6(0x300)]((_0x143221,_0x4102d6)=>_0x143221['dist']-_0x4102d6[_0x424de6(0x16f)]);}const routePreviewBackdrop=document['getElementById'](_0x564281(0x2cd)),routePreviewModal=document[_0x564281(0x223)](_0x564281(0x337)),routePreviewList=document['getElementById'](_0x564281(0xbd)),closeRoutePreview=document[_0x564281(0x223)]('close-route-preview');function openRoutePreviewForNearbyStart(){const _0x425575=_0x564281;if(!routePreviewModal||!routePreviewBackdrop||!routePreviewList){const _0x298add=getStartableRoutesWithinRadius();if(_0x298add[_0x425575(0xf5)]===0x0){alert(_0x425575(0x200));return;}const _0x8eb7c1=_0x298add[0x0];clearRoute(),showRoute(_0x8eb7c1[_0x425575(0x28c)][_0x425575(0x19f)],_0x8eb7c1['route'][_0x425575(0xbb)],!![]);return;}routePreviewList[_0x425575(0x120)]='';const _0x18c75e=getStartableRoutesWithinRadius();_0x18c75e[_0x425575(0xf5)]===0x0?routePreviewList[_0x425575(0x120)]='<p\x20style=\x27color:#ddd;\x27>No\x20routes\x20within\x20starting\x20range\x20yet.</p>':_0x18c75e[_0x425575(0xa4)](_0x204bb8=>{const _0x4e9d7d=_0x425575,_0x1de423=document[_0x4e9d7d(0x112)]('button');_0x1de423[_0x4e9d7d(0xa5)]=_0x4e9d7d(0x2d6),_0x1de423['textContent']=_0x204bb8[_0x4e9d7d(0x28c)][_0x4e9d7d(0xbb)]+'\x20—\x20'+Math['round'](_0x204bb8[_0x4e9d7d(0x16f)])+'m\x20away',_0x1de423[_0x4e9d7d(0xaa)]('click',()=>{const _0xdc8e9d=_0x4e9d7d;clearRoute(),showRoute(_0x204bb8[_0xdc8e9d(0x28c)][_0xdc8e9d(0x19f)],_0x204bb8['route'][_0xdc8e9d(0xbb)],!![]),closeRoutePreviewModal();}),routePreviewList[_0x4e9d7d(0x1fe)](_0x1de423);});if(routePreviewBackdrop)routePreviewBackdrop[_0x425575(0x198)][_0x425575(0x18c)]('hidden');if(routePreviewModal)routePreviewModal[_0x425575(0x198)][_0x425575(0x18c)]('hidden');}function closeRoutePreviewModal(){const _0x5897de=_0x564281;if(routePreviewBackdrop)routePreviewBackdrop[_0x5897de(0x198)]['add'](_0x5897de(0x267));if(routePreviewModal)routePreviewModal['classList']['add']('hidden');}closeRoutePreview&&closeRoutePreview[_0x564281(0xaa)]('click',closeRoutePreviewModal);routePreviewBackdrop&&routePreviewBackdrop[_0x564281(0xaa)](_0x564281(0x29e),_0x10a93b=>{const _0x32f195=_0x564281;if(_0x10a93b[_0x32f195(0x1a0)]===routePreviewBackdrop)closeRoutePreviewModal();});async function loadBadges(){const _0x7ea7ba=_0x564281,_0x307d27=auth[_0x7ea7ba(0x29b)];if(!_0x307d27)return[];try{const _0xc26e2e=await getDocs(collection(db,_0x7ea7ba(0xc6),_0x307d27[_0x7ea7ba(0x207)],_0x7ea7ba(0x11c)));return _0xc26e2e['docs'][_0x7ea7ba(0xe4)](_0x4b1c71=>({'id':_0x4b1c71['id'],..._0x4b1c71[_0x7ea7ba(0x25a)]()}));}catch(_0x48f34b){return console[_0x7ea7ba(0x32f)](_0x7ea7ba(0x32c),_0x48f34b),[];}}const badgesModal=document[_0x564281(0x223)](_0x564281(0x2fc)),badgeGrid=document[_0x564281(0x223)](_0x564281(0x287)),closeBadgesModal=document[_0x564281(0x223)](_0x564281(0x273)),menuFab=document['getElementById'](_0x564281(0x203)),menuSheet=document[_0x564281(0x223)](_0x564281(0x25c)),menuBackdrop=document['getElementById'](_0x564281(0x2e9)),settingsScreen=document[_0x564281(0x223)](_0x564281(0x303)),logoutBtn=document['getElementById'](_0x564281(0x1d6)),closeSettings=document[_0x564281(0x223)](_0x564281(0x149)),nearbyScreen=document[_0x564281(0x223)](_0x564281(0x356)),nearbyList=document[_0x564281(0x223)](_0x564281(0xc2)),closeNearby=document[_0x564281(0x223)](_0x564281(0xf2)),historyScreen=document[_0x564281(0x223)](_0x564281(0x308)),historyList=document[_0x564281(0x223)](_0x564281(0x1e4)),closeHistory=document[_0x564281(0x223)](_0x564281(0xb2));function showMenuMainPanel(){const _0x11db99=_0x564281,_0x208f1e=document[_0x11db99(0x223)]('menu-main'),_0x1bb14b=document[_0x11db99(0x223)](_0x11db99(0x319));if(_0x208f1e)_0x208f1e['classList'][_0x11db99(0x18c)](_0x11db99(0x267));if(_0x1bb14b)_0x1bb14b[_0x11db99(0x198)][_0x11db99(0x311)]('hidden');}function showMenuSettingsPanel(){const _0x298988=_0x564281,_0x154d04=document['getElementById']('menu-main'),_0x54761f=document[_0x298988(0x223)](_0x298988(0x319));if(_0x154d04)_0x154d04['classList'][_0x298988(0x311)]('hidden');if(_0x54761f)_0x54761f['classList'][_0x298988(0x18c)]('hidden');}function openMenu(){const _0x4c7e7b=_0x564281;showMenuMainPanel(),menuBackdrop&&(menuBackdrop['classList']['add'](_0x4c7e7b(0x36d)),menuBackdrop[_0x4c7e7b(0x198)][_0x4c7e7b(0x18c)](_0x4c7e7b(0x267))),menuSheet&&(menuSheet[_0x4c7e7b(0x198)]['add'](_0x4c7e7b(0x36d)),menuSheet[_0x4c7e7b(0x198)][_0x4c7e7b(0x18c)]('hidden'),menuSheet[_0x4c7e7b(0x2ba)](_0x4c7e7b(0x11e),_0x4c7e7b(0x265)));}function closeMenu(){const _0x54709a=_0x564281;menuBackdrop&&(menuBackdrop[_0x54709a(0x198)][_0x54709a(0x18c)](_0x54709a(0x36d)),setTimeout(()=>menuBackdrop[_0x54709a(0x198)][_0x54709a(0x311)](_0x54709a(0x267)),0xc8)),menuSheet&&(menuSheet[_0x54709a(0x198)]['remove'](_0x54709a(0x36d)),setTimeout(()=>menuSheet[_0x54709a(0x198)][_0x54709a(0x311)](_0x54709a(0x267)),0xc8),menuSheet['setAttribute']('aria-hidden',_0x54709a(0x1a3)));}if(menuFab)menuFab[_0x564281(0xaa)](_0x564281(0x29e),openMenu);menuBackdrop&&menuBackdrop[_0x564281(0xaa)](_0x564281(0x29e),_0x35c11d=>{if(_0x35c11d['target']===menuBackdrop)closeMenu();});menuSheet&&menuSheet['addEventListener'](_0x564281(0x29e),_0x4d38df=>{const _0x3b4578=_0x564281,_0x3af6bd=_0x4d38df[_0x3b4578(0x1a0)][_0x3b4578(0x1b1)](_0x3b4578(0x1bd));if(!_0x3af6bd)return;const _0x5db1a7=_0x3af6bd[_0x3b4578(0x213)][_0x3b4578(0x343)]||'';if(_0x5db1a7){switch(_0x5db1a7){case _0x3b4578(0x134):closeMenu(),openNearbyRoutesScreen();break;case'view-badges':closeMenu(),openBadgesModal();break;case _0x3b4578(0x355):showMenuSettingsPanel();break;case _0x3b4578(0xb0):closeMenu(),openHistoryScreen();break;case _0x3b4578(0x1fd):closeMenu(),openInventoryScreen();break;case _0x3b4578(0xa3):closeMenu(),openJournalScreen();break;}return;}const _0x408029=_0x3af6bd['id']||'';if(_0x408029===_0x3b4578(0xde)){showMenuMainPanel();return;}if(_0x408029===_0x3b4578(0x34c)){signOut(auth)[_0x3b4578(0x2dd)](()=>{closeMenu(),closeSettingsScreen();})[_0x3b4578(0x1c6)](_0x77a91e=>console['error'](_0x3b4578(0x128),_0x77a91e));return;}if(_0x408029===_0x3b4578(0x359)){closeMenu(),openSettingsScreen();return;}});const compassEl2=document['getElementById'](_0x564281(0xc4));function hideCompass(){if(compassEl2)compassEl2['style']['display']='none';}function showCompass(){const _0x3a2c3b=_0x564281;if(compassEl2)compassEl2[_0x3a2c3b(0xf7)][_0x3a2c3b(0x1d1)]='';}const inventoryScreen=document[_0x564281(0x223)](_0x564281(0x14f)),inventoryGrid=document[_0x564281(0x223)]('inventory-grid'),closeInventoryBtn=document[_0x564281(0x223)]('close-inventory');function rarityClass(_0x3d6ff9){const _0x4521a7=_0x564281;return _0x4521a7(0x261)+(_0x3d6ff9||_0x4521a7(0x103))[_0x4521a7(0x1c0)]();}async function openInventoryScreen(){const _0xafa186=_0x564281;closeAllScreens(),hideCompass();if(!inventoryScreen||!inventoryGrid)return;inventoryScreen[_0xafa186(0x198)][_0xafa186(0x18c)](_0xafa186(0x267)),inventoryScreen['setAttribute'](_0xafa186(0x11e),_0xafa186(0x265)),inventoryGrid[_0xafa186(0x120)]=_0xafa186(0x29a);const _0x2bb97a=auth[_0xafa186(0x29b)];if(!_0x2bb97a)return;try{const _0x16970e=await getDocs(collection(db,_0xafa186(0xc6),_0x2bb97a[_0xafa186(0x207)],_0xafa186(0x205)));if(_0x16970e[_0xafa186(0x2d8)]){inventoryGrid['innerHTML']=_0xafa186(0xe6);return;}const _0x4b8430=[];_0x16970e[_0xafa186(0xa4)](_0x1c11cb=>_0x4b8430[_0xafa186(0x243)]({'id':_0x1c11cb['id'],..._0x1c11cb[_0xafa186(0x25a)]()}));const _0x3c7938=await Promise[_0xafa186(0xc0)](_0x4b8430[_0xafa186(0xe4)](_0x4147aa=>getDoc(doc(db,_0xafa186(0x2f0),_0x4147aa['id']))[_0xafa186(0x2dd)](_0x17a56c=>_0x17a56c['exists']()?{'id':_0x4147aa['id'],..._0x17a56c['data']()}:{'id':_0x4147aa['id'],'name':_0x4147aa['id']})[_0xafa186(0x1c6)](()=>({'id':_0x4147aa['id'],'name':_0x4147aa['id']}))));inventoryGrid['innerHTML']='',_0x4b8430['forEach']((_0x184906,_0x135c37)=>{const _0x55dde1=_0xafa186,_0x252907=_0x3c7938[_0x135c37]||{},_0x262581=_0x252907[_0x55dde1(0xbb)]||_0x184906['id'],_0xf664cf=_0x252907[_0x55dde1(0x347)]||_0x55dde1(0x103),_0x5c4dfb=_0x252907[_0x55dde1(0xc3)]||null,_0x451625=_0x184906[_0x55dde1(0x34d)]||0x1,_0x5053e5=_0x252907[_0x55dde1(0x335)]||'',_0x5b03ad=_0x252907['description']||'',_0x27b356=_0x5c4dfb?'<img\x20src=\x22'+_0x5c4dfb+_0x55dde1(0x146)+_0x262581+'\x22>':_0x55dde1(0x2f8),_0x35fc6f=document[_0x55dde1(0x112)](_0x55dde1(0x272));_0x35fc6f[_0x55dde1(0xa5)]=_0x55dde1(0x22f),_0x35fc6f['innerHTML']=_0x55dde1(0x31a)+_0x27b356+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22inventory-card-name\x22>'+_0x262581+_0x55dde1(0x137)+rarityClass(_0xf664cf)+'\x22>'+_0xf664cf+_0x55dde1(0x22c)+(_0x451625>0x1?'<div\x20class=\x22inventory-card-qty\x22>×'+_0x451625+'</div>':'')+_0x55dde1(0x2c1),_0x35fc6f[_0x55dde1(0xaa)](_0x55dde1(0x29e),()=>showItemDetail({'name':_0x262581,'rarity':_0xf664cf,'icon':_0x5c4dfb,'flavour':_0x5053e5,'desc':_0x5b03ad})),inventoryGrid[_0x55dde1(0x1fe)](_0x35fc6f);});}catch(_0x2ea35f){console[_0xafa186(0x32f)]('Inventory\x20load\x20error:',_0x2ea35f),inventoryGrid['innerHTML']=_0xafa186(0x22e);}}function closeInventoryScreen(){const _0x40198f=_0x564281;if(!inventoryScreen)return;inventoryScreen['classList']['add']('hidden'),inventoryScreen['setAttribute']('aria-hidden',_0x40198f(0x1a3));}closeInventoryBtn?.[_0x564281(0xaa)](_0x564281(0x29e),closeInventoryScreen);function showItemDetail({name:_0x5aa1ee,rarity:_0x524a0d,icon:_0x21e455,flavour:_0x2e19ae,desc:_0x11a0f3}){const _0x56b929=_0x564281,_0x40d99d=document[_0x56b929(0x223)]('item-detail-backdrop'),_0xb1d9ad=document[_0x56b929(0x223)](_0x56b929(0x279));if(!_0x40d99d||!_0xb1d9ad)return;document[_0x56b929(0x223)]('item-detail-icon')[_0x56b929(0x120)]=_0x21e455?_0x56b929(0x253)+_0x21e455+_0x56b929(0x1e3)+_0x5aa1ee+'\x22>':'📦',document['getElementById'](_0x56b929(0x350))[_0x56b929(0x1d8)]=_0x524a0d||_0x56b929(0x103),document[_0x56b929(0x223)](_0x56b929(0x350))[_0x56b929(0xa5)]=_0x56b929(0x1ed)+rarityClass(_0x524a0d),document[_0x56b929(0x223)](_0x56b929(0x231))[_0x56b929(0x1d8)]=_0x5aa1ee,document[_0x56b929(0x223)](_0x56b929(0x125))['textContent']=_0x2e19ae,document[_0x56b929(0x223)]('item-detail-desc')[_0x56b929(0x1d8)]=_0x11a0f3,_0x40d99d[_0x56b929(0x198)][_0x56b929(0x18c)]('hidden'),_0xb1d9ad[_0x56b929(0x198)][_0x56b929(0x18c)](_0x56b929(0x267));}document[_0x564281(0x223)](_0x564281(0x2a9))?.[_0x564281(0xaa)](_0x564281(0x29e),()=>{const _0x2676b7=_0x564281;document[_0x2676b7(0x223)]('item-detail-backdrop')?.['classList']['add'](_0x2676b7(0x267)),document[_0x2676b7(0x223)]('item-detail-modal')?.[_0x2676b7(0x198)][_0x2676b7(0x311)](_0x2676b7(0x267));}),document['getElementById'](_0x564281(0x2d5))?.['addEventListener']('click',()=>{const _0x572fcf=_0x564281;document['getElementById'](_0x572fcf(0x2d5))?.[_0x572fcf(0x198)][_0x572fcf(0x311)]('hidden'),document[_0x572fcf(0x223)](_0x572fcf(0x279))?.[_0x572fcf(0x198)][_0x572fcf(0x311)](_0x572fcf(0x267));});function closeAllScreens(){const _0x9a89f6=_0x564281;closeSettingsScreen(),closeBadgesModalFn(),closeNearbyScreen(),closeHistoryScreen(),closeInventoryScreen();if(journalScreen)journalScreen[_0x9a89f6(0x198)]['add']('hidden');if(journalRouteDetail)journalRouteDetail['classList'][_0x9a89f6(0x311)](_0x9a89f6(0x267));closeJournal(),showCompass();}async function openSettingsScreen(){const _0x3a0316=_0x564281;closeAllScreens(),hideCompass();if(!settingsScreen)return;settingsScreen[_0x3a0316(0x198)][_0x3a0316(0x18c)](_0x3a0316(0x267)),settingsScreen[_0x3a0316(0x2ba)](_0x3a0316(0x11e),'false');const _0x321640=auth[_0x3a0316(0x29b)],_0x5397e1=document[_0x3a0316(0x223)](_0x3a0316(0x1d3));if(!_0x5397e1)return;if(_0x321640){let _0x4ffc26=0x0,_0x3016bc=0x0,_0x2f0f8b=0x0;try{const [_0x2d7162,_0x133af8,_0x87b950]=await Promise[_0x3a0316(0xc0)]([getDocs(collection(db,_0x3a0316(0xc6),_0x321640[_0x3a0316(0x207)],_0x3a0316(0x193))),getDocs(collection(db,_0x3a0316(0xc6),_0x321640[_0x3a0316(0x207)],_0x3a0316(0x11c))),getDocs(collection(db,_0x3a0316(0xc6),_0x321640[_0x3a0316(0x207)],'inventory'))]);_0x4ffc26=_0x2d7162[_0x3a0316(0x117)],_0x3016bc=_0x133af8['size'],_0x2f0f8b=_0x87b950[_0x3a0316(0x117)];}catch(_0x1fabe6){}const _0x58b87b=getTitleForCompletions(_0x4ffc26),_0x116403=_0x321640[_0x3a0316(0x23f)]?_0x3a0316(0x1ff)+_0x321640[_0x3a0316(0x23f)]+')':'';_0x5397e1[_0x3a0316(0x120)]=_0x3a0316(0x152)+_0x116403+'\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22settings-profile-info\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22settings-profile-name\x22>'+(_0x321640[_0x3a0316(0x2a8)]||_0x3a0316(0xa8))+'</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22settings-profile-title\x22>'+_0x58b87b+_0x3a0316(0x2ab)+_0x4ffc26+_0x3a0316(0x268)+_0x3016bc+_0x3a0316(0x1d5)+_0x2f0f8b+_0x3a0316(0x14a)+(_0x321640[_0x3a0316(0x290)]||'')+'</span>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22settings-row\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span>Version</span><span\x20class=\x22settings-row-val\x22>1.0.0</span>\x0a\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20';}else _0x5397e1[_0x3a0316(0x120)]='<div\x20style=\x22color:#ddd;margin:12px\x200;\x22>Not\x20signed\x20in.</div>';}function closeSettingsScreen(){const _0x396fae=_0x564281;settingsScreen&&(settingsScreen[_0x396fae(0x198)][_0x396fae(0x311)](_0x396fae(0x267)),settingsScreen[_0x396fae(0x2ba)](_0x396fae(0x11e),_0x396fae(0x1a3)));}const menuSettingsBack=document[_0x564281(0x223)](_0x564281(0xde));if(menuSettingsBack)menuSettingsBack[_0x564281(0xaa)]('click',showMenuMainPanel);if(closeSettings)closeSettings[_0x564281(0xaa)](_0x564281(0x29e),closeSettingsScreen);logoutBtn&&logoutBtn[_0x564281(0xaa)](_0x564281(0x29e),async()=>{const _0x52a4e1=_0x564281;try{await signOut(auth),closeSettingsScreen();}catch(_0x1eafe1){console[_0x52a4e1(0x32f)]('Logout\x20error:',_0x1eafe1);}});function showRouteSummary(_0x4a8841,_0x4d5d7d,_0x2a4bca,_0xeef3f0,_0x326872){const _0x4109d9=_0x564281,_0x40b6a2=document[_0x4109d9(0x223)](_0x4109d9(0x130)),_0x3eddc0=document['getElementById'](_0x4109d9(0xec)),_0x29f46d=document[_0x4109d9(0x223)](_0x4109d9(0x16c)),_0x24b2e0=document[_0x4109d9(0x223)]('route-summary-badge'),_0x518734=document[_0x4109d9(0x223)](_0x4109d9(0xb7)),_0x6d26c8=document[_0x4109d9(0x223)](_0x4109d9(0x244)),_0x2c7c66=document['getElementById']('route-summary-close-btn');if(!_0x3eddc0||!_0x40b6a2)return;const _0x9333c7=computeRouteDistance(_0x326872||[]),_0x39e860=(_0x9333c7/0x3e8)['toFixed'](0x2),_0x1fe7b8=estimateTimeMinutes(_0x9333c7),_0x1e7a13=Math[_0x4109d9(0x27c)](_0x2a4bca/_0xeef3f0*0x64);_0x29f46d['textContent']=_0x4109d9(0xff)+_0x4a8841,_0x24b2e0[_0x4109d9(0x120)]=_0x4d5d7d,_0x518734[_0x4109d9(0x120)]=_0x4109d9(0x217)+new Date()[_0x4109d9(0x175)]()+_0x4109d9(0x26d)+_0x2a4bca+_0x4109d9(0x259)+_0xeef3f0+'\x20('+_0x1e7a13+_0x4109d9(0xdb)+_0x39e860+'\x20km</div>\x0a\x20\x20\x20\x20<div>Estimated\x20Time:\x20'+_0x1fe7b8+_0x4109d9(0x154),_0x40b6a2[_0x4109d9(0x198)]['remove']('hidden'),_0x3eddc0[_0x4109d9(0x198)]['remove'](_0x4109d9(0x267)),requestAnimationFrame(()=>{const _0x33bba9=_0x4109d9;_0x40b6a2['classList'][_0x33bba9(0x311)](_0x33bba9(0x36d)),_0x3eddc0['classList'][_0x33bba9(0x311)](_0x33bba9(0x36d));}),_0x6d26c8['onclick']=()=>{const _0x550c67=_0x4109d9;_0x3eddc0[_0x550c67(0x198)][_0x550c67(0x18c)]('show'),_0x40b6a2[_0x550c67(0x198)][_0x550c67(0x18c)](_0x550c67(0x36d)),setTimeout(()=>{const _0x4084fc=_0x550c67;_0x3eddc0['classList'][_0x4084fc(0x311)](_0x4084fc(0x267)),_0x40b6a2[_0x4084fc(0x198)]['add'](_0x4084fc(0x267)),openJournalScreen();},0xfa);},_0x2c7c66[_0x4109d9(0x2c4)]=()=>{const _0x46b62a=_0x4109d9;_0x3eddc0[_0x46b62a(0x198)]['remove'](_0x46b62a(0x36d)),_0x40b6a2['classList'][_0x46b62a(0x18c)](_0x46b62a(0x36d)),setTimeout(()=>{const _0x2fce03=_0x46b62a;_0x3eddc0[_0x2fce03(0x198)][_0x2fce03(0x311)](_0x2fce03(0x267)),_0x40b6a2[_0x2fce03(0x198)][_0x2fce03(0x311)](_0x2fce03(0x267));},0xfa);};}function getStarCountForCompletions(_0x6d750){if(!_0x6d750||_0x6d750<=0x1)return 0x0;if(_0x6d750>=0x2&&_0x6d750<=0x4)return 0x1;if(_0x6d750>=0x5&&_0x6d750<=0x9)return 0x2;return 0x3;}function getRouteInitials(_0x1c2665){const _0x14c095=_0x564281;return _0x1c2665['split']('\x20')[_0x14c095(0xe4)](_0x576ef3=>_0x576ef3[0x0]?.[_0x14c095(0x1cd)]())[_0x14c095(0x318)]('')['slice'](0x0,0x3);}function getStarPositions(_0x2d63b1){const _0x50e7a0=_0x564281;if(_0x2d63b1===0x0)return[];const _0x299dd1=[],_0x390d2a=0x2d,_0x4a5cd3=0x1a,_0x134167=0x10;if(_0x2d63b1===0x1)_0x299dd1[_0x50e7a0(0x243)]({'x':_0x390d2a,'y':_0x4a5cd3});else _0x2d63b1===0x2?(_0x299dd1[_0x50e7a0(0x243)]({'x':_0x390d2a-_0x134167,'y':_0x4a5cd3}),_0x299dd1['push']({'x':_0x390d2a+_0x134167,'y':_0x4a5cd3})):(_0x299dd1[_0x50e7a0(0x243)]({'x':_0x390d2a-_0x134167,'y':_0x4a5cd3}),_0x299dd1['push']({'x':_0x390d2a,'y':_0x4a5cd3-0x4}),_0x299dd1[_0x50e7a0(0x243)]({'x':_0x390d2a+_0x134167,'y':_0x4a5cd3}));return _0x299dd1;}function generateBadgeSVG(_0x4d4278,_0x145803=0x0){const _0x5e937e=_0x564281,_0x3392eb=getRouteInitials(_0x4d4278),_0x27d5a2=getStarPositions(_0x145803)['map'](_0x5b9d88=>'\x0a\x20\x20\x20\x20\x20\x20<text\x20x=\x22'+_0x5b9d88['x']+_0x5e937e(0x238)+_0x5b9d88['y']+'\x22\x20text-anchor=\x22middle\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20fill=\x22#ffd54a\x22\x20font-size=\x2216\x22\x20font-family=\x22system-ui,\x20sans-serif\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20filter=\x22drop-shadow(0\x201px\x203px\x20rgba(180,120,0,0.7))\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20★\x0a\x20\x20\x20\x20\x20\x20</text>')[_0x5e937e(0x318)]('');return _0x5e937e(0x326)+_0x27d5a2+_0x5e937e(0x111)+_0x3392eb+'\x0a\x20\x20\x20\x20\x20\x20</text>\x0a\x20\x20\x20\x20</svg>\x0a\x20\x20';}async function openBadgesModal(){const _0x5655fc=_0x564281;closeAllScreens(),hideCompass();if(!badgesModal)return;if(badgeGrid)badgeGrid[_0x5655fc(0x120)]='';const _0x12ea7c=auth[_0x5655fc(0x29b)];if(!_0x12ea7c){badgeGrid[_0x5655fc(0x120)]=_0x5655fc(0x1f4),badgesModal[_0x5655fc(0x198)][_0x5655fc(0x18c)](_0x5655fc(0x267)),badgesModal[_0x5655fc(0x2ba)]('aria-hidden',_0x5655fc(0x265));return;}const _0x2ae47b=await loadBadges();let _0x137762={};try{const _0x439c31=await getDocs(collection(db,'Users',_0x12ea7c['uid'],_0x5655fc(0x193)));_0x439c31[_0x5655fc(0xa4)](_0x514f5b=>{const _0xf1af08=_0x5655fc,_0x4cad62=_0x514f5b[_0xf1af08(0x25a)](),_0x237ed1=_0x4cad62[_0xf1af08(0x255)];if(!_0x237ed1)return;_0x137762[_0x237ed1]=(_0x137762[_0x237ed1]||0x0)+0x1;});}catch(_0x328c74){console[_0x5655fc(0x32f)](_0x5655fc(0xe8),_0x328c74);}!_0x2ae47b||_0x2ae47b[_0x5655fc(0xf5)]===0x0?badgeGrid[_0x5655fc(0x120)]=_0x5655fc(0x13e):_0x2ae47b[_0x5655fc(0xa4)](_0x2284c0=>{const _0x4c0a4a=_0x5655fc,_0x1fd392=document[_0x4c0a4a(0x112)](_0x4c0a4a(0x272));_0x1fd392[_0x4c0a4a(0xa5)]=_0x4c0a4a(0x24e);const _0x2c0bb9=_0x2284c0['id']||_0x2284c0[_0x4c0a4a(0xbb)]||'';let _0x144fe4=_0x2c0bb9[_0x4c0a4a(0x371)](/^completed_/,'')['replace'](/_/g,'\x20')['trim']();if(!_0x144fe4)_0x144fe4=_0x4c0a4a(0x1a7);const _0x123982=_0x137762[_0x144fe4]||0x1,_0x3d2c44=getStarCountForCompletions(_0x123982),_0x40e58a=generateBadgeSVG(_0x144fe4,_0x3d2c44);_0x1fd392[_0x4c0a4a(0x120)]=_0x4c0a4a(0x336)+_0x40e58a+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22badge-route-name\x22>'+_0x144fe4+_0x4c0a4a(0x297),badgeGrid[_0x4c0a4a(0x1fe)](_0x1fd392);});badgesModal['classList'][_0x5655fc(0x18c)](_0x5655fc(0x267)),badgesModal[_0x5655fc(0x2ba)](_0x5655fc(0x11e),_0x5655fc(0x265));if(closeBadgesModal)closeBadgesModal['focus']();}function closeBadgesModalFn(){const _0x538ecd=_0x564281;if(!badgesModal)return;badgesModal[_0x538ecd(0x198)][_0x538ecd(0x311)](_0x538ecd(0x267)),badgesModal[_0x538ecd(0x2ba)](_0x538ecd(0x11e),_0x538ecd(0x1a3)),showCompass();}closeBadgesModal&&closeBadgesModal[_0x564281(0xaa)](_0x564281(0x29e),closeBadgesModalFn);function openNearbyRoutesScreen(){const _0x520abe=_0x564281;closeAllScreens(),hideCompass();if(!nearbyScreen||!nearbyList)return;nearbyScreen[_0x520abe(0x198)][_0x520abe(0x18c)](_0x520abe(0x267)),nearbyScreen[_0x520abe(0x2ba)](_0x520abe(0x11e),_0x520abe(0x265)),nearbyList[_0x520abe(0x120)]='';if(!userLatLng){nearbyList[_0x520abe(0x120)]=_0x520abe(0x292);return;}const _0x25bc99=getAllRoutesWithDistance();if(_0x25bc99[_0x520abe(0xf5)]===0x0){nearbyList[_0x520abe(0x120)]=_0x520abe(0x167);return;}_0x25bc99['forEach'](_0x388169=>{const _0x5403f1=_0x520abe,_0x1fae73=_0x388169[_0x5403f1(0x28c)],_0x27b4d4=Math[_0x5403f1(0x27c)](_0x388169[_0x5403f1(0x16f)]),_0xfc1838=_0x27b4d4<0x3e8?_0x27b4d4+_0x5403f1(0x10a):(_0x27b4d4/0x3e8)[_0x5403f1(0x16a)](0x1)+_0x5403f1(0x150),_0x1d71b4=window[_0x5403f1(0x17a)]?.[_0x5403f1(0x29c)](_0x1fae73['name']),_0x2c6cd3=(_0x1fae73[_0x5403f1(0x19f)]||[])[_0x5403f1(0x20b)](_0x461911=>!_0x461911['hidden'])[_0x5403f1(0xf5)],_0x2257d6=computeRouteDistance(_0x1fae73[_0x5403f1(0x19f)]||[]),_0x2f394f=(_0x2257d6/0x3e8)[_0x5403f1(0x16a)](0x1),_0x3bf434=_0x1fae73['mode']===_0x5403f1(0xee)?_0x5403f1(0x142):_0x5403f1(0x11b),_0x3cf639=_0x1fae73[_0x5403f1(0x24f)]==='hunt'?_0x5403f1(0xb9):_0x5403f1(0x250),_0x4a5d97=_0x388169[_0x5403f1(0x16f)]<=START_TRIGGER_RADIUS+START_BUFFER,_0x4d1fbd=document['createElement'](_0x5403f1(0x272));_0x4d1fbd['className']=_0x5403f1(0x1f8)+(_0x1d71b4?_0x5403f1(0x370):''),_0x4d1fbd['innerHTML']=_0x5403f1(0x235)+_0x1fae73[_0x5403f1(0xbb)]+(_0x1d71b4?'\x20<span\x20class=\x22nearby-done-badge\x22>✓\x20Done</span>':'')+_0x5403f1(0x182)+_0x3cf639+'\x22>'+_0x3bf434+_0x5403f1(0x278)+_0xfc1838+_0x5403f1(0x10f)+_0x2c6cd3+_0x5403f1(0x295)+_0x2f394f+_0x5403f1(0x365)+(!_0x4a5d97?_0x5403f1(0x225):'')+'\x0a\x20\x20\x20\x20',_0x4d1fbd['addEventListener'](_0x5403f1(0x29e),()=>{const _0x11047b=_0x5403f1;clearRoute(),showRoute(_0x1fae73[_0x11047b(0x19f)],_0x1fae73[_0x11047b(0xbb)],![],_0x1fae73[_0x11047b(0x24f)]||_0x11047b(0xf6)),closeNearbyScreen(),closeMenu();}),nearbyList[_0x5403f1(0x1fe)](_0x4d1fbd);});}function closeNearbyScreen(){const _0x5d02a2=_0x564281;if(!nearbyScreen)return;nearbyScreen[_0x5d02a2(0x198)][_0x5d02a2(0x311)](_0x5d02a2(0x267)),nearbyScreen[_0x5d02a2(0x2ba)](_0x5d02a2(0x11e),_0x5d02a2(0x1a3));}if(closeNearby)closeNearby[_0x564281(0xaa)]('click',closeNearbyScreen);function openHistoryScreen(){const _0x29f6f5=_0x564281;closeAllScreens(),hideCompass();if(!historyScreen||!historyList)return;historyScreen[_0x29f6f5(0x198)][_0x29f6f5(0x18c)](_0x29f6f5(0x267)),historyScreen['setAttribute'](_0x29f6f5(0x11e),_0x29f6f5(0x265)),historyList[_0x29f6f5(0x120)]='';const _0xe60a79=auth['currentUser'];if(!_0xe60a79)return;getDocs(collection(db,'Users',_0xe60a79[_0x29f6f5(0x207)],_0x29f6f5(0x193)))['then'](_0x41c918=>{const _0xc1e0d8=_0x29f6f5,_0x417e18=[];_0x41c918[_0xc1e0d8(0xa4)](_0x346cf1=>_0x417e18[_0xc1e0d8(0x243)](_0x346cf1[_0xc1e0d8(0x25a)]())),_0x417e18[_0xc1e0d8(0x300)]((_0x26cd1c,_0x482cc0)=>{const _0x11293e=_0xc1e0d8,_0x486336=_0x26cd1c[_0x11293e(0x1e8)]?.[_0x11293e(0x1fc)]||0x0,_0x486c45=_0x482cc0[_0x11293e(0x1e8)]?.['seconds']||0x0;return _0x486c45-_0x486336;});if(_0x417e18[_0xc1e0d8(0xf5)]===0x0){historyList[_0xc1e0d8(0x120)]=_0xc1e0d8(0xcf);return;}const _0x48ab36={};_0x417e18[_0xc1e0d8(0xa4)](_0xceed90=>{const _0x37a439=_0xc1e0d8;if(_0xceed90['routeName'])_0x48ab36[_0xceed90['routeName']]=(_0x48ab36[_0xceed90[_0x37a439(0x255)]]||0x0)+0x1;}),_0x417e18[_0xc1e0d8(0xa4)](_0xd9df88=>{const _0x50b241=_0xc1e0d8,_0x3f585f=_0xd9df88['completedAt'];let _0x5bbee4='';if(_0x3f585f?.[_0x50b241(0x1fc)]){const _0x267487=new Date(_0x3f585f[_0x50b241(0x1fc)]*0x3e8);_0x5bbee4=_0x267487[_0x50b241(0x175)](undefined,{'day':_0x50b241(0x241),'month':_0x50b241(0x2e8),'year':_0x50b241(0x241)});}const _0xe91c50=(window['__allRoutes']||[])['find'](_0x24af98=>_0x24af98['name']===_0xd9df88[_0x50b241(0x255)]),_0x24e006=_0xe91c50?(_0xe91c50[_0x50b241(0x19f)]||[])[_0x50b241(0x20b)](_0x57a2d5=>!_0x57a2d5[_0x50b241(0x267)])[_0x50b241(0xf5)]:null,_0x53f822=_0xe91c50?computeRouteDistance(_0xe91c50['checkpoints']||[]):0x0,_0x515d42=_0x53f822>0x0?_0x53f822<0x3e8?Math[_0x50b241(0x27c)](_0x53f822)+'m':(_0x53f822/0x3e8)[_0x50b241(0x16a)](0x1)+'km':null,_0x516f90=_0x48ab36[_0xd9df88[_0x50b241(0x255)]]||0x1,_0x480dae=document[_0x50b241(0x112)](_0x50b241(0x272));_0x480dae[_0x50b241(0xa5)]=_0x50b241(0x189),_0x480dae[_0x50b241(0x120)]=_0x50b241(0x145)+(_0xd9df88[_0x50b241(0x255)]||_0x50b241(0x1a7))+'</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'+(_0x516f90>0x1?_0x50b241(0x15a)+_0x516f90+_0x50b241(0x2b0):'')+_0x50b241(0x291)+_0x5bbee4+_0x50b241(0x2f9)+(_0x24e006?'<span>🚩\x20'+_0x24e006+_0x50b241(0x2b8):'')+_0x50b241(0xe5)+(_0x515d42?_0x50b241(0x166)+_0x515d42+'</span>':'')+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20',historyList[_0x50b241(0x1fe)](_0x480dae);});});}function closeHistoryScreen(){const _0x23f0a8=_0x564281;if(!historyScreen)return;historyScreen[_0x23f0a8(0x198)][_0x23f0a8(0x311)](_0x23f0a8(0x267)),historyScreen[_0x23f0a8(0x2ba)]('aria-hidden',_0x23f0a8(0x1a3));}if(closeHistory)closeHistory[_0x564281(0xaa)]('click',closeHistoryScreen);const offlineBanner=document[_0x564281(0x223)](_0x564281(0x330)),offlineBannerText=document[_0x564281(0x223)](_0x564281(0x331));let _backOnlineTimer=null;function setOfflineUI(_0x1c52f9){const _0x1edc55=_0x564281;if(!offlineBanner)return;_backOnlineTimer&&(clearTimeout(_backOnlineTimer),_backOnlineTimer=null);if(_0x1c52f9){if(offlineBannerText)offlineBannerText['textContent']='📡\x20No\x20connection\x20—\x20progress\x20will\x20sync\x20when\x20back\x20online';offlineBanner[_0x1edc55(0x198)][_0x1edc55(0x18c)](_0x1edc55(0x339)),offlineBanner[_0x1edc55(0x198)][_0x1edc55(0x18c)](_0x1edc55(0x267));}else{if(offlineBannerText)offlineBannerText['textContent']='✓\x20Back\x20online\x20—\x20syncing\x20progress';offlineBanner[_0x1edc55(0x198)][_0x1edc55(0x311)](_0x1edc55(0x339)),offlineBanner[_0x1edc55(0x198)][_0x1edc55(0x18c)]('hidden'),_backOnlineTimer=setTimeout(()=>{const _0x436c0e=_0x1edc55;offlineBanner[_0x436c0e(0x198)][_0x436c0e(0x311)](_0x436c0e(0x267)),offlineBanner[_0x436c0e(0x198)][_0x436c0e(0x18c)](_0x436c0e(0x339));},0x9c4);}}window[_0x564281(0xaa)](_0x564281(0x2f4),()=>{const _0x3fbcc1=_0x564281;setOfflineUI(![]),navigator[_0x3fbcc1(0x27f)]?.[_0x3fbcc1(0x368)]&&navigator[_0x3fbcc1(0x27f)][_0x3fbcc1(0x368)][_0x3fbcc1(0x361)]({'type':_0x3fbcc1(0x27d)});}),window['addEventListener'](_0x564281(0x180),()=>setOfflineUI(!![]));if(!navigator[_0x564281(0xa6)])setOfflineUI(!![]);'serviceWorker'in navigator&&navigator[_0x564281(0x27f)][_0x564281(0xaa)](_0x564281(0x185),async _0x5dfdbf=>{const _0x4ba206=_0x564281;if(_0x5dfdbf[_0x4ba206(0x25a)]?.[_0x4ba206(0x258)]===_0x4ba206(0x260)&&Array[_0x4ba206(0x194)](_0x5dfdbf[_0x4ba206(0x25a)][_0x4ba206(0x178)]))for(const _0x30c402 of _0x5dfdbf['data'][_0x4ba206(0x178)]){try{const _0x5f0cac=doc(db,..._0x30c402['path']);await setDoc(_0x5f0cac,_0x30c402[_0x4ba206(0x25a)],{'merge':!![]}),console[_0x4ba206(0x1fb)](_0x4ba206(0xdf),_0x30c402[_0x4ba206(0x1e1)][_0x4ba206(0x318)]('/'));}catch(_0x5e4865){console[_0x4ba206(0x32f)](_0x4ba206(0x31b),_0x5e4865);}}});async function setDocWithOfflineQueue(_0x4b87b0,_0x4c0e2b,_0x4eb1ff={}){const _0x373a9c=_0x564281;try{const _0x54006e=doc(db,..._0x4b87b0);await setDoc(_0x54006e,_0x4c0e2b,_0x4eb1ff);}catch(_0x1d3877){if(!navigator['onLine']&&navigator[_0x373a9c(0x27f)]?.[_0x373a9c(0x368)])navigator['serviceWorker'][_0x373a9c(0x368)][_0x373a9c(0x361)]({'type':'queue-write','payload':{'path':_0x4b87b0,'data':_0x4c0e2b}}),console[_0x373a9c(0x1fb)](_0x373a9c(0x2d2),_0x4b87b0[_0x373a9c(0x318)]('/'));else throw _0x1d3877;}}setInterval(()=>{updateCompass(),updateUserHeadingArrow();},0x1f4),onAuthStateChanged(auth,async _0x51f1c9=>{const _0x822ed9=_0x564281,_0x48b9c2=document[_0x822ed9(0x223)](_0x822ed9(0x203)),_0x4d5de2=document[_0x822ed9(0x223)]('menu-fab-icon'),_0x3cc6bd=document['getElementById'](_0x822ed9(0x36a)),_0x44a8be=document[_0x822ed9(0x223)]('menu-profile-avatar'),_0x53d36d=document[_0x822ed9(0x223)]('menu-profile-name'),_0x5b3618=document['getElementById'](_0x822ed9(0xcc)),_0x537937=document['getElementById'](_0x822ed9(0x1ea)),_0xe22aa3=document[_0x822ed9(0x223)](_0x822ed9(0xef));if(!_0x51f1c9){if(_0x537937)_0x537937[_0x822ed9(0xf7)][_0x822ed9(0x1d1)]='';if(_0x3cc6bd)_0x3cc6bd[_0x822ed9(0x198)][_0x822ed9(0x311)](_0x822ed9(0x267));if(_0xe22aa3)_0xe22aa3[_0x822ed9(0x2c4)]=handleSignIn;_0x48b9c2&&(_0x48b9c2[_0x822ed9(0x198)]['remove'](_0x822ed9(0xc5)),_0x48b9c2[_0x822ed9(0x2ba)](_0x822ed9(0x2bf),_0x822ed9(0x298)));_0x4d5de2&&(_0x4d5de2['style'][_0x822ed9(0x214)]='',_0x4d5de2[_0x822ed9(0x1d8)]='☰');stopGeolocationWatch(),setSplashProgress(0x64,_0x822ed9(0x1ac)),setTimeout(()=>{hideSplash(),maybeShowStoryIntro(()=>showLandingScreen());},0x258);return;}hideLandingScreen();if(_0x537937)_0x537937[_0x822ed9(0xf7)]['display']='none';if(_0x48b9c2&&_0x4d5de2&&_0x51f1c9[_0x822ed9(0x23f)])_0x4d5de2[_0x822ed9(0xf7)][_0x822ed9(0x214)]='url('+_0x51f1c9['photoURL']+')',_0x4d5de2[_0x822ed9(0x1d8)]='',_0x48b9c2[_0x822ed9(0x198)][_0x822ed9(0x311)](_0x822ed9(0xc5));else{if(_0x4d5de2)_0x4d5de2['textContent']='☰';if(_0x48b9c2)_0x48b9c2[_0x822ed9(0x198)][_0x822ed9(0x18c)](_0x822ed9(0xc5));}if(_0x3cc6bd){if(_0x44a8be&&_0x51f1c9[_0x822ed9(0x23f)])_0x44a8be[_0x822ed9(0xf7)][_0x822ed9(0x214)]=_0x822ed9(0x20d)+_0x51f1c9[_0x822ed9(0x23f)]+')';if(_0x53d36d)_0x53d36d[_0x822ed9(0x1d8)]=_0x51f1c9['displayName']||_0x822ed9(0xa8);_0x3cc6bd[_0x822ed9(0x198)]['remove']('hidden');}if(_0x5b3618){const _0x270f4f=window[_0x822ed9(0x17a)]?.[_0x822ed9(0x117)]||0x0;_0x5b3618['textContent']=getTitleForCompletions(_0x270f4f);}try{const _0x35b49c=doc(db,_0x822ed9(0xc6),_0x51f1c9[_0x822ed9(0x207)],'profile',_0x822ed9(0x10d)),_0x31a3a7=await getDoc(_0x35b49c);!_0x31a3a7['exists']()?(await setDoc(_0x35b49c,{'name':_0x51f1c9[_0x822ed9(0x2a8)],'photoURL':_0x51f1c9[_0x822ed9(0x23f)],'createdAt':new Date()}),window[_0x822ed9(0x121)]=[]):window[_0x822ed9(0x121)]=_0x31a3a7[_0x822ed9(0x25a)]()[_0x822ed9(0x306)]||[];}catch(_0x460c00){console[_0x822ed9(0x32f)](_0x822ed9(0x2a6),_0x460c00),window[_0x822ed9(0x121)]=[];}setSplashProgress(0x1e,_0x822ed9(0x1f6));const _0x9ae3fc=!!localStorage[_0x822ed9(0x1d0)](ONBOARDING_KEY);if(_0x9ae3fc)requestAnimationFrame(()=>startGeolocationWatch());updateUserTitleUI(),setSplashProgress(0x2d,_0x822ed9(0x160)),loadCompletedRoutes()[_0x822ed9(0x2dd)](loadAllRoutes)[_0x822ed9(0x2dd)](()=>maybeShowOnboarding()),loadNarrators()['catch'](console[_0x822ed9(0x32f)]),loadVisitedPOIs()[_0x822ed9(0x2dd)](loadWorldPOIsData)[_0x822ed9(0x1c6)](console[_0x822ed9(0x32f)]),restoreRouteProgress();});const LORE_DISCOVERY_MESSAGES=['You\x20found\x20a\x20torn\x20note…',_0x564281(0xf8),_0x564281(0x2f5),_0x564281(0x302),'You\x20found\x20something\x20tucked\x20under\x20a\x20stone…',_0x564281(0x34a),_0x564281(0x25e)],loreToast=document[_0x564281(0x223)]('lore-toast'),loreToastText=document[_0x564281(0x223)]('lore-toast-text'),loreCardOverlay=document['getElementById'](_0x564281(0x2c6)),loreCard=document[_0x564281(0x223)](_0x564281(0x333)),loreCardTitle=document[_0x564281(0x223)](_0x564281(0x29d)),loreCardText=document['getElementById'](_0x564281(0x2ca)),loreCardClose=document[_0x564281(0x223)](_0x564281(0x2f3));function closeLoreCard(){const _0x499d2c=_0x564281;if(!loreCardOverlay||!loreCard)return;parchmentSound[_0x499d2c(0x2ae)]=0x0,parchmentSound['play']()['catch'](()=>{}),loreCard[_0x499d2c(0xf7)][_0x499d2c(0xfd)]=_0x499d2c(0x2d0),setTimeout(()=>{const _0x1d336e=_0x499d2c;loreCardOverlay[_0x1d336e(0x198)]['add']('hidden'),loreCard[_0x1d336e(0xf7)][_0x1d336e(0xfd)]='';const _0x4b1259=document['getElementById'](_0x1d336e(0x1c1)),_0x5801c1=document[_0x1d336e(0x223)](_0x1d336e(0x310));if(_0x4b1259)_0x4b1259[_0x1d336e(0xf7)][_0x1d336e(0x277)]='';if(_0x5801c1)_0x5801c1[_0x1d336e(0xf7)][_0x1d336e(0x277)]='';if(pendingItemToast){const {name:_0x3ab672,iconSrc:_0x1abc73,rarity:_0x342292}=pendingItemToast;pendingItemToast=null,setTimeout(()=>showItemToast(_0x3ab672,_0x1abc73,_0x342292),0x50);}pendingRouteComplete&&(pendingRouteComplete=![],showRouteCompleteTransition(async()=>{const _0x5b883d=_0x1d336e;try{await completeRoute();}catch(_0x217c10){console['error'](_0x5b883d(0x17e),_0x217c10);}}));},0x12c);}function showRouteCompleteTransition(_0x59f0fe){const _0x551e66=_0x564281,_0x51496e=document['createElement'](_0x551e66(0x272));_0x51496e['textContent']=_0x551e66(0x113),_0x51496e[_0x551e66(0xf7)][_0x551e66(0xd7)]=[_0x551e66(0x281),_0x551e66(0x2da),'left:50%',_0x551e66(0x191),_0x551e66(0x341),_0x551e66(0x246),_0x551e66(0x2c3),_0x551e66(0x275),'letter-spacing:0.08em',_0x551e66(0x14e),_0x551e66(0x1b4),_0x551e66(0x17c),_0x551e66(0x21e),_0x551e66(0xae),'z-index:10200',_0x551e66(0x179),_0x551e66(0x20e),'pointer-events:none']['join'](';'),document[_0x551e66(0x1b6)]['appendChild'](_0x51496e),requestAnimationFrame(()=>{requestAnimationFrame(()=>{const _0x117a5c=_0x1166;_0x51496e[_0x117a5c(0xf7)][_0x117a5c(0x35c)]='1';});}),setTimeout(()=>{const _0x4b9555=_0x551e66;_0x51496e[_0x4b9555(0xf7)][_0x4b9555(0x35c)]='0',setTimeout(()=>{const _0x271cf7=_0x4b9555;_0x51496e[_0x271cf7(0x18c)](),_0x59f0fe();},0x15e);},0x384);}loreCardClose&&loreCardClose['addEventListener'](_0x564281(0x29e),_0x420f7e=>{const _0x4413b1=_0x564281;_0x420f7e[_0x4413b1(0x27e)](),closeLoreCard();});loreCardOverlay&&loreCardOverlay[_0x564281(0xaa)](_0x564281(0x29e),_0x58a918=>{const _0x2dc88d=_0x564281;if(_0x58a918[_0x2dc88d(0x1a0)]===loreCardOverlay)closeLoreCard();});loreToast&&loreToast[_0x564281(0xaa)](_0x564281(0x29e),()=>{const _0x29ec4b=_0x564281;loreToast['classList'][_0x29ec4b(0x311)](_0x29ec4b(0x267)),loreCardOverlay[_0x29ec4b(0x198)][_0x29ec4b(0x18c)]('hidden');});function showLoreToast(_0x158a06){const _0x4e3c4a=_0x564281;if(!loreToast||!loreToastText)return;loreToastText['textContent']=_0x158a06,loreToast['classList'][_0x4e3c4a(0x18c)](_0x4e3c4a(0x267)),loreToast['classList'][_0x4e3c4a(0x311)](_0x4e3c4a(0x36d)),setTimeout(()=>{const _0x3bf0e0=_0x4e3c4a;loreToast[_0x3bf0e0(0x198)][_0x3bf0e0(0x18c)]('show'),setTimeout(()=>loreToast[_0x3bf0e0(0x198)][_0x3bf0e0(0x311)](_0x3bf0e0(0x267)),0x12c);},0xbb8);}function openLoreCard(_0xd01659){const _0x105107=_0x564281;if(!loreCardOverlay||!loreCardTitle||!loreCardText)return;loreCardTitle[_0x105107(0x1d8)]=_0xd01659[_0x105107(0x1a6)]||_0x105107(0x320),loreCardText[_0x105107(0x1d8)]=_0xd01659[_0x105107(0x1d9)]||'',loreCard[_0x105107(0x2ba)](_0x105107(0x110),_0xd01659[_0x105107(0xf7)]||_0x105107(0xfb)),loreCard[_0x105107(0xf7)][_0x105107(0xfd)]='',pageFlipSound[_0x105107(0x2ae)]=0x0,pageFlipSound[_0x105107(0x20c)]()['catch'](()=>{});const _0x25ef5c=document['getElementById'](_0x105107(0x1c1)),_0x2868ef=document[_0x105107(0x223)](_0x105107(0x310));if(_0x25ef5c)_0x25ef5c['style']['zIndex']=_0x105107(0x14c);if(_0x2868ef)_0x2868ef[_0x105107(0xf7)][_0x105107(0x277)]='10150';loreCardOverlay['classList'][_0x105107(0x18c)](_0x105107(0x267));}async function saveLoreToJournal(_0x269124,_0x37e59a,_0x1ca5a0){const _0x19bd71=_0x564281,_0x2d1150=auth[_0x19bd71(0x29b)];if(!_0x2d1150)return;try{await setDocWithOfflineQueue(['Users',_0x2d1150['uid'],'LoreJournal',_0x269124],{'routeName':_0x269124,'updatedAt':new Date()},{'merge':!![]}),await setDocWithOfflineQueue([_0x19bd71(0xc6),_0x2d1150[_0x19bd71(0x207)],_0x19bd71(0x262),_0x269124,_0x19bd71(0x18a),String(_0x37e59a)],{'checkpointIndex':_0x37e59a,'title':_0x1ca5a0['title']||'','text':_0x1ca5a0[_0x19bd71(0x1d9)]||'','style':_0x1ca5a0[_0x19bd71(0xf7)]||_0x19bd71(0xfb),'author':_0x1ca5a0[_0x19bd71(0x2ed)]||'','unlockedAt':new Date(),'read':![]});}catch(_0x3e6264){console[_0x19bd71(0x32f)](_0x19bd71(0x23a),_0x3e6264);}}async function markLoreAsRead(_0x5811c9,_0x44a7ba){const _0x2f137e=_0x564281,_0x5dfab8=auth['currentUser'];if(!_0x5dfab8)return;try{const _0x539dc7=doc(db,'Users',_0x5dfab8['uid'],_0x2f137e(0x262),_0x5811c9,_0x2f137e(0x18a),String(_0x44a7ba));await setDoc(_0x539dc7,{'read':!![]},{'merge':!![]});const _0x20be00=document[_0x2f137e(0x223)](_0x2f137e(0x317));if(_0x20be00&&!_0x20be00['classList'][_0x2f137e(0x340)](_0x2f137e(0x267))){const _0x179ad4=parseInt(_0x20be00['textContent'])||0x0;updateJournalBadge(Math[_0x2f137e(0x2c8)](0x0,_0x179ad4-0x1));}}catch(_0x4eb096){console[_0x2f137e(0x32f)]('markLoreAsRead\x20error:',_0x4eb096);}}let NARRATORS=[];async function loadNarrators(){const _0x1ba0d8=_0x564281;try{const _0x5f1519=await getDocs(collection(db,_0x1ba0d8(0x159)));NARRATORS=_0x5f1519['docs']['map'](_0x3faa2c=>({'id':_0x3faa2c['id'],'name':_0x3faa2c[_0x1ba0d8(0x25a)]()[_0x1ba0d8(0xbb)]||_0x3faa2c['id'],'descriptor':_0x3faa2c[_0x1ba0d8(0x25a)]()[_0x1ba0d8(0x123)]||'','loreStyle':_0x3faa2c[_0x1ba0d8(0x25a)]()[_0x1ba0d8(0x2af)]||_0x1ba0d8(0xfb),'poiUnlockThreshold':_0x3faa2c['data']()[_0x1ba0d8(0x313)]||null,'unlockPOIId':_0x3faa2c[_0x1ba0d8(0x25a)]()[_0x1ba0d8(0x15b)]||null})),window['__narrators']=NARRATORS,console[_0x1ba0d8(0x1fb)]('[Narrators]\x20loaded\x20'+NARRATORS[_0x1ba0d8(0xf5)]+_0x1ba0d8(0x1a5));}catch(_0xd8831){console['error'](_0x1ba0d8(0x1f5),_0xd8831);}}function getNarrator(_0x5d3db0){const _0x2be7b6=_0x564281;return NARRATORS[_0x2be7b6(0x21b)](_0xae699c=>_0xae699c['id']===_0x5d3db0);}function triggerCheckpointLore(_0x347888,_0x1817ba){const _0x3559b2=_0x564281;if(!activeRouteName||!activeRoute)return;const _0x761447=activeRoute[_0x3559b2(0x116)]((_0x294c6e,_0x56a500,_0x4a665d)=>_0x56a500['hidden']?_0x294c6e:_0x4a665d,-0x1),_0x35b3a6=_0x347888===_0x761447,_0x190ad3=LORE_DISCOVERY_MESSAGES[Math['floor'](Math[_0x3559b2(0x158)]()*LORE_DISCOVERY_MESSAGES[_0x3559b2(0xf5)])],_0x512352=activeRoute[_0x347888];saveLoreToJournal(activeRouteName,_0x347888,_0x1817ba),openLoreCard(_0x1817ba),visitedLore[_0x347888]=!![];if(_0x512352?.[_0x3559b2(0x2cf)])grantItem(_0x512352[_0x3559b2(0x2cf)],!![],!!_0x512352[_0x3559b2(0x346)]);activeIndex===_0x347888&&!_0x35b3a6&&(activeIndex=_0x347888+0x1,saveRouteProgress());if(typeof updateCheckpointStates===_0x3559b2(0x245))updateCheckpointStates();updateHUD(),updateCompass(),updateCheckpointScaling(),populateFindingsDrawer(),showFindingsPip();_0x35b3a6&&(pendingRouteComplete=!![]);if(activeRouteMode===_0x3559b2(0xee)){_0x512352?.['clue']&&saveClueToFindings(_0x512352['clue'],_0x347888+0x1);if(!_0x35b3a6){const _0x2d8010=activeRoute[_0x347888+0x1];_0x2d8010?.[_0x3559b2(0x24b)]&&setTimeout(()=>showClueInHUD(_0x2d8010[_0x3559b2(0x24b)],_0x347888+0x2),0x258);}else hideHudClueRow();}}let _huntClueLog=[],_currentClue=null;const _reclueBtn=document[_0x564281(0x223)](_0x564281(0x2e0));_reclueBtn&&_reclueBtn['addEventListener']('click',()=>{const _0x3aa4ae=_0x564281;if(!_currentClue)return;showClueInHUD(_currentClue['text'],_currentClue[_0x3aa4ae(0x105)]);});function initHudClueRow(){const _0x477dae=_0x564281,_0x1cdf87=document[_0x477dae(0x223)](_0x477dae(0x296)),_0x20bd90=document[_0x477dae(0x223)](_0x477dae(0x1de));if(!_0x1cdf87)return;_huntClueLog=[],_currentClue=null;if(_reclueBtn)_reclueBtn[_0x477dae(0x198)][_0x477dae(0x311)](_0x477dae(0x267));if(_0x20bd90)_0x20bd90[_0x477dae(0x1d8)]='';_0x1cdf87[_0x477dae(0x198)]['remove'](_0x477dae(0x334),'clue-row-enter'),_0x1cdf87['classList'][_0x477dae(0x311)]('hidden');}function showClueInHUD(_0x457732,_0x3e6d7a){const _0x563ed4=_0x564281,_0x2ec834=document[_0x563ed4(0x223)]('hud-clue-row'),_0x4dc291=document[_0x563ed4(0x223)](_0x563ed4(0x363)),_0x3a620d=document['getElementById'](_0x563ed4(0x1de));if(!_0x2ec834||!_0x3a620d)return;_currentClue={'text':_0x457732,'number':_0x3e6d7a};if(_reclueBtn)_reclueBtn[_0x563ed4(0x198)][_0x563ed4(0x18c)](_0x563ed4(0x267));if(_0x4dc291)_0x4dc291[_0x563ed4(0x1cb)][0x0]&&(_0x4dc291[_0x563ed4(0x1cb)][0x0][_0x563ed4(0x1d8)]=_0x563ed4(0x2cb)+_0x3e6d7a+'\x20');_0x3a620d['textContent']=_0x457732,_0x2ec834[_0x563ed4(0x198)][_0x563ed4(0x18c)](_0x563ed4(0x334),_0x563ed4(0x1b8)),_0x2ec834[_0x563ed4(0x198)][_0x563ed4(0x18c)](_0x563ed4(0x267)),void _0x2ec834[_0x563ed4(0x1bc)],_0x2ec834['classList'][_0x563ed4(0x311)](_0x563ed4(0x1b8)),setTimeout(()=>_0x2ec834['classList']['remove'](_0x563ed4(0x1b8)),0x190);}function hideHudClueRow(){const _0x138e5f=_0x564281,_0x3b7c49=document[_0x138e5f(0x223)](_0x138e5f(0x296));_0x3b7c49&&(_0x3b7c49[_0x138e5f(0x198)]['add'](_0x138e5f(0x267)),_0x3b7c49[_0x138e5f(0x198)][_0x138e5f(0x18c)](_0x138e5f(0x334)));_currentClue=null;if(_reclueBtn)_reclueBtn[_0x138e5f(0x198)][_0x138e5f(0x311)](_0x138e5f(0x267));}function saveClueToFindings(_0x6bf499,_0x48da39){const _0xc34a11=_0x564281;_huntClueLog[_0xc34a11(0x243)]({'number':_0x48da39,'text':_0x6bf499});}const _hudClueRow=document[_0x564281(0x223)](_0x564281(0x296));_hudClueRow&&_hudClueRow['addEventListener']('click',()=>{const _0x59a8cd=_0x564281;_hudClueRow['classList'][_0x59a8cd(0x195)]('hud-clue-expanded');});let clueCardDismissed=![];function showClueCard(_0x35cf57,_0x50c5f7){showClueInHUD(_0x35cf57,_0x50c5f7);}function hideClueCard(){}function resummonClueCard(){const _0x39bfaa=_0x564281,_0x4a1259=document[_0x39bfaa(0x223)](_0x39bfaa(0x296));if(_0x4a1259)_0x4a1259[_0x39bfaa(0x198)][_0x39bfaa(0x18c)](_0x39bfaa(0x267));}function hideClueCardFully(){hideHudClueRow(),_huntClueLog=[];}const journalScreen=document[_0x564281(0x223)](_0x564281(0x1c1)),journalRouteList=document[_0x564281(0x223)]('journal-route-list'),journalRouteDetail=document[_0x564281(0x223)](_0x564281(0x310)),journalCheckpointList=document[_0x564281(0x223)]('journal-checkpoint-list'),journalBackBtn=document[_0x564281(0x223)](_0x564281(0x1e0)),routeDetailBackBtn=document[_0x564281(0x223)](_0x564281(0x328)),routeDetailTitle=document[_0x564281(0x223)](_0x564281(0x358));function openJournalPanel(){openJournalScreen();}async function openJournalScreen(){const _0x4dd8ec=_0x564281;closeAllScreens(),hideCompass();if(!auth[_0x4dd8ec(0x29b)])return;journalScreen[_0x4dd8ec(0x198)]['remove'](_0x4dd8ec(0x267)),journalRouteDetail['classList'][_0x4dd8ec(0x311)](_0x4dd8ec(0x267)),await loadNarratorDossiers();}journalBackBtn&&journalBackBtn[_0x564281(0xaa)](_0x564281(0x29e),()=>{const _0x5ae9ff=_0x564281;journalScreen[_0x5ae9ff(0x198)][_0x5ae9ff(0x311)](_0x5ae9ff(0x267)),journalRouteList[_0x5ae9ff(0x120)]='',showCompass();});async function loadNarratorDossiers(){const _0x33327c=_0x564281,_0x6947e7=auth[_0x33327c(0x29b)];if(!_0x6947e7)return;journalRouteList[_0x33327c(0x120)]='';let _0x94722a=[];try{const _0x1dd417=await getDocs(collection(db,_0x33327c(0xc6),_0x6947e7[_0x33327c(0x207)],_0x33327c(0x262)));await Promise[_0x33327c(0xc0)](_0x1dd417[_0x33327c(0x309)]['map'](async _0x511b73=>{const _0x5c925a=_0x33327c,_0x184c91=await getDocs(collection(db,_0x5c925a(0xc6),_0x6947e7['uid'],_0x5c925a(0x262),_0x511b73['id'],_0x5c925a(0x18a)));_0x184c91[_0x5c925a(0x309)][_0x5c925a(0xa4)](_0x257bc1=>{const _0x45fd9d=_0x5c925a;_0x94722a[_0x45fd9d(0x243)]({'routeName':_0x511b73['id'],..._0x257bc1['data']()});});}));}catch(_0xab87d9){console[_0x33327c(0x32f)](_0x33327c(0xcd),_0xab87d9),journalRouteList['innerHTML']=_0x33327c(0xd3);return;}if(_0x94722a[_0x33327c(0xf5)]===0x0){journalRouteList[_0x33327c(0x120)]='<div\x20style=\x22color:#ccc;margin-top:12px;\x22>No\x20journal\x20entries\x20yet.</div>';return;}const _0x3e65a4={};_0x94722a['forEach'](_0x1514be=>{const _0x113e82=_0x33327c,_0xcbae49=_0x1514be[_0x113e82(0x2ed)]||'__anonymous';if(!_0x3e65a4[_0xcbae49])_0x3e65a4[_0xcbae49]=[];_0x3e65a4[_0xcbae49]['push'](_0x1514be);});const _0x58bcec=new Set();NARRATORS['forEach'](_0x2bb9ef=>{const _0x4f1159=_0x33327c,_0x456d69=_0x3e65a4[_0x2bb9ef['id']]||[];_0x58bcec[_0x4f1159(0x311)](_0x2bb9ef['id']),renderNarratorCard(_0x2bb9ef,_0x456d69);}),Object[_0x33327c(0x342)](_0x3e65a4)[_0x33327c(0xa4)](_0x200cab=>{const _0x9e0863=_0x33327c;if(_0x58bcec[_0x9e0863(0x29c)](_0x200cab))return;const _0x296563={'id':_0x200cab,'name':'Unknown','descriptor':_0x9e0863(0x1e7),'loreStyle':_0x9e0863(0xfb)};renderNarratorCard(_0x296563,_0x3e65a4[_0x200cab]);});const _0x118c9a=_0x94722a[_0x33327c(0x20b)](_0xf365aa=>_0xf365aa[_0x33327c(0x2c0)]===![])[_0x33327c(0xf5)];updateJournalBadge(_0x118c9a);}function updateJournalBadge(_0x53c57b){const _0x10506a=_0x564281,_0x8aa3db=document[_0x10506a(0x223)](_0x10506a(0x317));if(!_0x8aa3db)return;_0x53c57b>0x0?(_0x8aa3db[_0x10506a(0x1d8)]=_0x53c57b>0x63?'99+':_0x53c57b,_0x8aa3db['classList']['remove'](_0x10506a(0x267))):_0x8aa3db[_0x10506a(0x198)][_0x10506a(0x311)](_0x10506a(0x267));}function renderNarratorCard(_0x4cfbaa,_0x4ce0e1){const _0x5219e1=_0x564281;if(_0x4ce0e1[_0x5219e1(0xf5)]===0x0)return;const _0xfbce5e=_0x4ce0e1[_0x5219e1(0x20b)](_0x7d5a28=>_0x7d5a28[_0x5219e1(0x2c0)]===![])[_0x5219e1(0xf5)],_0x402bdf=document[_0x5219e1(0x112)](_0x5219e1(0x272));_0x402bdf[_0x5219e1(0xa5)]=_0x5219e1(0xe3),_0x402bdf[_0x5219e1(0x213)][_0x5219e1(0xd2)]=_0x4cfbaa['id'],_0x402bdf['innerHTML']=_0x5219e1(0x27b)+_0x4cfbaa['name']+_0x5219e1(0x140)+_0x4cfbaa[_0x5219e1(0x123)]+_0x5219e1(0x1c5)+_0x4ce0e1['length']+'\x20'+(_0x4ce0e1[_0x5219e1(0xf5)]===0x1?_0x5219e1(0x323):_0x5219e1(0x18a))+_0x5219e1(0x2d9)+(_0xfbce5e>0x0?_0x5219e1(0x15d)+_0xfbce5e+_0x5219e1(0x139):'')+_0x5219e1(0x352),_0x402bdf[_0x5219e1(0xaa)]('click',()=>openNarratorDetail(_0x4cfbaa,_0x4ce0e1)),journalRouteList[_0x5219e1(0x1fe)](_0x402bdf);}async function openNarratorDetail(_0x34e413,_0x1ce356){const _0x43ac14=_0x564281;journalScreen[_0x43ac14(0x198)][_0x43ac14(0x311)](_0x43ac14(0x267)),journalRouteDetail[_0x43ac14(0x198)][_0x43ac14(0x18c)](_0x43ac14(0x267)),routeDetailTitle[_0x43ac14(0x1d8)]=_0x34e413['name'];const _0x186803=document[_0x43ac14(0x223)](_0x43ac14(0x1a4));if(_0x186803)_0x186803[_0x43ac14(0xf7)][_0x43ac14(0x1d1)]='none';journalCheckpointList[_0x43ac14(0x120)]='';const _0x3e1f5b=[..._0x1ce356][_0x43ac14(0x300)]((_0x257307,_0x393535)=>{const _0x40394e=_0x43ac14,_0x43ff90=_0x257307[_0x40394e(0xf0)]?.['toMillis']?.()??0x0,_0x91436b=_0x393535['unlockedAt']?.[_0x40394e(0x12b)]?.()??0x0;return _0x43ff90-_0x91436b;});_0x3e1f5b[_0x43ac14(0xa4)](_0x2d7cf7=>{const _0x206486=_0x43ac14,_0x1f576c=_0x2d7cf7[_0x206486(0x2c0)]===![],_0xae958e=document[_0x206486(0x112)](_0x206486(0x272));_0xae958e[_0x206486(0xa5)]=_0x206486(0x15e);const _0x18a433=_0x2d7cf7[_0x206486(0x1a6)]||_0x206486(0x367),_0x3a1ae3=_0x2d7cf7[_0x206486(0x255)]?_0x206486(0x220)+_0x2d7cf7[_0x206486(0x255)]+_0x206486(0x2b0):'';_0xae958e['innerHTML']='\x0a\x20\x20\x20\x20\x20\x20<div\x20class=\x22checkpoint-title\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20'+_0x18a433+_0x206486(0x31a)+(_0x1f576c?_0x206486(0x307):'')+_0x206486(0x242)+_0x3a1ae3+_0x206486(0x24c)+_0x2d7cf7[_0x206486(0x1d9)][_0x206486(0x12a)](0x0,0x3c)+_0x206486(0x2f6),_0xae958e[_0x206486(0xaa)](_0x206486(0x29e),()=>{const _0x43438b=_0x206486;markLoreAsRead(_0x2d7cf7[_0x43438b(0x255)],_0x2d7cf7['checkpointIndex']),openLoreCard({'title':_0x18a433,'text':_0x2d7cf7[_0x43438b(0x1d9)],'style':_0x2d7cf7[_0x43438b(0xf7)]}),_0xae958e[_0x43438b(0x21a)](_0x43438b(0x2ce))?.[_0x43438b(0x18c)]();}),journalCheckpointList[_0x206486(0x1fe)](_0xae958e);});}routeDetailBackBtn&&routeDetailBackBtn[_0x564281(0xaa)](_0x564281(0x29e),()=>{const _0x3412eb=_0x564281;journalRouteDetail[_0x3412eb(0x198)]['add'](_0x3412eb(0x267)),journalScreen[_0x3412eb(0x198)][_0x3412eb(0x18c)](_0x3412eb(0x267));const _0x402f07=document[_0x3412eb(0x223)](_0x3412eb(0x1a4));if(_0x402f07)_0x402f07[_0x3412eb(0xf7)][_0x3412eb(0x1d1)]='';});async function markAllLoreAsRead(_0x555537){const _0x2068d6=_0x564281,_0x199f4e=auth['currentUser'];if(!_0x199f4e)return;try{const _0x1599b6=collection(db,_0x2068d6(0xc6),_0x199f4e[_0x2068d6(0x207)],'LoreJournal',_0x555537,_0x2068d6(0x18a)),_0x136884=await getDocs(_0x1599b6),_0x2c4c95=writeBatch(db);_0x136884['forEach'](_0x901816=>{const _0x5556a8=_0x2068d6,_0x21fd1b=_0x901816[_0x5556a8(0x257)];_0x2c4c95['set'](_0x21fd1b,{'read':!![]},{'merge':!![]});}),await _0x2c4c95[_0x2068d6(0xe7)](),document['querySelectorAll']('.unread-dot')['forEach'](_0x1125e6=>_0x1125e6[_0x2068d6(0x18c)]()),updateJournalBadge(0x0),console[_0x2068d6(0x1fb)](_0x2068d6(0xb4)+_0x555537+_0x2068d6(0x17f));}catch(_0xc00120){console[_0x2068d6(0x32f)](_0x2068d6(0x22b),_0xc00120);}}let worldPOIs=[];const poiMarkers={},poiDwellTimers={},visitedPOIs=new Set(),POI_DWELL_MS=0x4b0;function normalisePOI(_0x1fc12d){const _0x5939c2=_0x564281;return _0x1fc12d['0']&&typeof _0x1fc12d['0']===_0x5939c2(0x1c4)&&(Object['assign'](_0x1fc12d,_0x1fc12d['0']),delete _0x1fc12d['0']),_0x1fc12d;}async function loadWorldPOIsData(){const _0x4b9098=_0x564281;try{const _0x209b3a=await getDocs(collection(db,_0x4b9098(0x143)));worldPOIs=_0x209b3a[_0x4b9098(0x309)]['map'](_0x3aeaa1=>normalisePOI({'id':_0x3aeaa1['id'],..._0x3aeaa1['data']()})),console[_0x4b9098(0x1fb)]('[WorldPOIs]\x20loaded\x20'+worldPOIs[_0x4b9098(0xf5)]+_0x4b9098(0x228));}catch(_0x255232){console['error'](_0x4b9098(0xb1),_0x255232);}}async function loadWorldPOIs(){await loadWorldPOIsData();if(userLatLng)renderWorldPOIs();}function renderWorldPOIs(){const _0x309a25=_0x564281;Object['values'](poiMarkers)['forEach'](_0x1b3b6c=>{const _0x51e7ca=_0x1166;if(map['hasLayer'](_0x1b3b6c))map[_0x51e7ca(0x126)](_0x1b3b6c);}),Object[_0x309a25(0x342)](poiMarkers)[_0x309a25(0xa4)](_0x3d678b=>delete poiMarkers[_0x3d678b]),worldPOIs[_0x309a25(0xa4)](_0x48a74c=>{const _0x543564=_0x309a25;if(_0x48a74c[_0x543564(0x206)]&&!(window[_0x543564(0x121)]||[])[_0x543564(0x263)](_0x48a74c['id']))return;const _0x2a82b6=parseFloat(_0x48a74c[_0x543564(0x34f)]??_0x48a74c[_0x543564(0x35f)]??_0x48a74c[_0x543564(0x19b)]),_0x5a88c3=parseFloat(_0x48a74c[_0x543564(0x2d3)]??_0x48a74c['Lng']??_0x48a74c[_0x543564(0xb5)]);if(isNaN(_0x2a82b6)||isNaN(_0x5a88c3))return;const _0x3d2e09=visitedPOIs['has'](_0x48a74c['id']),_0x789b82=_0x3d2e09?_0x543564(0x192):'',_0x1ad354=L[_0x543564(0x12f)]([_0x2a82b6,_0x5a88c3],{'icon':L['divIcon']({'html':_0x543564(0x2b9)+_0x789b82+_0x543564(0x197),'className':'','iconSize':[0x28,0x28],'iconAnchor':[0x14,0x14]}),'interactive':!![],'pane':_0x543564(0x132)})[_0x543564(0x14b)](map);_0x1ad354['on'](_0x543564(0x29e),()=>{const _0x853f42=_0x543564;if(!userLatLng)return;const _0x17aa3e=distanceInMeters(userLatLng['lat'],userLatLng[_0x853f42(0x2d3)],_0x2a82b6,_0x5a88c3),_0x4b0f18=parseFloat(_0x48a74c[_0x853f42(0x2a3)])||0x14;_0x17aa3e>_0x4b0f18*0x3&&showLoreToast((_0x48a74c[_0x853f42(0xbb)]||'Point\x20of\x20Interest')+_0x853f42(0x183));}),poiMarkers[_0x48a74c['id']]=_0x1ad354;});if(userLatLng)updatePOIDistanceClasses();}function updatePOIDistanceClasses(){const _0x2b6c69=_0x564281;if(!userLatLng||!worldPOIs[_0x2b6c69(0xf5)])return;worldPOIs['forEach'](_0x56a3f1=>{const _0x23aa9f=_0x2b6c69,_0x1537a2=poiMarkers[_0x56a3f1['id']];if(!_0x1537a2)return;const _0xb90cd7=parseFloat(_0x56a3f1[_0x23aa9f(0x34f)]??_0x56a3f1[_0x23aa9f(0x35f)]??_0x56a3f1[_0x23aa9f(0x19b)]),_0x1b07ba=parseFloat(_0x56a3f1[_0x23aa9f(0x2d3)]??_0x56a3f1['Lng']??_0x56a3f1[_0x23aa9f(0xb5)]);if(isNaN(_0xb90cd7)||isNaN(_0x1b07ba))return;const _0x1c29d4=distanceInMeters(userLatLng['lat'],userLatLng[_0x23aa9f(0x2d3)],_0xb90cd7,_0x1b07ba),_0x4d3093=_0x1537a2[_0x23aa9f(0xe1)]();if(!_0x4d3093)return;const _0x1d0114=_0x4d3093[_0x23aa9f(0x21a)](_0x23aa9f(0xc8));if(!_0x1d0114)return;_0x1d0114[_0x23aa9f(0x198)][_0x23aa9f(0x18c)](_0x23aa9f(0x349),_0x23aa9f(0x162));if(_0x1c29d4>0x7d0)_0x1d0114['classList'][_0x23aa9f(0x311)](_0x23aa9f(0x162));else{if(_0x1c29d4>0x3e8)_0x1d0114[_0x23aa9f(0x198)][_0x23aa9f(0x311)](_0x23aa9f(0x349));}});}async function grantItem(_0x395268,_0x5054dc=![],_0x5dd2ba=![]){const _0x2c758c=_0x564281,_0x5155e3=auth['currentUser'];if(!_0x5155e3||!_0x395268)return;try{const _0x619f5e=await getDoc(doc(db,_0x2c758c(0x2f0),_0x395268)),_0x5b70af=_0x619f5e[_0x2c758c(0x170)]()?_0x619f5e[_0x2c758c(0x25a)]():null,_0x481ef0=doc(db,'Users',_0x5155e3[_0x2c758c(0x207)],_0x2c758c(0x205),_0x395268),_0x3dd894=await getDoc(_0x481ef0),_0x4c15c3=_0x3dd894[_0x2c758c(0x170)]()?_0x3dd894[_0x2c758c(0x25a)]()[_0x2c758c(0x34d)]||0x1:0x0;if(_0x5dd2ba&&_0x4c15c3>=0x1){console['log']('[grantItem]\x20skipping\x20'+_0x395268+_0x2c758c(0x208));return;}await setDoc(_0x481ef0,{'foundAt':_0x3dd894[_0x2c758c(0x170)]()?_0x3dd894['data']()['foundAt']:new Date(),'quantity':_0x4c15c3+0x1},{'merge':!![]});const _0x2244d0=_0x5b70af?.[_0x2c758c(0xbb)]||_0x395268,_0x783523=_0x5b70af?.[_0x2c758c(0xc3)]||null,_0x5d3f8e=_0x5b70af?.[_0x2c758c(0x347)]||_0x2c758c(0x103);_0x5054dc?pendingItemToast={'name':_0x2244d0,'iconSrc':_0x783523,'rarity':_0x5d3f8e}:showItemToast(_0x2244d0,_0x783523,_0x5d3f8e),console[_0x2c758c(0x1fb)](_0x2c758c(0x2b1)+_0x395268+'\x20to\x20'+_0x5155e3[_0x2c758c(0x207)]);}catch(_0x4d24e3){console[_0x2c758c(0x32f)](_0x2c758c(0x124),_0x4d24e3);}}let itemToastTimer=null;function showItemToast(_0x476105,_0x53b3f3,_0x387a0d){const _0xef33f3=_0x564281,_0x1e810b=document[_0xef33f3(0x223)](_0xef33f3(0xc9)),_0x4ee689=document['getElementById'](_0xef33f3(0x18d)),_0x34592e=document['getElementById']('item-toast-name'),_0xb12790=document[_0xef33f3(0x223)](_0xef33f3(0xe0));if(!_0x1e810b)return;_0x53b3f3?_0xb12790[_0xef33f3(0x120)]=_0xef33f3(0x253)+_0x53b3f3+_0xef33f3(0x1e3)+_0x476105+'\x22>':_0xb12790['textContent']='📦';_0x4ee689[_0xef33f3(0x1d8)]='Item\x20Found',_0x34592e['textContent']=_0x476105;const _0x2a6060={'common':_0xef33f3(0x348),'uncommon':_0xef33f3(0x280),'rare':'rgba(80,160,255,0.65)','epic':_0xef33f3(0x1d2),'legendary':_0xef33f3(0x362)};_0x1e810b[_0xef33f3(0xf7)][_0xef33f3(0x2d7)]=_0x2a6060[(_0x387a0d||_0xef33f3(0x103))[_0xef33f3(0x1c0)]()]||_0x2a6060['common'],_0x1e810b[_0xef33f3(0x198)][_0xef33f3(0x18c)]('hidden'),requestAnimationFrame(()=>{const _0x19c1c6=_0xef33f3;requestAnimationFrame(()=>_0x1e810b[_0x19c1c6(0x198)][_0x19c1c6(0x311)](_0x19c1c6(0x36d)));});if(itemToastTimer)clearTimeout(itemToastTimer);itemToastTimer=setTimeout(()=>{const _0x341215=_0xef33f3;_0x1e810b[_0x341215(0x198)][_0x341215(0x18c)](_0x341215(0x36d)),setTimeout(()=>_0x1e810b['classList'][_0x341215(0x311)]('hidden'),0x12c);},0xdac);}async function triggerPOI(_0x58a501){const _0x1a0a45=_0x564281,_0x47f906=auth['currentUser'];if(!_0x47f906)return;if(_0x58a501[_0x1a0a45(0x353)])try{const _0x5b6c29=await getDoc(doc(db,_0x1a0a45(0xc6),_0x47f906['uid'],_0x1a0a45(0x205),_0x58a501[_0x1a0a45(0x353)]));if(!_0x5b6c29['exists']()){showLoreToast(_0x1a0a45(0x254));const _0x281e5d=poiMarkers[_0x58a501['id']];if(_0x281e5d&&_0x281e5d[_0x1a0a45(0xe1)]()){const _0x44fa91=_0x281e5d[_0x1a0a45(0xe1)]()[_0x1a0a45(0x21a)](_0x1a0a45(0xc8));if(_0x44fa91){_0x44fa91['classList'][_0x1a0a45(0x311)](_0x1a0a45(0x285));if(!_0x44fa91[_0x1a0a45(0x21a)](_0x1a0a45(0x33e))){const _0x577381=document[_0x1a0a45(0x112)](_0x1a0a45(0x18f));_0x577381[_0x1a0a45(0xa5)]=_0x1a0a45(0x196),_0x577381[_0x1a0a45(0x1d8)]='🔒',_0x44fa91[_0x1a0a45(0x1fe)](_0x577381);}}}return;}}catch(_0x28efb1){console[_0x1a0a45(0x32f)](_0x1a0a45(0xf4),_0x28efb1);return;}visitedPOIs['add'](_0x58a501['id']);if(navigator['vibrate'])navigator[_0x1a0a45(0xd6)]([0x3c,0x1e,0x50]);if(_0x58a501[_0x1a0a45(0xea)]){const _0x3fd3ec=poiMarkers[_0x58a501['id']];if(_0x3fd3ec&&_0x3fd3ec['getElement']()){const _0xfa2459=_0x3fd3ec[_0x1a0a45(0xe1)]()[_0x1a0a45(0x21a)](_0x1a0a45(0xc8));_0xfa2459&&(_0xfa2459[_0x1a0a45(0x198)]['remove']('poi-far','poi-distant'),_0xfa2459['classList'][_0x1a0a45(0x311)](_0x1a0a45(0x35a)));}try{await setDoc(doc(db,_0x1a0a45(0xc6),_0x47f906['uid'],'visitedPOIs',_0x58a501['id']),{'visitedAt':new Date()},{'merge':!![]});}catch(_0x13dd22){}}if(_0x58a501[_0x1a0a45(0x230)]?.['text'])openLoreCard({'title':_0x58a501[_0x1a0a45(0x230)][_0x1a0a45(0x1a6)]||_0x58a501['name']||_0x1a0a45(0x13c),'text':_0x58a501[_0x1a0a45(0x230)][_0x1a0a45(0x1d9)],'style':_0x58a501[_0x1a0a45(0x230)][_0x1a0a45(0xf7)]||_0x1a0a45(0xfb)});else _0x58a501[_0x1a0a45(0x1f2)]?showLoreToast(_0x58a501[_0x1a0a45(0x1f2)]):showLoreToast(_0x58a501[_0x1a0a45(0xbb)]||_0x1a0a45(0x36f));_0x58a501[_0x1a0a45(0x2cf)]&&setTimeout(()=>grantItem(_0x58a501['item'],![],!!_0x58a501['oneTime']),_0x58a501[_0x1a0a45(0x230)]?.['text']?0x320:0x0);}function checkPOIProximity(){const _0x45588c=_0x564281;if(!userLatLng||!worldPOIs[_0x45588c(0xf5)])return;worldPOIs[_0x45588c(0xa4)](_0x186dbb=>{const _0x4b67fe=_0x45588c,_0x5dc413=_0x186dbb['id'];if(_0x186dbb['oneTime']&&visitedPOIs['has'](_0x5dc413))return;const _0x4a508b=parseFloat(_0x186dbb['lat']??_0x186dbb[_0x4b67fe(0x35f)]??_0x186dbb['latitude']),_0x3dc703=parseFloat(_0x186dbb['lng']??_0x186dbb[_0x4b67fe(0x129)]??_0x186dbb[_0x4b67fe(0xb5)]);if(isNaN(_0x4a508b)||isNaN(_0x3dc703))return;const _0x110b71=distanceInMeters(userLatLng[_0x4b67fe(0x34f)],userLatLng['lng'],_0x4a508b,_0x3dc703),_0x17c8ec=parseFloat(_0x186dbb[_0x4b67fe(0x2a3)])||0x14;_0x110b71<=_0x17c8ec?!poiDwellTimers[_0x5dc413]&&(poiDwellTimers[_0x5dc413]=setTimeout(async()=>{const _0x2e1bc3=_0x4b67fe,_0x5a6d0d=distanceInMeters(userLatLng[_0x2e1bc3(0x34f)],userLatLng[_0x2e1bc3(0x2d3)],_0x4a508b,_0x3dc703);if(_0x5a6d0d<=_0x17c8ec){if(_0x186dbb[_0x2e1bc3(0xea)]&&visitedPOIs[_0x2e1bc3(0x29c)](_0x5dc413))return;await triggerPOI(_0x186dbb);}delete poiDwellTimers[_0x5dc413];},POI_DWELL_MS)):poiDwellTimers[_0x5dc413]&&(clearTimeout(poiDwellTimers[_0x5dc413]),delete poiDwellTimers[_0x5dc413]);});}async function loadVisitedPOIs(){const _0x683eab=_0x564281,_0x1863cc=auth[_0x683eab(0x29b)];if(!_0x1863cc)return;try{const _0x45c0dd=await getDocs(collection(db,_0x683eab(0xc6),_0x1863cc['uid'],_0x683eab(0x33c)));_0x45c0dd['forEach'](_0x41dc12=>visitedPOIs[_0x683eab(0x311)](_0x41dc12['id'])),console[_0x683eab(0x1fb)](_0x683eab(0x153)+visitedPOIs[_0x683eab(0x117)]+_0x683eab(0x10b));}catch(_0x8278cc){}}document['addEventListener'](_0x564281(0x109),()=>{const _0x56568b=_0x564281;document[_0x56568b(0x173)]==='visible'&&(auth['currentUser']&&!watchId&&_0x56568b(0x177)in navigator&&(console[_0x56568b(0x1fb)](_0x56568b(0x219)),startGeolocationWatch()));});
+// app.js — Final patched file (apply as a full replacement)
+// - Ensures checkpoint markers remain visible when a route starts
+// - Uses setProperty(..., 'important') to override CSS !important rules
+// - Exposes runtime references for debugging and tracing
+// - Adds lightweight logs in showRoute and clearRoute
+// - Starts geolocation when user is signed in (and from recenter if needed)
+// - Smooths auto-follow to avoid jitter
+// - Makes Nearby screen truly “nearby” using distance
+// - Sorts History newest → oldest
+// - No other app logic changed
+
+// ======== FIREBASE IMPORTS ========
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  setDoc,
+  getDoc,
+  addDoc,
+  writeBatch
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+// ======== FIREBASE CONFIG ========
+const firebaseConfig = {
+  apiKey: "AIzaSyCfS5a-1fg-68_gpcqpmMbSTz7bW9dEp_0",
+  authDomain: "pathquest-archives.firebaseapp.com",
+  projectId: "pathquest-archives",
+  storageBucket: "pathquest-archives.firebasestorage.app",
+  messagingSenderId: "86962049537",
+  appId: "1:86962049537:web:428c8af7896716657a6600",
+  measurementId: "G-TR41D17WY7"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+provider.setCustomParameters({ prompt: "select_account" });
+
+// ======== HANDLE REDIRECT RESULT (clean URL) ========
+(async function handleRedirectResult() {
+  try {
+    const landingEl = document.getElementById("landing-screen");
+  if (landingEl) landingEl.classList.add("hidden");
+
+  const result = await getRedirectResult(auth);
+    if (result && result.user) {
+      console.log("Redirect login success:", result.user);
+    }
+  } catch (err) {
+    console.warn("getRedirectResult error:", err);
+  } finally {
+    try {
+      const url = new URL(window.location.href);
+      ["code", "state", "session", "oauth", "g_csrf_token"].forEach((p) =>
+        url.searchParams.delete(p)
+      );
+      history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+    } catch (e) {
+      // ignore
+    }
+  }
+})();
+
+// ======== BADGE SYSTEM ========
+const DEFAULT_BADGE_IMAGE = "icons/default-badge.png";
+
+async function awardBadge(badgeId) {
+  const user = auth.currentUser;
+  if (!user) return;
+  try {
+    await setDoc(doc(db, "Users", user.uid, "badges", badgeId), {
+      earnedAt: new Date(),
+      name: badgeId.replace(/_/g, " "),
+      image: DEFAULT_BADGE_IMAGE,
+      description: "Badge earned for completing a route."
+    });
+  } catch (e) {
+    console.error("awardBadge error", e);
+  }
+}
+
+// ======== BADGE REVEAL ANIMATION ========
+function showBadgeReveal(badgeName, badgeSVG) {
+  const overlay      = document.getElementById("badge-reveal-overlay");
+  const ring         = document.getElementById("badge-reveal-ring");
+  const svgContainer = document.getElementById("badge-reveal-svg-container");
+  const nameEl       = document.getElementById("badge-reveal-name");
+  if (!overlay || !svgContainer || !nameEl) return;
+
+  // Reset animation so it replays if called again
+  if (ring) {
+    ring.style.animation = "none";
+    void ring.offsetWidth; // force reflow
+    ring.style.animation = "";
+  }
+
+  // Inject badge SVG
+  svgContainer.innerHTML = badgeSVG || "";
+  nameEl.textContent = badgeName || "New Badge";
+
+  // Show overlay
+  overlay.classList.add("show");
+
+  // Haptic — stamp impact feel
+  if (navigator.vibrate) navigator.vibrate([0, 100, 80, 60, 40]);
+
+  // Dismiss on tap (allow time for animation to play)
+  const dismiss = () => {
+    overlay.classList.remove("show");
+    overlay.removeEventListener("click", dismiss);
+    // Reset animated elements so they're invisible until next reveal
+    [".badge-reveal-label", ".badge-reveal-name", ".badge-reveal-tap"].forEach(sel => {
+      const el = overlay.querySelector(sel);
+      if (el) { el.style.animation = "none"; el.style.opacity = "0"; }
+    });
+  };
+  setTimeout(() => overlay.addEventListener("click", dismiss), 1400);
+}
+
+// ======== TITLE SYSTEM ========
+function getTitleForCompletions(count) {
+  if (count >= 50) return "Master Explorer";
+  if (count >= 25) return "Summit Seeker";
+  if (count >= 10) return "Pathfinder";
+  if (count >= 3) return "Trail Rookie";
+  return "New Adventurer";
+}
+
+async function updateUserTitleUI() {
+  const user = auth.currentUser;
+  if (!user) return;
+  try {
+    const historyCol = collection(db, "Users", user.uid, "routeHistory");
+    const snap = await getDocs(historyCol);
+    const count = snap.size;
+    const title = getTitleForCompletions(count);
+    const titleEl = document.getElementById("user-title");
+    if (titleEl) titleEl.textContent = `Title: ${title} (${count} routes completed)`;
+    // Keep menu profile title in sync
+    const profileTitle = document.getElementById("menu-profile-title");
+    if (profileTitle) profileTitle.textContent = title;
+  } catch (e) {
+    console.error("updateUserTitleUI error", e);
+  }
+}
+
+// ── iOS bfcache: reset sign-in button if user hits Back from Google auth ──
+window.addEventListener("pageshow", (event) => {
+  if (!event.persisted) return; // normal load — nothing to fix
+  // Page was restored from back-forward cache (iOS Safari).
+  // The button may be stuck on "Signing in…" — reset it.
+  resetSignInBtn();
+  // Also make sure the landing is visible (not stuck hidden)
+  const landing = document.getElementById("landing-screen");
+  if (landing && !auth.currentUser) {
+    landing.classList.remove("hidden", "fade-out");
+  }
+  // Hide the splash if it's somehow still showing
+  const splash = document.getElementById("splash-screen");
+  if (splash) { splash.classList.add("fade-out"); setTimeout(() => splash.classList.add("gone"), 650); }
+});
+// Sign-in is handled by the FAB when in signed-out state (see auth observer below)
+async function handleSignIn() {
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (popupErr) {
+    // User dismissed the popup (hit back / closed it) — don't redirect, just bail.
+    const code = popupErr?.code || "";
+    if (
+      code === "auth/popup-closed-by-user" ||
+      code === "auth/cancelled-popup-request" ||
+      code === "auth/user-cancelled"
+    ) {
+      console.log("Sign-in popup closed by user — no action needed.");
+      return; // Let the button reset in the finally block below
+    }
+
+    // Popup genuinely blocked (e.g. desktop browser with strict settings) — fall back to redirect
+    console.warn("Popup sign-in failed, falling back to redirect:", popupErr);
+    try {
+      await signInWithRedirect(auth, provider);
+      // signInWithRedirect navigates away; code below won't run until the user returns
+    } catch (redirectErr) {
+      console.error("Redirect sign-in failed:", redirectErr);
+      alert("Sign-in failed. Please allow popups or try again.");
+    }
+  }
+}
+
+// ======== LEAFLET MAP SETUP ========
+const map = L.map("map", {
+  zoomControl: false,
+  attributionControl: false,
+  rotate: true,
+  touchRotate: true,
+  rotateControl: false,
+  bearing: 0,
+  markerZoomAnimation: true,
+  zoomSnap: 0.5,
+  zoomAnimationThreshold: 4,
+  zoomAnimation: true
+}).setView([49.25, -122.89], 13);
+
+// Expose map early for debugging
+window._map = map;
+
+// ======== SPLASH SCREEN ========
+const splashScreen   = document.getElementById("splash-screen");
+const splashProgress = document.getElementById("splash-progress-bar");
+const splashStatus   = document.getElementById("splash-status");
+
+function setSplashProgress(pct, status) {
+  if (splashProgress) splashProgress.style.width = pct + "%";
+  if (splashStatus)   splashStatus.textContent   = status;
+}
+
+function hideSplash() {
+  if (!splashScreen) return;
+  splashScreen.classList.add("fade-out");
+  setTimeout(() => splashScreen.classList.add("gone"), 650);
+}
+
+const landingScreen  = document.getElementById("landing-screen");
+const landingSignBtn = document.getElementById("landing-signin-btn");
+
+const SIGNIN_BTN_HTML = `<svg viewBox="0 0 24 24" width="20" height="20" style="flex-shrink:0">
+  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+</svg> Sign in with Google`;
+
+function resetSignInBtn() {
+  if (!landingSignBtn) return;
+  landingSignBtn.disabled = false;
+  landingSignBtn.classList.remove("loading");
+  landingSignBtn.innerHTML = SIGNIN_BTN_HTML;
+}
+
+function showLandingScreen() {
+  if (!landingScreen) return;
+  landingScreen.classList.remove("hidden", "fade-out");
+  resetSignInBtn();
+  if (landingSignBtn) {
+    landingSignBtn.onclick = async () => {
+      landingSignBtn.classList.add("loading");
+      landingSignBtn.textContent = "Signing in…";
+      landingSignBtn.disabled = true;
+      try {
+        await handleSignIn();
+      } catch(e) {
+        // ignored — handleSignIn handles its own errors
+      } finally {
+        // Always reset — covers popup dismissed, errors, and any path that doesn't navigate away
+        resetSignInBtn();
+      }
+    };
+  }
+}
+
+function hideLandingScreen() {
+  if (!landingScreen) return;
+  landingScreen.classList.add("fade-out");
+  setTimeout(() => landingScreen.classList.add("hidden"), 500);
+}
+
+// ======== STORY INTRO (one-time) ========
+const STORY_INTRO_KEY = "pqa_story_intro_seen";
+
+function maybeShowStoryIntro(onDone) {
+  const screen = document.getElementById("story-intro-screen");
+  if (!screen) { onDone(); return; }
+
+  if (localStorage.getItem(STORY_INTRO_KEY)) { onDone(); return; }
+
+  // Show it
+  screen.classList.remove("hidden", "fade-out");
+
+  function dismiss() {
+    localStorage.setItem(STORY_INTRO_KEY, "1");
+    screen.classList.add("fade-out");
+    setTimeout(() => { screen.classList.add("hidden"); onDone(); }, 700);
+  }
+
+  const btn = document.getElementById("story-intro-btn");
+  if (btn) btn.addEventListener("click", dismiss, { once: true });
+  // Tap anywhere also works (after animations have had a moment)
+  setTimeout(() => {
+    screen.addEventListener("click", dismiss, { once: true });
+  }, 2600);
+}
+
+// ======== DISCLAIMER ========
+const DISCLAIMER_KEY  = "pqa_disclaimer_accepted";
+const ONBOARDING_KEY  = "pqa_onboarding_done";
+
+function showOnboarding(onComplete) {
+  const backdrop = document.getElementById("onboarding-backdrop");
+  const modal    = document.getElementById("onboarding-modal");
+  if (!backdrop || !modal) { onComplete?.(); return; }
+
+  backdrop.classList.remove("hidden");
+  modal.classList.remove("hidden");
+
+  function goTo(fromId, toId) {
+    const from = document.getElementById(fromId);
+    const to   = document.getElementById(toId);
+    if (!from || !to) return;
+    from.classList.add("slide-out");
+    setTimeout(() => {
+      from.classList.add("hidden");
+      from.classList.remove("slide-out");
+      to.classList.remove("hidden");
+      to.classList.add("slide-in");
+      setTimeout(() => to.classList.remove("slide-in"), 240);
+    }, 220);
+  }
+
+  function close() {
+    backdrop.classList.add("hidden");
+    modal.classList.add("hidden");
+    localStorage.setItem(ONBOARDING_KEY,  "1");
+    localStorage.setItem(DISCLAIMER_KEY,  "1");
+    onComplete?.();
+  }
+
+  document.getElementById("onboarding-next-1")?.addEventListener("click", () => {
+    goTo("onboarding-step-1", "onboarding-step-2");
+  }, { once: true });
+
+  document.getElementById("onboarding-next-2")?.addEventListener("click", () => {
+    goTo("onboarding-step-2", "onboarding-step-3");
+  }, { once: true });
+
+  document.getElementById("onboarding-enable-gps")?.addEventListener("click", () => {
+    startGeolocationWatch();
+    close();
+  }, { once: true });
+
+  document.getElementById("onboarding-skip-gps")?.addEventListener("click", () => {
+    close();
+  }, { once: true });
+}
+
+function maybeShowOnboarding() {
+  if (!localStorage.getItem(ONBOARDING_KEY)) {
+    showOnboarding();
+  } else if (!localStorage.getItem(DISCLAIMER_KEY)) {
+    localStorage.setItem(DISCLAIMER_KEY, "1");
+  }
+}
+
+function showDisclaimer() {
+  const backdrop = document.getElementById("disclaimer-backdrop");
+  const modal    = document.getElementById("disclaimer-modal");
+  const btn      = document.getElementById("disclaimer-accept-btn");
+  if (!backdrop || !modal) return;
+  backdrop.classList.remove("hidden");
+  modal.classList.remove("hidden");
+  btn?.addEventListener("click", () => {
+    localStorage.setItem(DISCLAIMER_KEY, "1");
+    backdrop.classList.add("hidden");
+    modal.classList.add("hidden");
+  }, { once: true });
+}
+
+function maybeShowDisclaimer() {
+  if (!localStorage.getItem(DISCLAIMER_KEY)) showDisclaimer();
+}
+
+// OSM tiles — no API key required
+// ⚠️ Stadia blocked by Edge tracking prevention (401/403) — do not revert to Stadia without API key
+const tileLayer = L.tileLayer(
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  {
+    maxZoom: 19,
+    attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
+  }
+).addTo(map);
+
+// Subtle tint: darken + desaturate the busy OSM base so game markers pop
+// No hue-rotate — keeps greens/blues natural, avoids purple shift
+const _applyMapFilter = () => {
+  const container = tileLayer.getContainer?.();
+  if (container) container.style.filter = "saturate(0.55) brightness(0.82) contrast(1.05)";
+};
+tileLayer.once("load", _applyMapFilter);
+map.on("layeradd", (e) => { if (e.layer === tileLayer) _applyMapFilter(); });
+
+map.on("zoom move", () => {
+  if (!routeLine) return;
+  routeLine.redraw();
+  const renderer = routeLine._renderer;
+  if (renderer && renderer._reset) renderer._reset();
+});
+
+// Apply marker pane transform in sync with tile pane during scroll zoom.
+map.on("zoomend", () => {
+  const zoom = map.getZoom();
+  flagAnimPaused = zoom < 14;
+  updateMarkersForZoom(zoom);
+});
+
+// ── JS FLAG ANIMATION (replaces CSS keyframes — iOS Safari safe) ──
+const FLAG_FRAMES      = ["icons/flag1.svg","icons/flag2.svg","icons/flag3.svg","icons/flag4.svg"];
+const FLAG_GOLD_FRAMES = ["icons/flag-gold1.svg","icons/flag-gold2.svg","icons/flag-gold3.svg","icons/flag-gold4.svg"];
+const FLAG_INTERVAL_MS = 150; // ~6.6fps — matches original 0.6s / 4 frames
+let flagAnimPaused = false;
+
+// Shared tick counter — all flags read the same clock so they advance in sync.
+// Avoids Date.now() drift where different flags land on different frames within
+// the same tick, which caused the rapid flicker/flash on mobile.
+let _flagTick = 0;
+
+setInterval(() => {
+  _flagTick++;
+  if (flagAnimPaused) return;
+  document.querySelectorAll(".flag-anim").forEach(el => {
+    const frames = el.classList.contains("flag-gold") ? FLAG_GOLD_FRAMES : FLAG_FRAMES;
+    const delay  = parseInt(el.dataset.delay || "0", 10);
+    const frame  = (_flagTick + delay) % frames.length;
+    // Only write backgroundImage when the frame actually changes — avoids the
+    // browser repaint/SVG-reload that happens when the same URL is re-assigned
+    // every tick even though nothing visually changed (main cause of flicker).
+    const next = `url("${frames[frame]}")`;
+    if (el.dataset.flagFrame !== next) {
+      el.dataset.flagFrame = next;
+      el.style.backgroundImage = next;
+    }
+  });
+}, FLAG_INTERVAL_MS);
+
+// Swap a trailhead flag to gold and add a ✓ chip when a route is completed
+// mid-session — avoids a full re-render of all markers.
+function markTrailheadComplete(routeName) {
+  const entry = trailheadMarkers.find(t => {
+    // Match by position — look up route start coords from __allRoutes
+    const route = (window.__allRoutes || []).find(r => r.name === routeName);
+    if (!route || !route.checkpoints?.[0]) return false;
+    const lat = parseFloat(route.checkpoints[0].lat ?? route.checkpoints[0].Lat ?? route.checkpoints[0].latitude);
+    const lng = parseFloat(route.checkpoints[0].lng ?? route.checkpoints[0].Lng ?? route.checkpoints[0].longitude);
+    return Math.abs(t.lat - lat) < 0.00001 && Math.abs(t.lng - lng) < 0.00001;
+  });
+  if (!entry || !entry.marker?._icon) return;
+
+  // Swap flag colour — add flag-gold class to inner element
+  const flagEl = entry.marker._icon.querySelector(".flag-anim");
+  if (flagEl && !flagEl.classList.contains("flag-gold")) {
+    flagEl.classList.add("flag-gold");
+  }
+
+  // Add ✓ chip below flag if not already there
+  if (!entry.marker._icon.querySelector(".trailhead-done-chip")) {
+    const chip = document.createElement("div");
+    chip.className = "trailhead-done-chip";
+    chip.textContent = "✓";
+    entry.marker._icon.appendChild(chip);
+  }
+
+  entry.isCompleted = true;
+}
+
+function updateMarkersForZoom(zoom) {
+  // ── User sprite scaling — scale only the hiker image via CSS transform.
+  // Scaling the whole wrapper would interfere with the direction arrow's
+  // own transform. transform-origin: center bottom keeps feet at the anchor.
+  const spriteScale = Math.max(0.45, Math.min(1.6, (zoom - 13) * 0.29));
+
+  if (userMarker && userMarker._icon) {
+    const img = userMarker._icon.querySelector(".user-hiker-icon");
+    if (img) {
+      img.style.transformOrigin = "center bottom";
+      img.style.transform = `scale(${spriteScale})`;
+    }
+  }
+
+  // ── Trailhead flags — scale via CSS transform so iconAnchor stays correct.
+  // Width/height changes break the anchor; transform-origin:bottom left keeps
+  // the pole base pinned to the geographic point at all zoom levels.
+  const thScale = Math.max(0.15, Math.min(1.5, (zoom - 10) * 0.12));
+  trailheadMarkers.forEach(({ marker }) => {
+    if (!marker || !marker._icon) return;
+    const el = marker._icon.querySelector(".flag-anim");
+    if (!el) return;
+    el.style.transformOrigin = "bottom left";
+    el.style.transform = `scale(${thScale})`;
+  });
+
+  // ── Checkpoint mini flags — same approach
+  const cpScale = Math.max(0.15, Math.min(1.5, (zoom - 10) * 0.08));
+  const badgeSize = Math.round(Math.max(5, Math.min(28, (zoom - 10) * 3.5)) * 0.55);
+  const badgeFontSize = Math.round(badgeSize * 0.55);
+
+  if (checkpointMarkers) {
+    checkpointMarkers.forEach((m) => {
+      if (!m || !m._icon) return;
+      const wrap = m._icon.querySelector(".cp-flag-wrap");
+      if (!wrap) return;
+      wrap.style.transformOrigin = "bottom left";
+      wrap.style.transform = `scale(${cpScale})`;
+      const badge = wrap.querySelector(".cp-flag-number");
+      if (badge) { badge.style.minWidth = badgeSize + "px"; badge.style.height = badgeSize + "px"; badge.style.fontSize = badgeFontSize + "px"; }
+    });
+  }
+}
+
+// ======== CHECKPOINT PANE CREATION & STACKING FIX ========
+if (!map.getPane("checkpointPane")) map.createPane("checkpointPane");
+map.getPane("checkpointPane").style.zIndex = "1420";
+map.getPane("checkpointPane").style.pointerEvents = "auto";
+
+// markerPane — trailhead flags sit here, above user marker
+const markerPane = map.getPane("markerPane");
+if (markerPane) {
+  markerPane.style.zIndex = "1410";
+  markerPane.style.pointerEvents = "auto";
+}
+
+// userPane — always below flags so they stay tappable on iPhone
+if (!map.getPane("userPane")) map.createPane("userPane");
+map.getPane("userPane").style.zIndex = "1390";
+map.getPane("userPane").style.pointerEvents = "none";
+
+const mapEl = document.getElementById("map");
+if (mapEl) mapEl.style.background = "#0b0b0b";
+
+// ======== STATE ========
+let lastPreviewRouteName = null;
+let lastPreviewRouteCheckpoints = null;
+let routes = [];
+let activeRoute = null;
+let activeRouteName    = null;
+let activeRouteMode    = "guided"; // "guided" | "hunt"
+let activeRouteNarrator = "";      // narrator id for the active route
+let activeIndex = 0;
+let userLatLng = null;
+let userMarker = null;
+let routeLayer = null;
+let routeLine = null;
+
+// Track lore triggers so they only fire once
+let visitedLore = {};
+
+let watchId = null;
+let checkpointMarkers = [];
+
+// Start/stop geolocation tracking only after a user gesture
+function startGeolocationWatch() {
+  if (watchId || !("geolocation" in navigator)) return;
+
+  // Show GPS waiting indicator until first fix arrives
+  const gpsWaiting = document.getElementById("gps-waiting");
+  if (gpsWaiting && !userLatLng) gpsWaiting.style.display = "flex";
+
+  watchId = navigator.geolocation.watchPosition(
+    updateUserMarker,
+    (err) => {
+      console.warn("GPS error (watch):", err);
+    },
+    {
+      enableHighAccuracy: true,
+      maximumAge: 5000,
+      timeout: 20000
+    }
+  );
+}
+
+function stopGeolocationWatch() {
+  if (!watchId) return;
+  try {
+    navigator.geolocation.clearWatch(watchId);
+  } catch (e) {}
+  watchId = null;
+}
+
+const startMarkersLayer = L.layerGroup().addTo(map);
+let trailheadMarkers = [];
+
+// ======== ICONS ========
+function createStartIcon() {
+  const delay = Math.floor(Math.random() * 4) + 1;
+
+  return L.divIcon({
+    html: `<div class="flag-anim" data-delay="${delay}"></div>`,
+    className: "",
+    iconSize: [36, 48],
+    iconAnchor: [4, 48]
+  });
+}
+
+function createGoldFlagIcon() {
+  const delay = Math.floor(Math.random() * 4) + 1;
+
+  return L.divIcon({
+    html: `<div class="flag-anim flag-gold" data-delay="${delay}"></div>`,
+    className: "",
+    iconSize: [36, 48],
+    iconAnchor: [4, 48]
+  });
+}
+
+function createCheckpointIcon(isActive, number) {
+  return L.divIcon({
+    html: `
+      <div class="flag-mini ${isActive ? "checkpoint-glow" : ""}">
+        <div class="checkpoint-number">${number}</div>
+      </div>
+    `,
+    className: "",
+    iconSize: [32, 40],
+    iconAnchor: [4, 40]
+  });
+}
+
+function createUserIcon() {
+  return L.divIcon({
+    html: `
+      <div class="user-icon-wrapper">
+        <img src="icons/hiker-sprite.png" class="user-hiker-icon">
+      </div>
+    `,
+    className: "",
+    iconSize: [1, 1],
+    iconAnchor: [24, 72]
+  });
+}
+
+function computeRouteDistance(checkpoints) {
+  let total = 0;
+
+  for (let i = 0; i < checkpoints.length - 1; i++) {
+    const a = checkpoints[i];
+    const b = checkpoints[i + 1];
+
+    const latA = parseFloat(a.lat ?? a.Lat ?? a.latitude);
+    const lngA = parseFloat(a.lng ?? a.Lng ?? a.longitude);
+    const latB = parseFloat(b.lat ?? b.Lat ?? b.latitude);
+    const lngB = parseFloat(b.lng ?? b.Lng ?? b.longitude);
+
+    if (isNaN(latA) || isNaN(lngA) || isNaN(latB) || isNaN(lngB)) continue;
+
+    total += distanceInMeters(latA, lngA, latB, lngB);
+  }
+
+  return total; // meters
+}
+
+function estimateTimeMinutes(distanceMeters) {
+  const pace = 80; // meters per minute (≈ 4.8 km/h walking pace)
+  return Math.round(distanceMeters / pace);
+}
+
+/* ============================================================
+   JOURNAL PANEL — LOGIC
+============================================================ */
+
+const journalPanel = document.getElementById("journal-panel");
+const journalBackdrop = document.getElementById("journal-backdrop");
+const journalRoutesList = document.getElementById("journal-routes-list");
+const journalLoreList = document.getElementById("journal-lore-list");
+const journalCloseBtn = document.getElementById("journal-close-btn");
+
+// NOTE: openJournalPanel is defined in the narrator journal block below.
+// It is kept as a named alias for any legacy callers.
+
+function openJournalRoute(routeName, entries) {
+  journalLoreList.innerHTML = "";
+  journalLoreList.classList.remove("hidden");
+
+  entries.forEach(entry => {
+    const div = document.createElement("div");
+    div.className = "journal-lore-entry";
+
+    div.innerHTML = `
+      <div class="journal-lore-title">${entry.title}</div>
+      <div class="journal-lore-preview">${entry.text.slice(0, 80)}...</div>
+    `;
+
+    div.onclick = () => openLoreCard(entry);
+
+    journalLoreList.appendChild(div);
+  });
+}
+
+function closeJournal() {
+  journalBackdrop.classList.remove("show");
+  journalPanel.classList.remove("show");
+
+  setTimeout(() => {
+    journalBackdrop.classList.add("hidden");
+    journalPanel.classList.add("hidden");
+  }, 250);
+}
+
+journalCloseBtn.onclick = closeJournal;
+journalBackdrop.onclick = closeJournal;
+
+
+// ======== GEO HELPERS ========
+function distanceInMeters(lat1, lng1, lat2, lng2) {
+  const R = 6371000;
+  const toRad = (x) => (x * Math.PI) / 180;
+
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) *
+      Math.cos(toRad(lat2)) *
+      Math.sin(dLng / 2) ** 2;
+
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function bearingDegrees(lat1, lng1, lat2, lng2) {
+  const toRad = (x) => (x * Math.PI) / 180;
+  const toDeg = (x) => (x * 180) / Math.PI;
+
+  const dLng = toRad(lng2 - lng1);
+  const y = Math.sin(dLng) * Math.cos(toRad(lat2));
+  const x =
+    Math.cos(toRad(lat1)) * Math.sin(toRad(lat2)) -
+    Math.sin(lat1 * (Math.PI / 180)) *
+      Math.cos(toRad(lat2)) *
+      Math.cos(dLng);
+
+  let brng = toDeg(Math.atan2(y, x));
+  return (brng + 360) % 360;
+}
+
+// ======== ROUTE COMPLETION + HISTORY ========
+// ── NARRATOR POI UNLOCK SYSTEM ───────────────────────────────
+// After each route completion, check if the narrator's POI should unlock.
+// Threshold and POI id live on the Narrator doc in Firestore.
+// Unlocked POIs are stored in Users/{uid}/profile/info.unlockedPOIs.
+
+async function checkNarratorPOIUnlock(routeName) {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  // Find which narrator this route belongs to
+  const route = (window.__allRoutes || []).find(r => r.name === routeName);
+  if (!route?.narrator) return;
+
+  const narrator = NARRATORS.find(n => n.id === route.narrator);
+  if (!narrator?.poiUnlockThreshold || !narrator?.unlockPOIId) return;
+
+  // Already unlocked — nothing to do
+  if ((window.__unlockedPOIs || []).includes(narrator.unlockPOIId)) return;
+
+  // Count how many of this narrator's routes the player has completed
+  const narratorRouteNames = (window.__allRoutes || [])
+    .filter(r => r.narrator === narrator.id)
+    .map(r => r.name);
+
+  const completedNarratorRoutes = narratorRouteNames.filter(name =>
+    window.__completedRoutes?.has(name)
+  ).length;
+
+  if (completedNarratorRoutes < narrator.poiUnlockThreshold) return;
+
+  // Threshold met — unlock the POI
+  window.__unlockedPOIs = [...(window.__unlockedPOIs || []), narrator.unlockPOIId];
+
+  try {
+    const profileRef = doc(db, "Users", user.uid, "profile", "info");
+    await setDoc(profileRef, { unlockedPOIs: window.__unlockedPOIs }, { merge: true });
+    console.log(`[POI Unlock] ${narrator.unlockPOIId} unlocked for narrator ${narrator.id}`);
+  } catch (err) {
+    console.error("[POI Unlock] failed to save:", err);
+  }
+
+  // Reveal the POI on the map with a brief delay so it appears after the badge reveal
+  setTimeout(() => revealUnlockedPOI(narrator.unlockPOIId, narrator.name), 3500);
+}
+
+// Adds the newly unlocked POI to the map with a pulse reveal animation.
+function revealUnlockedPOI(poiId, narratorName) {
+  const poi = worldPOIs.find(p => p.id === poiId);
+  if (!poi) return;
+
+  const lat = parseFloat(poi.lat ?? poi.Lat ?? poi.latitude);
+  const lng = parseFloat(poi.lng ?? poi.Lng ?? poi.longitude);
+  if (isNaN(lat) || isNaN(lng)) return;
+
+  // Add the marker to the map (renderWorldPOIs will also pick it up on next call)
+  const marker = L.marker([lat, lng], {
+    icon: L.divIcon({
+      html: `<div class="poi-marker poi-reveal">
+               <img class="poi-svg" src="icons/poi-marker.svg" alt="Point of Interest">
+             </div>`,
+      className: "",
+      iconSize:   [40, 40],
+      iconAnchor: [20, 20]
+    }),
+    interactive: true,
+    pane: "markerPane"
+  }).addTo(map);
+
+  poiMarkers[poiId] = marker;
+
+  // Show a toast notifying the player
+  showLoreToast(`Something has appeared on the map.`);
+
+  // Remove the reveal pulse class after animation completes
+  setTimeout(() => {
+    const el = marker.getElement();
+    if (el) el.querySelector(".poi-marker")?.classList.remove("poi-reveal");
+  }, 2000);
+}
+
+async function logRouteCompletion(routeName) {
+  const user = auth.currentUser;
+  if (!user) return;
+  try {
+    await addDoc(collection(db, "Users", user.uid, "routeHistory"), {
+      routeName,
+      completedAt: new Date()
+    });
+    updateUserTitleUI();
+  } catch (e) {
+    console.error("logRouteCompletion error", e);
+  }
+}
+
+async function completeRoute() {
+  if (!activeRouteName) return;
+  const badgeId = `completed_${activeRouteName.replace(/\s+/g, "_")}`;
+  awardBadge(badgeId);
+
+  // Count lore entries found + snapshot route length before clearing state
+  const loreCount = Object.values(visitedLore).filter(v => v).length;
+  const totalLore = activeRoute.length;
+
+  // Snapshot route + name before clearRoute nulls them
+  const routeSnapshot = activeRoute;
+  const routeNameSnapshot = activeRouteName;
+
+  // Log completion — await it so the history count is accurate for stars
+  await logRouteCompletion(routeNameSnapshot);
+
+  // Optimistically update the Set so trailhead icon turns gold immediately
+  if (!window.__completedRoutes) window.__completedRoutes = new Set();
+  window.__completedRoutes.add(routeNameSnapshot);
+  markTrailheadComplete(routeNameSnapshot);
+
+  // ── Narrator POI unlock check ────────────────────────────────
+  // After completing a route, check if the player has now hit the
+  // threshold for the route's narrator. If so, unlock their POI.
+  await checkNarratorPOIUnlock(routeNameSnapshot);
+
+  // Count how many times this route has been completed (including this one)
+  // by reading the routeHistory collection we just wrote to
+  let completions = 1;
+  try {
+    const user = auth.currentUser;
+    if (user) {
+      const snap = await getDocs(collection(db, "Users", user.uid, "routeHistory"));
+      snap.forEach(d => {
+        if (d.data().routeName === routeNameSnapshot) completions++;
+      });
+      // snap already includes the doc we just wrote, so subtract the
+      // extra 1 we started with
+      completions = Math.max(1, completions - 1);
+    }
+  } catch (e) {
+    console.warn("completeRoute: could not read history for star count", e);
+  }
+
+  const starCount = getStarCountForCompletions(completions);
+  const badgeSVG = generateBadgeSVG(routeNameSnapshot, starCount);
+
+  // Show badge reveal first, then summary after user dismisses it
+  showBadgeReveal(routeNameSnapshot, badgeSVG);
+
+  setTimeout(() => {
+    showRouteSummary(routeNameSnapshot, badgeSVG, loreCount, totalLore, routeSnapshot);
+  }, 2000);
+
+  clearRoute();
+  localStorage.removeItem("pqa_activeRoute");
+
+  hidePreviewBanner();
+}
+
+// ======== clearRoute ========
+function clearRoute() {
+  console.log("[debug] clearRoute() called", new Error().stack);
+
+  // Remove route polyline layer group (clearLayers first to remove children)
+  if (window.__routeLineLayer) {
+    window.__routeLineLayer.clearLayers();
+    if (map.hasLayer(window.__routeLineLayer)) map.removeLayer(window.__routeLineLayer);
+    window.__routeLineLayer = null;
+  }
+  routeLine = null;
+
+  // Remove checkpoint layer group (clearLayers first to remove children)
+  if (window.__checkpointLayer) {
+    window.__checkpointLayer.clearLayers();
+    if (map.hasLayer(window.__checkpointLayer)) map.removeLayer(window.__checkpointLayer);
+    window.__checkpointLayer = null;
+  }
+  window.__checkpointMarkers = [];
+  checkpointMarkers = [];
+
+  // Hunt mode: remove the fog overlay
+  hideHuntFog();
+
+  // Cancel any pending dwell timers
+  Object.keys(checkpointDwellTimers).forEach(k => {
+    clearTimeout(checkpointDwellTimers[k]);
+    delete checkpointDwellTimers[k];
+  });
+
+  // Cancel pending route completion (e.g. user exits before closing final lore card)
+  pendingRouteComplete = false;
+  activeRouteMode = "guided";
+  hideClueCardFully();
+
+  // ⭐ Reset route state
+  activeRoute         = null;
+  activeRouteName     = null;
+  activeRouteNarrator = "";
+  activeIndex = 0;
+  visitedLore = {};
+  Object.keys(_cpLastState).forEach(k => delete _cpLastState[k]);
+  Object.keys(_cpLastGlow).forEach(k => delete _cpLastGlow[k]);
+
+  // ⭐ Reset routeLayer reference
+  routeLayer = null;
+
+  // ⭐ Hide HUD if visible
+  hideHUD();
+}
+
+// Expose clearRoute for console tracing
+window.clearRoute = clearRoute;
+
+// ======== ROUTE HUD ========
+const hud = document.getElementById("route-hud");
+const hudName = document.getElementById("hud-route-name");
+const hudNext = document.getElementById("hud-next-info");
+const hudFill = document.getElementById("hud-progress-fill");
+const hudPause = document.getElementById("hud-pause-btn");
+const hudExit = document.getElementById("hud-exit-btn");
+
+let routePaused = false;
+
+function updateHUD() {
+  if (!hud || !activeRoute || activeRoute.length === 0) return;
+
+  const total = activeRoute.length;
+  const nextIndex = Math.min(activeIndex, total - 1);
+  const cp = activeRoute[nextIndex];
+
+  if (hudName) hudName.textContent = activeRouteName || "Route";
+
+  if (cp && hudNext) {
+    const lat = parseFloat(cp.lat ?? cp.Lat ?? cp.latitude);
+    const lng = parseFloat(cp.lng ?? cp.Lng ?? cp.longitude);
+    let dist = 0;
+    if (userLatLng && !isNaN(lat) && !isNaN(lng)) {
+      dist = Math.round(
+        distanceInMeters(userLatLng.lat, userLatLng.lng, lat, lng)
+      );
+    }
+    hudNext.textContent = `Next: CP ${nextIndex + 1} — ${dist}m`;
+  }
+
+  const visibleTotal   = activeRoute.filter(cp => !cp.hidden).length;
+  const visibleVisited = activeRoute.reduce((n, cp, i) => (!cp.hidden && visitedLore[i]) ? n + 1 : n, 0);
+  const pct = visibleTotal > 0 ? Math.min((visibleVisited / visibleTotal) * 100, 100) : 0;
+  if (hudFill) hudFill.style.width = `${pct}%`;
+}
+
+function saveRouteProgress() {
+  if (!activeRoute || !activeRouteName) {
+    localStorage.removeItem("pqa_activeRoute");
+    return;
+  }
+
+  const data = {
+    name: activeRouteName,
+    index: activeIndex,
+    visited: visitedLore,
+    route: activeRoute
+  };
+
+  localStorage.setItem("pqa_activeRoute", JSON.stringify(data));
+}
+
+function restoreRouteProgress() {
+  const raw = localStorage.getItem("pqa_activeRoute");
+  if (!raw) return false;
+
+  try {
+    const data = JSON.parse(raw);
+    if (!data || !data.route || !Array.isArray(data.route)) return false;
+
+    // Show resume banner instead of auto-restoring
+    showResumeBanner(data);
+    return true;
+
+  } catch (e) {
+    console.warn("Failed to restore route progress:", e);
+    return false;
+  }
+}
+
+function showHUD() {
+  if (!hud) return;
+  hud.classList.remove("hidden");
+
+  const findingsBtn = document.getElementById("hud-findings-btn");
+  if (findingsBtn) findingsBtn.classList.remove("hidden");
+
+  updateHUD();
+}
+
+function hideHUD() {
+  if (!hud) return;
+  hud.classList.add("hidden");
+
+  const findingsBtn = document.getElementById("hud-findings-btn");
+  if (findingsBtn) findingsBtn.classList.add("hidden");
+}
+
+// NOTE: findingsBtn is declared and wired in the FINDINGS DRAWER section below.
+
+/* ============================================================
+   RESUME ROUTE BANNER
+   ============================================================ */
+
+function showResumeBanner(data) {
+  const banner = document.getElementById("resume-banner");
+  const text = document.getElementById("resume-banner-text");
+  const btnContinue = document.getElementById("resume-continue-btn");
+  const btnDiscard = document.getElementById("resume-discard-btn");
+
+  if (!banner || !text) return;
+
+  text.textContent = `Resume your route: ${data.name}`;
+
+  banner.classList.remove("hidden");
+  requestAnimationFrame(() => banner.classList.add("show"));
+
+  btnContinue.onclick = () => {
+    banner.classList.remove("show");
+    setTimeout(() => banner.classList.add("hidden"), 250);
+
+    // Restore the route visually
+    clearRoute();
+    showRoute(data.route, data.name, true);
+
+    activeIndex = data.index || 0;
+    visitedLore = data.visited || {};
+
+    updateCheckpointStates();
+    updateHUD();
+    updateCompass();
+  };
+
+  btnDiscard.onclick = () => {
+    banner.classList.remove("show");
+    setTimeout(() => banner.classList.add("hidden"), 250);
+    localStorage.removeItem("pqa_activeRoute");
+  };
+}
+
+
+
+/* ============================================================
+   CHECKPOINT STATE SYSTEM + TAP BEHAVIOR
+   ============================================================ */
+
+/*
+This system replaces the old “inactive/next” logic.
+It uses the new CSS classes:
+- checkpoint-locked
+- checkpoint-next
+- checkpoint-completed
+- checkpoint-final
+*/
+
+const _cpLastState = {};
+
+function updateCheckpointStates() {
+  if (!activeRoute || !checkpointMarkers) return;
+  const isHunt = activeRouteMode === "hunt";
+  let visibleNum = 0;
+  const visibleNumbers = activeRoute.map(cp => cp.hidden ? null : ++visibleNum);
+
+  // All state classes we might set — used for removal
+  const ALL_STATE = ["cp-locked","cp-next","cp-completed","cp-final",
+                     "cp-hunt","cp-hunt-hidden","cp-hunt-invisible",
+                     "cp-hunt-far","cp-hunt-near","cp-hunt-close","cp-hunt-reveal"];
+
+  checkpointMarkers.forEach((marker, index) => {
+    if (!marker || !marker._icon) return;
+    const isFinal   = index === activeRoute.length - 1;
+    const isVisited = visitedLore[index] === true;
+    const isNext    = index === activeIndex;
+    const isHidden  = !!activeRoute[index]?.hidden;
+    const num       = isHidden ? "✶" : (visibleNumbers[index] ?? (index + 1));
+
+    let stateClass;
+    if (isHunt) {
+      if      (isVisited) stateClass = isFinal ? "cp-final" : "cp-completed";
+      else if (isNext)    stateClass = "cp-hunt cp-hunt-hidden"; // glow state updated by updateCheckpointScaling
+      else                stateClass = "cp-hunt-invisible";
+    } else {
+      stateClass = "cp-locked";
+      if (isFinal && isVisited)  stateClass = "cp-final";
+      else if (isVisited)        stateClass = "cp-completed";
+      else if (isNext)           stateClass = "cp-next";
+    }
+
+    if (_cpLastState[index] === stateClass) return;
+    _cpLastState[index] = stateClass;
+
+    // ── DOM mutation — never setIcon ──────────────────────────
+    const wrap = marker._icon.querySelector(".cp-flag-wrap");
+    if (!wrap) return;
+
+    ALL_STATE.forEach(c => wrap.classList.remove(c));
+    stateClass.split(" ").forEach(c => c && wrap.classList.add(c));
+
+    // Sync visibility of inner elements
+    const flagEl = wrap.querySelector(".flag-mini");
+    const numEl  = wrap.querySelector(".cp-flag-number");
+
+    if (stateClass === "cp-hunt-invisible") {
+      // Fully invisible — hide contents, collapse marker footprint
+      wrap.style.visibility = "hidden";
+      wrap.style.pointerEvents = "none";
+      marker._icon.style.pointerEvents = "none";
+    } else {
+      wrap.style.visibility = "";
+      wrap.style.pointerEvents = "";
+      marker._icon.style.pointerEvents = "";
+    }
+
+    if (stateClass === "cp-hunt cp-hunt-hidden") {
+      // Hunt ? marker — hide flag image, show ? number
+      if (flagEl) flagEl.style.display = "none";
+      if (numEl)  { numEl.style.display = ""; numEl.textContent = "?"; }
+    } else if (stateClass !== "cp-hunt-invisible") {
+      // Normal flag + number
+      if (flagEl) flagEl.style.display = "";
+      if (numEl) {
+        numEl.style.display = "";
+        numEl.textContent = num;
+        numEl.className = "cp-flag-number" + (isHidden ? " cp-secret-badge" : "");
+      }
+    }
+  });
+}
+
+function attachCheckpointTapHandlers() {
+  if (!checkpointMarkers) return;
+
+  checkpointMarkers.forEach((marker, index) => {
+    if (!marker) return; // hidden checkpoint
+    marker.on("click", () => {
+      if (!activeRoute) return;
+      const isVisited = visitedLore[index] === true;
+      const cp = activeRoute[index];
+
+      if (!isVisited) {
+        // Give feedback instead of silently ignoring
+        if (index > activeIndex) {
+          showLoreToast("Reach the previous checkpoint first.");
+        } else {
+          showLoreToast("Walk closer to trigger this checkpoint.");
+        }
+        return;
+      }
+
+      openLoreCard({
+        title: cp.lore?.title || "Checkpoint " + (index + 1),
+        text: cp.lore?.text || "",
+        style: cp.lore?.style || "stone"
+      });
+
+      if (index === activeRoute.length - 1) {
+        completeRoute().catch(console.error);
+      }
+    });
+  });
+}
+
+
+// ============================================
+// FINDINGS DRAWER — Route-specific discoveries
+// ============================================
+
+const findingsDrawer = document.getElementById("findings-drawer");
+const findingsDrawerContent = document.getElementById("findings-drawer-content");
+const findingsBtn = document.getElementById("hud-findings-btn");
+
+// Toggle drawer open/close
+function toggleFindingsDrawer() {
+  if (!findingsDrawer) return;
+
+  const isOpen = findingsDrawer.classList.contains("open");
+
+  if (isOpen) {
+    findingsDrawer.classList.remove("open");
+  } else {
+    populateFindingsDrawer();
+    findingsDrawer.classList.add("open");
+    clearFindingsPip(); // clear notification when player opens drawer
+  }
+}
+
+// Build the drawer list
+function populateFindingsDrawer() {
+  if (!activeRoute || !Array.isArray(activeRoute)) return;
+
+  findingsDrawerContent.innerHTML = "";
+
+  // Hunt mode: show consumed clues at the top of findings so the
+  // player can review the clue trail that led them through the route.
+  if (activeRouteMode === "hunt" && _huntClueLog && _huntClueLog.length > 0) {
+    const clueSection = document.createElement("div");
+    clueSection.className = "findings-clue-section";
+    clueSection.innerHTML = `<div class="findings-clue-header">🔍 Clues Found</div>`;
+    _huntClueLog.forEach(entry => {
+      const clueEl = document.createElement("div");
+      clueEl.className = "findings-clue-entry";
+      clueEl.innerHTML = `
+        <span class="findings-clue-num">Clue ${entry.number}</span>
+        <span class="findings-clue-text">${entry.text}</span>
+      `;
+      clueSection.appendChild(clueEl);
+    });
+    findingsDrawerContent.appendChild(clueSection);
+
+    // Divider between clues and checkpoint lore entries
+    const divider = document.createElement("div");
+    divider.className = "findings-section-divider";
+    findingsDrawerContent.appendChild(divider);
+  }
+
+  // Use the same visible number map as the map flags
+  let visNum = 0;
+  const visibleNumbers = activeRoute.map(cp => cp.hidden ? null : ++visNum);
+
+  activeRoute.forEach((cp, index) => {
+    const visited = visitedLore[index] === true;
+    const num     = visibleNumbers[index]; // null if hidden
+
+    if (cp.hidden) {
+      // Not yet found — completely invisible, no spoilers
+      if (!visited) return;
+
+      // Found — show in correct list position with secret styling
+      const title = cp.lore?.title || "Secret Discovery";
+      const text  = cp.lore?.text  || "";
+      const item  = document.createElement("div");
+      item.className = "findings-entry findings-entry-hidden";
+      item.innerHTML = `
+        <div class="entry-header">
+          <span class="entry-num-badge entry-num-secret">✦</span>
+          <span class="entry-title">${title}</span>
+        </div>
+        <div class="entry-preview">${text.slice(0, 80)}${text.length > 80 ? "…" : ""}</div>
+      `;
+      item.addEventListener("click", () => {
+        openLoreCard({ title, text, style: cp.lore?.style || "stone" });
+      });
+      findingsDrawerContent.appendChild(item);
+      return;
+    }
+
+    // Normal visible checkpoint — number matches the map flag
+    const title = cp.lore?.title || `Checkpoint ${num}`;
+    const text  = cp.lore?.text  || "";
+
+    const item = document.createElement("div");
+    item.className = "findings-entry" + (visited ? "" : " locked");
+
+    item.innerHTML = `
+      <div class="entry-header">
+        <span class="entry-num-badge">${num}</span>
+        <span class="entry-title">${visited ? title : "Checkpoint " + num}</span>
+      </div>
+      ${visited
+        ? `<div class="entry-preview">${text.slice(0, 80)}${text.length > 80 ? "…" : ""}</div>`
+        : `<div class="entry-preview entry-locked-label">🔒 Not yet found</div>`
+      }
+    `;
+
+    if (visited) {
+      item.addEventListener("click", () => {
+        openLoreCard({ title, text, style: cp.lore?.style || "stone" });
+      });
+    }
+
+    findingsDrawerContent.appendChild(item);
+  });
+}
+
+// Button click → toggle drawer
+if (findingsBtn) {
+  findingsBtn.addEventListener("click", toggleFindingsDrawer);
+}
+
+// Close drawer when route ends
+function hideFindingsDrawer() {
+  if (findingsDrawer) findingsDrawer.classList.remove("open");
+  clearFindingsPip();
+}
+
+// ── Findings pip helpers ──
+function showFindingsPip() {
+  const btn = document.getElementById("hud-findings-btn");
+  if (btn) btn.classList.add("has-new");
+}
+
+function clearFindingsPip() {
+  const btn = document.getElementById("hud-findings-btn");
+  if (btn) btn.classList.remove("has-new");
+}
+
+// Hook into your existing hideHUD()
+const _originalHideHUD = hideHUD;
+hideHUD = function () {
+  _originalHideHUD();
+  hideFindingsDrawer();
+};
+
+// ======== PREVIEW BANNER ========
+const previewBanner = document.getElementById("preview-banner");
+const previewBannerText = document.getElementById("preview-banner-text");
+const previewStartBtn = document.getElementById("preview-start-btn");
+
+function showPreviewBanner(routeName, mode = "guided") {
+  if (!previewBanner || !previewBannerText) return;
+
+  // Find route data for extra info
+  const routeData = (window.__allRoutes || []).find(r => r.name === routeName);
+  const cpCount = routeData ? (routeData.checkpoints || []).filter(c => !c.hidden).length : 0;
+  const distM = routeData ? computeRouteDistance(routeData.checkpoints || []) : 0;
+  const distStr = distM > 0 ? (distM < 1000 ? `${Math.round(distM)}m` : `${(distM/1000).toFixed(1)}km`) : "";
+  const estMin = distM > 0 ? estimateTimeMinutes(distM) : 0;
+  const modeTag = mode === "hunt"
+    ? '<span class="route-mode-tag hunt-tag">Hunt</span>'
+    : '<span class="route-mode-tag guided-tag">Guided</span>';
+
+  // Narrator byline — look up display name from loaded registry.
+  // Falls back to raw id if registry hasn't loaded yet.
+  const narratorId = routeData?.narrator || "";
+  const narratorName = narratorId
+    ? (NARRATORS.find(n => n.id === narratorId)?.name || narratorId.replace(/_/g, " "))
+    : "";
+  const narratorLine = narratorName
+    ? `<div class="preview-banner-narrator">Logs by ${narratorName}</div>`
+    : "";
+
+  // Completed indicator
+  const isCompleted = window.__completedRoutes?.has(routeName);
+  const completedChip = isCompleted
+    ? `<div style="text-align:center;margin-top:2px;"><span class="preview-banner-completed">✓ Completed</span></div>`
+    : "";
+
+  // Hunt mode: show hint on its own line, distance/time stay together in meta row.
+  const huntHint = mode === "hunt"
+    ? `<div class="preview-banner-hunt-hint">Checkpoints are hidden — explore the trail area to find them.</div>`
+    : "";
+  const cpMeta = mode === "hunt"
+    ? ""
+    : (cpCount ? `<span>🚩 ${cpCount} checkpoints</span>` : "");
+
+  previewBannerText.innerHTML = `
+    <div class="preview-banner-name">${routeName} ${modeTag}</div>
+    ${narratorLine}
+    ${completedChip}
+    ${huntHint}
+    <div class="preview-banner-meta">
+      ${cpMeta}
+      ${distStr ? `<span>📏 ${distStr}</span>` : ""}
+      ${estMin ? `<span>⏱ ~${estMin} min</span>` : ""}
+    </div>
+  `;
+
+  // Inject exit button if not already present
+  if (!document.getElementById("preview-exit-btn")) {
+    const exitBtn = document.createElement("button");
+    exitBtn.id = "preview-exit-btn";
+    exitBtn.className = "preview-exit-btn";
+    exitBtn.textContent = "Exit";
+    exitBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      clearRoute();
+      lastPreviewRouteName = null;
+      lastPreviewRouteCheckpoints = null;
+      hidePreviewBanner();
+    });
+    const btnsRow = document.getElementById("preview-banner-btns");
+    (btnsRow || previewBanner).appendChild(exitBtn);
+  }
+
+  previewBanner.style.display = "flex";
+  previewBanner.classList.remove("hidden");
+  requestAnimationFrame(() => previewBanner.classList.add("show"));
+}
+
+function hidePreviewBanner() {
+  if (!previewBanner) return;
+  previewBanner.classList.remove("show");
+  setTimeout(() => {
+    previewBanner.classList.add("hidden");
+    previewBanner.style.display = "none";
+  }, 250);
+}
+
+if (previewBanner) {
+  previewBanner.title = "Tap to close preview";
+  previewBanner.addEventListener("click", (e) => {
+    e.stopPropagation(); // prevent map click
+    hidePreviewBanner(); // ⭐ no clearing
+  });
+}
+
+if (previewStartBtn) {
+  previewStartBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    if (!watchId && "geolocation" in navigator) {
+      startGeolocationWatch();
+    }
+
+    if (!lastPreviewRouteCheckpoints || !lastPreviewRouteName) return;
+
+    const routeData = (window.__allRoutes || []).find(r => r.name === lastPreviewRouteName);
+    const routeMode = routeData?.mode || "guided";
+    showRoute(lastPreviewRouteCheckpoints, lastPreviewRouteName, true, routeMode);
+    hidePreviewBanner();
+  });
+}
+
+// ======== EXIT ROUTE (Unified) ========
+function exitRoute() {
+  console.log("Exiting route...");
+
+  // Stop and immediately restart GPS so the user dot keeps moving
+  // after exiting a route without needing to tap Recenter.
+  stopGeolocationWatch();
+  startGeolocationWatch();
+
+  if (routeLine && map.hasLayer(routeLine)) {
+    try {
+      map.removeLayer(routeLine);
+    } catch (e) {}
+    routeLine = null;
+  }
+
+  if (checkpointMarkers && checkpointMarkers.length) {
+    checkpointMarkers.forEach((m) => {
+      if (!m) return;
+      try {
+        if (map.hasLayer(m)) map.removeLayer(m);
+      } catch (e) {}
+    });
+  }
+  checkpointMarkers = [];
+  window.__checkpointMarkers = checkpointMarkers;
+
+  activeRoute = null;
+  activeRouteName = null;
+  activeIndex = 0;
+
+  // Hunt mode: remove the fog overlay
+  hideHuntFog();
+
+  hideHUD();
+  hidePreviewBanner();
+
+  const legacyExitBtn = document.getElementById("exit-route-btn");
+  if (legacyExitBtn) legacyExitBtn.classList.add("hidden");
+
+  if (userMarker) {
+    try {
+      map.setView(userMarker.getLatLng(), 16);
+    } catch (e) {}
+  }
+}
+
+if (hudExit) hudExit.addEventListener("click", exitRoute);
+const legacyExitBtn = document.getElementById("exit-route-btn");
+if (legacyExitBtn) legacyExitBtn.addEventListener("click", exitRoute);
+
+// ============================================================
+// HUNT MODE — FOG OF WAR SYSTEM
+// ============================================================
+// Overview:
+//   A full-screen div (#hunt-fog) sits over the Leaflet map.
+//   Its background is a radial-gradient circle (set as an inline
+//   style by updateHuntFog()) that is transparent at the route
+//   start point and blends to a dark parchment fog everywhere else.
+//
+//   CSS custom properties drive the gradient geometry:
+//     --fog-cx / --fog-cy   route start point in screen px
+//     --fog-r               circle radius in px (metres → px at current zoom)
+//
+//   updateHuntFog() recalculates these on every map move/zoom so
+//   the fog stays locked to the correct geographic area.
+//
+// To tweak visual appearance: edit the CSS in style.css under
+//   "HUNT MODE — FOG OF WAR OVERLAY" — no JS changes needed.
+// To tweak zone padding: change FOG_PADDING_M below.
+// To tweak fog darkness/colour: change FOG_COLOR below.
+// ============================================================
+
+// ── Tuning constants ─────────────────────────────────────────
+// Extra padding (metres) added beyond the furthest checkpoint
+// so the fog wall doesn't clip right at the checkpoint edge.
+const FOG_PADDING_M = 80; // ← TUNE: larger = bigger clear zone (metres)
+
+// The dark fog colour that fills everything outside the zone.
+// Format: CSS rgba string. Adjust alpha for more/less opacity.
+const FOG_COLOR = "rgba(8, 6, 3, 0.86)"; // ← TUNE: fog darkness & tint
+
+// Minimum revealed circle radius (px) — prevents the zone from
+// collapsing to a tiny dot on single-checkpoint hunts.
+const FOG_MIN_RADIUS_PX = 120; // ← TUNE: min clear zone size (px)
+// ─────────────────────────────────────────────────────────────
+
+// Haversine distance in metres between two lat/lng points.
+// Top-level utility used by both showHuntFog and updateHuntFog.
+function haversineM(lat1, lng1, lat2, lng2) {
+  const R = 6371000;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLng = (lng2 - lng1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 +
+            Math.cos(lat1 * Math.PI / 180) *
+            Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// Create the fog overlay element once and append it to #map.
+// It starts invisible; JS adds .hunt-fog-active to show it.
+const _huntFogEl = (() => {
+  let el = document.getElementById("hunt-fog");
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "hunt-fog";
+    // Append inside #map so it is clipped to the map viewport
+    const mapEl = document.getElementById("map");
+    if (mapEl) mapEl.appendChild(el);
+  }
+  return el;
+})();
+
+// Geographic anchor for the current hunt zone (set on route start,
+// cleared on exit). Used to recompute pixel positions on move/zoom.
+// Centre is the route start point; radiusM is metres to furthest checkpoint
+// plus FOG_PADDING_M so the fog circle feels intentional, not arbitrary.
+let _huntFogZone = null; // { startLat, startLng, radiusM }
+
+/**
+ * Recompute the fog gradient geometry from _huntFogZone and
+ * apply it as CSS custom properties on _huntFogEl.
+ * Called on route start and on every map move / zoom event.
+ *
+ * The revealed zone is a circle centred on the route start point.
+ * Its radius is the real-world distance (metres) from the start to
+ * the furthest checkpoint, projected to pixels at the current zoom.
+ * This means the circle stays geographically locked as you pan/zoom
+ * and reveals nothing about where the checkpoints actually cluster.
+ */
+function updateHuntFog() {
+  if (!_huntFogZone || !_huntFogEl.classList.contains("hunt-fog-active")) return;
+
+  const { startLat, startLng, radiusM } = _huntFogZone;
+
+  // Project the active route's fog circle to screen pixels
+  const centre = map.latLngToContainerPoint([startLat, startLng]);
+  const cx = centre.x;
+  const cy = centre.y;
+  const metresToDeg = radiusM / 111320;
+  const edgePoint   = map.latLngToContainerPoint([startLat + metresToDeg, startLng]);
+  const rPx = Math.max(FOG_MIN_RADIUS_PX, Math.abs(centre.y - edgePoint.y));
+
+  // Write geometry as CSS custom properties so the ::after ring
+  // pseudo-element (defined in style.css) can read the same values.
+  _huntFogEl.style.setProperty("--fog-cx", cx + "px");
+  _huntFogEl.style.setProperty("--fog-cy", cy + "px");
+  _huntFogEl.style.setProperty("--fog-r",  rPx + "px");
+
+  // ── Completed route holes ────────────────────────────────
+  // For each completed route, punch a transparent hole in the fog
+  // so the player can always see areas they've already explored.
+  const completedHoles = [];
+  const allRoutes = window.__allRoutes || [];
+  const completedNames = window.__completedRoutes || new Set();
+
+  completedNames.forEach(routeName => {
+    const route = allRoutes.find(r => r.name === routeName);
+    if (!route?.checkpoints?.length) return;
+
+    // Find start point of completed route
+    const startCp = route.checkpoints.find(cp => !cp.hidden) ?? route.checkpoints[0];
+    const sLat = parseFloat(startCp.lat ?? startCp.Lat ?? startCp.latitude);
+    const sLng = parseFloat(startCp.lng ?? startCp.Lng ?? startCp.longitude);
+    if (isNaN(sLat) || isNaN(sLng)) return;
+
+    // Compute radius to furthest checkpoint (same logic as showHuntFog)
+    const latlngs = route.checkpoints.map(cp => ({
+      lat: parseFloat(cp.lat ?? cp.Lat ?? cp.latitude),
+      lng: parseFloat(cp.lng ?? cp.Lng ?? cp.longitude)
+    })).filter(p => !isNaN(p.lat) && !isNaN(p.lng));
+
+    const maxDistM = Math.max(...latlngs.map(p => haversineM(sLat, sLng, p.lat, p.lng)));
+    const holeRadiusM = maxDistM + FOG_PADDING_M;
+
+    // Project to screen pixels
+    const holeCentre  = map.latLngToContainerPoint([sLat, sLng]);
+    const holeEdge    = map.latLngToContainerPoint([sLat + holeRadiusM / 111320, sLng]);
+    const holeRPx     = Math.max(FOG_MIN_RADIUS_PX, Math.abs(holeCentre.y - holeEdge.y));
+
+    completedHoles.push({
+      cx: holeCentre.x,
+      cy: holeCentre.y,
+      r:  holeRPx
+    });
+  });
+
+  // Build layered background — completed holes first (on top), active route circle last
+  // Each hole is a radial-gradient that is transparent inside and fully transparent outside
+  // so it only "erases" fog where it overlaps the main fog gradient beneath it.
+  const holeLayers = completedHoles.map(h =>
+    `radial-gradient(circle ${h.r}px at ${h.cx}px ${h.cy}px, transparent 0%, transparent 72%, rgba(8,6,3,0.15) 85%, transparent 100%)`
+  );
+
+  const mainFog = [
+    "radial-gradient(",
+      `circle ${rPx}px at ${cx}px ${cy}px,`,
+      "transparent              0%,",
+      "transparent             68%,",
+      `rgba(8,6,3,0.35)        80%,`,
+      `rgba(8,6,3,0.68)        90%,`,
+      `${FOG_COLOR}           100%`,
+    ")"
+  ].join(" ");
+
+  // Combine: completed holes punch through on top of the main fog layer
+  _huntFogEl.style.background = [...holeLayers, mainFog].join(", ");
+}
+
+/**
+ * Activate the fog for a hunt route.
+ * @param {Array} checkpoints — the route's checkpoint array
+ *
+ * The fog is a circle centred on the route start point (first
+ * non-hidden checkpoint, or checkpoints[0] as fallback).
+ * Its radius is the Haversine distance from the start to the
+ * furthest checkpoint, plus FOG_PADDING_M, so the fog boundary
+ * gives away nothing about checkpoint distribution.
+ */
+function showHuntFog(checkpoints) {
+  // Collect all valid lat/lng values from the checkpoint list
+  const latlngs = checkpoints
+    .map(cp => {
+      const lat = parseFloat(cp.lat ?? cp.Lat ?? cp.latitude);
+      const lng = parseFloat(cp.lng ?? cp.Lng ?? cp.longitude);
+      return isNaN(lat) || isNaN(lng) ? null : { lat, lng };
+    })
+    .filter(Boolean);
+
+  if (!latlngs.length) return;
+
+  // Centre on the first non-hidden checkpoint (the route start).
+  // Falls back to checkpoints[0] if all are hidden (edge case).
+  const startCp = checkpoints.find(cp => !cp.hidden) ?? checkpoints[0];
+  const startLat = parseFloat(startCp.lat ?? startCp.Lat ?? startCp.latitude);
+  const startLng = parseFloat(startCp.lng ?? startCp.Lng ?? startCp.longitude);
+
+  // Radius = distance from start to the furthest checkpoint + padding
+  const maxDistM = Math.max(...latlngs.map(p => haversineM(startLat, startLng, p.lat, p.lng)));
+  const radiusM  = maxDistM + FOG_PADDING_M;
+
+  _huntFogZone = { startLat, startLng, radiusM };
+
+  // Initial render before the class fade-in so there's no flash
+  updateHuntFog();
+  _huntFogEl.classList.add("hunt-fog-active");
+}
+
+/**
+ * Deactivate and reset the fog overlay.
+ * Called from clearRoute() and exitRoute().
+ */
+function hideHuntFog() {
+  _huntFogEl.classList.remove("hunt-fog-active");
+  _huntFogZone = null;
+  // Clear inline styles so the element is fully reset
+  _huntFogEl.style.background = "";
+  _huntFogEl.style.removeProperty("--fog-cx");
+  _huntFogEl.style.removeProperty("--fog-cy");
+  _huntFogEl.style.removeProperty("--fog-r");
+}
+
+// Keep the fog locked to the map as the user pans or zooms.
+// These listeners are always registered but updateHuntFog()
+// returns immediately when no hunt is active (_huntFogZone null).
+map.on("move zoom", updateHuntFog);
+
+// ── END HUNT MODE — FOG OF WAR SYSTEM ───────────────────────
+
+// ======== showRoute ========
+function showRoute(checkpoints, routeName, isActiveRoute = false, mode = "guided") {
+
+  // ⭐ FIX: Always reset any stuck route when entering preview mode
+  if (!isActiveRoute) {
+    activeRoute = null;
+    activeRouteName = null;
+    activeRouteMode = "guided";
+    activeIndex = 0;
+    visitedLore = {};
+  }
+
+  console.log("[debug] showRoute()", {
+    routeName,
+    isActiveRoute,
+    checkpointCount: checkpoints?.length ?? 0,
+    time: Date.now()
+  });
+
+  clearRoute();
+
+  const routeLineLayer = L.layerGroup().addTo(map);
+  const checkpointLayer = L.layerGroup().addTo(map);
+
+  window.__routeLineLayer = routeLineLayer;
+  window.__checkpointLayer = checkpointLayer;
+
+  // expose functions for console
+  window.showRoute = showRoute;
+  window.clearRoute = clearRoute;
+
+  routeLayer = routeLineLayer;
+  checkpointMarkers = [];
+  window.__checkpointMarkers = checkpointMarkers;
+
+  const latlngs = [];
+
+  // Pre-compute visible numbers — hidden checkpoints are skipped
+  let visNum = 0;
+  const visibleNumbers = checkpoints.map(cp => cp.hidden ? null : ++visNum);
+
+checkpoints.forEach((cp, index) => {
+  const lat = parseFloat(cp.lat ?? cp.Lat ?? cp.latitude);
+  const lng = parseFloat(cp.lng ?? cp.Lng ?? cp.longitude);
+  if (isNaN(lat) || isNaN(lng)) return;
+
+  // Hidden: starts invisible, revealed by proximity in updateCheckpointScaling
+  if (cp.hidden) {
+    const hiddenMarker = L.marker([lat, lng], {
+      icon: L.divIcon({
+        html: '<div class="cp-flag-wrap cp-hidden-secret" style="opacity:0;pointer-events:none;"><div class="flag-mini"></div><div class="cp-flag-number cp-secret-badge">✦</div></div>',
+        className: "",
+        iconSize:  [32, 40],
+        iconAnchor:[4, 40]
+      }),
+      pane: "checkpointPane",
+      interactive: false
+    });
+    checkpointLayer.addLayer(hiddenMarker);
+    checkpointMarkers.push(hiddenMarker);
+    return;
+  }
+
+  // Expand waypoints (path shape between checkpoints) before the checkpoint itself
+  if (Array.isArray(cp.waypoints)) {
+    cp.waypoints.forEach(w => {
+      const wlat = parseFloat(w.lat ?? w.Lat);
+      const wlng = parseFloat(w.lng ?? w.Lng);
+      if (!isNaN(wlat) && !isNaN(wlng)) latlngs.push([wlat, wlng]);
+    });
+  }
+
+  latlngs.push([lat, lng]);
+
+  const lore = cp.lore || null;
+  const num = visibleNumbers[index];
+
+  const isHunt = (mode === "hunt");
+  // Always render full structure — state changes use class mutation, never setIcon
+  const initialClass = isHunt ? "cp-flag-wrap cp-hunt cp-hunt-hidden" : "cp-flag-wrap cp-locked";
+  const flagDisplay  = isHunt ? ' style="display:none"' : '';
+  const numDisplay   = isHunt ? ' style="display:none"' : '';
+  const icon = L.divIcon({
+    html: '<div class="' + initialClass + '"><div class="flag-mini"' + flagDisplay + '></div><div class="cp-flag-number"' + numDisplay + '>' + num + '</div></div>',
+    className: "",
+    iconSize:  [32, 40],
+    iconAnchor:[4, 40]
+  });
+
+  const marker = L.marker([lat, lng], {
+    icon,
+    pane: "checkpointPane",
+    interactive: true
+  });
+
+  checkpointLayer.addLayer(marker);
+
+  if (typeof marker.setZIndexOffset === "function") {
+    marker.setZIndexOffset(2000 + index);
+  }
+
+  checkpointMarkers.push(marker);
+});
+
+// After creating all markers:
+window.__checkpointMarkers = checkpointMarkers;
+
+// Apply initial states and attach tap handlers
+if (typeof updateCheckpointStates === "function") updateCheckpointStates();
+if (typeof attachCheckpointTapHandlers === "function") attachCheckpointTapHandlers();
+
+  // Hunt mode: never draw the route polyline — it would reveal the path.
+  // latlngs is still built above so fitBounds works correctly.
+  if (latlngs.length > 0 && mode !== "hunt") {
+    routeLine = L.polyline(latlngs, {
+      color: "#00ff99",
+      weight: 4,
+      opacity: 0.7,
+      className: "route-glow",
+      interactive: false,
+      pane: "overlayPane"
+    });
+
+    routeLineLayer.addLayer(routeLine);
+
+    if (typeof routeLine.bringToBack === "function") {
+      try {
+        routeLine.bringToBack();
+      } catch (e) {}
+    }
+  }
+
+  // fitBounds using ALL checkpoints including hidden so preview always zooms
+  const allLatLngs = checkpoints
+    .map(cp => {
+      const lat = parseFloat(cp.lat ?? cp.Lat ?? cp.latitude);
+      const lng = parseFloat(cp.lng ?? cp.Lng ?? cp.longitude);
+      return isNaN(lat) || isNaN(lng) ? null : [lat, lng];
+    })
+    .filter(Boolean);
+
+  if (allLatLngs.length > 0) {
+    try {
+      map.fitBounds(allLatLngs, { padding: [40, 40] });
+      setTimeout(() => map.setZoom(map.getZoom() + 0.5), 120);
+    } catch (e) {}
+  }
+
+  routeLineLayer._isRouteLineLayer = true;
+  checkpointLayer._isCheckpointLayer = true;
+
+  // Expose again after creation
+  window.__routeLineLayer = routeLineLayer;
+  window.__checkpointLayer = checkpointLayer;
+  window.__checkpointMarkers = checkpointMarkers;
+
+  if (isActiveRoute) {
+    activeRoute         = checkpoints;
+    activeRouteName     = routeName;
+    activeRouteMode     = mode;
+    activeRouteNarrator = (window.__allRoutes || []).find(r => r.name === routeName)?.narrator || "";
+    activeIndex = 0;
+
+    saveRouteProgress();
+
+    // Centre on the user when the route starts
+    if (userLatLng) {
+      map.flyTo([userLatLng.lat, userLatLng.lng], 17, {
+        animate: true,
+        duration: 1.2
+      });
+    }
+
+    hidePreviewBanner();
+    showHUD();
+
+    // Reset findings drawer for the new route
+    hideFindingsDrawer();
+    if (findingsDrawerContent) findingsDrawerContent.innerHTML = "";
+
+    // Hunt mode: activate fog overlay over the map
+    if (mode === "hunt") {
+      showHuntFog(checkpoints);
+    }
+
+    // Hunt mode: first clue is shown on proximity to CP0, not immediately.
+    // showClueInHUD() is called by the checkpoint-found flow (step 9 below).
+    // Initialise the HUD clue row so it's ready but empty.
+    if (mode === "hunt") {
+      initHudClueRow();
+    }
+
+    // Fire immediately if already standing inside a checkpoint
+    setTimeout(checkCheckpointsNow, 500);
+  } else {
+    activeRoute = null;
+    activeRouteName = null;
+    activeIndex = 0;
+
+    lastPreviewRouteName = routeName;
+    lastPreviewRouteCheckpoints = checkpoints;
+
+    hideHUD();
+    // Hunt preview: show fog and pass mode so banner shows hunt copy
+    if (mode === "hunt") {
+      showHuntFog(checkpoints);
+    }
+    showPreviewBanner(routeName, mode);
+  }
+}
+
+// ======== HUD Pause / Resume ========
+if (hudPause) {
+  hudPause.addEventListener("click", () => {
+    routePaused = !routePaused;
+    hudPause.textContent = routePaused ? "Resume" : "Pause";
+
+    if (routePaused && watchId) {
+      navigator.geolocation.clearWatch(watchId);
+      watchId = null;
+    } else if (!routePaused && !watchId && "geolocation" in navigator) {
+      watchId = navigator.geolocation.watchPosition(
+        updateUserMarker,
+        (err) => {
+          console.warn("GPS error (resume):", err);
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 5000,
+          timeout: 20000
+        }
+      );
+    }
+  });
+}
+
+window.__completedRoutes = new Set();
+
+async function loadCompletedRoutes() {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  const snap = await getDocs(collection(db, "Users", user.uid, "routeHistory"));
+  snap.forEach(doc => {
+    const name = doc.data().routeName;
+    if (name) window.__completedRoutes.add(name);
+  });
+}
+
+/* ============================================================
+   LOAD ROUTES (from Firestore — collection: Hikes)
+============================================================ */
+
+async function loadAllRoutes() {
+  setSplashProgress(60, "Loading routes…");
+
+  const snap = await getDocs(collection(db, "Hikes"));
+
+  const data = snap.docs.map((docSnap) => {
+    const d = docSnap.data();
+    return {
+      name:       d.Name,
+      checkpoints: d.Checkpoints,
+      mode:       d.mode     || "guided",
+      narrator:   d.narrator || ""        // narrator id — matches NARRATORS registry
+    };
+  });
+
+  console.log(`Routes loaded from Firestore: ${data.length} routes.`);
+  window.__allRoutes = data;
+
+  setSplashProgress(85, "Placing markers…");
+  renderAllRoutes(data);
+
+  setSplashProgress(100, "Ready!");
+  setTimeout(hideSplash, 400);
+
+  return data;
+}
+
+// ======== RENDER ALL ROUTES — populate routes[] + place trailhead markers ========
+function renderAllRoutes(data) {
+  if (!data || !Array.isArray(data)) return;
+
+  // Clear existing state
+  routes = [];
+  startMarkersLayer.clearLayers();
+  trailheadMarkers = [];
+
+  data.forEach((route) => {
+    if (!route || !Array.isArray(route.checkpoints) || route.checkpoints.length === 0) return;
+
+    // Apply auto lore styles so checkpoints have style/title/text set
+    applyAutoLoreStylesToRoute(route.name, route.checkpoints);
+
+    // Add to routes array (used by nearby detection)
+    routes.push(route);
+
+    // Place trailhead start marker at first checkpoint
+    const start = route.checkpoints[0];
+    const lat = parseFloat(start.lat ?? start.Lat ?? start.latitude);
+    const lng = parseFloat(start.lng ?? start.Lng ?? start.longitude);
+    if (isNaN(lat) || isNaN(lng)) return;
+
+    const isCompleted = window.__completedRoutes?.has(route.name);
+    const icon = isCompleted ? createGoldFlagIcon() : createStartIcon();
+
+    const marker = L.marker([lat, lng], { icon, interactive: true })
+      .addTo(startMarkersLayer);
+    trailheadMarkers.push({ marker, isCompleted, lat, lng });
+
+    // Add ✓ chip for already-completed routes.
+    // Short defer ensures Leaflet has inserted the icon into the DOM.
+    if (isCompleted) {
+      setTimeout(() => {
+        if (marker._icon && !marker._icon.querySelector(".trailhead-done-chip")) {
+          const chip = document.createElement("div");
+          chip.className = "trailhead-done-chip";
+          chip.textContent = "✓";
+          marker._icon.appendChild(chip);
+        }
+      }, 100);
+    }
+
+    marker.on("click", () => {
+      // Don't allow previewing another route while one is active
+      if (activeRoute) return;
+      showRoute(route.checkpoints, route.name, false, route.mode || "guided");
+    });
+  });
+
+  console.log(`[renderAllRoutes] ${routes.length} routes rendered on map.`);
+  if (userLatLng) updateRouteDistanceClasses();
+}
+
+const ROUTE_VISIBLE_M = 15000;
+const ROUTE_FOG_M     = 30000;
+
+function updateRouteDistanceClasses() {
+  if (!userLatLng || !trailheadMarkers.length) return;
+  trailheadMarkers.forEach(({ marker, lat, lng }) => {
+    if (!marker || !marker._icon) return;
+    if (isNaN(lat) || isNaN(lng)) return;
+    const dist = distanceInMeters(userLatLng.lat, userLatLng.lng, lat, lng);
+    const el   = marker._icon.querySelector(".flag-anim");
+    if (!el) return;
+    el.classList.remove("route-fog", "route-hidden");
+    marker.options.interactive = true;
+    if (dist > ROUTE_FOG_M) {
+      el.classList.add("route-hidden");
+      marker.options.interactive = false;
+    } else if (dist > ROUTE_VISIBLE_M) {
+      el.classList.add("route-fog");
+      const t = (dist - ROUTE_VISIBLE_M) / (ROUTE_FOG_M - ROUTE_VISIBLE_M);
+      el.style.opacity = Math.max(0.08, 1 - t * 0.92).toFixed(2);
+      marker.options.interactive = false;
+    } else {
+      el.style.opacity = "";
+    }
+  });
+}
+
+// Routes are loaded inside onAuthStateChanged so they only run once,
+// after the user is confirmed signed in. Removed top-level call here
+// to prevent duplicate trailhead markers on the map.
+
+// ======================================================
+// ⭐ ROUTE BUILDER — Auto‑Assign Lore Styles
+// ======================================================
+
+// Styles your lore card already supports
+const AUTO_LORE_STYLES = [
+  "stone",
+  "forest",
+  "ember",
+  "metal",
+  "parchment",
+  "rune"
+];
+
+// Pick a style for a route (consistent per route)
+function pickStyleForRoute(routeName) {
+  // Stable hash → consistent style per route
+  let hash = 0;
+  for (let i = 0; i < routeName.length; i++) {
+    hash = (hash + routeName.charCodeAt(i) * (i + 1)) % 9999;
+  }
+  return AUTO_LORE_STYLES[hash % AUTO_LORE_STYLES.length];
+}
+
+// Apply auto‑styles to checkpoints
+function applyAutoLoreStylesToRoute(routeName, checkpoints) {
+  const routeStyle = pickStyleForRoute(routeName);
+
+  checkpoints.forEach((cp, index) => {
+    // Ensure cp.lore exists
+    if (!cp.lore) cp.lore = {};
+
+    // Assign style only if not already set
+    if (!cp.lore.style) {
+      cp.lore.style = routeStyle;
+    }
+
+    // Auto‑generate a title if missing
+    if (!cp.lore.title) {
+      cp.lore.title = `Checkpoint ${index + 1}`;
+    }
+
+    // Ensure text exists (empty string allowed)
+    if (!cp.lore.text) {
+      cp.lore.text = "";
+    }
+  });
+
+  return checkpoints;
+}
+
+
+// ======== COMPASS / HEADING ========
+const compassEl = document.getElementById("compass");
+
+// Tap compass to snap map back to north
+if (compassEl) {
+  compassEl.style.cursor = "pointer";
+  compassEl.addEventListener("click", () => {
+    if (!map.setBearing) return;
+    // Disable gyro-driven rotation so the map stays north-up after tap
+    if (map.compassBearing && map.compassBearing.enabled()) {
+      map.compassBearing.disable();
+    }
+    userHeading = 0;
+    map.setBearing(0);
+    compassEl.style.transform = "rotate(0deg)";
+  });
+}
+
+function updateCompass() {
+  // Compass rotation is handled entirely by handleOrientation and map bearing changes.
+  // Nothing to do here — kept as a no-op so existing callers don't break.
+}
+
+const _cpLastGlow = {};
+
+function updateCheckpointScaling() {
+  if (!userLatLng || !activeRoute) return;
+  const isHunt = activeRouteMode === "hunt";
+  let visNum = 0;
+  const visibleNumbers = activeRoute.map(cp => cp.hidden ? null : ++visNum);
+
+  checkpointMarkers.forEach((m, i) => {
+    if (!m || !m._icon) return;
+    const cp = activeRoute[i];
+    if (!cp) return;
+    const isVisited = visitedLore[i] === true;
+    const isNext    = i === activeIndex;
+    const num       = visibleNumbers[i] ?? (i + 1);
+    // Hidden checkpoints — proximity-based materialise effect
+    if (cp.hidden && !isVisited) {
+      const el = m._icon?.querySelector(".cp-hidden-secret");
+      if (!el) return;
+      const cpLat = parseFloat(cp.lat ?? cp.Lat ?? cp.latitude);
+      const cpLng = parseFloat(cp.lng ?? cp.Lng ?? cp.longitude);
+      const d = distanceInMeters(userLatLng.lat, userLatLng.lng, cpLat, cpLng);
+
+      let hiddenState;
+      if      (d <= 15) hiddenState = "reveal";
+      else if (d <= 40) hiddenState = "near";
+      else              hiddenState = "hidden";
+
+      if (_cpLastGlow[`h${i}`] === hiddenState) return;
+      _cpLastGlow[`h${i}`] = hiddenState;
+
+      if (hiddenState === "hidden") {
+        el.style.opacity = "0";
+        el.style.filter  = "";
+        m.options.interactive = false;
+        if (m._icon) m._icon.style.pointerEvents = "none";
+      } else if (hiddenState === "near") {
+        // Ghost — greyscale, translucent, animated float
+        el.style.opacity = "0.35";
+        el.style.filter  = "grayscale(1) brightness(0.7)";
+        el.classList.remove("cp-hidden-reveal");
+        el.classList.add("cp-hidden-near");
+        m.options.interactive = false;
+        if (m._icon) m._icon.style.pointerEvents = "none";
+      } else {
+        // Full gold reveal — tappable
+        el.style.opacity = "1";
+        el.style.filter  = "";
+        el.classList.remove("cp-hidden-near");
+        el.classList.add("cp-hidden-reveal");
+        m.options.interactive = true;
+        if (m._icon) m._icon.style.pointerEvents = "auto";
+      }
+      return;
+    }
+
+    if (isVisited) return;
+    if (!isNext) return;
+
+    const lat = parseFloat(cp.lat ?? cp.Lat ?? cp.latitude);
+    const lng = parseFloat(cp.lng ?? cp.Lng ?? cp.longitude);
+    const d   = distanceInMeters(userLatLng.lat, userLatLng.lng, lat, lng);
+    // Use ✦ for hidden checkpoints, never a number
+    const displayNum = cp.hidden ? "✶" : num;
+    const badgeClass = cp.hidden ? " cp-secret-badge" : "";
+
+    if (isHunt) {
+      let huntState;
+      if      (d <= 8)  huntState = "cp-hunt-reveal";
+      else if (d <= 20) huntState = "cp-hunt-close";
+      else if (d <= 40) huntState = "cp-hunt-near";
+      else              huntState = "cp-hunt-far";
+
+      if (_cpLastGlow[i] === huntState) return;
+      _cpLastGlow[i] = huntState;
+
+      const wrap = m._icon.querySelector(".cp-flag-wrap");
+      if (!wrap) return;
+      const flagEl = wrap.querySelector(".flag-mini");
+      const numEl  = wrap.querySelector(".cp-flag-number");
+
+      // Remove previous hunt proximity classes
+      ["cp-hunt","cp-hunt-hidden","cp-hunt-far","cp-hunt-near","cp-hunt-close","cp-hunt-reveal"].forEach(c => wrap.classList.remove(c));
+
+      if (huntState === "cp-hunt-far") {
+        wrap.style.visibility = "hidden";
+        wrap.style.pointerEvents = "none";
+        m._icon.style.pointerEvents = "none";
+      } else if (huntState === "cp-hunt-near") {
+        // Ambient glow only — no flag, no ?
+        wrap.style.visibility = "";
+        wrap.style.pointerEvents = "none";
+        m._icon.style.pointerEvents = "none";
+        wrap.classList.add("cp-hunt", "cp-hunt-near");
+        if (flagEl) flagEl.style.display = "none";
+        if (numEl)  numEl.style.display  = "none";
+      } else if (huntState === "cp-hunt-close") {
+        // Show ? badge
+        wrap.style.visibility = "";
+        wrap.style.pointerEvents = "none";
+        m._icon.style.pointerEvents = "none";
+        wrap.classList.add("cp-hunt", "cp-hunt-close");
+        if (flagEl) flagEl.style.display = "none";
+        if (numEl)  { numEl.style.display = ""; numEl.textContent = "?"; }
+      } else {
+        // Reveal — show full flag with number
+        wrap.style.visibility = "";
+        wrap.style.pointerEvents = "";
+        m._icon.style.pointerEvents = "";
+        wrap.classList.add("cp-next", "cp-glow-close");
+        if (flagEl) flagEl.style.display = "";
+        if (numEl)  { numEl.style.display = ""; numEl.textContent = displayNum; numEl.className = "cp-flag-number" + badgeClass; }
+      }
+      return;
+    }
+
+    // Guided — mutate glow class only, no setIcon
+    let glowClass = (d < 20) ? "cp-glow-close" : "";
+    if (_cpLastGlow[i] === glowClass) return;
+    _cpLastGlow[i] = glowClass;
+    const wrap = m._icon.querySelector(".cp-flag-wrap");
+    if (!wrap) return;
+    wrap.classList.remove("cp-glow-close");
+    if (glowClass) wrap.classList.add(glowClass);
+  });
+}
+
+let userHeading = 0;
+
+if (window.DeviceOrientationEvent) {
+  // iOS 13+ requires permission
+  if (typeof DeviceOrientationEvent.requestPermission === "function") {
+    DeviceOrientationEvent.requestPermission().then(state => {
+      if (state === "granted") {
+        window.addEventListener("deviceorientation", handleOrientation);
+      }
+    }).catch(console.error);
+  } else {
+    window.addEventListener("deviceorientation", handleOrientation);
+  }
+}
+
+function handleOrientation(ev) {
+  if (ev.alpha === null) return;
+  userHeading = ev.alpha;
+  // Rotate the map to face the direction the user is heading
+  if (map.setBearing) map.setBearing(userHeading);
+  // Compass counter-rotates so N always faces screen-north
+  if (compassEl) compassEl.style.transform = `rotate(${-userHeading}deg)`;
+}
+
+// Keep compass in sync when map is rotated manually (two-finger twist)
+// Also suppress marker transitions during rotation so pins stay locked.
+map.on("rotatestart", () => map.getContainer().classList.add("map-moving"));
+map.on("rotateend",   () => map.getContainer().classList.remove("map-moving"));
+map.on("rotate", () => {
+  const bearing = map.getBearing ? map.getBearing() : 0;
+  if (compassEl) compassEl.style.transform = `rotate(${-bearing}deg)`;
+});
+
+// ======== USER LOCATION WATCH ========
+function checkCheckpointsNow() {
+  if (!activeRoute || !Array.isArray(activeRoute) || !userLatLng) return;
+  activeRoute.forEach((cp, i) => {
+    if (visitedLore[i]) return;
+    const cpLat = parseFloat(cp.lat ?? cp.Lat ?? cp.latitude);
+    const cpLng = parseFloat(cp.lng ?? cp.Lng ?? cp.longitude);
+    if (isNaN(cpLat) || isNaN(cpLng)) return;
+    const dist   = distanceInMeters(userLatLng.lat, userLatLng.lng, cpLat, cpLng);
+    const radius = parseFloat(cp.radius) || 25;
+    if (dist <= radius && !checkpointDwellTimers[i]) {
+      checkpointDwellTimers[i] = setTimeout(() => {
+        const confirmDist = distanceInMeters(userLatLng.lat, userLatLng.lng, cpLat, cpLng);
+        if (confirmDist <= radius && !visitedLore[i]) {
+          if (navigator.vibrate) navigator.vibrate([80, 40, 120]);
+          checkpointSound.currentTime = 0;
+          checkpointSound.play().catch(() => {});
+          if (cp.lore?.text) {
+            triggerCheckpointLore(i, { title: cp.lore.title || `Checkpoint ${i + 1}`, text: cp.lore.text || "", style: cp.lore.style || "stone", author: activeRouteNarrator });
+          } else {
+            visitedLore[i] = true;
+
+            // Grant item immediately — no lore card is open so toast fires right away
+            if (cp?.item) grantItem(cp.item, false, !!cp.oneTimeItem);
+
+            const lastVisIdx = activeRoute.reduce((last, cp, idx) => cp.hidden ? last : idx, -1);
+            const isFinal = i === lastVisIdx;
+            if (activeIndex === i && !isFinal) { activeIndex = i + 1; saveRouteProgress(); }
+            if (isFinal) pendingRouteComplete = true;
+            const msg = LORE_DISCOVERY_MESSAGES[Math.floor(Math.random() * LORE_DISCOVERY_MESSAGES.length)];
+            showLoreToast(`${msg} — Checkpoint ${i + 1}`);
+            if (typeof updateCheckpointStates === "function") updateCheckpointStates();
+            updateHUD(); updateCompass();
+          }
+        }
+        delete checkpointDwellTimers[i];
+      }, CHECKPOINT_DWELL_MS);
+    }
+  });
+}
+
+function updateUserMarker(pos) {
+  const lat = pos.coords.latitude;
+  const lng = pos.coords.longitude;
+  const firstFix = !userLatLng;
+  userLatLng = { lat, lng };
+
+  // Fly to user on first GPS fix so the map centres on where they actually are.
+  // Only do this if no route is active (don't interrupt a route flyTo).
+  if (firstFix && !activeRoute) {
+    map.flyTo([lat, lng], 15, { animate: true, duration: 1.0 });
+  }
+
+  // Render POI markers on first GPS fix — they were intentionally
+  // withheld until we know the player's position.
+  if (firstFix && worldPOIs.length > 0) {
+    renderWorldPOIs();
+  }
+
+  // Hide GPS waiting indicator once we have a fix
+  const gpsWaiting = document.getElementById("gps-waiting");
+  if (gpsWaiting) gpsWaiting.style.display = "none";
+
+  if (!userMarker) {
+    userMarker = L.marker([lat, lng], {
+      icon: createUserIcon(),
+      interactive: false,
+      pane: "userPane"
+    }).addTo(map);
+    // Force pointer-events off on the Leaflet icon DOM node — iOS Safari
+    // ignores interactive:false for touch events without this.
+    if (userMarker._icon) {
+      userMarker._icon.style.pointerEvents = "none";
+    }
+    updateMarkersForZoom(map.getZoom());
+  }
+
+  // Keep pointer-events off after every update (Leaflet can reset it)
+  if (userMarker._icon) userMarker._icon.style.pointerEvents = "none";
+
+  userMarker.setLatLng([lat, lng]);
+
+  // Smooth auto-follow: only recenter when user drifts away from map center
+  if (!userIsPanning) {
+    const center = map.getCenter();
+    const distFromCenter = distanceInMeters(center.lat, center.lng, lat, lng);
+    if (distFromCenter > 40) {
+      map.flyTo([lat, lng], Math.max(map.getZoom(), 16), {
+        animate: true,
+        duration: 1.0
+      });
+    }
+  }
+
+  updateCompass();
+  updateHUD();
+  updateCheckpointScaling();
+
+  // ============================
+  // ⭐ PROXIMITY-BASED LORE TRIGGER (with dwell timer)
+  // ============================
+  if (activeRoute && Array.isArray(activeRoute)) {
+    activeRoute.forEach((cp, i) => {
+      if (visitedLore[i] || !cp.lore) return;
+
+      const lat = parseFloat(cp.lat ?? cp.Lat ?? cp.latitude);
+      const lng = parseFloat(cp.lng ?? cp.Lng ?? cp.longitude);
+      if (isNaN(lat) || isNaN(lng)) return;
+
+      const dist = distanceInMeters(userLatLng.lat, userLatLng.lng, lat, lng);
+      const radius = parseFloat(cp.radius) || 25;
+
+      if (dist <= radius) {
+        // User is inside radius — start dwell timer if not already running
+        if (!checkpointDwellTimers[i]) {
+          checkpointDwellTimers[i] = setTimeout(() => {
+            // Confirm still inside radius when timer fires
+            const confirmLat = parseFloat(cp.lat ?? cp.Lat ?? cp.latitude);
+            const confirmLng = parseFloat(cp.lng ?? cp.Lng ?? cp.longitude);
+            const confirmDist = distanceInMeters(userLatLng.lat, userLatLng.lng, confirmLat, confirmLng);
+            if (confirmDist <= radius && !visitedLore[i]) {
+              // Haptic feedback
+              if (navigator.vibrate) navigator.vibrate([80, 40, 120]);
+              // Sound
+              checkpointSound.currentTime = 0;
+              checkpointSound.play().catch(() => {});
+              // Trigger lore
+              triggerCheckpointLore(i, {
+                title:  cp.lore.title || `Checkpoint ${i + 1}`,
+                text:   cp.lore.text  || "",
+                style:  cp.lore.style || "stone",
+                author: activeRouteNarrator
+              });
+            }
+            delete checkpointDwellTimers[i];
+          }, CHECKPOINT_DWELL_MS);
+        }
+      } else {
+        // User left radius — cancel dwell timer
+        if (checkpointDwellTimers[i]) {
+          clearTimeout(checkpointDwellTimers[i]);
+          delete checkpointDwellTimers[i];
+        }
+      }
+    });
+  }
+
+  // ============================
+  // ⭐ WORLD POI PROXIMITY CHECK
+  // ============================
+  checkPOIProximity();
+  updatePOIDistanceClasses();
+  updateRouteDistanceClasses();
+}
+
+// ======== AUTO-FOLLOW + RECENTER ========
+let userIsPanning = false;
+let recenterTimeout = null;
+
+// ======== CHECKPOINT ARRIVAL STATE ========
+// Tracks how long the user has been inside each checkpoint radius (dwell detection)
+const checkpointDwellTimers = {};
+
+// Flag: final checkpoint lore was shown — complete route after lore card closes
+let pendingRouteComplete = false;
+let pendingItemToast     = null;  // {name, iconSrc, rarity} — shown after lore card closes
+const CHECKPOINT_DWELL_MS = 1500; // must stay inside radius for 1.5s to trigger
+const checkpointSound = new Audio("audio/checkpoint-found.mp3");
+const pageFlipSound    = new Audio("audio/page-flip.mp3");
+const parchmentSound   = new Audio("audio/parchment-open.mp3");
+
+const recenterBtn = document.getElementById("recenter-btn");
+if (recenterBtn) {
+  map.on("movestart", () => {
+    userIsPanning = true;
+    recenterBtn.style.display = "flex";
+    if (recenterTimeout) clearTimeout(recenterTimeout);
+    // Don't add map-moving during zoom or flyTo animation — it suppresses
+    // marker transitions that Leaflet needs for smooth repositioning.
+    if (!map._animatingZoom && !map._flying) map.getContainer().classList.add("map-moving");
+  });
+
+  map.on("moveend", () => {
+    if (recenterTimeout) clearTimeout(recenterTimeout);
+    recenterTimeout = setTimeout(() => {
+      userIsPanning = false;
+      recenterBtn.style.display = "none";
+    }, 4000);
+    map.getContainer().classList.remove("map-moving");
+  });
+
+  map.on("click", () => {
+    if (!watchId && "geolocation" in navigator) {
+      startGeolocationWatch();
+    }
+  });
+
+
+  recenterBtn.addEventListener("click", () => {
+    // Ensure GPS is running if user explicitly wants to recenter
+    if (!watchId && "geolocation" in navigator) {
+      startGeolocationWatch();
+    }
+    if (userLatLng) {
+      map.flyTo([userLatLng.lat, userLatLng.lng], 17.5, {
+        animate: true,
+        duration: 1.2
+      });
+    }
+    userIsPanning = false;
+    recenterBtn.style.display = "none";
+  });
+}
+
+// ======== NEARBY START HELPERS ========
+const NEARBY_MAX_DIST_M = 15000; // 15km — show routes within this radius
+const START_TRIGGER_RADIUS = 60;
+const START_BUFFER = 20;
+
+function getAllRoutesWithDistance() {
+  if (!userLatLng || !routes || routes.length === 0) return [];
+
+  const results = [];
+  routes.forEach((r) => {
+    const start = r.checkpoints?.[0];
+    if (!start) return;
+    const lat = parseFloat(start.lat ?? start.Lat ?? start.latitude);
+    const lng = parseFloat(start.lng ?? start.Lng ?? start.longitude);
+    if (isNaN(lat) || isNaN(lng)) return;
+    const d = distanceInMeters(userLatLng.lat, userLatLng.lng, lat, lng);
+    if (d <= NEARBY_MAX_DIST_M) results.push({ route: r, dist: d });
+  });
+
+  results.sort((a, b) => a.dist - b.dist);
+  return results;
+}
+
+function getStartableRoutesWithinRadius() {
+  if (!userLatLng || !routes || routes.length === 0) return [];
+  const maxDist = START_TRIGGER_RADIUS + START_BUFFER;
+  return routes
+    .filter(r => {
+      const start = r.checkpoints?.[0];
+      if (!start) return false;
+      const lat = parseFloat(start.lat ?? start.Lat ?? start.latitude);
+      const lng = parseFloat(start.lng ?? start.Lng ?? start.longitude);
+      if (isNaN(lat) || isNaN(lng)) return false;
+      return distanceInMeters(userLatLng.lat, userLatLng.lng, lat, lng) <= maxDist;
+    })
+    .map(r => {
+      const start = r.checkpoints[0];
+      const lat = parseFloat(start.lat ?? start.Lat ?? start.latitude);
+      const lng = parseFloat(start.lng ?? start.Lng ?? start.longitude);
+      return { route: r, dist: distanceInMeters(userLatLng.lat, userLatLng.lng, lat, lng) };
+    })
+    .sort((a, b) => a.dist - b.dist);
+}
+
+// ======== ROUTE PREVIEW MODAL FOR NEARBY START ========
+const routePreviewBackdrop = document.getElementById("route-preview-backdrop");
+const routePreviewModal = document.getElementById("route-preview-modal");
+const routePreviewList = document.getElementById("route-preview-list");
+const closeRoutePreview = document.getElementById("close-route-preview");
+
+function openRoutePreviewForNearbyStart() {
+  if (!routePreviewModal || !routePreviewBackdrop || !routePreviewList) {
+    const startables = getStartableRoutesWithinRadius();
+    if (startables.length === 0) {
+      alert("No routes within starting range yet. Move closer to a trailhead.");
+      return;
+    }
+    const first = startables[0];
+    clearRoute();
+    showRoute(first.route.checkpoints, first.route.name, true);
+    return;
+  }
+
+  routePreviewList.innerHTML = "";
+
+  const startables = getStartableRoutesWithinRadius();
+  if (startables.length === 0) {
+    routePreviewList.innerHTML =
+      "<p style='color:#ddd;'>No routes within starting range yet.</p>";
+  } else {
+    startables.forEach((item) => {
+      const btn = document.createElement("button");
+      btn.className = "route-preview-item";
+      btn.textContent = `${item.route.name} — ${Math.round(
+        item.dist
+      )}m away`;
+      btn.addEventListener("click", () => {
+        clearRoute();
+        showRoute(item.route.checkpoints, item.route.name, true);
+        closeRoutePreviewModal();
+      });
+      routePreviewList.appendChild(btn);
+    });
+  }
+
+  if (routePreviewBackdrop) routePreviewBackdrop.classList.remove("hidden");
+  if (routePreviewModal) routePreviewModal.classList.remove("hidden");
+}
+
+function closeRoutePreviewModal() {
+  if (routePreviewBackdrop) routePreviewBackdrop.classList.add("hidden");
+  if (routePreviewModal) routePreviewModal.classList.add("hidden");
+}
+
+if (closeRoutePreview) {
+  closeRoutePreview.addEventListener("click", closeRoutePreviewModal);
+}
+if (routePreviewBackdrop) {
+  routePreviewBackdrop.addEventListener("click", (e) => {
+    if (e.target === routePreviewBackdrop) closeRoutePreviewModal();
+  });
+}
+
+// ======== BADGE LOADING ========
+async function loadBadges() {
+  const user = auth.currentUser;
+  if (!user) return [];
+  try {
+    const snap = await getDocs(collection(db, "Users", user.uid, "badges"));
+    return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+  } catch (e) {
+    console.error("loadBadges error", e);
+    return [];
+  }
+}
+
+// ======== DOM ELEMENTS (safe access) ========
+const badgesModal = document.getElementById("badges-modal");
+const badgeGrid = document.getElementById("badge-grid");
+const closeBadgesModal = document.getElementById("close-badges-modal");
+
+const menuFab = document.getElementById("menu-fab");
+const menuSheet = document.getElementById("menu-sheet");
+const menuBackdrop = document.getElementById("menu-backdrop");
+
+const settingsScreen = document.getElementById("settings-screen");
+const logoutBtn = document.getElementById("logout-btn");
+const closeSettings = document.getElementById("close-settings");
+
+const nearbyScreen = document.getElementById("nearby-screen");
+const nearbyList = document.getElementById("nearby-list");
+const closeNearby = document.getElementById("close-nearby");
+
+const historyScreen = document.getElementById("history-screen");
+const historyList = document.getElementById("history-list");
+const closeHistory = document.getElementById("close-history");
+
+// ======== MENU: open/close + panel swap ========
+function showMenuMainPanel() {
+  const main = document.getElementById("menu-main");
+  const settings = document.getElementById("menu-settings");
+  if (main) main.classList.remove("hidden");
+  if (settings) settings.classList.add("hidden");
+}
+function showMenuSettingsPanel() {
+  const main = document.getElementById("menu-main");
+  const settings = document.getElementById("menu-settings");
+  if (main) main.classList.add("hidden");
+  if (settings) settings.classList.remove("hidden");
+}
+
+// ============================
+// MENU OPEN / CLOSE (BOTTOM-LEFT SHEET)
+// ============================
+
+function openMenu() {
+  // Always reset to the main menu panel when opening
+  showMenuMainPanel();
+
+  if (menuBackdrop) {
+    menuBackdrop.classList.add("show");
+    menuBackdrop.classList.remove("hidden");
+  }
+  if (menuSheet) {
+    menuSheet.classList.add("show");
+    menuSheet.classList.remove("hidden");
+    menuSheet.setAttribute("aria-hidden", "false");
+  }
+}
+
+function closeMenu() {
+  if (menuBackdrop) {
+    menuBackdrop.classList.remove("show");
+    setTimeout(() => menuBackdrop.classList.add("hidden"), 200);
+  }
+  if (menuSheet) {
+    menuSheet.classList.remove("show");
+    setTimeout(() => menuSheet.classList.add("hidden"), 200);
+    menuSheet.setAttribute("aria-hidden", "true");
+  }
+}
+
+// FAB opens menu
+if (menuFab) menuFab.addEventListener("click", openMenu);
+
+// Backdrop closes menu
+if (menuBackdrop) {
+  menuBackdrop.addEventListener("click", (e) => {
+    if (e.target === menuBackdrop) closeMenu();
+  });
+}
+
+// Delegated menu click handler
+if (menuSheet) {
+  menuSheet.addEventListener("click", (e) => {
+    const btn = e.target.closest(".menu-item, .menu-item-small");
+    if (!btn) return;
+
+    const action = btn.dataset.action || "";
+    if (action) {
+      switch (action) {
+        case "nearby":
+          closeMenu();
+          openNearbyRoutesScreen();
+          break;
+        case "view-badges":
+          closeMenu();
+          openBadgesModal();
+          break;
+        case "open-settings":
+          showMenuSettingsPanel();
+          break;
+        case "history":
+          closeMenu();
+          openHistoryScreen();
+          break;
+        case "open-inventory":
+          closeMenu();
+          openInventoryScreen();
+          break;
+        case "open-journal":
+          closeMenu();
+          openJournalScreen();
+          break;
+      }
+      return;
+    }
+
+    const id = btn.id || "";
+    if (id === "menu-settings-back") {
+      showMenuMainPanel();
+      return;
+    }
+    if (id === "menu-logout-btn") {
+      signOut(auth)
+        .then(() => {
+          closeMenu();
+          closeSettingsScreen();
+        })
+        .catch((err) => console.error("Logout error (menu):", err));
+      return;
+    }
+    if (id === "menu-open-settings-screen") {
+      closeMenu();
+      openSettingsScreen();
+      return;
+    }
+  });
+}
+
+// ======== COMPASS VISIBILITY — hide when any screen is open ========
+const compassEl2 = document.getElementById("compass");
+function hideCompass() { if (compassEl2) compassEl2.style.display = "none"; }
+function showCompass() { if (compassEl2) compassEl2.style.display = ""; }
+
+// ======== CLOSE ALL SCREENS (call before opening any screen) ========
+// ======== INVENTORY SCREEN ========
+const inventoryScreen   = document.getElementById("inventory-screen");
+const inventoryGrid     = document.getElementById("inventory-grid");
+const closeInventoryBtn = document.getElementById("close-inventory");
+
+function rarityClass(rarity) {
+  return "rarity-" + (rarity || "common").toLowerCase();
+}
+
+async function openInventoryScreen() {
+  closeAllScreens();
+  hideCompass();
+  if (!inventoryScreen || !inventoryGrid) return;
+  inventoryScreen.classList.remove("hidden");
+  inventoryScreen.setAttribute("aria-hidden", "false");
+  inventoryGrid.innerHTML = `<div class="inventory-empty">Loading…</div>`;
+
+  const user = auth.currentUser;
+  if (!user) return;
+
+  try {
+    const invSnap = await getDocs(collection(db, "Users", user.uid, "inventory"));
+    if (invSnap.empty) {
+      inventoryGrid.innerHTML = `<div class="inventory-empty">🎒 Your inventory is empty.<br><span>Find hidden checkpoints and world points to collect items.</span></div>`;
+      return;
+    }
+
+    const entries = [];
+    invSnap.forEach(d => entries.push({ id: d.id, ...d.data() }));
+
+    const defs = await Promise.all(
+      entries.map(e =>
+        getDoc(doc(db, "Items", e.id))
+          .then(s => s.exists() ? { id: e.id, ...s.data() } : { id: e.id, name: e.id })
+          .catch(() => ({ id: e.id, name: e.id }))
+      )
+    );
+
+    inventoryGrid.innerHTML = "";
+    entries.forEach((inv, i) => {
+      const def     = defs[i] || {};
+      const name    = def.name        || inv.id;
+      const rarity  = def.rarity      || "common";
+      const icon    = def.icon        || null;
+      const qty     = inv.quantity    || 1;
+      const flavour = def.flavourText || "";
+      const desc    = def.description || "";
+
+      const iconHtml = icon
+        ? `<img src="${icon}" class="inventory-card-icon" alt="${name}">`
+        : `<div class="inventory-card-icon">📦</div>`;
+
+      const card = document.createElement("div");
+      card.className = "inventory-card";
+      card.innerHTML = `
+        ${iconHtml}
+        <div class="inventory-card-name">${name}</div>
+        <div class="inventory-card-rarity ${rarityClass(rarity)}">${rarity}</div>
+        ${qty > 1 ? `<div class="inventory-card-qty">×${qty}</div>` : ""}
+      `;
+      card.addEventListener("click", () => showItemDetail({ name, rarity, icon, flavour, desc }));
+      inventoryGrid.appendChild(card);
+    });
+  } catch (err) {
+    console.error("Inventory load error:", err);
+    inventoryGrid.innerHTML = `<div class="inventory-empty">Failed to load inventory.</div>`;
+  }
+}
+
+function closeInventoryScreen() {
+  if (!inventoryScreen) return;
+  inventoryScreen.classList.add("hidden");
+  inventoryScreen.setAttribute("aria-hidden", "true");
+}
+closeInventoryBtn?.addEventListener("click", closeInventoryScreen);
+
+function showItemDetail({ name, rarity, icon, flavour, desc }) {
+  const backdrop = document.getElementById("item-detail-backdrop");
+  const modal    = document.getElementById("item-detail-modal");
+  if (!backdrop || !modal) return;
+  document.getElementById("item-detail-icon").innerHTML = icon ? `<img src="${icon}" alt="${name}">` : "📦";
+  document.getElementById("item-detail-rarity").textContent = rarity || "common";
+  document.getElementById("item-detail-rarity").className = `item-detail-rarity ${rarityClass(rarity)}`;
+  document.getElementById("item-detail-name").textContent = name;
+  document.getElementById("item-detail-flavour").textContent = flavour;
+  document.getElementById("item-detail-desc").textContent = desc;
+  backdrop.classList.remove("hidden");
+  modal.classList.remove("hidden");
+}
+
+document.getElementById("item-detail-close")?.addEventListener("click", () => {
+  document.getElementById("item-detail-backdrop")?.classList.add("hidden");
+  document.getElementById("item-detail-modal")?.classList.add("hidden");
+});
+document.getElementById("item-detail-backdrop")?.addEventListener("click", () => {
+  document.getElementById("item-detail-backdrop")?.classList.add("hidden");
+  document.getElementById("item-detail-modal")?.classList.add("hidden");
+});
+
+function closeAllScreens() {
+  closeSettingsScreen();
+  closeBadgesModalFn();
+  closeNearbyScreen();
+  closeHistoryScreen();
+  closeInventoryScreen();
+  if (journalScreen) journalScreen.classList.add("hidden");
+  if (journalRouteDetail) journalRouteDetail.classList.add("hidden");
+  closeJournal();
+  showCompass();
+}
+
+// ======== MENU: open full settings screen and close handlers ========
+async function openSettingsScreen() {
+  closeAllScreens();
+  hideCompass();
+  if (!settingsScreen) return;
+  settingsScreen.classList.remove("hidden");
+  settingsScreen.setAttribute("aria-hidden", "false");
+
+  const user = auth.currentUser;
+  const content = document.getElementById("settings-content");
+  if (!content) return;
+
+  if (user) {
+    // Load stats
+    let routeCount = 0, badgeCount = 0, itemCount = 0;
+    try {
+      const [histSnap, badgeSnap, itemSnap] = await Promise.all([
+        getDocs(collection(db, "Users", user.uid, "routeHistory")),
+        getDocs(collection(db, "Users", user.uid, "badges")),
+        getDocs(collection(db, "Users", user.uid, "inventory"))
+      ]);
+      routeCount = histSnap.size;
+      badgeCount = badgeSnap.size;
+      itemCount  = itemSnap.size;
+    } catch (e) {}
+
+    const title = getTitleForCompletions(routeCount);
+    const avatarStyle = user.photoURL ? `background-image:url(${user.photoURL})` : "";
+
+    content.innerHTML = `
+      <div class="settings-profile">
+        <div class="settings-avatar" style="${avatarStyle}"></div>
+        <div class="settings-profile-info">
+          <div class="settings-profile-name">${user.displayName || "Adventurer"}</div>
+          <div class="settings-profile-title">${title}</div>
+        </div>
+      </div>
+      <div class="settings-stats">
+        <div class="settings-stat"><div class="settings-stat-val">${routeCount}</div><div class="settings-stat-label">Routes</div></div>
+        <div class="settings-stat"><div class="settings-stat-val">${badgeCount}</div><div class="settings-stat-label">Badges</div></div>
+        <div class="settings-stat"><div class="settings-stat-val">${itemCount}</div><div class="settings-stat-label">Items</div></div>
+      </div>
+      <div class="settings-divider"></div>
+      <div class="settings-row">
+        <span>Account</span><span class="settings-row-val">${user.email || ""}</span>
+      </div>
+      <div class="settings-row">
+        <span>Version</span><span class="settings-row-val">1.0.0</span>
+      </div>
+    `;
+  } else {
+    content.innerHTML = `<div style="color:#ddd;margin:12px 0;">Not signed in.</div>`;
+  }
+}
+function closeSettingsScreen() {
+  if (settingsScreen) {
+    settingsScreen.classList.add("hidden");
+    settingsScreen.setAttribute("aria-hidden", "true");
+  }
+}
+
+const menuSettingsBack = document.getElementById("menu-settings-back");
+if (menuSettingsBack)
+  menuSettingsBack.addEventListener("click", showMenuMainPanel);
+
+if (closeSettings) closeSettings.addEventListener("click", closeSettingsScreen);
+
+// ======== SETTINGS LOGOUT (full screen) ========
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+      closeSettingsScreen();
+    } catch (e) {
+      console.error("Logout error:", e);
+    }
+  });
+}
+
+/* ============================================================
+   ROUTE COMPLETION SUMMARY SCREEN
+   ============================================================ */
+
+function showRouteSummary(routeName, badgeSVG, loreCount, totalLore, routeSnapshot) {
+  const backdrop = document.getElementById("route-summary-backdrop");
+  const modal = document.getElementById("route-summary-modal");
+  const title = document.getElementById("route-summary-title");
+  const badge = document.getElementById("route-summary-badge");
+  const details = document.getElementById("route-summary-details");
+  const btnJournal = document.getElementById("route-summary-journal-btn");
+  const btnClose = document.getElementById("route-summary-close-btn");
+
+  if (!modal || !backdrop) return;
+
+  // Compute distance + time using snapshot (activeRoute may already be null)
+  const distance = computeRouteDistance(routeSnapshot || []);
+  const km = (distance / 1000).toFixed(2);
+  const minutes = estimateTimeMinutes(distance);
+
+  const percent = Math.round((loreCount / totalLore) * 100);
+
+  title.textContent = `Route Completed: ${routeName}`;
+  badge.innerHTML = badgeSVG;
+
+  details.innerHTML = `
+    <div>Completed on: ${new Date().toLocaleDateString()}</div>
+    <div>Lore Found: ${loreCount} / ${totalLore} (${percent}%)</div>
+    <div>Distance: ${km} km</div>
+    <div>Estimated Time: ${minutes} min</div>
+  `;
+
+  backdrop.classList.remove("hidden");
+  modal.classList.remove("hidden");
+
+  requestAnimationFrame(() => {
+    backdrop.classList.add("show");
+    modal.classList.add("show");
+  });
+
+  btnJournal.onclick = () => {
+    modal.classList.remove("show");
+    backdrop.classList.remove("show");
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      backdrop.classList.add("hidden");
+      openJournalScreen();
+    }, 250);
+  };
+
+  btnClose.onclick = () => {
+    modal.classList.remove("show");
+    backdrop.classList.remove("show");
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      backdrop.classList.add("hidden");
+    }, 250);
+  };
+}
+
+
+
+// ===============================
+// BADGE SYSTEM HELPERS + SVG GENERATOR (METALLIC SHIELD + STARS)
+// ===============================
+
+// Map completion count → star count
+function getStarCountForCompletions(completions) {
+  if (!completions || completions <= 1) return 0;
+  if (completions >= 2 && completions <= 4) return 1;
+  if (completions >= 5 && completions <= 9) return 2;
+  return 3; // 10+
+}
+
+// Initials from route name
+function getRouteInitials(name) {
+  return name
+    .split(" ")
+    .map((w) => w[0]?.toUpperCase())
+    .join("")
+    .slice(0, 3);
+}
+
+// Generate positions for stars in a top arc
+function getStarPositions(starCount) {
+  if (starCount === 0) return [];
+  const positions = [];
+  const centerX = 45;
+  const baseY = 26;
+  const spacing = 16;
+
+  if (starCount === 1) {
+    positions.push({ x: centerX, y: baseY });
+  } else if (starCount === 2) {
+    positions.push({ x: centerX - spacing, y: baseY });
+    positions.push({ x: centerX + spacing, y: baseY });
+  } else {
+    positions.push({ x: centerX - spacing, y: baseY });
+    positions.push({ x: centerX, y: baseY - 4 });
+    positions.push({ x: centerX + spacing, y: baseY });
+  }
+
+  return positions;
+}
+
+// Metallic shield with engraved initials + gold stars
+function generateBadgeSVG(routeName, starCount = 0) {
+  const initials = getRouteInitials(routeName);
+  const stars = getStarPositions(starCount)
+    .map(
+      (p) => `
+      <text x="${p.x}" y="${p.y}" text-anchor="middle"
+            fill="#ffd54a" font-size="16" font-family="system-ui, sans-serif"
+            filter="drop-shadow(0 1px 3px rgba(180,120,0,0.7))">
+        ★
+      </text>`
+    )
+    .join("");
+
+  return `
+    <svg width="90" height="110" viewBox="0 0 90 110" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Polished steel gradient -->
+        <linearGradient id="shieldMetal" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#f5f7fa"/>
+          <stop offset="35%" stop-color="#d0d4da"/>
+          <stop offset="70%" stop-color="#a4a9b1"/>
+          <stop offset="100%" stop-color="#7b8088"/>
+        </linearGradient>
+
+        <!-- Inner dark plate -->
+        <linearGradient id="shieldInner" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#3b3f46"/>
+          <stop offset="100%" stop-color="#1f2227"/>
+        </linearGradient>
+
+        <!-- Engraved text effect -->
+        <filter id="engrave">
+          <feOffset dx="0.5" dy="0.5" result="shadow"/>
+          <feGaussianBlur in="shadow" stdDeviation="0.6" result="blur"/>
+          <feComposite in="blur" in2="SourceAlpha" operator="arithmetic"
+                       k2="-1" k3="1" result="innerShadow"/>
+          <feMerge>
+            <feMergeNode in="innerShadow"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- Outer shield shape (rim) -->
+      <path d="M45 5 L78 22 L78 60 Q45 90 45 105 Q45 90 12 60 L12 22 Z"
+            fill="url(#shieldMetal)"
+            stroke="#ffffff"
+            stroke-width="2.5" />
+
+      <!-- Inner plate -->
+      <path d="M45 12 L72 26 L72 57 Q45 82 45 96 Q45 82 18 57 L18 26 Z"
+            fill="url(#shieldInner)"
+            stroke="#cfd3da"
+            stroke-width="1.5" />
+
+      <!-- Gold stars in top arc -->
+      ${stars}
+
+      <!-- Engraved initials -->
+      <text x="50%" y="63%" text-anchor="middle"
+            fill="#e0e3ea"
+            font-size="24"
+            font-weight="700"
+            font-family="system-ui, sans-serif"
+            filter="url(#engrave)">
+        ${initials}
+      </text>
+    </svg>
+  `;
+}
+
+// ===============================
+// BADGES MODAL (METALLIC SHIELDS + STARS)
+// ===============================
+async function openBadgesModal() {
+  closeAllScreens();
+  hideCompass();
+  if (!badgesModal) return;
+  if (badgeGrid) badgeGrid.innerHTML = "";
+
+  const user = auth.currentUser;
+  if (!user) {
+    badgeGrid.innerHTML = "<p style='color:#ddd;padding:24px'>Sign in to view badges.</p>";
+    badgesModal.classList.remove("hidden");
+    badgesModal.setAttribute("aria-hidden", "false");
+    return;
+  }
+
+  // Load badges
+  const badges = await loadBadges();
+
+  // Load route history once and build completion counts
+  let completionCounts = {};
+  try {
+    const historySnap = await getDocs(
+      collection(db, "Users", user.uid, "routeHistory")
+    );
+    historySnap.forEach((docSnap) => {
+      const data = docSnap.data();
+      const name = data.routeName;
+      if (!name) return;
+      completionCounts[name] = (completionCounts[name] || 0) + 1;
+    });
+  } catch (e) {
+    console.error("Error loading route history for badges:", e);
+  }
+
+  if (!badges || badges.length === 0) {
+    badgeGrid.innerHTML = "<p style='color:#ddd;'>No badges earned yet.</p>";
+  } else {
+    badges.forEach((b) => {
+      const item = document.createElement("div");
+      item.className = "badge-item";
+
+      // Derive route name from badge id/name
+      const rawId = b.id || b.name || "";
+      let routeName = rawId.replace(/^completed_/, "").replace(/_/g, " ").trim();
+      if (!routeName) routeName = "Unknown Route";
+
+      const completions = completionCounts[routeName] || 1;
+      const starCount = getStarCountForCompletions(completions);
+
+      const svg = generateBadgeSVG(routeName, starCount);
+
+      item.innerHTML = `
+        <div class="badge-svg-container">
+          ${svg}
+        </div>
+        <div class="badge-route-name">${routeName}</div>
+      `;
+
+      badgeGrid.appendChild(item);
+    });
+  }
+
+  badgesModal.classList.remove("hidden");
+  badgesModal.setAttribute("aria-hidden", "false");
+  if (closeBadgesModal) closeBadgesModal.focus();
+}
+
+// ===============================
+// CLOSE BADGES MODAL
+// ===============================
+
+function closeBadgesModalFn() {
+  if (!badgesModal) return;
+  badgesModal.classList.add("hidden");
+  badgesModal.setAttribute("aria-hidden", "true");
+  showCompass();
+}
+
+if (closeBadgesModal) {
+  closeBadgesModal.addEventListener("click", closeBadgesModalFn);
+}
+
+// ======== NEARBY / HISTORY screens ========
+function openNearbyRoutesScreen() {
+  closeAllScreens();
+  hideCompass();
+  if (!nearbyScreen || !nearbyList) return;
+  nearbyScreen.classList.remove("hidden");
+  nearbyScreen.setAttribute("aria-hidden", "false");
+  nearbyList.innerHTML = "";
+
+  if (!userLatLng) {
+    nearbyList.innerHTML = `<div class="nearby-empty">📡 Waiting for your location…<br><span>Make sure location is enabled.</span></div>`;
+    return;
+  }
+
+  const allRoutes = getAllRoutesWithDistance();
+
+  if (allRoutes.length === 0) {
+    nearbyList.innerHTML = `<div class="nearby-empty">🗺 No routes found within 15km.<br><span>More routes coming soon!</span></div>`;
+    return;
+  }
+
+  allRoutes.forEach((item) => {
+    const r = item.route;
+    const distM = Math.round(item.dist);
+    const distStr = distM < 1000 ? `${distM}m away` : `${(distM / 1000).toFixed(1)}km away`;
+    const isCompleted = window.__completedRoutes?.has(r.name);
+    const cpCount = (r.checkpoints || []).filter(c => !c.hidden).length;
+    const distTotal = computeRouteDistance(r.checkpoints || []);
+    const kmTotal = (distTotal / 1000).toFixed(1);
+    const modeLabel = r.mode === "hunt" ? "Hunt" : "Guided";
+    const modeClass = r.mode === "hunt" ? "mode-hunt" : "mode-guided";
+    const canStart = item.dist <= START_TRIGGER_RADIUS + START_BUFFER;
+
+    const narratorName = r.narrator
+      ? (NARRATORS.find(n => n.id === r.narrator)?.name || r.narrator.replace(/_/g, " "))
+      : "";
+
+    const el = document.createElement("div");
+    el.className = "nearby-item" + (isCompleted ? " nearby-completed" : "");
+    el.innerHTML = `
+      <div class="nearby-item-top">
+        <div class="nearby-item-name">${r.name}${isCompleted ? ' <span class="nearby-done-badge">✓ Done</span>' : ""}</div>
+        <span class="nearby-mode-tag ${modeClass}">${modeLabel}</span>
+      </div>
+      ${narratorName ? `<div class="nearby-item-narrator">Logs by ${narratorName}</div>` : ""}
+      <div class="nearby-item-meta">
+        <span>📍 ${distStr}</span>
+        <span>🚩 ${cpCount} checkpoints</span>
+        <span>📏 ${kmTotal}km</span>
+      </div>
+      ${!canStart ? `<div class="nearby-item-hint">Walk to the trailhead to start</div>` : ""}
+    `;
+    el.addEventListener("click", () => {
+      clearRoute();
+      showRoute(r.checkpoints, r.name, false, r.mode || "guided");
+      closeNearbyScreen();
+      closeMenu();
+    });
+    nearbyList.appendChild(el);
+  });
+}
+function closeNearbyScreen() {
+  if (!nearbyScreen) return;
+  nearbyScreen.classList.add("hidden");
+  nearbyScreen.setAttribute("aria-hidden", "true");
+}
+if (closeNearby) closeNearby.addEventListener("click", closeNearbyScreen);
+
+function openHistoryScreen() {
+  closeAllScreens();
+  hideCompass();
+  if (!historyScreen || !historyList) return;
+  historyScreen.classList.remove("hidden");
+  historyScreen.setAttribute("aria-hidden", "false");
+  historyList.innerHTML = "";
+
+  const user = auth.currentUser;
+  if (!user) return;
+
+  getDocs(collection(db, "Users", user.uid, "routeHistory")).then((snap) => {
+    const entries = [];
+    snap.forEach((d) => entries.push(d.data()));
+
+    entries.sort((a, b) => {
+      const aSec = a.completedAt?.seconds || 0;
+      const bSec = b.completedAt?.seconds || 0;
+      return bSec - aSec;
+    });
+
+    if (entries.length === 0) {
+      historyList.innerHTML = `<div class="history-empty">🥾 No completed routes yet.<br><span>Start exploring to build your history.</span></div>`;
+      return;
+    }
+
+    // Build completion count map for streak display
+    const countMap = {};
+    entries.forEach(e => { if (e.routeName) countMap[e.routeName] = (countMap[e.routeName] || 0) + 1; });
+
+    entries.forEach((data) => {
+      const completedAt = data.completedAt;
+      let dateStr = "";
+      if (completedAt?.seconds) {
+        const d = new Date(completedAt.seconds * 1000);
+        dateStr = d.toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
+      }
+
+      const routeData = (window.__allRoutes || []).find(r => r.name === data.routeName);
+      const cpCount = routeData ? (routeData.checkpoints || []).filter(c => !c.hidden).length : null;
+      const distM = routeData ? computeRouteDistance(routeData.checkpoints || []) : 0;
+      const distStr = distM > 0 ? (distM < 1000 ? `${Math.round(distM)}m` : `${(distM/1000).toFixed(1)}km`) : null;
+      const count = countMap[data.routeName] || 1;
+
+      const el = document.createElement("div");
+      el.className = "history-item";
+      el.innerHTML = `
+        <div class="history-item-top">
+          <div class="history-item-name">${data.routeName || "Unknown Route"}</div>
+          ${count > 1 ? `<span class="history-streak">×${count}</span>` : ""}
+        </div>
+        <div class="history-item-meta">
+          <span>📅 ${dateStr}</span>
+          ${cpCount ? `<span>🚩 ${cpCount} checkpoints</span>` : ""}
+          ${distStr ? `<span>📏 ${distStr}</span>` : ""}
+        </div>
+      `;
+      historyList.appendChild(el);
+    });
+  });
+}
+function closeHistoryScreen() {
+  if (!historyScreen) return;
+  historyScreen.classList.add("hidden");
+  historyScreen.setAttribute("aria-hidden", "true");
+}
+if (closeHistory) closeHistory.addEventListener("click", closeHistoryScreen);
+
+// ======== OFFLINE DETECTION + WRITE QUEUE ========
+const offlineBanner     = document.getElementById("offline-banner");
+const offlineBannerText = document.getElementById("offline-banner-text");
+let _backOnlineTimer = null;
+
+function setOfflineUI(isOffline) {
+  if (!offlineBanner) return;
+  if (_backOnlineTimer) { clearTimeout(_backOnlineTimer); _backOnlineTimer = null; }
+
+  if (isOffline) {
+    if (offlineBannerText) offlineBannerText.textContent = "📡 No connection — progress will sync when back online";
+    offlineBanner.classList.remove("back-online");
+    offlineBanner.classList.remove("hidden");
+  } else {
+    // Show a brief "back online" confirmation then fade out
+    if (offlineBannerText) offlineBannerText.textContent = "✓ Back online — syncing progress";
+    offlineBanner.classList.add("back-online");
+    offlineBanner.classList.remove("hidden");
+    _backOnlineTimer = setTimeout(() => {
+      offlineBanner.classList.add("hidden");
+      offlineBanner.classList.remove("back-online");
+    }, 2500);
+  }
+}
+
+window.addEventListener("online",  () => {
+  setOfflineUI(false);
+  // Ask SW to flush any queued writes back to us
+  if (navigator.serviceWorker?.controller) {
+    navigator.serviceWorker.controller.postMessage({ type: "flush-queue" });
+  }
+});
+window.addEventListener("offline", () => setOfflineUI(true));
+
+// Set initial state in case page loads without connection
+if (!navigator.onLine) setOfflineUI(true);
+
+// Handle queued writes replayed by the SW on reconnect
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.addEventListener("message", async (event) => {
+    if (event.data?.type === "queued-writes" && Array.isArray(event.data.writes)) {
+      for (const write of event.data.writes) {
+        try {
+          const ref = doc(db, ...write.path);
+          await setDoc(ref, write.data, { merge: true });
+          console.log("[offline-queue] Replayed write to", write.path.join("/"));
+        } catch (err) {
+          console.error("[offline-queue] Failed to replay write:", err);
+        }
+      }
+    }
+  });
+}
+
+// Helper: wrap a Firestore setDoc so it queues to SW if offline
+async function setDocWithOfflineQueue(path, data, options = {}) {
+  try {
+    const ref = doc(db, ...path);
+    await setDoc(ref, data, options);
+  } catch (err) {
+    if (!navigator.onLine && navigator.serviceWorker?.controller) {
+      navigator.serviceWorker.controller.postMessage({
+        type: "queue-write",
+        payload: { path, data }
+      });
+      console.log("[offline-queue] Queued write for", path.join("/"));
+    } else {
+      throw err;
+    }
+  }
+}
+
+// ======== COMPASS / HEADING UPDATE LOOP ========
+setInterval(() => {
+  updateCompass();
+}, 500);
+
+// ======== AUTH STATE OBSERVER (placed near end so helpers exist) ========
+onAuthStateChanged(auth, async (user) => {
+  const fab = document.getElementById("menu-fab");
+  const fabIcon = document.getElementById("menu-fab-icon");
+  const profileCard = document.getElementById("menu-profile-card");
+  const profileAvatar = document.getElementById("menu-profile-avatar");
+  const profileName = document.getElementById("menu-profile-name");
+  const profileTitle = document.getElementById("menu-profile-title");
+
+  const signinCard = document.getElementById("menu-signin-card");
+  const signinBtn  = document.getElementById("menu-signin-btn");
+
+  if (!user) {
+    // Close any screens left open from the previous user
+    closeAllScreens();
+    // Show sign-in card, hide profile card
+    if (signinCard) signinCard.style.display = "";
+    if (profileCard) profileCard.classList.add("hidden");
+    if (signinBtn) signinBtn.onclick = handleSignIn;
+    // FAB stays as plain ☰
+    if (fab) { fab.classList.remove("has-avatar"); fab.setAttribute("aria-label", "Open menu"); }
+    if (fabIcon) { fabIcon.style.backgroundImage = ""; fabIcon.textContent = "☰"; }
+    stopGeolocationWatch();
+    setSplashProgress(100, "Sign in to begin");
+    setTimeout(() => { hideSplash(); maybeShowStoryIntro(() => showLandingScreen()); }, 600);
+    return;
+  }
+
+  // Signed in — close any screens from a previous user session, then set up
+  closeAllScreens();
+  hideLandingScreen();
+  if (signinCard) signinCard.style.display = "none";
+
+  // FAB becomes avatar
+  if (fab && fabIcon && user.photoURL) {
+    fabIcon.style.backgroundImage = `url(${user.photoURL})`;
+    fabIcon.textContent = "";
+    fab.classList.add("has-avatar");
+  } else {
+    if (fabIcon) fabIcon.textContent = "☰";
+    if (fab) fab.classList.remove("has-avatar");
+  }
+
+  // Populate menu profile card
+  if (profileCard) {
+    if (profileAvatar && user.photoURL) profileAvatar.style.backgroundImage = `url(${user.photoURL})`;
+    if (profileName) profileName.textContent = user.displayName || "Adventurer";
+    profileCard.classList.remove("hidden");
+  }
+
+  // Profile title updated after history loads (updateUserTitleUI handles it)
+  if (profileTitle) {
+    const count = window.__completedRoutes?.size || 0;
+    profileTitle.textContent = getTitleForCompletions(count);
+  }
+
+  try {
+    const profileRef = doc(db, "Users", user.uid, "profile", "info");
+    const snap = await getDoc(profileRef);
+    if (!snap.exists()) {
+      await setDoc(profileRef, {
+        name: user.displayName,
+        photoURL: user.photoURL,
+        createdAt: new Date()
+      });
+      window.__unlockedPOIs = [];
+      window.__unlockedBioFragments = {};
+    } else {
+      window.__unlockedPOIs = snap.data().unlockedPOIs || [];
+      window.__unlockedBioFragments = snap.data().unlockedBioFragments || {}; // {narratorId: [itemId, ...0]}
+    }
+  } catch (err) {
+    console.error("Error ensuring profile doc:", err);
+    window.__unlockedPOIs = [];
+    window.__unlockedBioFragments = {};
+  }
+
+  setSplashProgress(30, "Signing in…");
+  const isReturning = !!localStorage.getItem(ONBOARDING_KEY);
+  if (isReturning) requestAnimationFrame(() => startGeolocationWatch());
+  updateUserTitleUI();
+
+  setSplashProgress(45, "Loading your progress…");
+  loadCompletedRoutes()
+    .then(loadAllRoutes)
+    .then(() => maybeShowOnboarding());
+
+  loadNarrators().catch(console.error);
+
+  // Fetch POI data now but defer rendering until first GPS fix
+  // so POIs stay hidden until we know the player's distance.
+  loadVisitedPOIs().then(loadWorldPOIsData).catch(console.error);
+
+  restoreRouteProgress();
+
+});
+
+// ======================================================
+// ⭐ LORE SYSTEM — Journal Save + Toast + Lore Card
+// ======================================================
+
+// Randomized discovery messages
+const LORE_DISCOVERY_MESSAGES = [
+  "You found a torn note…",
+  "You found a scrap of paper…",
+  "You found a weathered fragment…",
+  "You found a faded message…",
+  "You found something tucked under a stone…",
+  "You found a crumpled page…",
+  "You found a brittle parchment scrap…"
+];
+
+// DOM refs
+const loreToast = document.getElementById("lore-toast");
+const loreToastText = document.getElementById("lore-toast-text");
+const loreCardOverlay = document.getElementById("lore-card-overlay");
+const loreCard = document.getElementById("lore-card");
+const loreCardTitle = document.getElementById("lore-card-title");
+const loreCardText = document.getElementById("lore-card-text");
+const loreCardClose = document.getElementById("lore-card-close");
+
+// ── Lore card close ──
+function closeLoreCard() {
+  if (!loreCardOverlay || !loreCard) return;
+  parchmentSound.currentTime = 0;
+  parchmentSound.play().catch(() => {});
+  loreCard.style.animation = "loreCardDismiss 0.3s cubic-bezier(0.4,0,1,1) forwards";
+  setTimeout(() => {
+    loreCardOverlay.classList.add("hidden");
+    loreCard.style.animation = "";
+
+    // Restore journal z-index
+    const journalScreenEl = document.getElementById("journal-screen");
+    const journalDetailEl = document.getElementById("journal-route-detail");
+    if (journalScreenEl) journalScreenEl.style.zIndex = "";
+    if (journalDetailEl) journalDetailEl.style.zIndex = "";
+
+    // Show deferred item toast now that the card is gone
+    if (pendingItemToast) {
+      const { name, iconSrc, rarity } = pendingItemToast;
+      pendingItemToast = null;
+      setTimeout(() => showItemToast(name, iconSrc, rarity), 80);
+    }
+
+    // If this was the final checkpoint lore, fire route completion sequence
+    if (pendingRouteComplete) {
+      pendingRouteComplete = false;
+      showRouteCompleteTransition(async () => {
+        try { await completeRoute(); } catch (e) { console.error("completeRoute error:", e); }
+      });
+    }
+  }, 300);
+}
+
+// Brief cinematic beat between lore close and badge reveal
+function showRouteCompleteTransition(onDone) {
+  const toast = document.createElement("div");
+  toast.textContent = "Route Complete";
+  toast.style.cssText = [
+    "position:fixed",
+    "top:50%",
+    "left:50%",
+    "transform:translate(-50%,-50%)",
+    "background:rgba(0,0,0,0.82)",
+    "color:#fff",
+    "font-size:22px",
+    "font-weight:700",
+    "letter-spacing:0.08em",
+    "text-transform:uppercase",
+    "padding:18px 36px",
+    "border-radius:14px",
+    "backdrop-filter:blur(10px)",
+    "border:1px solid rgba(255,255,255,0.12)",
+    "z-index:10200",
+    "opacity:0",
+    "transition:opacity 0.35s ease",
+    "pointer-events:none"
+  ].join(";");
+  document.body.appendChild(toast);
+
+  // Fade in
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => { toast.style.opacity = "1"; });
+  });
+
+  // Hold then fade out → trigger completion
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    setTimeout(() => {
+      toast.remove();
+      onDone();
+    }, 350);
+  }, 900);
+}
+
+if (loreCardClose) {
+  loreCardClose.addEventListener("click", (e) => {
+    e.stopPropagation();
+    closeLoreCard();
+  });
+}
+
+// Tap backdrop to close
+if (loreCardOverlay) {
+  loreCardOverlay.addEventListener("click", (e) => {
+    if (e.target === loreCardOverlay) closeLoreCard();
+  });
+}
+
+// Toast click → open lore card
+if (loreToast) {
+  loreToast.addEventListener("click", () => {
+    loreToast.classList.add("hidden");
+    loreCardOverlay.classList.remove("hidden");
+  });
+}
+
+// ======================================================
+// ⭐ Show Toast
+// ======================================================
+function showLoreToast(message) {
+  if (!loreToast || !loreToastText) return;
+
+  loreToastText.textContent = message;
+  loreToast.classList.remove("hidden");
+  loreToast.classList.add("show");
+
+  setTimeout(() => {
+    loreToast.classList.remove("show");
+    setTimeout(() => loreToast.classList.add("hidden"), 300);
+  }, 3000);
+}
+
+// ======================================================
+// ⭐ Open Lore Card
+// ======================================================
+function openLoreCard(payload) {
+  if (!loreCardOverlay || !loreCardTitle || !loreCardText) return;
+
+  loreCardTitle.textContent = payload.title || "Checkpoint";
+  loreCardText.textContent = payload.text || "";
+  loreCard.setAttribute("data-style", payload.style || "stone");
+  loreCard.style.animation = "";
+
+  // Page flip sound
+  pageFlipSound.currentTime = 0;
+  pageFlipSound.play().catch(() => {});
+
+  // Temporarily lower journal screens below lore card while it's open
+  const journalScreenEl = document.getElementById("journal-screen");
+  const journalDetailEl = document.getElementById("journal-route-detail");
+  if (journalScreenEl) journalScreenEl.style.zIndex = "10150";
+  if (journalDetailEl) journalDetailEl.style.zIndex = "10150";
+
+  loreCardOverlay.classList.remove("hidden");
+}
+
+// ======================================================
+// ⭐ Save Lore to Firestore (Journal)
+// ======================================================
+async function saveLoreToJournal(routeName, checkpointIndex, payload) {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  try {
+    // Ensure the parent route document exists (queued if offline)
+    await setDocWithOfflineQueue(
+      ["Users", user.uid, "LoreJournal", routeName],
+      { routeName, updatedAt: new Date() },
+      { merge: true }
+    );
+
+    // Write the entry (queued if offline)
+    await setDocWithOfflineQueue(
+      ["Users", user.uid, "LoreJournal", routeName, "entries", String(checkpointIndex)],
+      {
+        checkpointIndex,
+        title:      payload.title  || "",
+        text:       payload.text   || "",
+        style:      payload.style  || "stone",
+        author:     payload.author || "",   // narrator id — empty = anonymous
+        unlockedAt: new Date(),
+        read:       false
+      }
+    );
+
+  } catch (err) {
+    console.error("saveLoreToJournal error:", err);
+  }
+}
+
+async function markLoreAsRead(routeName, checkpointIndex) {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  try {
+    const entryRef = doc(
+      db,
+      "Users",
+      user.uid,
+      "LoreJournal",
+      routeName,
+      "entries",
+      String(checkpointIndex)
+    );
+
+    await setDoc(entryRef, { read: true }, { merge: true });
+
+    // Decrement the menu badge (don't go below 0)
+    const badge = document.getElementById("journal-unread-badge");
+    if (badge && !badge.classList.contains("hidden")) {
+      const current = parseInt(badge.textContent) || 0;
+      updateJournalBadge(Math.max(0, current - 1));
+    }
+
+  } catch (err) {
+    console.error("markLoreAsRead error:", err);
+  }
+}
+
+// ======================================================
+// ⭐ NARRATOR SYSTEM
+// Narrators are the characters whose lore entries populate
+// the journal. Each route has one narrator; entries are
+// tagged with their authorId on write. The journal home
+// screen shows narrator cards — locked until first entry found.
+// ======================================================
+
+// Hardcoded narrator registry — add new characters here.
+// loreStyle matches the card style used for their entries.
+// descriptor is one line shown on their dossier card.
+// Narrator registry — populated from Firestore Narrators collection on load.
+// Falls back to empty array until fetch completes; loadNarrators() is called
+// early in the auth flow so it's ready before the journal is opened.
+let NARRATORS = [];
+
+async function loadNarrators() {
+  try {
+    const snap = await getDocs(collection(db, "Narrators"));
+    NARRATORS = snap.docs.map(d => ({
+      id:                  d.id,
+      name:                d.data().name                || d.id,
+      descriptor:          d.data().descriptor          || "",
+      loreStyle:           d.data().loreStyle           || "stone",
+      hideName:            d.data().hideName            || false,
+      portrait:            d.data().portrait            || "",
+      bioFragments:        d.data().bioFragments        || [],
+      poiUnlockThreshold:  d.data().poiUnlockThreshold  || null,
+      unlockPOIId:         d.data().unlockPOIId         || null
+    }));
+    window.__narrators = NARRATORS;
+    console.log(`[Narrators] loaded ${NARRATORS.length} from Firestore`);
+  } catch (err) {
+    console.error("[Narrators] failed to load:", err);
+  }
+}
+
+// Look up a narrator by id — returns undefined if not found
+function getNarrator(id) {
+  return NARRATORS.find(n => n.id === id);
+}
+function triggerCheckpointLore(index, payload) {
+  if (!activeRouteName || !activeRoute) return;
+
+  // isFinal = last non-hidden checkpoint (hidden CPs must not block route completion)
+  const lastVisibleIndex = activeRoute.reduce((last, cp, i) => cp.hidden ? last : i, -1);
+  const isFinal = index === lastVisibleIndex;
+
+  // 1. Random discovery message
+  const msg =
+    LORE_DISCOVERY_MESSAGES[
+      Math.floor(Math.random() * LORE_DISCOVERY_MESSAGES.length)
+    ];
+
+  // 2. (toast suppressed — lore card is the discovery moment; toast would overlap the card)
+  const cp = activeRoute[index];
+
+  // 3. Save to Journal
+  saveLoreToJournal(activeRouteName, index, payload);
+
+  // 4. Open lore card immediately
+  openLoreCard(payload);
+
+  // 5. ⭐ Mark checkpoint as visited
+  visitedLore[index] = true;
+
+  // 5b. ⭐ Grant item — Firestore write now, toast deferred until lore card closes
+  if (cp?.item) grantItem(cp.item, /* deferToast */ true, !!cp.oneTimeItem);
+
+  // 6. ⭐ Auto‑advance activeIndex
+  // Only advance if this checkpoint is the current "next" one
+  if (activeIndex === index && !isFinal) {
+    activeIndex = index + 1;
+    saveRouteProgress();
+  }
+
+  // 7. ⭐ Update visuals + HUD + compass
+  if (typeof updateCheckpointStates === "function") updateCheckpointStates();
+  updateHUD();
+  updateCompass();
+  updateCheckpointScaling();
+  populateFindingsDrawer();
+
+  // Show pip on Findings button instead of forcing the drawer open
+  showFindingsPip();
+
+  // 8. ⭐ Final checkpoint — set flag so route completes after lore card closes
+  if (isFinal) {
+    pendingRouteComplete = true;
+  }
+
+  // 9. Hunt mode: save the consumed clue for this checkpoint into findings,
+  //    then show the next checkpoint's clue in the HUD row.
+  if (activeRouteMode === "hunt") {
+    // Save the clue that led to this checkpoint into findings
+    if (cp?.clue) {
+      saveClueToFindings(cp.clue, index + 1);
+    }
+
+    if (!isFinal) {
+      const nextCp = activeRoute[index + 1];
+      if (nextCp?.clue) {
+        // Small delay so it slides in after the checkpoint celebration
+        setTimeout(() => showClueInHUD(nextCp.clue, index + 2), 600);
+      }
+    } else {
+      // Final checkpoint found — clear the clue row
+      hideHudClueRow();
+    }
+  }
+}
+
+
+// ======================================================
+// ⭐ HUNT MODE — HUD CLUE ROW SYSTEM
+// ======================================================
+// Clues now live in the HUD top bar (#hud-clue-row) rather
+// than a floating overlay card. This keeps the map unobstructed
+// and makes clues feel like a persistent navigation aid.
+//
+// Flow:
+//   initHudClueRow()     — called on hunt route start; readies row
+//   showClueInHUD()      — called on checkpoint found; updates text
+//   hideHudClueRow()     — called on route exit / final checkpoint
+//   saveClueToFindings() — persists consumed clue into findings drawer
+//
+// The row is tappable to expand long clue text (CSS handles animation).
+// The old clue-card DOM elements are kept hidden so legacy refs don't throw.
+// ======================================================
+
+// Track clues that have been consumed (shown) this session.
+// Array of { number, text } objects — appended to findings drawer.
+let _huntClueLog = [];
+
+// Currently active clue — stored so the reclue button can re-show it.
+let _currentClue = null; // { text, number } | null
+
+const _reclueBtn = document.getElementById("reclue-btn");
+if (_reclueBtn) {
+  _reclueBtn.addEventListener("click", () => {
+    if (!_currentClue) return;
+    // Re-show the HUD clue row with the current clue
+    showClueInHUD(_currentClue.text, _currentClue.number);
+  });
+}
+
+/** Ready the HUD clue row for a new hunt — clear any previous state. */
+function initHudClueRow() {
+  const row  = document.getElementById("hud-clue-row");
+  const text = document.getElementById("hud-clue-text");
+  if (!row) return;
+  _huntClueLog = [];
+  _currentClue = null;
+  if (_reclueBtn) _reclueBtn.classList.add("hidden");
+  if (text) text.textContent = "";
+  row.classList.remove("hud-clue-expanded", "clue-row-enter");
+  row.classList.add("hidden");
+}
+
+/**
+ * Show a clue in the HUD row with a slide-in animation.
+ * Called when a checkpoint is found and the next clue is ready.
+ * @param {string} clueText
+ * @param {number} checkpointNumber — 1-based number of the checkpoint this clue leads to
+ */
+function showClueInHUD(clueText, checkpointNumber) {
+  const row   = document.getElementById("hud-clue-row");
+  const label = document.getElementById("hud-clue-label");
+  const text  = document.getElementById("hud-clue-text");
+  if (!row || !text) return;
+
+  // Store so reclue button can re-show it
+  _currentClue = { text: clueText, number: checkpointNumber };
+
+  // Show reclue button
+  if (_reclueBtn) _reclueBtn.classList.remove("hidden");
+
+  // Update content
+  if (label) label.childNodes[0] && (label.childNodes[0].textContent = "🔍 Clue " + checkpointNumber + " ");
+  text.textContent = clueText;
+
+  // Reset expand state so new clue always starts collapsed
+  row.classList.remove("hud-clue-expanded", "clue-row-enter");
+  row.classList.remove("hidden");
+
+  // Force reflow so the animation re-triggers on subsequent clues
+  void row.offsetWidth;
+  row.classList.add("clue-row-enter");
+  setTimeout(() => row.classList.remove("clue-row-enter"), 400);
+}
+
+/** Hide the HUD clue row (route ended or final checkpoint reached). */
+function hideHudClueRow() {
+  const row = document.getElementById("hud-clue-row");
+  if (row) {
+    row.classList.add("hidden");
+    row.classList.remove("hud-clue-expanded");
+  }
+  _currentClue = null;
+  if (_reclueBtn) _reclueBtn.classList.add("hidden");
+}
+
+/**
+ * Save a consumed clue into the findings log so the player can
+ * review the hunt's clue trail after completion.
+ * @param {string} clueText
+ * @param {number} checkpointNumber — 1-based number of the checkpoint found
+ */
+function saveClueToFindings(clueText, checkpointNumber) {
+  _huntClueLog.push({ number: checkpointNumber, text: clueText });
+  // findings drawer is rebuilt on next open via populateFindingsDrawer()
+}
+
+// Tap the clue row to toggle expand/collapse for long clue text
+const _hudClueRow = document.getElementById("hud-clue-row");
+if (_hudClueRow) {
+  _hudClueRow.addEventListener("click", () => {
+    _hudClueRow.classList.toggle("hud-clue-expanded");
+  });
+}
+
+// ── Backwards-compat stubs ───────────────────────────────────
+// Legacy calls to showClueCard / hideClueCard / hideClueCardFully
+// are redirected so nothing breaks if other code still calls them.
+let clueCardDismissed = false; // kept for any external checks
+function showClueCard(clueText, checkpointNumber) {
+  showClueInHUD(clueText, checkpointNumber);
+}
+function hideClueCard() {
+  // No-op — HUD clue row is persistent, not dismissible mid-hunt
+}
+function resummonClueCard() {
+  const row = document.getElementById("hud-clue-row");
+  if (row) row.classList.remove("hidden");
+}
+function hideClueCardFully() {
+  hideHudClueRow();
+  _huntClueLog = [];
+}
+
+// ======================================================
+// ⭐ JOURNAL SYSTEM — Load Routes + Load Checkpoints + UI
+// ======================================================
+
+// DOM refs
+// ======================================================
+// ⭐ JOURNAL — NARRATOR-FIRST UI
+// Home: narrator dossier cards (locked until first entry found)
+// Tap narrator → see all their entries across all routes
+// Tap entry → open lore card
+// ======================================================
+
+const journalScreen      = document.getElementById("journal-screen");
+const journalRouteList   = document.getElementById("journal-route-list");    // repurposed as narrator list
+const journalRouteDetail = document.getElementById("journal-route-detail");  // repurposed as narrator detail
+const journalCheckpointList = document.getElementById("journal-checkpoint-list");
+const journalBackBtn     = document.getElementById("journal-back-btn");
+const routeDetailBackBtn = document.getElementById("route-detail-back-btn");
+const routeDetailTitle   = document.getElementById("route-detail-title");
+
+function openJournalPanel() { openJournalScreen(); }
+
+async function openJournalScreen() {
+  closeAllScreens();
+  hideCompass();
+  if (!auth.currentUser) return;
+  journalScreen.classList.remove("hidden");
+  journalRouteDetail.classList.add("hidden");
+  await loadNarratorDossiers();
+}
+
+if (journalBackBtn) {
+  journalBackBtn.addEventListener("click", () => {
+    journalScreen.classList.add("hidden");
+    journalRouteList.innerHTML = "";
+    showCompass();
+  });
+}
+
+// ── Home: narrator dossier cards ──────────────────────────────
+async function loadNarratorDossiers() {
+  const user = auth.currentUser;
+  if (!user) return;
+  journalRouteList.innerHTML = "";
+
+  // Gather all entries the player has found, keyed by author
+  let allEntries = [];
+  try {
+    const routeSnaps = await getDocs(collection(db, "Users", user.uid, "LoreJournal"));
+    await Promise.all(routeSnaps.docs.map(async (routeDoc) => {
+      const entrySnaps = await getDocs(collection(db, "Users", user.uid, "LoreJournal", routeDoc.id, "entries"));
+      entrySnaps.docs.forEach(d => {
+        allEntries.push({ routeName: routeDoc.id, ...d.data() });
+      });
+    }));
+  } catch (err) {
+    console.error("loadNarratorDossiers error:", err);
+    journalRouteList.innerHTML = `<div style="color:#f66;margin-top:12px;">Could not load journal. Check your connection.</div>`;
+    return;
+  }
+
+  if (allEntries.length === 0) {
+    journalRouteList.innerHTML = `<div style="color:#ccc;margin-top:12px;">No journal entries yet.</div>`;
+    return;
+  }
+
+  // Group by author
+  const byAuthor = {};
+  allEntries.forEach(e => {
+    const key = e.author || "__anonymous";
+    if (!byAuthor[key]) byAuthor[key] = [];
+    byAuthor[key].push(e);
+  });
+
+  // Render known narrators first (in registry order), then anonymous
+  const renderedIds = new Set();
+
+  NARRATORS.forEach(narrator => {
+    const entries = byAuthor[narrator.id] || [];
+    renderedIds.add(narrator.id);
+    renderNarratorCard(narrator, entries);
+  });
+
+  // Anonymous / unrecognised authors
+  Object.keys(byAuthor).forEach(key => {
+    if (renderedIds.has(key)) return;
+    const anonNarrator = { id: key, name: "Unknown", descriptor: "Author unidentified", loreStyle: "stone" };
+    renderNarratorCard(anonNarrator, byAuthor[key]);
+  });
+
+  // Update the menu button badge with total unread count
+  const totalUnread = allEntries.filter(e => e.read === false).length;
+  updateJournalBadge(totalUnread);
+}
+
+// Updates the unread dot/count on the Journal menu button.
+// Call after loading entries or marking one as read.
+function updateJournalBadge(count) {
+  const badge = document.getElementById("journal-unread-badge");
+  if (!badge) return;
+  if (count > 0) {
+    badge.textContent = count > 99 ? "99+" : count;
+    badge.classList.remove("hidden");
+  } else {
+    badge.classList.add("hidden");
+  }
+}
+
+function renderNarratorCard(narrator, entries) {
+  if (entries.length === 0) return; // don't show undiscovered narrators
+
+  const isRevealed  = (window.__unlockedPOIs || []).includes(narrator.unlockPOIId);
+  const showName    = !narrator.hideName || isRevealed;
+  const displayName = showName ? narrator.name : "???";
+  const unread      = entries.filter(e => e.read === false).length;
+
+  // Bio fragments unlocked so far
+  const allUnlocked    = window.__unlockedBioFragments?.[narrator.id] || [];
+  const visibleFragments = (narrator.bioFragments || []).filter(f => {
+    const key = f.unlocksAfter === 0 ? "__initial" : f.unlocksAfter;
+    return allUnlocked.includes(key);
+  });
+
+  const card = document.createElement("div");
+  card.className = "narrator-card" + (isRevealed ? " narrator-revealed" : " narrator-discovered");
+  card.dataset.narratorId = narrator.id;
+
+  // Portrait
+  const portraitHtml = isRevealed && narrator.portrait
+    ? `<img class="narrator-portrait" src="${narrator.portrait}" alt="${narrator.name}">`
+    : `<div class="narrator-portrait-placeholder">${showName ? "👤" : "?"}</div>`;
+
+  // Bio fragments
+  const bioHtml = visibleFragments.length
+    ? `<div class="narrator-bio">
+        ${visibleFragments.map(f => `<p class="narrator-bio-fragment">${f.text}</p>`).join("")}
+       </div>`
+    : "";
+
+  const totalFragments = (narrator.bioFragments || []).length;
+  const fragmentCount  = visibleFragments.length;
+  const bioProgress    = totalFragments > 0 && isRevealed
+    ? `<div class="narrator-bio-progress">${fragmentCount} of ${totalFragments} bio entries unlocked</div>`
+    : "";
+
+  card.innerHTML = `
+    <div class="narrator-card-inner">
+      ${portraitHtml}
+      <div class="narrator-card-content">
+        <div class="narrator-card-name">${displayName}</div>
+        ${showName ? `<div class="narrator-card-descriptor">${narrator.descriptor}</div>` : ""}
+        <div class="narrator-card-meta">
+          ${entries.length} ${entries.length === 1 ? "entry" : "entries"} found
+          ${unread > 0 ? `<span class="narrator-unread-badge">${unread} unread</span>` : ""}
+        </div>
+      </div>
+    </div>
+    ${bioHtml}
+    ${bioProgress}
+  `;
+
+  card.addEventListener("click", () => openNarratorDetail(narrator, entries));
+  journalRouteList.appendChild(card);
+}
+
+// ── Narrator detail: all their entries ───────────────────────
+async function openNarratorDetail(narrator, entries) {
+  journalScreen.classList.add("hidden");
+  journalRouteDetail.classList.remove("hidden");
+  routeDetailTitle.textContent = narrator.name;
+
+  // Wire Mark All Read to mark all entries for this narrator
+  const markAllBtn = document.getElementById("markAllReadBtn");
+  if (markAllBtn) {
+    markAllBtn.style.display = "";
+    markAllBtn.onclick = async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+      try {
+        const routeSnaps = await getDocs(collection(db, "Users", user.uid, "LoreJournal"));
+        const batch = writeBatch(db);
+        await Promise.all(routeSnaps.docs.map(async (routeDoc) => {
+          const entrySnaps = await getDocs(
+            collection(db, "Users", user.uid, "LoreJournal", routeDoc.id, "entries")
+          );
+          entrySnaps.forEach(d => {
+            if (d.data().author === narrator.id) {
+              batch.set(d.ref, { read: true }, { merge: true });
+            }
+          });
+        }));
+        await batch.commit();
+        document.querySelectorAll(".unread-dot").forEach(dot => dot.remove());
+        updateJournalBadge(0);
+      } catch (err) {
+        console.error("markAllRead narrator error:", err);
+      }
+    };
+  }
+
+  journalCheckpointList.innerHTML = "";
+
+  // Sort by discovery time
+  const sorted = [...entries].sort((a, b) => {
+    const ta = a.unlockedAt?.toMillis?.() ?? 0;
+    const tb = b.unlockedAt?.toMillis?.() ?? 0;
+    return ta - tb;
+  });
+
+  sorted.forEach(entry => {
+    const isUnread  = entry.read === false;
+    const item      = document.createElement("div");
+    item.className  = "checkpoint-item";
+
+    const displayTitle = entry.title || `Entry`;
+    const routeLabel   = entry.routeName ? `<span class="entry-route-label">${entry.routeName}</span>` : "";
+
+    item.innerHTML = `
+      <div class="checkpoint-title">
+        ${displayTitle}
+        ${isUnread ? `<span class="unread-dot"></span>` : ""}
+      </div>
+      ${routeLabel}
+      <div class="checkpoint-preview">"${entry.text.slice(0, 60)}..."</div>
+    `;
+
+    item.addEventListener("click", () => {
+      markLoreAsRead(entry.routeName, entry.checkpointIndex);
+      openLoreCard({ title: displayTitle, text: entry.text, style: entry.style });
+      item.querySelector(".unread-dot")?.remove();
+    });
+
+    journalCheckpointList.appendChild(item);
+  });
+}
+
+if (routeDetailBackBtn) {
+  routeDetailBackBtn.addEventListener("click", () => {
+    journalRouteDetail.classList.add("hidden");
+    journalScreen.classList.remove("hidden");
+  });
+}
+
+// ── Mark all read — narrator scoped (detail screen) ──────────
+async function markAllLoreAsRead(routeName) {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  try {
+    const entriesCol = collection(
+      db,
+      "Users",
+      user.uid,
+      "LoreJournal",
+      routeName,
+      "entries"
+    );
+
+    const entrySnaps = await getDocs(entriesCol);
+
+    const batch = writeBatch(db);
+    entrySnaps.forEach((docSnap) => {
+      const ref = docSnap.ref;
+      batch.set(ref, { read: true }, { merge: true });
+    });
+
+    await batch.commit();
+
+    document.querySelectorAll(".unread-dot").forEach((dot) => dot.remove());
+    updateJournalBadge(0);
+    console.log(`All lore entries for ${routeName} marked as read.`);
+  } catch (err) {
+    console.error("markAllLoreAsRead error:", err);
+  }
+}
+
+// ── Mark all read — global (Sources home screen) ─────────────
+async function markAllLoreAsReadGlobal() {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  try {
+    const routeSnaps = await getDocs(collection(db, "Users", user.uid, "LoreJournal"));
+    const batch = writeBatch(db);
+
+    await Promise.all(routeSnaps.docs.map(async (routeDoc) => {
+      const entrySnaps = await getDocs(
+        collection(db, "Users", user.uid, "LoreJournal", routeDoc.id, "entries")
+      );
+      entrySnaps.forEach(d => batch.set(d.ref, { read: true }, { merge: true }));
+    }));
+
+    await batch.commit();
+    document.querySelectorAll(".unread-dot").forEach(dot => dot.remove());
+    document.querySelectorAll(".narrator-unread-badge").forEach(b => b.remove());
+    updateJournalBadge(0);
+    console.log("All lore entries marked as read globally.");
+  } catch (err) {
+    console.error("markAllLoreAsReadGlobal error:", err);
+  }
+}
+
+// Wire global button
+const markAllReadGlobalBtn = document.getElementById("markAllReadGlobalBtn");
+if (markAllReadGlobalBtn) {
+  markAllReadGlobalBtn.addEventListener("click", markAllLoreAsReadGlobal);
+}
+
+
+
+// ======================================================
+// ⭐ WORLD POI SYSTEM
+// Loads WorldPOIs from Firestore, places amber markers,
+// detects proximity, handles requiresItem + oneTime logic,
+// grants items, shows lore card or toast.
+// ======================================================
+
+// State
+let worldPOIs = [];           // raw POI data from Firestore
+const poiMarkers = {};        // poiId → Leaflet marker
+const poiDwellTimers = {};    // poiId → setTimeout handle
+const visitedPOIs = new Set();// poiIds triggered this session (oneTime guard)
+
+const POI_DWELL_MS = 1200;    // slightly snappier than checkpoints
+
+// ── Load + render ──────────────────────────────────────
+
+function normalisePOI(poi) {
+  if (poi["0"] && typeof poi["0"] === "object") {
+    Object.assign(poi, poi["0"]);
+    delete poi["0"];
+  }
+  return poi;
+}
+
+// Fetches POI data without rendering — markers are held back
+// until the first GPS fix so POIs stay secret until nearby.
+async function loadWorldPOIsData() {
+  try {
+    const snap = await getDocs(collection(db, "WorldPOIs"));
+    worldPOIs = snap.docs.map(d => normalisePOI({ id: d.id, ...d.data() }));
+    console.log(`[WorldPOIs] loaded ${worldPOIs.length} POIs — awaiting GPS fix to render`);
+  } catch (err) {
+    console.error("[WorldPOIs] load error:", err);
+  }
+}
+
+// Full load + render (used when GPS is already known, e.g. route builder preview)
+async function loadWorldPOIs() {
+  await loadWorldPOIsData();
+  if (userLatLng) renderWorldPOIs();
+}
+
+function renderWorldPOIs() {
+  Object.values(poiMarkers).forEach(m => {
+    if (map.hasLayer(m)) map.removeLayer(m);
+  });
+  Object.keys(poiMarkers).forEach(k => delete poiMarkers[k]);
+
+  worldPOIs.forEach(poi => {
+    // If this POI is narrator-gated, only show it if it's been unlocked
+    if (poi.narratorGated && !(window.__unlockedPOIs || []).includes(poi.id)) return;
+
+    const lat = parseFloat(poi.lat ?? poi.Lat ?? poi.latitude);
+    const lng = parseFloat(poi.lng ?? poi.Lng ?? poi.longitude);
+    if (isNaN(lat) || isNaN(lng)) return;
+
+    const alreadyVisited = visitedPOIs.has(poi.id);
+    const visitedClass   = alreadyVisited ? " poi-visited" : "";
+
+    const marker = L.marker([lat, lng], {
+      icon: L.divIcon({
+        html: `<div class="poi-marker${visitedClass}">
+                 <img class="poi-svg" src="icons/poi-marker.svg" alt="Point of Interest">
+               </div>`,
+        className: "",
+        iconSize:   [40, 40],
+        iconAnchor: [20, 20]
+      }),
+      interactive: true,
+      pane: "markerPane"
+    }).addTo(map);
+
+    marker.on("click", () => {
+      if (!userLatLng) return;
+      const dist   = distanceInMeters(userLatLng.lat, userLatLng.lng, lat, lng);
+      const radius = parseFloat(poi.radius) || 20;
+      if (dist > radius * 3) {
+        showLoreToast(`${poi.name || "Point of Interest"} — walk closer to interact`);
+      }
+    });
+
+    poiMarkers[poi.id] = marker;
+  });
+
+  if (userLatLng) updatePOIDistanceClasses();
+}
+
+function updatePOIDistanceClasses() {
+  if (!userLatLng || !worldPOIs.length) return;
+  worldPOIs.forEach(poi => {
+    const marker = poiMarkers[poi.id];
+    if (!marker) return;
+    const lat = parseFloat(poi.lat ?? poi.Lat ?? poi.latitude);
+    const lng = parseFloat(poi.lng ?? poi.Lng ?? poi.longitude);
+    if (isNaN(lat) || isNaN(lng)) return;
+    const dist = distanceInMeters(userLatLng.lat, userLatLng.lng, lat, lng);
+    const el   = marker.getElement();
+    if (!el) return;
+    const div = el.querySelector(".poi-marker");
+    if (!div) return;
+    div.classList.remove("poi-far", "poi-distant");
+    if      (dist > 2000) div.classList.add("poi-distant");
+    else if (dist > 1000) div.classList.add("poi-far");
+  });
+}
+
+// ── Item grant ──────────────────────────────────────────
+
+async function grantItem(itemId, deferToast = false, oneTimeItem = false) {
+  const user = auth.currentUser;
+  if (!user || !itemId) return;
+
+  try {
+    // Fetch item definition
+    const defSnap = await getDoc(doc(db, "Items", itemId));
+    const def = defSnap.exists() ? defSnap.data() : null;
+
+    // Write to inventory (increment qty if already owned)
+    const invRef = doc(db, "Users", user.uid, "inventory", itemId);
+    const invSnap = await getDoc(invRef);
+    const currentQty = invSnap.exists() ? (invSnap.data().quantity || 1) : 0;
+
+    // One-time items: silently skip if the player already has one
+    if (oneTimeItem && currentQty >= 1) {
+      console.log(`[grantItem] skipping ${itemId} — oneTimeItem already owned`);
+      return;
+    }
+
+    await setDoc(invRef, {
+      foundAt:  invSnap.exists() ? invSnap.data().foundAt : new Date(),
+      quantity: currentQty + 1
+    }, { merge: true });
+
+    const toastName   = def?.name   || itemId;
+    const toastIcon   = def?.icon   || null;
+    const toastRarity = def?.rarity || "common";
+
+    if (deferToast) {
+      // Lore card is open — queue the toast so it fires after the card closes
+      pendingItemToast = { name: toastName, iconSrc: toastIcon, rarity: toastRarity };
+    } else {
+      showItemToast(toastName, toastIcon, toastRarity);
+    }
+
+    console.log(`[grantItem] granted ${itemId} to ${user.uid}`);
+    updatePOIBioGlow().catch(console.error);
+  } catch (err) {
+    console.error("[grantItem] error:", err);
+  }
+}
+
+// ── Item toast ──────────────────────────────────────────
+
+let itemToastTimer = null;
+
+function showItemToast(name, iconSrc, rarity) {
+  const toast    = document.getElementById("item-toast");
+  const titleEl  = document.getElementById("item-toast-title");
+  const nameEl   = document.getElementById("item-toast-name");
+  const iconEl   = document.getElementById("item-toast-icon");
+  if (!toast) return;
+
+  // Icon — image or emoji fallback
+  if (iconSrc) {
+    iconEl.innerHTML = `<img src="${iconSrc}" alt="${name}">`;
+  } else {
+    iconEl.textContent = "📦";
+  }
+
+  titleEl.textContent = "Item Found";
+  nameEl.textContent  = name;
+
+  // Rarity tint on border
+  const rarityColors = {
+    common:    "rgba(255,170,40,0.55)",
+    uncommon:  "rgba(100,220,100,0.55)",
+    rare:      "rgba(80,160,255,0.65)",
+    epic:      "rgba(180,80,255,0.65)",
+    legendary: "rgba(255,180,0,0.8)"
+  };
+  toast.style.borderColor = rarityColors[(rarity || "common").toLowerCase()] || rarityColors.common;
+
+  toast.classList.remove("hidden");
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => toast.classList.add("show"));
+  });
+
+  if (itemToastTimer) clearTimeout(itemToastTimer);
+  itemToastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => toast.classList.add("hidden"), 300);
+  }, 3500);
+}
+
+// ── POI trigger ─────────────────────────────────────────
+
+async function triggerPOI(poi) {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  // requiresItem check — does player have the needed item?
+  if (poi.requiresItem) {
+    try {
+      const invSnap = await getDoc(doc(db, "Users", user.uid, "inventory", poi.requiresItem));
+      if (!invSnap.exists()) {
+        showLoreToast(`You need an item to interact with this.`);
+        const m = poiMarkers[poi.id];
+        if (m && m.getElement()) {
+          const div = m.getElement().querySelector(".poi-marker");
+          if (div) {
+            div.classList.add("poi-locked");
+            if (!div.querySelector(".poi-lock-badge")) {
+              const badge = document.createElement("span");
+              badge.className = "poi-lock-badge";
+              badge.textContent = "🔒";
+              div.appendChild(badge);
+            }
+          }
+        }
+        return;
+      }
+    } catch (err) {
+      console.error("[triggerPOI] requiresItem check error:", err);
+      return;
+    }
+  }
+
+  // Mark visited in session
+  visitedPOIs.add(poi.id);
+
+  // Haptic
+  if (navigator.vibrate) navigator.vibrate([60, 30, 80]);
+
+  // Gold visited state if oneTime
+  if (poi.oneTime) {
+    const m = poiMarkers[poi.id];
+    if (m && m.getElement()) {
+      const div = m.getElement().querySelector(".poi-marker");
+      if (div) {
+        div.classList.remove("poi-far", "poi-distant");
+        div.classList.add("poi-visited");
+      }
+    }
+    // Persist visited state so it survives session (best-effort)
+    try {
+      await setDoc(
+        doc(db, "Users", user.uid, "visitedPOIs", poi.id),
+        { visitedAt: new Date() },
+        { merge: true }
+      );
+    } catch (e) { /* non-critical */ }
+  }
+
+  // Show lore card if POI has lore, otherwise a simple toast
+  if (poi.lore?.text) {
+    openLoreCard({
+      title: poi.lore.title || poi.name || "Point of Interest",
+      text:  poi.lore.text,
+      style: poi.lore.style || "stone"
+    });
+  } else if (poi.description) {
+    showLoreToast(poi.description);
+  } else {
+    showLoreToast(poi.name || "You discovered a point of interest.");
+  }
+
+  // Grant item if configured — oneTime POIs only grant once (same guard as checkpoint items)
+  if (poi.item) {
+    setTimeout(() => grantItem(poi.item, false, !!poi.oneTime), poi.lore?.text ? 800 : 0);
+  }
+
+  // ── Bio fragment unlock check ─────────────────────────────
+  // If this POI is tied to a narrator, check the player's inventory
+  // against bioFragments and unlock any newly eligible fragments.
+  await checkBioFragmentUnlocks(poi);
+}
+
+// ── BIO FRAGMENT UNLOCK SYSTEM ───────────────────────────────
+// When a narrator-gated POI is visited, check which bioFragments
+// are now unlockable based on the player's inventory. Write newly
+// unlocked fragments to the user profile and update the Sources card.
+
+async function checkBioFragmentUnlocks(poi) {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  // Find narrator whose unlockPOIId matches this POI
+  const narrator = NARRATORS.find(n => n.unlockPOIId === poi.id);
+  if (!narrator?.bioFragments?.length) return;
+
+  const alreadyUnlocked = window.__unlockedBioFragments?.[narrator.id] || [];
+  const newlyUnlocked = [];
+
+  // Check each fragment
+  for (const fragment of narrator.bioFragments) {
+    const key = fragment.unlocksAfter === 0 ? "__initial" : fragment.unlocksAfter;
+    if (alreadyUnlocked.includes(key)) continue;
+
+    // Initial fragment unlocks on first POI visit (unlocksAfter: 0)
+    if (fragment.unlocksAfter === 0) {
+      newlyUnlocked.push(key);
+      continue;
+    }
+
+    // Item-gated fragment — check inventory
+    try {
+      const invSnap = await getDoc(doc(db, "Users", user.uid, "inventory", fragment.unlocksAfter));
+      if (invSnap.exists()) newlyUnlocked.push(key);
+    } catch (err) {
+      console.error("[bioFragments] inventory check error:", err);
+    }
+  }
+
+  if (!newlyUnlocked.length) return;
+
+  // Update local state
+  window.__unlockedBioFragments = window.__unlockedBioFragments || {};
+  window.__unlockedBioFragments[narrator.id] = [...alreadyUnlocked, ...newlyUnlocked];
+
+  // Persist to Firestore
+  try {
+    const profileRef = doc(db, "Users", user.uid, "profile", "info");
+    await setDoc(profileRef, { unlockedBioFragments: window.__unlockedBioFragments }, { merge: true });
+    console.log(`[bioFragments] ${newlyUnlocked.length} new fragment(s) unlocked for ${narrator.id}`);
+  } catch (err) {
+    console.error("[bioFragments] save error:", err);
+  }
+
+  // Show toast for new fragment
+  showLoreToast(`New entry unlocked in Sources.`);
+}
+
+// Check if a narrator POI marker should pulse because new bio fragments
+// are available based on current inventory. Called after items are granted.
+async function updatePOIBioGlow() {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  for (const narrator of NARRATORS) {
+    if (!narrator.unlockPOIId || !narrator.bioFragments?.length) continue;
+    if (!(window.__unlockedPOIs || []).includes(narrator.unlockPOIId)) continue;
+
+    const alreadyUnlocked = window.__unlockedBioFragments?.[narrator.id] || [];
+    let hasNew = false;
+
+    for (const fragment of narrator.bioFragments) {
+      const key = fragment.unlocksAfter === 0 ? "__initial" : fragment.unlocksAfter;
+      if (alreadyUnlocked.includes(key)) continue;
+      if (fragment.unlocksAfter === 0) continue;
+
+      try {
+        const invSnap = await getDoc(doc(db, "Users", user.uid, "inventory", fragment.unlocksAfter));
+        if (invSnap.exists()) { hasNew = true; break; }
+      } catch { continue; }
+    }
+
+    const marker = poiMarkers[narrator.unlockPOIId];
+    if (marker?.getElement()) {
+      const el = marker.getElement().querySelector(".poi-marker");
+      if (el) el.classList.toggle("poi-bio-ready", hasNew);
+    }
+  }
+}
+
+// ── POI proximity loop (called from updateUserMarker) ───
+
+function checkPOIProximity() {
+  if (!userLatLng || !worldPOIs.length) return;
+
+  worldPOIs.forEach(poi => {
+    const poiId = poi.id;
+
+    // Already triggered this session for a oneTime POI
+    if (poi.oneTime && visitedPOIs.has(poiId)) return;
+
+    const lat = parseFloat(poi.lat ?? poi.Lat ?? poi.latitude);
+    const lng = parseFloat(poi.lng ?? poi.Lng ?? poi.longitude);
+    if (isNaN(lat) || isNaN(lng)) return;
+
+    const dist   = distanceInMeters(userLatLng.lat, userLatLng.lng, lat, lng);
+    const radius = parseFloat(poi.radius) || 20;
+
+    if (dist <= radius) {
+      if (!poiDwellTimers[poiId]) {
+        poiDwellTimers[poiId] = setTimeout(async () => {
+          // Confirm still inside when timer fires
+          const confirmDist = distanceInMeters(userLatLng.lat, userLatLng.lng, lat, lng);
+          if (confirmDist <= radius) {
+            // Don't re-trigger a oneTime POI already visited
+            if (poi.oneTime && visitedPOIs.has(poiId)) return;
+            await triggerPOI(poi);
+          }
+          delete poiDwellTimers[poiId];
+        }, POI_DWELL_MS);
+      }
+    } else {
+      // Left radius — cancel pending dwell
+      if (poiDwellTimers[poiId]) {
+        clearTimeout(poiDwellTimers[poiId]);
+        delete poiDwellTimers[poiId];
+      }
+    }
+  });
+}
+
+// ── Load visited POIs from Firestore on sign-in ─────────
+
+async function loadVisitedPOIs() {
+  const user = auth.currentUser;
+  if (!user) return;
+  try {
+    const snap = await getDocs(collection(db, "Users", user.uid, "visitedPOIs"));
+    snap.forEach(d => visitedPOIs.add(d.id));
+    console.log(`[WorldPOIs] ${visitedPOIs.size} previously visited POIs restored`);
+  } catch (e) { /* non-critical */ }
+}
+
+// ============================================================
+// iOS BACKGROUND / FOREGROUND HANDLING
+// Restart GPS when app becomes visible again (iOS kills it on hide)
+// ============================================================
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    // App came back to foreground — restart GPS if user is signed in
+    if (auth.currentUser && !watchId && "geolocation" in navigator) {
+      console.log("[iOS] App resumed — restarting GPS watch");
+      startGeolocationWatch();
+    }
+  }
+});
+
+// ======== FINAL NOTES ========
+// Pane z-indexes are set via .style.zIndex (no !important) so Leaflet retains compositing control.
+// Exposes runtime references for debugging and logs showRoute/clearRoute lifecycle events.
+// Additional updates:
+// - Geolocation starts when user signs in (and stops on sign-out)
+// - Recenter button can bootstrap GPS if it wasn't running
+// - Auto-follow is smoothed to avoid jitter
+// - Nearby screen uses distance-based filtering
+// - History is sorted newest → oldest
