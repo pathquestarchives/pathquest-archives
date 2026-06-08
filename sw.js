@@ -11,35 +11,41 @@ const SHELL_CACHE  = "pqa-shell-v3";
 const TILE_CACHE   = "pqa-tiles-v3";
 const QUEUE_KEY    = "pqa-offline-queue";
 
+// Derive base path from SW registration URL so this works on any host:
+//   localhost/           → BASE = ""
+//   user.github.io/repo/ → BASE = "/repo"
+//   custom-domain.com/   → BASE = ""
+const BASE = self.location.pathname.replace(/\/sw\.js$/, "");
+
 // App shell files to precache on install
 const SHELL_FILES = [
-  "/",
-  "/index.html",
-  "/manifest.json",
-  "/app.js",
-  "/style.css",
-  "/styles/trail-effects.css",
-  "/icons/compass-arrow.png",
-  "/icons/checkpoint.png",
-  "/icons/route-start.png",
-  "/icons/route-end.png",
-  "/icons/user-dot.png",
-  "/icons/flag-mini.svg",
-  "/icons/flag1.svg",
-  "/icons/flag2.svg",
-  "/icons/flag3.svg",
-  "/icons/flag4.svg",
-  "/icons/flag-gold1.svg",
-  "/icons/flag-gold2.svg",
-  "/icons/flag-gold3.svg",
-  "/icons/flag-gold4.svg",
-  "/audio/checkpoint-found.mp3",
-  "/audio/page-flip.mp3",
-  "/audio/parchment-open.mp3",
-  "/textures/old-book-bg.png",
-  "/textures/old-note-bg.png",
-  "/icons/icon-192.png",
-  "/icons/icon-512.png"
+  `${BASE}/`,
+  `${BASE}/index.html`,
+  `${BASE}/manifest.json`,
+  `${BASE}/app.js`,
+  `${BASE}/style.css`,
+  `${BASE}/styles/trail-effects.css`,
+  `${BASE}/icons/compass-arrow.png`,
+  `${BASE}/icons/checkpoint.png`,
+  `${BASE}/icons/route-start.png`,
+  `${BASE}/icons/route-end.png`,
+  `${BASE}/icons/user-dot.png`,
+  `${BASE}/icons/flag-mini.svg`,
+  `${BASE}/icons/flag1.svg`,
+  `${BASE}/icons/flag2.svg`,
+  `${BASE}/icons/flag3.svg`,
+  `${BASE}/icons/flag4.svg`,
+  `${BASE}/icons/flag-gold1.svg`,
+  `${BASE}/icons/flag-gold2.svg`,
+  `${BASE}/icons/flag-gold3.svg`,
+  `${BASE}/icons/flag-gold4.svg`,
+  `${BASE}/audio/checkpoint-found.mp3`,
+  `${BASE}/audio/page-flip.mp3`,
+  `${BASE}/audio/parchment-open.mp3`,
+  `${BASE}/textures/old-book-bg.png`,
+  `${BASE}/textures/old-note-bg.png`,
+  `${BASE}/icons/icon-192.png`,
+  `${BASE}/icons/icon-512.png`,
 ];
 
 // Tile hostnames to intercept and cache
@@ -199,7 +205,7 @@ async function shellStrategy(request) {
     if (cached) return cached;
     // Last resort: return index.html for navigation requests
     if (request.mode === "navigate") {
-      return cache.match("/index.html");
+      return cache.match(`${BASE}/index.html`);
     }
     return new Response("Offline", { status: 503 });
   }

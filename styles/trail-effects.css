@@ -278,7 +278,7 @@
   position: relative;
   width: 48px;
   height: 72px;
-  transform-origin: center bottom;
+  transform-origin: 23px 67px;
   pointer-events: none !important;
 }
 

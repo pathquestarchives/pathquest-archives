@@ -648,7 +648,7 @@ function createUserIcon() {
     `,
     className: "",
     iconSize:   [48, 72],
-    iconAnchor: [24, 72]
+    iconAnchor: [23, 67]
   });
 }
 
