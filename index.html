@@ -335,20 +335,58 @@
     <div class="screen-header">
       <button id="close-settings" class="screen-back-btn" aria-label="Close settings"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
       <span class="screen-header-title">Settings</span>
-      <div class="screen-header-right"></div>
+      <button id="settings-done-btn" class="settings-done-btn" aria-label="Done" type="button">Done</button>
     </div>
     <div class="screen-body">
     <div class="settings-panel" style="max-width:420px;margin:0 auto;">
-      <div class="settings-title" style="font-size:22px;font-weight:700;margin-bottom:12px;text-align:center;">Settings</div>
+
+      <!-- ── Hiker Appearance — static, always visible ── -->
+      <div class="settings-section">
+        <div class="settings-section-label">Hiker Appearance</div>
+        <div class="sprite-picker" id="sprite-picker">
+          <button class="sprite-pick-btn active" data-sprite="generic" aria-label="Select Generic hiker" type="button">
+            <div class="sprite-pick-preview" id="sprite-preview-generic"></div>
+            <span class="sprite-pick-label">Generic</span>
+            <span class="sprite-pick-check">✓</span>
+          </button>
+          <button class="sprite-pick-btn" data-sprite="male" aria-label="Select Male hiker" type="button">
+            <div class="sprite-pick-preview" id="sprite-preview-male"></div>
+            <span class="sprite-pick-label">Male</span>
+            <span class="sprite-pick-check">✓</span>
+          </button>
+          <button class="sprite-pick-btn" data-sprite="female" aria-label="Select Female hiker" type="button">
+            <div class="sprite-pick-preview" id="sprite-preview-female"></div>
+            <span class="sprite-pick-label">Female</span>
+            <span class="sprite-pick-check">✓</span>
+          </button>
+        </div>
+
+        <div class="settings-section-sublabel">Skin Tone</div>
+        <div class="tone-picker" id="tone-picker">
+          <button class="tone-swatch tone-original active" data-tone="0" aria-label="Original skin tone" type="button">
+            <span class="tone-original-label">✦</span>
+          </button>
+          <button class="tone-swatch" data-tone="1" aria-label="Light skin tone" type="button" style="background:#FDDBB4;"></button>
+          <button class="tone-swatch" data-tone="2" aria-label="Medium-light skin tone" type="button" style="background:#F0B07A;"></button>
+          <button class="tone-swatch" data-tone="3" aria-label="Medium skin tone" type="button" style="background:#C88040;"></button>
+          <button class="tone-swatch" data-tone="4" aria-label="Medium-dark skin tone" type="button" style="background:#9B5E28;"></button>
+          <button class="tone-swatch" data-tone="5" aria-label="Dark skin tone" type="button" style="background:#6B3A1F;"></button>
+          <button class="tone-swatch" data-tone="6" aria-label="Deep skin tone" type="button" style="background:#3D1F0D;"></button>
+        </div>
+      </div>
+
+      <div class="settings-divider"></div>
 
       <div id="settings-content">
-        <div id="user-title" style="margin:12px 0;color:#ddd;"></div>
-
-        <!-- Primary logout button (only place for logout) -->
-        <button id="logout-btn" class="settings-btn" style="width:100%;padding:14px;border-radius:10px;border:none;background:linear-gradient(90deg,#ff5252,#d50000);color:#fff;font-weight:700;margin-top:12px;">
-          Sign out
-        </button>
+        <!-- populated by openSettingsScreen() -->
       </div>
+
+      <!-- ── Danger zone ── -->
+      <div class="settings-danger-zone">
+        <div class="settings-danger-label">Account</div>
+        <button id="logout-btn" class="settings-logout-btn">Sign out</button>
+      </div>
+
     </div>
     </div><!-- /screen-body -->
   </div>

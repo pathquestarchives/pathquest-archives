@@ -7,8 +7,8 @@
 //   4. Persist offline queue to IndexedDB (survives SW kill on iOS)
 // ============================================================
 
-const SHELL_CACHE  = "pqa-shell-v3";
-const TILE_CACHE   = "pqa-tiles-v3";
+const SHELL_CACHE  = "pqa-shell-v5";
+const TILE_CACHE   = "pqa-tiles-v5";
 const QUEUE_KEY    = "pqa-offline-queue";
 
 // Derive base path from SW registration URL so this works on any host:
@@ -30,15 +30,7 @@ const SHELL_FILES = [
   `${BASE}/icons/route-start.png`,
   `${BASE}/icons/route-end.png`,
   `${BASE}/icons/user-dot.png`,
-  `${BASE}/icons/flag-mini.svg`,
-  `${BASE}/icons/flag1.svg`,
-  `${BASE}/icons/flag2.svg`,
-  `${BASE}/icons/flag3.svg`,
-  `${BASE}/icons/flag4.svg`,
-  `${BASE}/icons/flag-gold1.svg`,
-  `${BASE}/icons/flag-gold2.svg`,
-  `${BASE}/icons/flag-gold3.svg`,
-  `${BASE}/icons/flag-gold4.svg`,
+  // flag SVGs removed — now inline in app.js
   `${BASE}/audio/checkpoint-found.mp3`,
   `${BASE}/audio/page-flip.mp3`,
   `${BASE}/audio/parchment-open.mp3`,
